@@ -1,0 +1,455 @@
+"""P7a — the PUBLIC DASHBOARD: the catalogue rendered as ONE static end-user page.
+
+AUDIENCE CONTRACT (owner, 2026-08-15 — supersedes the first, verbose cut): the end user gets
+PREDICTIONS and a SUMMARY OF PERFORMANCE SO FAR, nothing else. Method notes, pre-registration
+mechanics, bar/verdict language, diagnostics and every other explanation are for the OWNER'S
+eyes and live in the repo docs — a public surface that narrates its own reasoning is a leak,
+not a feature. What the page keeps, by construction:
+
+- The FULL catalogue, always — every prediction (open, closed, the historic shorts), none
+  removed. Filters/sorting are VIEWS on top; the row set never shrinks.
+- Performance = the pooled numbers the repo already computes (bets.stats/cum_excess) —
+  long-only, each vs its own benchmark. Shorts render in the table, not in the summary.
+- PAPER TRACK ONLY: never imports research.book, renders no account dollars (test-enforced)
+  — the page must stay publishable while the repo stays private.
+- DETERMINISTIC: stdlib, NO CLOCK — the "data through" stamp derives from the ledger, so an
+  unchanged ledger renders byte-identical HTML and push_ledgers' no-op skip keeps working.
+- Standing "Not investment advice." framing.
+
+  python3 -m research.site      # (re)generate docs/index.html — the only command
+"""
+import html
+import math
+import os
+import sys
+from datetime import date, timedelta
+
+OUT = "docs/index.html"
+_e = html.escape
+
+# Chart palette — the validated dataviz reference instance. Single series blue for the curve;
+# the diverging blue/red poles carry SIGN on the per-prediction bars. Text wears text tokens,
+# never the series color; both modes are selected steps, not an automatic flip.
+_CSS_TOKENS = """
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
+  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --series: #2a78d6; --barneg: #e34948; --pos: #006300; --neg: #d03b3b;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
+    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --series: #3987e5; --barneg: #e66767; --pos: #0ca30c; --neg: #e66767;
+  }
+}
+"""
+
+_JS = """
+(function () {
+  var tb = document.querySelector("#cat tbody");
+  var mains = Array.prototype.slice.call(tb.querySelectorAll("tr.main"));
+  var dets = {};
+  tb.querySelectorAll("tr.det").forEach(function (d) { dets[d.dataset.for] = d; });
+  function collapse(r) {
+    dets[r.dataset.i].hidden = true;
+    r.querySelector(".chev").textContent = "\\u25b8";
+  }
+  mains.forEach(function (r) {
+    r.addEventListener("click", function () {
+      var d = dets[r.dataset.i];
+      d.hidden = !d.hidden;
+      r.querySelector(".chev").textContent = d.hidden ? "\\u25b8" : "\\u25be";
+    });
+  });
+  var fs = "all", ft = "all";
+  function apply() {
+    mains.forEach(function (r) {
+      var ok = (fs === "all" || r.dataset.status === fs) &&
+               (ft === "all" || r.dataset.tag === ft);
+      r.style.display = ok ? "" : "none";
+      dets[r.dataset.i].style.display = ok ? "" : "none";
+      if (!ok) collapse(r);
+    });
+  }
+  document.querySelectorAll("#chips button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      fs = b.dataset.f;
+      document.querySelectorAll("#chips button").forEach(function (x) {
+        x.classList.toggle("on", x === b);
+      });
+      apply();
+    });
+  });
+  var sel = document.querySelector("#tagsel");
+  if (sel) sel.addEventListener("change", function () { ft = sel.value; apply(); });
+  var last = -1, dir = 1;
+  document.querySelectorAll("#cat th").forEach(function (th, i) {
+    if (!th.dataset.type) return;                 // the chevron column does not sort
+    th.addEventListener("click", function () {
+      dir = (i === last) ? -dir : (th.dataset.type === "n" ? -1 : 1);
+      last = i;
+      mains.sort(function (a, b) {
+        var x = a.cells[i].dataset.v, y = b.cells[i].dataset.v;
+        if (th.dataset.type === "n") {
+          x = x === "" ? -1e9 : parseFloat(x); y = y === "" ? -1e9 : parseFloat(y);
+          return dir * (x - y);
+        }
+        return dir * String(x).localeCompare(String(y));
+      });
+      mains.forEach(function (r) {                // a detail row travels with its prediction
+        tb.appendChild(r);
+        tb.appendChild(dets[r.dataset.i]);
+      });
+      document.querySelectorAll("#cat th").forEach(function (x) {
+        x.removeAttribute("aria-sort");
+      });
+      th.setAttribute("aria-sort", dir === 1 ? "ascending" : "descending");
+    });
+  });
+})();
+"""
+
+
+def _fnum(s: str) -> float:
+    return float(s)
+
+
+def _sign_cls(v: float) -> str:
+    return "pos" if v > 0 else ("neg" if v < 0 else "")
+
+
+def _add_busdays(iso: str, n: int) -> str:
+    """`iso` + n trading days (weekends only — holidays make this a hair early, which is fine:
+    it ORDERS the charts, it is never displayed as a settlement date)."""
+    d = date.fromisoformat(iso)
+    while n > 0:
+        d += timedelta(days=1)
+        if d.weekday() < 5:
+            n -= 1
+    return d.isoformat()
+
+
+def curve_points(bets_rows: list[dict]) -> list[dict]:
+    """Closed summary-population predictions (longs) in maturity order, with the running Σ.
+    PURE (testable). Ordered by approximate maturity (entry + horizon−1 trading days — the
+    exit bar), ledger order breaking ties; dates ride the tooltips."""
+    from research import bets
+    closed = [r for r in bets.verdict_rows(bets_rows)
+              if r["status"] == "closed" and r["excess_pct"]]
+    closed.sort(key=lambda r: (_add_busdays(r["entry_date"][:10], int(r["horizon_d"]) - 1),
+                               r["logged_at"]))
+    out, cum = [], 0.0
+    for r in closed:
+        ex = _fnum(r["excess_pct"])
+        cum += ex
+        out.append({"ticker": r["ticker"], "entry_date": r["entry_date"][:10],
+                    "horizon_d": r["horizon_d"], "benchmark": r["benchmark"],
+                    "excess": ex, "cum": cum})
+    return out
+
+
+def _nice_step(span: float) -> float:
+    """Smallest of {1,2,5}×10^k giving ≤ ~5 gridlines over `span`."""
+    raw = max(span, 1e-9) / 4
+    mag = 10 ** math.floor(math.log10(raw))
+    for m in (1, 2, 5, 10):
+        if m * mag >= raw:
+            return m * mag
+    return 10 * mag
+
+
+def _scale(vals: list[float]) -> tuple[float, float, float]:
+    """(lo, hi, step): a zero-anchored y range on clean tick boundaries."""
+    lo, hi = min(0.0, min(vals)), max(0.0, max(vals))
+    step = _nice_step(hi - lo if hi > lo else abs(hi) or 1.0)
+    lo, hi = math.floor(lo / step) * step, math.ceil(hi / step) * step
+    if lo == hi:
+        lo, hi = -step, step
+    return lo, hi, step
+
+
+def _grid(lo: float, hi: float, step: float, ML: int, MT: int, W: int, MR: int,
+          H: int, MB: int) -> tuple[list[str], callable]:
+    """Shared hairline grid + y ticks; the ZERO line is the one emphasized rule — polarity
+    comes from the baseline, never from recoloring a series."""
+    def Y(v: float) -> float:
+        return MT + (H - MT - MB) * (hi - v) / (hi - lo)
+    parts, t = [], lo
+    while t <= hi + step / 2:
+        y = Y(t)
+        zero = abs(t) < step / 2
+        parts.append(f'<line x1="{ML}" y1="{y:.1f}" x2="{W - MR}" y2="{y:.1f}" '
+                     f'stroke="{"var(--axis)" if zero else "var(--grid)"}" stroke-width="1"/>')
+        parts.append(f'<text x="{ML - 8}" y="{y + 4:.1f}" text-anchor="end" class="tick">'
+                     f'{"0" if zero else f"{t:+g}"}</text>')
+        t += step
+    return parts, Y
+
+
+def _svg_curve(pts: list[dict]) -> str:
+    """Running total as a single-series line (2px, ≥8px markers with a 2px surface ring,
+    native <title> tooltips as the zero-JS hover layer; one series → no legend)."""
+    if not pts:
+        return '<p class="muted">No settled predictions yet.</p>'
+    W, H, ML, MR, MT, MB = 760, 280, 56, 18, 18, 30
+    lo, hi, step = _scale([p["cum"] for p in pts])
+    parts, Y = _grid(lo, hi, step, ML, MT, W, MR, H, MB)
+    parts.insert(0, f'<svg viewBox="0 0 {W} {H}" role="img" '
+                    f'aria-label="Running total of excess return, percentage points">')
+    def X(i: int) -> float:
+        return ML + (W - ML - MR) * (i / (len(pts) - 1) if len(pts) > 1 else 0.5)
+    if len(pts) > 1:
+        line = " ".join(f"{X(i):.1f},{Y(p['cum']):.1f}" for i, p in enumerate(pts))
+        parts.append(f'<polyline points="{line}" fill="none" stroke="var(--series)" '
+                     f'stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>')
+    for i, p in enumerate(pts):
+        x, y = X(i), Y(p["cum"])
+        tip = (f"{p['ticker']} {p['excess']:+.2f}% · running {p['cum']:+.2f}pp · "
+               f"entered {p['entry_date']} ({p['horizon_d']}d vs {p['benchmark']})")
+        parts.append(f'<g><circle cx="{x:.1f}" cy="{y:.1f}" r="10" fill="transparent"/>'
+                     f'<circle cx="{x:.1f}" cy="{y:.1f}" r="4.5" fill="var(--series)" '
+                     f'stroke="var(--surface)" stroke-width="2"/>'
+                     f'<title>{_e(tip)}</title></g>')
+    ex, ey = X(len(pts) - 1), Y(pts[-1]["cum"])
+    anchor = "end" if ex > W - 90 else "start"
+    ey = min(max(ey - 10, MT + 10), H - MB - 6)
+    parts.append(f'<text x="{ex + (-10 if anchor == "end" else 10):.1f}" y="{ey:.1f}" '
+                 f'text-anchor="{anchor}" class="endlab">{pts[-1]["cum"]:+.1f}pp</text>')
+    parts.append("</svg>")
+    return "".join(parts)
+
+
+def _bar_path(x: float, w: float, y0: float, y1: float) -> str:
+    """A column from the baseline y0 to the data end y1: 4px rounded at the DATA end only,
+    square at the baseline (the dataviz mark spec). Works for both signs."""
+    r = min(4.0, w / 2, abs(y0 - y1))
+    if y1 <= y0:   # positive bar (SVG y grows downward)
+        return (f"M{x:.1f},{y0:.1f} L{x:.1f},{y1 + r:.1f} Q{x:.1f},{y1:.1f} {x + r:.1f},{y1:.1f} "
+                f"L{x + w - r:.1f},{y1:.1f} Q{x + w:.1f},{y1:.1f} {x + w:.1f},{y1 + r:.1f} "
+                f"L{x + w:.1f},{y0:.1f} Z")
+    return (f"M{x:.1f},{y0:.1f} L{x:.1f},{y1 - r:.1f} Q{x:.1f},{y1:.1f} {x + r:.1f},{y1:.1f} "
+            f"L{x + w - r:.1f},{y1:.1f} Q{x + w:.1f},{y1:.1f} {x + w:.1f},{y1 - r:.1f} "
+            f"L{x + w:.1f},{y0:.1f} Z")
+
+
+def _svg_bars(pts: list[dict]) -> str:
+    """Each settled prediction's excess as a column around the zero baseline — sign carried by
+    the diverging blue/red poles. Direct labels only while they fit (≤12 bars); tooltips and
+    the table carry everything at any n."""
+    if not pts:
+        return ""
+    W, H, ML, MR, MT, MB = 760, 260, 56, 18, 18, 34
+    lo, hi, step = _scale([p["excess"] for p in pts])
+    parts, Y = _grid(lo, hi, step, ML, MT, W, MR, H, MB)
+    parts.insert(0, f'<svg viewBox="0 0 {W} {H}" role="img" '
+                    f'aria-label="Excess return per settled prediction, percent">')
+    slot = (W - ML - MR) / len(pts)
+    w = min(24.0, slot * 0.6)
+    y0 = Y(0.0)
+    labeled = len(pts) <= 12
+    for i, p in enumerate(pts):
+        x = ML + slot * i + (slot - w) / 2
+        y1 = Y(p["excess"])
+        color = "var(--series)" if p["excess"] >= 0 else "var(--barneg)"
+        tip = (f"{p['ticker']} {p['excess']:+.2f}% vs {p['benchmark']} ({p['horizon_d']}d), "
+               f"entered {p['entry_date']}")
+        parts.append(f'<g><path d="{_bar_path(x, w, y0, y1)}" fill="{color}"/>'
+                     f'<rect x="{ML + slot * i:.1f}" y="{MT}" width="{slot:.1f}" '
+                     f'height="{H - MT - MB}" fill="transparent"/>'
+                     f'<title>{_e(tip)}</title></g>')
+        if labeled:
+            cx = x + w / 2
+            vy = y1 - 6 if p["excess"] >= 0 else y1 + 13
+            parts.append(f'<text x="{cx:.1f}" y="{vy:.1f}" text-anchor="middle" class="tick">'
+                         f'{p["excess"]:+.1f}</text>')
+            parts.append(f'<text x="{cx:.1f}" y="{H - 10}" text-anchor="middle" class="tick">'
+                         f'{_e(p["ticker"])}</text>')
+    parts.append("</svg>")
+    return ('<h2>Result of each settled prediction</h2>'
+            '<p class="muted">Excess return vs that prediction’s benchmark, %.</p>' +
+            "".join(parts))
+
+
+def data_through(bets_rows: list[dict]) -> str:
+    """Newest date visible in the ledger — the page's ONLY timestamp (data-derived, so the
+    render is deterministic and an unchanged ledger produces an unchanged page)."""
+    dates = [r["logged_at"][:10] for r in bets_rows if r.get("logged_at")]
+    dates += [r["entry_date"][:10] for r in bets_rows if r.get("entry_date")]
+    return max(dates) if dates else ""
+
+
+def _tiles(bets_rows: list[dict]) -> str:
+    from research import bets
+    s = bets.stats(bets_rows)
+    n_open = sum(1 for r in bets_rows if r["status"] == "open")
+    def tile(label, value, sub):
+        return (f'<div class="tile"><div class="tlabel">{label}</div>'
+                f'<div class="tvalue">{value}</div><div class="tbar">{sub}</div></div>')
+    if s:
+        n, _, md, beat = s
+        sig = bets.cum_excess(bets_rows)
+        perf = [tile("settled", f"{n}", "scored vs benchmark"),
+                tile("median excess", f"{md:+.2f}%", "per settled prediction"),
+                tile("beat rate", f"{beat:.0f}%", "finished ahead of benchmark"),
+                tile("total excess", f"{sig:+.1f}pp" if sig is not None else "—",
+                     "sum across settled")]
+    else:
+        perf = [tile("settled", "0", "scored vs benchmark")]
+    note = ""
+    if any(r.get("direction") == "short" for r in bets_rows):
+        note = ('<p class="muted">The summary counts long predictions; short entries appear '
+                'in the table but are not scored into it.</p>')
+    return ('<div class="tiles">'
+            + tile("open predictions", f"{n_open}", "awaiting outcome")
+            + "".join(perf) + "</div>" + note)
+
+
+def _catalogue_table(bets_rows: list[dict]) -> str:
+    """Every prediction, one compact row — sortable columns, status/tag filters as VIEWS.
+    The thesis rides a hidden detail row (click the prediction to expand): the full record
+    stays on the page without its prose crowding the table. Filters hide, never remove."""
+    tags = sorted({r.get("pattern_tag") or "untagged" for r in bets_rows})
+    rows_html = []
+    for i, r in enumerate(sorted(bets_rows, key=lambda r: r.get("logged_at", ""),
+                                 reverse=True)):
+        ex = r.get("excess_pct") or ""
+        tag = r.get("pattern_tag") or "untagged"
+        exc = f"num {_sign_cls(_fnum(ex))}" if ex else "num"
+        rows_html.append(
+            f'<tr class="main" data-status="{_e(r["status"])}" data-tag="{_e(tag)}" '
+            f'data-i="{i}">'
+            f'<td class="chev">▸</td>'
+            f'<td data-v="{_e(r["logged_at"][:10])}">{_e(r["logged_at"][:10])}</td>'
+            f'<td data-v="{_e(r["ticker"])}">{_e(r["ticker"])}</td>'
+            f'<td data-v="{_e(r["direction"])}">{_e(r["direction"])}</td>'
+            f'<td class="num" data-v="{_e(r["horizon_d"])}">{_e(r["horizon_d"])}d</td>'
+            f'<td data-v="{_e(r["benchmark"])}">{_e(r["benchmark"])}</td>'
+            f'<td data-v="{_e(tag)}">{_e(r.get("pattern_tag") or "—")}</td>'
+            f'<td data-v="{_e(r["status"])}">{_e(r["status"])}</td>'
+            f'<td class="{exc}" data-v="{_e(ex)}">{_e(ex) + "%" if ex else "—"}</td></tr>'
+            f'<tr class="det" data-for="{i}" hidden>'
+            f'<td colspan="9">{_e(r.get("thesis", ""))}</td></tr>')
+    chips = ('<div id="chips"><button data-f="all" class="on">All</button>'
+             '<button data-f="open">Open</button><button data-f="closed">Closed</button>'
+             '</div>')
+    sel = ('<select id="tagsel"><option value="all">all types</option>'
+           + "".join(f'<option value="{_e(t)}">{_e(t)}</option>' for t in tags) + "</select>")
+    return (f'<div class="controls">{chips}{sel}</div>'
+            '<div class="scroll"><table id="cat"><thead><tr><th></th>'
+            '<th data-type="s">logged</th><th data-type="s">ticker</th>'
+            '<th data-type="s">side</th><th data-type="n">horizon</th>'
+            '<th data-type="s">benchmark</th><th data-type="s">type</th>'
+            '<th data-type="s">status</th><th data-type="n">excess</th>'
+            '</tr></thead><tbody>' + "".join(rows_html) + "</tbody></table></div>"
+            '<p class="muted">Click a prediction for its thesis; click a column to sort. '
+            'Every prediction ever logged is listed; filters change the view, never the '
+            'record.</p>')
+
+
+def render(bets_rows: list[dict]) -> str:
+    """The whole page from the catalogue. PURE (no I/O — testable)."""
+    through = data_through(bets_rows)
+    pts = curve_points(bets_rows)
+    return f"""<!doctype html>
+<!-- GENERATED by `python3 -m research.site` from the committed ledgers — never hand-edit. -->
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forward Ledger</title>
+<style>
+{_CSS_TOKENS}
+* {{ box-sizing: border-box; margin: 0; }}
+body {{ background: var(--page); color: var(--ink); line-height: 1.45; padding: 24px 16px 48px;
+       font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }}
+main {{ max-width: 860px; margin: 0 auto; display: grid; gap: 18px; }}
+section {{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+           padding: 18px 20px; }}
+h1 {{ font-size: 26px; }} h2 {{ font-size: 17px; margin-bottom: 8px; }}
+p {{ margin: 6px 0; }} .muted {{ color: var(--ink-2); font-size: 13px; }}
+.tiles {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+          gap: 10px; margin: 8px 0; }}
+.tile {{ border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }}
+.tlabel {{ color: var(--ink-2); font-size: 12.5px; }}
+.tvalue {{ font-size: 26px; font-weight: 600; margin: 2px 0; }}
+.tbar {{ color: var(--muted); font-size: 12px; }}
+svg {{ width: 100%; height: auto; display: block; }}
+.tick {{ fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }}
+.endlab {{ fill: var(--ink-2); font-size: 12.5px; font-weight: 600; }}
+.controls {{ display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 8px 0 12px; }}
+#chips button {{ background: none; border: 1px solid var(--border); border-radius: 999px;
+                 color: var(--ink-2); padding: 4px 12px; cursor: pointer; font-size: 13px; }}
+#chips button.on {{ border-color: var(--series); color: var(--ink); font-weight: 600; }}
+#tagsel {{ background: var(--surface); color: var(--ink); border: 1px solid var(--border);
+           border-radius: 6px; padding: 4px 8px; font-size: 13px; }}
+.scroll {{ overflow-x: auto; }}
+table {{ border-collapse: collapse; width: 100%; font-size: 13px; }}
+th {{ text-align: left; color: var(--ink-2); font-weight: 600; cursor: pointer;
+      border-bottom: 1px solid var(--axis); white-space: nowrap; }}
+th, td {{ padding: 5px 8px; vertical-align: top; }}
+td {{ border-bottom: 1px solid var(--grid); }}
+td.num {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
+td.pos {{ color: var(--pos); }} td.neg {{ color: var(--neg); }}
+tr.main {{ cursor: pointer; }}
+tr.main:hover td {{ background: var(--page); }}
+td.chev {{ color: var(--muted); width: 18px; padding-right: 0; }}
+tr.det td {{ color: var(--ink-2); font-size: 12.5px; padding: 2px 8px 10px 32px; }}
+footer {{ color: var(--muted); font-size: 12.5px; text-align: center; }}
+</style></head><body><main>
+
+<section>
+<h1>Forward Ledger</h1>
+<p>Timestamped market predictions, scored mechanically against a benchmark after a fixed
+horizon. Every prediction is logged before the outcome and none are removed.</p>
+<p class="muted">Data through {_e(through) or "—"} · Not investment advice.</p>
+</section>
+
+<section>
+<h2>Performance so far</h2>
+{_tiles(bets_rows)}
+<p class="muted">Running total of excess return across settled predictions, percentage
+points.</p>
+{_svg_curve(pts)}
+{_svg_bars(pts)}
+</section>
+
+<section>
+<h2>Predictions</h2>
+{_catalogue_table(bets_rows)}
+</section>
+
+<footer>Generated from committed ledgers · Not investment advice.</footer>
+</main>
+<script>
+{_JS}
+</script></body></html>
+"""
+
+
+def write(path: str = OUT) -> dict:
+    """Render from the live ledger and write the page. Returns a summary for the CLI."""
+    from research import bets
+    bets_rows = bets._load()
+    html_text = render(bets_rows)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        f.write(html_text)
+    longs = bets.excess_values(bets.verdict_rows(bets_rows))
+    return {"path": path, "settled_longs": len(longs), "bets": len(bets_rows),
+            "through": data_through(bets_rows)}
+
+
+def run(argv: list[str]) -> int:
+    if argv:
+        print(f"site: unknown argument {argv[0]!r} — the only command is a bare "
+              f"`python3 -m research.site` (regenerates {OUT})")
+        return 1
+    s = write()
+    print(f"site: wrote {s['path']} ({s['settled_longs']} settled longs, {s['bets']} "
+          f"predictions, data through {s['through']})")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(run(sys.argv[1:]))

@@ -1,0 +1,11 @@
+# Research capture layer — deliberately minimal. Add deps only when needed.
+yfinance       # free daily OHLCV: the price/volume signal + forward outcome labels
+pandas         # yfinance returns DataFrames
+python-dotenv  # research/config.py loads .env — notify.py imports config, so WITHOUT this
+               # every Telegram push dies on import and the run reports success anyway.
+               # Was undeclared until 2026-07-27; that is how MU's settlement lost its 🚨.
+requests       # research/universe.py fetches the S&P 500 constituent list — that is ON THE
+               # LIVE PATH (movers.py imports universe and calls sp500() every scan). It only
+               # resolves today because yfinance happens to pull it in; the same accident the
+               # python-dotenv note above describes. Declare what you import.
+pytest         # tests = executable spec

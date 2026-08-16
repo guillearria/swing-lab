@@ -1,0 +1,3592 @@
+[
+ {
+  "ticker": "LODE",
+  "signal": "2026-06-03",
+  "n_ledger": 4,
+  "action": "skip",
+  "docs": 6,
+  "owner_strings": [
+   "DEGASPERIS CORRADO",
+   "Drozdoff Leo M",
+   "Pei Steven Yu-Tsung",
+   "SPENCE ROBERT"
+  ],
+  "groups": [
+   [
+    "DEGASPERIS CORRADO"
+   ],
+   [
+    "Drozdoff Leo M"
+   ],
+   [
+    "Pei Steven Yu-Tsung"
+   ],
+   [
+    "SPENCE ROBERT"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001437749-26-019468",
+    "owners": [
+     "SPENCE ROBERT"
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 96908
+   },
+   {
+    "acc": "0001437749-26-019467",
+    "owners": [
+     "Pei Steven Yu-Tsung"
+    ],
+    "trades": [
+     "2026-06-01",
+     "2026-06-02",
+     "2026-06-03"
+    ],
+    "value": 1446677
+   },
+   {
+    "acc": "0001437749-26-019466",
+    "owners": [
+     "DEGASPERIS CORRADO"
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 42461
+   },
+   {
+    "acc": "0001437749-26-019465",
+    "owners": [
+     "Drozdoff Leo M"
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 28770
+   },
+   {
+    "acc": "0001437749-26-017150",
+    "owners": [
+     "Pei Steven Yu-Tsung"
+    ],
+    "trades": [
+     "2026-05-13",
+     "2026-05-14"
+    ],
+    "value": 1436865
+   },
+   {
+    "acc": "0001437749-26-016438",
+    "owners": [
+     "DEGASPERIS CORRADO"
+    ],
+    "trades": [
+     "2026-05-12"
+    ],
+    "value": 101150
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-03",
+    "ticker": "LODE",
+    "insider": "SPENCE ROBERT",
+    "value": 96907.70000000001,
+    "acc": "0001437749-26-019468"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-01",
+    "ticker": "LODE",
+    "insider": "Pei Steven Yu-Tsung",
+    "value": 108357.0738,
+    "acc": "0001437749-26-019467"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-02",
+    "ticker": "LODE",
+    "insider": "Pei Steven Yu-Tsung",
+    "value": 630920.4168,
+    "acc": "0001437749-26-019467"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-03",
+    "ticker": "LODE",
+    "insider": "Pei Steven Yu-Tsung",
+    "value": 707400.0,
+    "acc": "0001437749-26-019467"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-03",
+    "ticker": "LODE",
+    "insider": "DEGASPERIS CORRADO",
+    "value": 42460.950000000004,
+    "acc": "0001437749-26-019466"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-06-03",
+    "ticker": "LODE",
+    "insider": "Drozdoff Leo M",
+    "value": 28770.000000000004,
+    "acc": "0001437749-26-019465"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-05-13",
+    "ticker": "LODE",
+    "insider": "Pei Steven Yu-Tsung",
+    "value": 1164375.0,
+    "acc": "0001437749-26-017150"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-05-14",
+    "ticker": "LODE",
+    "insider": "Pei Steven Yu-Tsung",
+    "value": 272489.575,
+    "acc": "0001437749-26-017150"
+   },
+   {
+    "filing": "2026-06-03",
+    "trade": "2026-05-12",
+    "ticker": "LODE",
+    "insider": "DEGASPERIS CORRADO",
+    "value": 101150.0,
+    "acc": "0001437749-26-016438"
+   }
+  ],
+  "n_strings": 4,
+  "n_beneficial": 4,
+  "artifact": false
+ },
+ {
+  "ticker": "NVRI",
+  "signal": "2026-06-08",
+  "n_ledger": 3,
+  "action": "take",
+  "docs": 3,
+  "owner_strings": [
+   "Hochman Russell C.",
+   "Minan Peter Francis",
+   "Purvis Edgar M Jr"
+  ],
+  "groups": [
+   [
+    "Hochman Russell C."
+   ],
+   [
+    "Minan Peter Francis"
+   ],
+   [
+    "Purvis Edgar M Jr"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0002104052-26-000079",
+    "owners": [
+     "Minan Peter Francis"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 160410
+   },
+   {
+    "acc": "0002104052-26-000072",
+    "owners": [
+     "Purvis Edgar M Jr"
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 253400
+   },
+   {
+    "acc": "0002104052-26-000071",
+    "owners": [
+     "Hochman Russell C."
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 1001014
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "NVRI",
+    "insider": "Minan Peter Francis",
+    "value": 160410.25,
+    "acc": "0002104052-26-000079"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-03",
+    "ticker": "NVRI",
+    "insider": "Purvis Edgar M Jr",
+    "value": 253400.00000000003,
+    "acc": "0002104052-26-000072"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-03",
+    "ticker": "NVRI",
+    "insider": "Hochman Russell C.",
+    "value": 1001014.17,
+    "acc": "0002104052-26-000071"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "SSMR",
+  "signal": "2026-06-08",
+  "n_ledger": 5,
+  "action": "skip",
+  "docs": 5,
+  "owner_strings": [
+   "El-Erian Anna",
+   "Groh Douglas",
+   "Radford Lawrence P",
+   "SHEPSTON MICHELLE H",
+   "White Heather Eileen"
+  ],
+  "groups": [
+   [
+    "El-Erian Anna"
+   ],
+   [
+    "Groh Douglas"
+   ],
+   [
+    "Radford Lawrence P"
+   ],
+   [
+    "SHEPSTON MICHELLE H"
+   ],
+   [
+    "White Heather Eileen"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001140361-26-024502",
+    "owners": [
+     "SHEPSTON MICHELLE H"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 68378
+   },
+   {
+    "acc": "0001140361-26-024500",
+    "owners": [
+     "White Heather Eileen"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 27000
+   },
+   {
+    "acc": "0001140361-26-024494",
+    "owners": [
+     "Radford Lawrence P"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 33750
+   },
+   {
+    "acc": "0001140361-26-024490",
+    "owners": [
+     "Groh Douglas"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 135000
+   },
+   {
+    "acc": "0001140361-26-024486",
+    "owners": [
+     "El-Erian Anna"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 540000
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "SHEPSTON MICHELLE H",
+    "value": 67500.0,
+    "acc": "0001140361-26-024502"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "SHEPSTON MICHELLE H",
+    "value": 877.5,
+    "acc": "0001140361-26-024502"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "White Heather Eileen",
+    "value": 27000.0,
+    "acc": "0001140361-26-024500"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "Radford Lawrence P",
+    "value": 33750.0,
+    "acc": "0001140361-26-024494"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "Groh Douglas",
+    "value": 135000.0,
+    "acc": "0001140361-26-024490"
+   },
+   {
+    "filing": "2026-06-08",
+    "trade": "2026-06-05",
+    "ticker": "SSMR",
+    "insider": "El-Erian Anna",
+    "value": 540000.0,
+    "acc": "0001140361-26-024486"
+   }
+  ],
+  "n_strings": 5,
+  "n_beneficial": 5,
+  "artifact": false
+ },
+ {
+  "ticker": "BWFG",
+  "signal": "2026-06-09",
+  "n_ledger": 5,
+  "action": "skip",
+  "docs": 8,
+  "owner_strings": [
+   "Dale Eric J",
+   "Drexler Blake S",
+   "Dunne Jeffrey R",
+   "Porto Carl M",
+   "SEIDMAN LAWRENCE B"
+  ],
+  "groups": [
+   [
+    "Dale Eric J"
+   ],
+   [
+    "Drexler Blake S"
+   ],
+   [
+    "Dunne Jeffrey R"
+   ],
+   [
+    "Porto Carl M"
+   ],
+   [
+    "SEIDMAN LAWRENCE B"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001505732-26-000091",
+    "owners": [
+     "SEIDMAN LAWRENCE B"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 17345
+   },
+   {
+    "acc": "0001505732-26-000090",
+    "owners": [
+     "Dale Eric J"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 31576
+   },
+   {
+    "acc": "0001505732-26-000089",
+    "owners": [
+     "Drexler Blake S"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 4242
+   },
+   {
+    "acc": "0001505732-26-000088",
+    "owners": [
+     "Dunne Jeffrey R"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 16916
+   },
+   {
+    "acc": "0001505732-26-000087",
+    "owners": [
+     "Porto Carl M"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 19869
+   },
+   {
+    "acc": "0001026081-26-000022",
+    "owners": [
+     "SEIDMAN LAWRENCE B"
+    ],
+    "trades": [
+     "2026-06-01"
+    ],
+    "value": 175371
+   },
+   {
+    "acc": "0001505732-26-000076",
+    "owners": [
+     "SEIDMAN LAWRENCE B"
+    ],
+    "trades": [
+     "2026-05-15"
+    ],
+    "value": 8486
+   },
+   {
+    "acc": "0001026081-26-000020",
+    "owners": [
+     "SEIDMAN LAWRENCE B"
+    ],
+    "trades": [
+     "2026-05-13"
+    ],
+    "value": 96709
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-05",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 17345.100000000002,
+    "acc": "0001505732-26-000091"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-05",
+    "ticker": "BWFG",
+    "insider": "Dale Eric J",
+    "value": 31575.600000000002,
+    "acc": "0001505732-26-000090"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-05",
+    "ticker": "BWFG",
+    "insider": "Drexler Blake S",
+    "value": 4242.3,
+    "acc": "0001505732-26-000089"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-05",
+    "ticker": "BWFG",
+    "insider": "Dunne Jeffrey R",
+    "value": 16915.5,
+    "acc": "0001505732-26-000088"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-05",
+    "ticker": "BWFG",
+    "insider": "Porto Carl M",
+    "value": 19869.0,
+    "acc": "0001505732-26-000087"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 45213.200000000004,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 29254.68,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 36820.6,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 26661.18,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 28113.539999999997,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 5099.92,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 4207.95,
+    "acc": "0001026081-26-000022"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-15",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 8486.4,
+    "acc": "0001505732-26-000076"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 40556.7,
+    "acc": "0001026081-26-000020"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 10028.0,
+    "acc": "0001026081-26-000020"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 7476.82,
+    "acc": "0001026081-26-000020"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 24443.920000000002,
+    "acc": "0001026081-26-000020"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 8978.64,
+    "acc": "0001026081-26-000020"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-05-13",
+    "ticker": "BWFG",
+    "insider": "SEIDMAN LAWRENCE B",
+    "value": 5224.96,
+    "acc": "0001026081-26-000020"
+   }
+  ],
+  "n_strings": 5,
+  "n_beneficial": 5,
+  "artifact": false
+ },
+ {
+  "ticker": "MBC",
+  "signal": "2026-06-09",
+  "n_ledger": 4,
+  "action": "skip",
+  "docs": 4,
+  "owner_strings": [
+   "Banyard R David",
+   "Fracassa Philip D.",
+   "PETRATIS DAVID D",
+   "Simon Andrea Helen"
+  ],
+  "groups": [
+   [
+    "Banyard R David",
+    "PETRATIS DAVID D"
+   ],
+   [
+    "Fracassa Philip D."
+   ],
+   [
+    "Simon Andrea Helen"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-269634",
+    "owners": [
+     "Fracassa Philip D."
+    ],
+    "trades": [
+     "2026-06-11"
+    ],
+    "value": 45550
+   },
+   {
+    "acc": "0001628280-26-041887",
+    "owners": [
+     "PETRATIS DAVID D"
+    ],
+    "trades": [
+     "2026-06-08"
+    ],
+    "value": 102240
+   },
+   {
+    "acc": "0001628280-26-041287",
+    "owners": [
+     "Simon Andrea Helen"
+    ],
+    "trades": [
+     "2026-06-04"
+    ],
+    "value": 42800
+   },
+   {
+    "acc": "0001193125-26-254050",
+    "owners": [
+     "Banyard R David"
+    ],
+    "trades": [
+     "2026-06-01"
+    ],
+    "value": 505800
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-11",
+    "ticker": "MBC",
+    "insider": "Fracassa Philip D.",
+    "value": 45550.0,
+    "acc": "0001193125-26-269634"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-08",
+    "ticker": "MBC",
+    "insider": "PETRATIS DAVID D",
+    "value": 102240.21190000001,
+    "acc": "0001628280-26-041887"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-04",
+    "ticker": "MBC",
+    "insider": "Simon Andrea Helen",
+    "value": 42800.0,
+    "acc": "0001628280-26-041287"
+   },
+   {
+    "filing": "2026-06-09",
+    "trade": "2026-06-01",
+    "ticker": "MBC",
+    "insider": "Banyard R David",
+    "value": 505800.0,
+    "acc": "0001193125-26-254050"
+   }
+  ],
+  "n_strings": 4,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "INR",
+  "signal": "2026-06-11",
+  "n_ledger": 4,
+  "action": "skip",
+  "docs": 8,
+  "owner_strings": [
+   "GRAY STEVEN D",
+   "Gieselman Scott",
+   "Poole David P",
+   "Quinn William J"
+  ],
+  "groups": [
+   [
+    "GRAY STEVEN D"
+   ],
+   [
+    "Gieselman Scott"
+   ],
+   [
+    "Poole David P"
+   ],
+   [
+    "Quinn William J"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0002029118-26-000063",
+    "owners": [
+     "Gieselman Scott"
+    ],
+    "trades": [
+     "2026-06-17"
+    ],
+    "value": 129440
+   },
+   {
+    "acc": "0001193125-26-271065",
+    "owners": [
+     "Quinn William J"
+    ],
+    "trades": [
+     "2026-06-11"
+    ],
+    "value": 151750
+   },
+   {
+    "acc": "0002029118-26-000060",
+    "owners": [
+     "GRAY STEVEN D"
+    ],
+    "trades": [
+     "2026-06-12"
+    ],
+    "value": 320175
+   },
+   {
+    "acc": "0002029118-26-000058",
+    "owners": [
+     "Poole David P"
+    ],
+    "trades": [
+     "2026-06-10",
+     "2026-06-11"
+    ],
+    "value": 158962
+   },
+   {
+    "acc": "0001193125-26-262545",
+    "owners": [
+     "Quinn William J"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 580206
+   },
+   {
+    "acc": "0001193125-26-259528",
+    "owners": [
+     "Quinn William J"
+    ],
+    "trades": [
+     "2026-06-03"
+    ],
+    "value": 138640
+   },
+   {
+    "acc": "0001193125-26-255482",
+    "owners": [
+     "Gieselman Scott"
+    ],
+    "trades": [
+     "2026-06-02",
+     "2026-06-03"
+    ],
+    "value": 188336
+   },
+   {
+    "acc": "0001193125-26-241878",
+    "owners": [
+     "Gieselman Scott"
+    ],
+    "trades": [
+     "2026-05-22",
+     "2026-05-26"
+    ],
+    "value": 294966
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-17",
+    "ticker": "INR",
+    "insider": "Gieselman Scott",
+    "value": 129440.00000000001,
+    "acc": "0002029118-26-000063"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-11",
+    "ticker": "INR",
+    "insider": "Quinn William J",
+    "value": 151750.0527,
+    "acc": "0001193125-26-271065"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-12",
+    "ticker": "INR",
+    "insider": "GRAY STEVEN D",
+    "value": 320175.0,
+    "acc": "0002029118-26-000060"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-10",
+    "ticker": "INR",
+    "insider": "Poole David P",
+    "value": 104962.5,
+    "acc": "0002029118-26-000058"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-11",
+    "ticker": "INR",
+    "insider": "Poole David P",
+    "value": 54000.0,
+    "acc": "0002029118-26-000058"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-05",
+    "ticker": "INR",
+    "insider": "Quinn William J",
+    "value": 580206.0,
+    "acc": "0001193125-26-262545"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-03",
+    "ticker": "INR",
+    "insider": "Quinn William J",
+    "value": 138639.6,
+    "acc": "0001193125-26-259528"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-02",
+    "ticker": "INR",
+    "insider": "Gieselman Scott",
+    "value": 179330.79,
+    "acc": "0001193125-26-255482"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-06-03",
+    "ticker": "INR",
+    "insider": "Gieselman Scott",
+    "value": 9005.470000000001,
+    "acc": "0001193125-26-255482"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-05-22",
+    "ticker": "INR",
+    "insider": "Gieselman Scott",
+    "value": 12906.0,
+    "acc": "0001193125-26-241878"
+   },
+   {
+    "filing": "2026-06-11",
+    "trade": "2026-05-26",
+    "ticker": "INR",
+    "insider": "Gieselman Scott",
+    "value": 282060.0,
+    "acc": "0001193125-26-241878"
+   }
+  ],
+  "n_strings": 4,
+  "n_beneficial": 4,
+  "artifact": false
+ },
+ {
+  "ticker": "PICS",
+  "signal": "2026-06-12",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 7,
+  "owner_strings": [
+   "Augusto Cazotto Andre",
+   "Batista Costa Jose Antonio",
+   "Pruett William Rodney"
+  ],
+  "groups": [
+   [
+    "Augusto Cazotto Andre"
+   ],
+   [
+    "Batista Costa Jose Antonio"
+   ],
+   [
+    "Pruett William Rodney"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001213900-26-068410",
+    "owners": [
+     "Augusto Cazotto Andre"
+    ],
+    "trades": [
+     "2026-06-11"
+    ],
+    "value": 465795
+   },
+   {
+    "acc": "0001213900-26-068298",
+    "owners": [
+     "Batista Costa Jose Antonio"
+    ],
+    "trades": [
+     "2026-06-10"
+    ],
+    "value": 175195
+   },
+   {
+    "acc": "0001213900-26-067281",
+    "owners": [
+     "Batista Costa Jose Antonio"
+    ],
+    "trades": [
+     "2026-06-09"
+    ],
+    "value": 202384
+   },
+   {
+    "acc": "0001213900-26-067186",
+    "owners": [
+     "Batista Costa Jose Antonio"
+    ],
+    "trades": [
+     "2026-06-08"
+    ],
+    "value": 199045
+   },
+   {
+    "acc": "0001213900-26-066241",
+    "owners": [
+     "Batista Costa Jose Antonio"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 199990
+   },
+   {
+    "acc": "0001213900-26-066121",
+    "owners": [
+     "Batista Costa Jose Antonio"
+    ],
+    "trades": [
+     "2026-06-04"
+    ],
+    "value": 199980
+   },
+   {
+    "acc": "0001213900-26-066040",
+    "owners": [
+     "Pruett William Rodney"
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 227500
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-11",
+    "ticker": "PICS",
+    "insider": "Augusto Cazotto Andre",
+    "value": 465795.0,
+    "acc": "0001213900-26-068410"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-10",
+    "ticker": "PICS",
+    "insider": "Batista Costa Jose Antonio",
+    "value": 175195.0,
+    "acc": "0001213900-26-068298"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-09",
+    "ticker": "PICS",
+    "insider": "Batista Costa Jose Antonio",
+    "value": 202384.0,
+    "acc": "0001213900-26-067281"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-08",
+    "ticker": "PICS",
+    "insider": "Batista Costa Jose Antonio",
+    "value": 199044.6,
+    "acc": "0001213900-26-067186"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-05",
+    "ticker": "PICS",
+    "insider": "Batista Costa Jose Antonio",
+    "value": 199990.28,
+    "acc": "0001213900-26-066241"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-04",
+    "ticker": "PICS",
+    "insider": "Batista Costa Jose Antonio",
+    "value": 199980.0,
+    "acc": "0001213900-26-066121"
+   },
+   {
+    "filing": "2026-06-12",
+    "trade": "2026-06-05",
+    "ticker": "PICS",
+    "insider": "Pruett William Rodney",
+    "value": 227500.0,
+    "acc": "0001213900-26-066040"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "LOGC",
+  "signal": "2026-06-15",
+  "n_ledger": 3,
+  "action": "take",
+  "docs": 6,
+  "owner_strings": [
+   "Bobbili Raja",
+   "LEVY PAUL S",
+   "Stewart Scott Matthew"
+  ],
+  "groups": [
+   [
+    "Bobbili Raja"
+   ],
+   [
+    "LEVY PAUL S"
+   ],
+   [
+    "Stewart Scott Matthew"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001825415-26-000009",
+    "owners": [
+     "Stewart Scott Matthew"
+    ],
+    "trades": [
+     "2026-06-12"
+    ],
+    "value": 97600
+   },
+   {
+    "acc": "0001110176-26-000006",
+    "owners": [
+     "LEVY PAUL S"
+    ],
+    "trades": [
+     "2026-06-08"
+    ],
+    "value": 118548
+   },
+   {
+    "acc": "0001110176-26-000004",
+    "owners": [
+     "LEVY PAUL S"
+    ],
+    "trades": [
+     "2026-06-03",
+     "2026-06-04",
+     "2026-06-05"
+    ],
+    "value": 899618
+   },
+   {
+    "acc": "0001110176-26-000002",
+    "owners": [
+     "LEVY PAUL S"
+    ],
+    "trades": [
+     "2026-06-01",
+     "2026-06-02"
+    ],
+    "value": 232344
+   },
+   {
+    "acc": "0001193125-26-245910",
+    "owners": [
+     "Bobbili Raja"
+    ],
+    "trades": [
+     "2026-05-26",
+     "2026-05-27",
+     "2026-05-28"
+    ],
+    "value": 1134825
+   },
+   {
+    "acc": "0001193125-26-235184",
+    "owners": [
+     "Bobbili Raja"
+    ],
+    "trades": [
+     "2026-05-19",
+     "2026-05-20",
+     "2026-05-21"
+    ],
+    "value": 1310960
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-12",
+    "ticker": "LOGC",
+    "insider": "Stewart Scott Matthew",
+    "value": 97600.0,
+    "acc": "0001825415-26-000009"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-08",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 118548.2238,
+    "acc": "0001110176-26-000006"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-03",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 319367.9346,
+    "acc": "0001110176-26-000004"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-04",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 9040.0,
+    "acc": "0001110176-26-000004"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-05",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 571210.5179,
+    "acc": "0001110176-26-000004"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-01",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 60563.7184,
+    "acc": "0001110176-26-000002"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-06-02",
+    "ticker": "LOGC",
+    "insider": "LEVY PAUL S",
+    "value": 171779.9481,
+    "acc": "0001110176-26-000002"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-26",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 279631.125,
+    "acc": "0001193125-26-245910"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-27",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 42532.776,
+    "acc": "0001193125-26-245910"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-28",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 812660.8280000001,
+    "acc": "0001193125-26-245910"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-19",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 150948.94999999998,
+    "acc": "0001193125-26-235184"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-20",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 765315.2649999999,
+    "acc": "0001193125-26-235184"
+   },
+   {
+    "filing": "2026-06-15",
+    "trade": "2026-05-21",
+    "ticker": "LOGC",
+    "insider": "Bobbili Raja",
+    "value": 394695.84,
+    "acc": "0001193125-26-235184"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "EU",
+  "signal": "2026-06-16",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 4,
+  "owner_strings": [
+   "HEILI WAYNE W.",
+   "Little Richard H",
+   "PELIZZA MARK S",
+   "SHERIFF WILLIAM M"
+  ],
+  "groups": [
+   [
+    "HEILI WAYNE W."
+   ],
+   [
+    "Little Richard H"
+   ],
+   [
+    "PELIZZA MARK S"
+   ],
+   [
+    "SHERIFF WILLIAM M"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-272756",
+    "owners": [
+     "HEILI WAYNE W."
+    ],
+    "trades": [
+     "2026-06-12"
+    ],
+    "value": 50400
+   },
+   {
+    "acc": "0001193125-26-271394",
+    "owners": [
+     "PELIZZA MARK S"
+    ],
+    "trades": [
+     "2026-06-11",
+     "2026-06-12"
+    ],
+    "value": 136884
+   },
+   {
+    "acc": "0001193125-26-267756",
+    "owners": [
+     "Little Richard H"
+    ],
+    "trades": [
+     "2026-06-09"
+    ],
+    "value": 64000
+   },
+   {
+    "acc": "0001193125-26-233055",
+    "owners": [
+     "SHERIFF WILLIAM M"
+    ],
+    "trades": [
+     "2026-05-18",
+     "2026-05-19"
+    ],
+    "value": 146000
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "EU",
+    "insider": "HEILI WAYNE W.",
+    "value": 50400.0,
+    "acc": "0001193125-26-272756"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-11",
+    "ticker": "EU",
+    "insider": "PELIZZA MARK S",
+    "value": 135879.34,
+    "acc": "0001193125-26-271394"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "EU",
+    "insider": "PELIZZA MARK S",
+    "value": 1004.9699999999999,
+    "acc": "0001193125-26-271394"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-09",
+    "ticker": "EU",
+    "insider": "Little Richard H",
+    "value": 64000.0,
+    "acc": "0001193125-26-267756"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-05-18",
+    "ticker": "EU",
+    "insider": "SHERIFF WILLIAM M",
+    "value": 74500.0,
+    "acc": "0001193125-26-233055"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-05-19",
+    "ticker": "EU",
+    "insider": "SHERIFF WILLIAM M",
+    "value": 34750.0,
+    "acc": "0001193125-26-233055"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-05-18",
+    "ticker": "EU",
+    "insider": "SHERIFF WILLIAM M",
+    "value": 36750.0,
+    "acc": "0001193125-26-233055"
+   }
+  ],
+  "n_strings": 4,
+  "n_beneficial": 4,
+  "artifact": false
+ },
+ {
+  "ticker": "FLNT",
+  "signal": "2026-06-16",
+  "n_ledger": 4,
+  "action": "skip",
+  "docs": 4,
+  "owner_strings": [
+   "Conlin Matthew",
+   "GEYGAN JAMES",
+   "GEYGAN JEFFREY RICHART",
+   "GLOBAL VALUE INVESTMENT CORP.",
+   "Geygan Kathleen",
+   "Rice Shawn G",
+   "Schulke Ryan",
+   "Wilke Stacy"
+  ],
+  "groups": [
+   [
+    "Conlin Matthew"
+   ],
+   [
+    "GEYGAN JAMES",
+    "GEYGAN JEFFREY RICHART",
+    "Geygan Kathleen"
+   ],
+   [
+    "GLOBAL VALUE INVESTMENT CORP."
+   ],
+   [
+    "Rice Shawn G"
+   ],
+   [
+    "Schulke Ryan"
+   ],
+   [
+    "Wilke Stacy"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-272694",
+    "owners": [
+     "GEYGAN JAMES"
+    ],
+    "trades": [
+     "2026-06-12"
+    ],
+    "value": 168902
+   },
+   {
+    "acc": "0001193125-26-272687",
+    "owners": [
+     "GLOBAL VALUE INVESTMENT CORP.",
+     "GEYGAN JEFFREY RICHART",
+     "GEYGAN JAMES",
+     "Wilke Stacy",
+     "Geygan Kathleen",
+     "Rice Shawn G"
+    ],
+    "trades": [
+     "2026-06-12"
+    ],
+    "value": 168903
+   },
+   {
+    "acc": "0001437749-26-019106",
+    "owners": [
+     "Conlin Matthew"
+    ],
+    "trades": [
+     "2026-06-01"
+    ],
+    "value": 10350
+   },
+   {
+    "acc": "0001437749-26-019105",
+    "owners": [
+     "Schulke Ryan"
+    ],
+    "trades": [
+     "2026-06-01"
+    ],
+    "value": 10350
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "GEYGAN JAMES",
+    "value": 165605.5611,
+    "acc": "0001193125-26-272694"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "GEYGAN JAMES",
+    "value": 3296.907,
+    "acc": "0001193125-26-272694"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "GLOBAL VALUE INVESTMENT CORP.",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "GEYGAN JEFFREY RICHART",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "GEYGAN JAMES",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "Wilke Stacy",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "Geygan Kathleen",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "FLNT",
+    "insider": "Rice Shawn G",
+    "value": 28150.5244,
+    "acc": "0001193125-26-272687"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-01",
+    "ticker": "FLNT",
+    "insider": "Conlin Matthew",
+    "value": 10350.0,
+    "acc": "0001437749-26-019106"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-01",
+    "ticker": "FLNT",
+    "insider": "Schulke Ryan",
+    "value": 10350.0,
+    "acc": "0001437749-26-019105"
+   }
+  ],
+  "n_strings": 8,
+  "n_beneficial": 6,
+  "artifact": false
+ },
+ {
+  "ticker": "VIA",
+  "signal": "2026-06-16",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 3,
+  "owner_strings": [
+   "Fain Clara",
+   "Peres Nechemia Jacob",
+   "Ramot Daniel"
+  ],
+  "groups": [
+   [
+    "Fain Clara"
+   ],
+   [
+    "Peres Nechemia Jacob"
+   ],
+   [
+    "Ramot Daniel"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001628280-26-043681",
+    "owners": [
+     "Fain Clara"
+    ],
+    "trades": [
+     "2026-06-12",
+     "2026-06-16"
+    ],
+    "value": 19986
+   },
+   {
+    "acc": "0001628280-26-043662",
+    "owners": [
+     "Ramot Daniel"
+    ],
+    "trades": [
+     "2026-06-12",
+     "2026-06-16"
+    ],
+    "value": 99805
+   },
+   {
+    "acc": "0001628280-26-042602",
+    "owners": [
+     "Peres Nechemia Jacob"
+    ],
+    "trades": [
+     "2026-06-09"
+    ],
+    "value": 367500
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "VIA",
+    "insider": "Fain Clara",
+    "value": 9990.0,
+    "acc": "0001628280-26-043681"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-16",
+    "ticker": "VIA",
+    "insider": "Fain Clara",
+    "value": 9996.0,
+    "acc": "0001628280-26-043681"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-12",
+    "ticker": "VIA",
+    "insider": "Ramot Daniel",
+    "value": 49811.3517,
+    "acc": "0001628280-26-043662"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-16",
+    "ticker": "VIA",
+    "insider": "Ramot Daniel",
+    "value": 49994.0,
+    "acc": "0001628280-26-043662"
+   },
+   {
+    "filing": "2026-06-16",
+    "trade": "2026-06-09",
+    "ticker": "VIA",
+    "insider": "Peres Nechemia Jacob",
+    "value": 367500.0,
+    "acc": "0001628280-26-042602"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "EML",
+  "signal": "2026-06-17",
+  "n_ledger": 5,
+  "action": "skip",
+  "docs": 9,
+  "owner_strings": [
+   "BARINGTON COMPANIES EQUITY PARTNERS L P",
+   "BARINGTON COMPANIES MANAGEMENT, LLC",
+   "DiSanto Frederick D.",
+   "EVERETS JOHN",
+   "Galbato Chan",
+   "MITAROTONDA JAMES A",
+   "Scott Peggy"
+  ],
+  "groups": [
+   [
+    "BARINGTON COMPANIES EQUITY PARTNERS L P",
+    "BARINGTON COMPANIES MANAGEMENT, LLC"
+   ],
+   [
+    "DiSanto Frederick D."
+   ],
+   [
+    "EVERETS JOHN"
+   ],
+   [
+    "Galbato Chan"
+   ],
+   [
+    "MITAROTONDA JAMES A"
+   ],
+   [
+    "Scott Peggy"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001654954-26-006053",
+    "owners": [
+     "EVERETS JOHN"
+    ],
+    "trades": [
+     "2026-06-16"
+    ],
+    "value": 28034
+   },
+   {
+    "acc": "0001498290-26-000008",
+    "owners": [
+     "DiSanto Frederick D."
+    ],
+    "trades": [
+     "2026-06-16"
+    ],
+    "value": 21250
+   },
+   {
+    "acc": "0001654954-26-006047",
+    "owners": [
+     "Galbato Chan"
+    ],
+    "trades": [
+     "2026-06-16"
+    ],
+    "value": 20116
+   },
+   {
+    "acc": "0001654954-26-006045",
+    "owners": [
+     "MITAROTONDA JAMES A"
+    ],
+    "trades": [
+     "2026-06-16"
+    ],
+    "value": 35931
+   },
+   {
+    "acc": "0001654954-26-006043",
+    "owners": [
+     "Scott Peggy"
+    ],
+    "trades": [
+     "2026-06-16"
+    ],
+    "value": 25166
+   },
+   {
+    "acc": "0001498290-26-000007",
+    "owners": [
+     "DiSanto Frederick D."
+    ],
+    "trades": [
+     "2026-06-11",
+     "2026-06-12"
+    ],
+    "value": 42210
+   },
+   {
+    "acc": "0001654954-26-005786",
+    "owners": [
+     "MITAROTONDA JAMES A",
+     "BARINGTON COMPANIES EQUITY PARTNERS L P",
+     "BARINGTON COMPANIES MANAGEMENT, LLC"
+    ],
+    "trades": [
+     "2026-06-04",
+     "2026-06-05"
+    ],
+    "value": 122641
+   },
+   {
+    "acc": "0001498290-26-000006",
+    "owners": [
+     "DiSanto Frederick D."
+    ],
+    "trades": [
+     "2026-06-05"
+    ],
+    "value": 6192
+   },
+   {
+    "acc": "0001498290-26-000005",
+    "owners": [
+     "DiSanto Frederick D."
+    ],
+    "trades": [
+     "2026-06-04"
+    ],
+    "value": 4580
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-16",
+    "ticker": "EML",
+    "insider": "EVERETS JOHN",
+    "value": 28033.999999999996,
+    "acc": "0001654954-26-006053"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-16",
+    "ticker": "EML",
+    "insider": "DiSanto Frederick D.",
+    "value": 21250.0,
+    "acc": "0001498290-26-000008"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-16",
+    "ticker": "EML",
+    "insider": "Galbato Chan",
+    "value": 20116.0,
+    "acc": "0001654954-26-006047"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-16",
+    "ticker": "EML",
+    "insider": "MITAROTONDA JAMES A",
+    "value": 35930.6,
+    "acc": "0001654954-26-006045"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-16",
+    "ticker": "EML",
+    "insider": "Scott Peggy",
+    "value": 25166.399999999998,
+    "acc": "0001654954-26-006043"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-11",
+    "ticker": "EML",
+    "insider": "DiSanto Frederick D.",
+    "value": 21250.0,
+    "acc": "0001498290-26-000007"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-12",
+    "ticker": "EML",
+    "insider": "DiSanto Frederick D.",
+    "value": 20960.0,
+    "acc": "0001498290-26-000007"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-04",
+    "ticker": "EML",
+    "insider": "MITAROTONDA JAMES A",
+    "value": 13823.600599999998,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-04",
+    "ticker": "EML",
+    "insider": "BARINGTON COMPANIES EQUITY PARTNERS L P",
+    "value": 13823.600599999998,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-04",
+    "ticker": "EML",
+    "insider": "BARINGTON COMPANIES MANAGEMENT, LLC",
+    "value": 13823.600599999998,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-05",
+    "ticker": "EML",
+    "insider": "MITAROTONDA JAMES A",
+    "value": 27056.859200000003,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-05",
+    "ticker": "EML",
+    "insider": "BARINGTON COMPANIES EQUITY PARTNERS L P",
+    "value": 27056.859200000003,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-05",
+    "ticker": "EML",
+    "insider": "BARINGTON COMPANIES MANAGEMENT, LLC",
+    "value": 27056.859200000003,
+    "acc": "0001654954-26-005786"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-05",
+    "ticker": "EML",
+    "insider": "DiSanto Frederick D.",
+    "value": 6192.0,
+    "acc": "0001498290-26-000006"
+   },
+   {
+    "filing": "2026-06-17",
+    "trade": "2026-06-04",
+    "ticker": "EML",
+    "insider": "DiSanto Frederick D.",
+    "value": 4579.5,
+    "acc": "0001498290-26-000005"
+   }
+  ],
+  "n_strings": 7,
+  "n_beneficial": 6,
+  "artifact": false
+ },
+ {
+  "ticker": "BORR",
+  "signal": "2026-06-22",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 3,
+  "owner_strings": [
+   "Morand De Oliveira Bruno",
+   "Schorn Patrick",
+   "Troim Tor Olav"
+  ],
+  "groups": [
+   [
+    "Morand De Oliveira Bruno"
+   ],
+   [
+    "Schorn Patrick"
+   ],
+   [
+    "Troim Tor Olav"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001628280-26-044543",
+    "owners": [
+     "Schorn Patrick"
+    ],
+    "trades": [
+     "2026-06-17"
+    ],
+    "value": 1992000
+   },
+   {
+    "acc": "0001628280-26-044540",
+    "owners": [
+     "Morand De Oliveira Bruno"
+    ],
+    "trades": [
+     "2026-06-17"
+    ],
+    "value": 456500
+   },
+   {
+    "acc": "0001628280-26-042068",
+    "owners": [
+     "Troim Tor Olav"
+    ],
+    "trades": [
+     "2026-06-09"
+    ],
+    "value": 4996100
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-17",
+    "ticker": "BORR",
+    "insider": "Schorn Patrick",
+    "value": 1992000.0,
+    "acc": "0001628280-26-044543"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-17",
+    "ticker": "BORR",
+    "insider": "Morand De Oliveira Bruno",
+    "value": 456500.0,
+    "acc": "0001628280-26-044540"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-09",
+    "ticker": "BORR",
+    "insider": "Troim Tor Olav",
+    "value": 4996100.0,
+    "acc": "0001628280-26-042068"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "FCBM",
+  "signal": "2026-06-22",
+  "n_ledger": 15,
+  "action": "skip",
+  "docs": 15,
+  "owner_strings": [
+   "Andracchio Vincent Charles II",
+   "Boone Sandra Bell",
+   "Brabble Kristen Dawn",
+   "DEATON STEVEN G",
+   "Day Ronald Arvin",
+   "Ferebee John Jethro Jr",
+   "Floyd Gregory Everette",
+   "Ford Douglas IV",
+   "Gussenhoven John Walter",
+   "LUCAS JAMES A JR",
+   "Paul Charles Albert III",
+   "Pritchard Patrick Wayne",
+   "Robbins Charles Austin Jr",
+   "Shannon Kevin Meek",
+   "Suiter Overton Stokes III"
+  ],
+  "groups": [
+   [
+    "Andracchio Vincent Charles II",
+    "Ferebee John Jethro Jr",
+    "Gussenhoven John Walter",
+    "LUCAS JAMES A JR",
+    "Paul Charles Albert III",
+    "Robbins Charles Austin Jr"
+   ],
+   [
+    "Boone Sandra Bell"
+   ],
+   [
+    "Brabble Kristen Dawn"
+   ],
+   [
+    "DEATON STEVEN G"
+   ],
+   [
+    "Day Ronald Arvin"
+   ],
+   [
+    "Floyd Gregory Everette"
+   ],
+   [
+    "Ford Douglas IV"
+   ],
+   [
+    "Pritchard Patrick Wayne"
+   ],
+   [
+    "Shannon Kevin Meek"
+   ],
+   [
+    "Suiter Overton Stokes III"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-277894",
+    "owners": [
+     "DEATON STEVEN G"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 50000
+   },
+   {
+    "acc": "0001193125-26-277891",
+    "owners": [
+     "Boone Sandra Bell"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 87500
+   },
+   {
+    "acc": "0001193125-26-277890",
+    "owners": [
+     "Shannon Kevin Meek"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 50000
+   },
+   {
+    "acc": "0001193125-26-277888",
+    "owners": [
+     "Robbins Charles Austin Jr"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 175000
+   },
+   {
+    "acc": "0001193125-26-277886",
+    "owners": [
+     "Paul Charles Albert III"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 87500
+   },
+   {
+    "acc": "0001193125-26-277884",
+    "owners": [
+     "LUCAS JAMES A JR"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 239750
+   },
+   {
+    "acc": "0001193125-26-277881",
+    "owners": [
+     "Gussenhoven John Walter"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 200000
+   },
+   {
+    "acc": "0001193125-26-277880",
+    "owners": [
+     "Floyd Gregory Everette"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 357812
+   },
+   {
+    "acc": "0001193125-26-277879",
+    "owners": [
+     "Ferebee John Jethro Jr"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 176300
+   },
+   {
+    "acc": "0001193125-26-277878",
+    "owners": [
+     "Suiter Overton Stokes III"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 13750
+   },
+   {
+    "acc": "0001193125-26-277877",
+    "owners": [
+     "Pritchard Patrick Wayne"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 12500
+   },
+   {
+    "acc": "0001193125-26-277875",
+    "owners": [
+     "Andracchio Vincent Charles II"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 100000
+   },
+   {
+    "acc": "0001193125-26-277872",
+    "owners": [
+     "Ford Douglas IV"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 50000
+   },
+   {
+    "acc": "0001193125-26-277871",
+    "owners": [
+     "Brabble Kristen Dawn"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 9375
+   },
+   {
+    "acc": "0001193125-26-277869",
+    "owners": [
+     "Day Ronald Arvin"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 50000
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "DEATON STEVEN G",
+    "value": 50000.0,
+    "acc": "0001193125-26-277894"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Boone Sandra Bell",
+    "value": 87500.0,
+    "acc": "0001193125-26-277891"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Shannon Kevin Meek",
+    "value": 50000.0,
+    "acc": "0001193125-26-277890"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Robbins Charles Austin Jr",
+    "value": 175000.0,
+    "acc": "0001193125-26-277888"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Paul Charles Albert III",
+    "value": 87500.0,
+    "acc": "0001193125-26-277886"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "LUCAS JAMES A JR",
+    "value": 200000.0,
+    "acc": "0001193125-26-277884"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "LUCAS JAMES A JR",
+    "value": 12000.0,
+    "acc": "0001193125-26-277884"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "LUCAS JAMES A JR",
+    "value": 15750.0,
+    "acc": "0001193125-26-277884"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "LUCAS JAMES A JR",
+    "value": 12000.0,
+    "acc": "0001193125-26-277884"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Gussenhoven John Walter",
+    "value": 200000.0,
+    "acc": "0001193125-26-277881"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Floyd Gregory Everette",
+    "value": 234375.0,
+    "acc": "0001193125-26-277880"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Floyd Gregory Everette",
+    "value": 42187.5,
+    "acc": "0001193125-26-277880"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Floyd Gregory Everette",
+    "value": 39062.5,
+    "acc": "0001193125-26-277880"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Floyd Gregory Everette",
+    "value": 42187.5,
+    "acc": "0001193125-26-277880"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Ferebee John Jethro Jr",
+    "value": 87500.0,
+    "acc": "0001193125-26-277879"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Ferebee John Jethro Jr",
+    "value": 87500.0,
+    "acc": "0001193125-26-277879"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Ferebee John Jethro Jr",
+    "value": 1300.0,
+    "acc": "0001193125-26-277879"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Suiter Overton Stokes III",
+    "value": 13750.0,
+    "acc": "0001193125-26-277878"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Pritchard Patrick Wayne",
+    "value": 12500.0,
+    "acc": "0001193125-26-277877"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Andracchio Vincent Charles II",
+    "value": 100000.0,
+    "acc": "0001193125-26-277875"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Ford Douglas IV",
+    "value": 50000.0,
+    "acc": "0001193125-26-277872"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Brabble Kristen Dawn",
+    "value": 9375.0,
+    "acc": "0001193125-26-277871"
+   },
+   {
+    "filing": "2026-06-22",
+    "trade": "2026-06-18",
+    "ticker": "FCBM",
+    "insider": "Day Ronald Arvin",
+    "value": 50000.0,
+    "acc": "0001193125-26-277869"
+   }
+  ],
+  "n_strings": 15,
+  "n_beneficial": 10,
+  "artifact": false
+ },
+ {
+  "ticker": "LOVE",
+  "signal": "2026-06-23",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 3,
+  "owner_strings": [
+   "Fox Mary",
+   "HEYER ANDREW R",
+   "Nelson Shawn David"
+  ],
+  "groups": [
+   [
+    "Fox Mary"
+   ],
+   [
+    "HEYER ANDREW R"
+   ],
+   [
+    "Nelson Shawn David"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001628280-26-044914",
+    "owners": [
+     "Nelson Shawn David"
+    ],
+    "trades": [
+     "2026-06-22"
+    ],
+    "value": 24961
+   },
+   {
+    "acc": "0001628280-26-044642",
+    "owners": [
+     "Fox Mary"
+    ],
+    "trades": [
+     "2026-06-22"
+    ],
+    "value": 24785
+   },
+   {
+    "acc": "0001628280-26-044640",
+    "owners": [
+     "HEYER ANDREW R"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 440400
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-23",
+    "trade": "2026-06-22",
+    "ticker": "LOVE",
+    "insider": "Nelson Shawn David",
+    "value": 24961.2,
+    "acc": "0001628280-26-044914"
+   },
+   {
+    "filing": "2026-06-23",
+    "trade": "2026-06-22",
+    "ticker": "LOVE",
+    "insider": "Fox Mary",
+    "value": 24785.2,
+    "acc": "0001628280-26-044642"
+   },
+   {
+    "filing": "2026-06-23",
+    "trade": "2026-06-18",
+    "ticker": "LOVE",
+    "insider": "HEYER ANDREW R",
+    "value": 440400.0,
+    "acc": "0001628280-26-044640"
+   }
+  ],
+  "n_strings": 3,
+  "n_beneficial": 3,
+  "artifact": false
+ },
+ {
+  "ticker": "KARD",
+  "signal": "2026-06-24",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 3,
+  "owner_strings": [
+   "ARCH Venture Fund XIII, L.P.",
+   "ARCH Venture Partners XIII, L.P.",
+   "ARCH Venture Partners XIII, LLC",
+   "BERNS PAUL L",
+   "Burow Kristina",
+   "CRANDELL KEITH",
+   "GILLIS STEVEN",
+   "HRTG CIF 2024, L.P.",
+   "HRTG GPE, LLC",
+   "HRTG PV, L.P.",
+   "Johnson Keith Bryon",
+   "Kelly Kevin Anthony",
+   "NELSEN ROBERT"
+  ],
+  "groups": [
+   [
+    "ARCH Venture Fund XIII, L.P.",
+    "ARCH Venture Partners XIII, L.P.",
+    "ARCH Venture Partners XIII, LLC"
+   ],
+   [
+    "BERNS PAUL L"
+   ],
+   [
+    "Burow Kristina"
+   ],
+   [
+    "CRANDELL KEITH",
+    "Johnson Keith Bryon"
+   ],
+   [
+    "GILLIS STEVEN"
+   ],
+   [
+    "HRTG CIF 2024, L.P.",
+    "HRTG GPE, LLC",
+    "HRTG PV, L.P."
+   ],
+   [
+    "Kelly Kevin Anthony"
+   ],
+   [
+    "NELSEN ROBERT"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-281553",
+    "owners": [
+     "HRTG GPE, LLC",
+     "HRTG PV, L.P.",
+     "HRTG CIF 2024, L.P.",
+     "Kelly Kevin Anthony",
+     "Johnson Keith Bryon"
+    ],
+    "trades": [
+     "2026-06-22"
+    ],
+    "value": 50000000
+   },
+   {
+    "acc": "0001012975-26-000565",
+    "owners": [
+     "BERNS PAUL L"
+    ],
+    "trades": [
+     "2026-06-22"
+    ],
+    "value": 20000000
+   },
+   {
+    "acc": "0001012975-26-000564",
+    "owners": [
+     "ARCH Venture Partners XIII, LLC",
+     "ARCH Venture Partners XIII, L.P.",
+     "ARCH Venture Fund XIII, L.P.",
+     "CRANDELL KEITH",
+     "NELSEN ROBERT",
+     "Burow Kristina",
+     "GILLIS STEVEN"
+    ],
+    "trades": [
+     "2026-06-22"
+    ],
+    "value": 20000000
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "HRTG GPE, LLC",
+    "value": 10000000.0,
+    "acc": "0001193125-26-281553"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "HRTG PV, L.P.",
+    "value": 10000000.0,
+    "acc": "0001193125-26-281553"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "HRTG CIF 2024, L.P.",
+    "value": 10000000.0,
+    "acc": "0001193125-26-281553"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "Kelly Kevin Anthony",
+    "value": 10000000.0,
+    "acc": "0001193125-26-281553"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "Johnson Keith Bryon",
+    "value": 10000000.0,
+    "acc": "0001193125-26-281553"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "BERNS PAUL L",
+    "value": 20000000.0,
+    "acc": "0001012975-26-000565"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "ARCH Venture Partners XIII, LLC",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "ARCH Venture Partners XIII, L.P.",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "ARCH Venture Fund XIII, L.P.",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "CRANDELL KEITH",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "NELSEN ROBERT",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "Burow Kristina",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "KARD",
+    "insider": "GILLIS STEVEN",
+    "value": 2857142.8571428573,
+    "acc": "0001012975-26-000564"
+   }
+  ],
+  "n_strings": 13,
+  "n_beneficial": 8,
+  "artifact": false
+ },
+ {
+  "ticker": "LILA",
+  "signal": "2026-06-24",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 8,
+  "owner_strings": [
+   "BRACKEN CHARLES H R",
+   "MALONE JOHN C",
+   "Nair Balan",
+   "PADDICK BRENDAN J",
+   "WINTER JOHN M"
+  ],
+  "groups": [
+   [
+    "BRACKEN CHARLES H R"
+   ],
+   [
+    "MALONE JOHN C",
+    "WINTER JOHN M"
+   ],
+   [
+    "Nair Balan"
+   ],
+   [
+    "PADDICK BRENDAN J"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001724412-26-000004",
+    "owners": [
+     "WINTER JOHN M"
+    ],
+    "trades": [
+     "2026-06-26"
+    ],
+    "value": 99738
+   },
+   {
+    "acc": "0000937797-26-000015",
+    "owners": [
+     "MALONE JOHN C"
+    ],
+    "trades": [
+     "2026-06-25",
+     "2026-06-26"
+    ],
+    "value": 3394124
+   },
+   {
+    "acc": "0001091974-26-000012",
+    "owners": [
+     "BRACKEN CHARLES H R"
+    ],
+    "trades": [
+     "2026-06-23",
+     "2026-06-24"
+    ],
+    "value": 200900
+   },
+   {
+    "acc": "0000937797-26-000013",
+    "owners": [
+     "MALONE JOHN C"
+    ],
+    "trades": [
+     "2026-06-22",
+     "2026-06-23",
+     "2026-06-24"
+    ],
+    "value": 27932059
+   },
+   {
+    "acc": "0001712184-26-000108",
+    "owners": [
+     "Nair Balan"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 1000972
+   },
+   {
+    "acc": "0001712184-26-000107",
+    "owners": [
+     "PADDICK BRENDAN J"
+    ],
+    "trades": [
+     "2026-06-18"
+    ],
+    "value": 488200
+   },
+   {
+    "acc": "0001712184-26-000089",
+    "owners": [
+     "MALONE JOHN C"
+    ],
+    "trades": [
+     "2026-05-22"
+    ],
+    "value": 107067776
+   },
+   {
+    "acc": "0001398905-26-000012",
+    "owners": [
+     "Nair Balan"
+    ],
+    "trades": [
+     "2026-05-08"
+    ],
+    "value": 161490
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-26",
+    "ticker": "LILA",
+    "insider": "WINTER JOHN M",
+    "value": 99738.4564,
+    "acc": "0001724412-26-000004"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-25",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 2343978.819,
+    "acc": "0000937797-26-000015"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-25",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 926326.11,
+    "acc": "0000937797-26-000015"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-26",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 123819.1526,
+    "acc": "0000937797-26-000015"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-23",
+    "ticker": "LILA",
+    "insider": "BRACKEN CHARLES H R",
+    "value": 100450.0,
+    "acc": "0001091974-26-000012"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-24",
+    "ticker": "LILA",
+    "insider": "BRACKEN CHARLES H R",
+    "value": 100450.0,
+    "acc": "0001091974-26-000012"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 5177919.7678,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 5452144.473599999,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-22",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 1112342.6106,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-23",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 9725584.2621,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-23",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 30404.197999999997,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-23",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 2368080.0,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-24",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 4065583.7700000005,
+    "acc": "0000937797-26-000013"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-18",
+    "ticker": "LILA",
+    "insider": "Nair Balan",
+    "value": 751631.9752,
+    "acc": "0001712184-26-000108"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-18",
+    "ticker": "LILA",
+    "insider": "Nair Balan",
+    "value": 249339.87,
+    "acc": "0001712184-26-000108"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-06-18",
+    "ticker": "LILA",
+    "insider": "PADDICK BRENDAN J",
+    "value": 488199.99999999994,
+    "acc": "0001712184-26-000107"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-05-22",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 526939.17,
+    "acc": "0001712184-26-000089"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-05-22",
+    "ticker": "LILA",
+    "insider": "MALONE JOHN C",
+    "value": 106540836.52000001,
+    "acc": "0001712184-26-000089"
+   },
+   {
+    "filing": "2026-06-24",
+    "trade": "2026-05-08",
+    "ticker": "LILA",
+    "insider": "Nair Balan",
+    "value": 161490.0,
+    "acc": "0001398905-26-000012"
+   }
+  ],
+  "n_strings": 5,
+  "n_beneficial": 4,
+  "artifact": false
+ },
+ {
+  "ticker": "MOBI",
+  "signal": "2026-06-29",
+  "n_ledger": 3,
+  "action": "skip",
+  "docs": 10,
+  "owner_strings": [
+   "Curnes Nelson Bunker",
+   "GPG MOBI, LLC",
+   "GPG MTIF, LLC",
+   "GPG SC, LLC",
+   "GPG WG, LLC",
+   "Garcia Gilbert G. II",
+   "Green Park & Golf Ventures - Houston, LLC",
+   "Green Park & Golf Ventures II, LLC",
+   "HARRINGTON WILLIAM T",
+   "HTX MCT1 0320 Investment, LLC",
+   "HTX MCT2 0221 Investment, LLC",
+   "HTX MCT3 0322 Investment, LLC",
+   "HTX MCT4 0226 Investment, LLC",
+   "Heighten Clay M",
+   "Leavitt Chase C.",
+   "Lucchese Cynthia L",
+   "MTI 20 Investment, LLC",
+   "MTI 2015 Investment, LLC",
+   "Mead Dana G Jr.",
+   "Micro TI Investment 2, LLC",
+   "Micro TI Investment, LLC",
+   "Osage University GP III, LLC",
+   "Osage University GP IV, LLC",
+   "Osage University Partners III, LP",
+   "Osage University Partners IV, LP",
+   "Soderstrom Carl D",
+   "Tansey Casey M"
+  ],
+  "groups": [
+   [
+    "Curnes Nelson Bunker"
+   ],
+   [
+    "GPG MOBI, LLC",
+    "GPG MTIF, LLC",
+    "GPG SC, LLC",
+    "GPG WG, LLC"
+   ],
+   [
+    "Garcia Gilbert G. II"
+   ],
+   [
+    "Green Park & Golf Ventures - Houston, LLC",
+    "Green Park & Golf Ventures II, LLC"
+   ],
+   [
+    "HARRINGTON WILLIAM T"
+   ],
+   [
+    "HTX MCT1 0320 Investment, LLC",
+    "HTX MCT2 0221 Investment, LLC",
+    "HTX MCT3 0322 Investment, LLC",
+    "HTX MCT4 0226 Investment, LLC"
+   ],
+   [
+    "Heighten Clay M"
+   ],
+   [
+    "Leavitt Chase C."
+   ],
+   [
+    "Lucchese Cynthia L"
+   ],
+   [
+    "MTI 20 Investment, LLC",
+    "MTI 2015 Investment, LLC"
+   ],
+   [
+    "Mead Dana G Jr."
+   ],
+   [
+    "Micro TI Investment 2, LLC",
+    "Micro TI Investment, LLC"
+   ],
+   [
+    "Osage University GP III, LLC",
+    "Osage University GP IV, LLC",
+    "Osage University Partners III, LP",
+    "Osage University Partners IV, LP"
+   ],
+   [
+    "Soderstrom Carl D"
+   ],
+   [
+    "Tansey Casey M"
+   ]
+  ],
+  "per_doc": [
+   {
+    "acc": "0001193125-26-288993",
+    "owners": [
+     "Green Park & Golf Ventures - Houston, LLC",
+     "HTX MCT1 0320 Investment, LLC",
+     "HTX MCT2 0221 Investment, LLC",
+     "HTX MCT3 0322 Investment, LLC",
+     "HTX MCT4 0226 Investment, LLC",
+     "Heighten Clay M",
+     "Soderstrom Carl D",
+     "Garcia Gilbert G. II"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 908055
+   },
+   {
+    "acc": "0001193125-26-288992",
+    "owners": [
+     "Green Park & Golf Ventures II, LLC",
+     "GPG SC, LLC",
+     "GPG WG, LLC",
+     "GPG MTIF, LLC",
+     "Micro TI Investment 2, LLC",
+     "Micro TI Investment, LLC",
+     "MTI 20 Investment, LLC",
+     "Heighten Clay M",
+     "Soderstrom Carl D",
+     "Garcia Gilbert G. II"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 499995
+   },
+   {
+    "acc": "0001193125-26-288984",
+    "owners": [
+     "Green Park & Golf Ventures II, LLC",
+     "MTI 2015 Investment, LLC",
+     "GPG MOBI, LLC",
+     "Heighten Clay M",
+     "Soderstrom Carl D",
+     "Garcia Gilbert G. II"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 1215000
+   },
+   {
+    "acc": "0001193125-26-268109",
+    "owners": [
+     "Curnes Nelson Bunker"
+    ],
+    "trades": [
+     "2026-06-09"
+    ],
+    "value": 63969
+   },
+   {
+    "acc": "0001193125-26-219510",
+    "owners": [
+     "Osage University GP III, LLC",
+     "Osage University Partners III, LP",
+     "Osage University GP IV, LLC",
+     "Osage University Partners IV, LP"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 7999995
+   },
+   {
+    "acc": "0001628280-26-033820",
+    "owners": [
+     "Tansey Casey M"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 999990
+   },
+   {
+    "acc": "0001628280-26-033811",
+    "owners": [
+     "HARRINGTON WILLIAM T"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 7999995
+   },
+   {
+    "acc": "0001628280-26-033810",
+    "owners": [
+     "Lucchese Cynthia L"
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 1875000
+   },
+   {
+    "acc": "0001628280-26-033808",
+    "owners": [
+     "Leavitt Chase C."
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 45000
+   },
+   {
+    "acc": "0001628280-26-033807",
+    "owners": [
+     "Mead Dana G Jr."
+    ],
+    "trades": [
+     "2026-05-11"
+    ],
+    "value": 105000
+   }
+  ],
+  "note": "",
+  "rows": [
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Green Park & Golf Ventures - Houston, LLC",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HTX MCT1 0320 Investment, LLC",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HTX MCT2 0221 Investment, LLC",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HTX MCT3 0322 Investment, LLC",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HTX MCT4 0226 Investment, LLC",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Heighten Clay M",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Soderstrom Carl D",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Garcia Gilbert G. II",
+    "value": 113506.875,
+    "acc": "0001193125-26-288993"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Green Park & Golf Ventures II, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "GPG SC, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "GPG WG, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "GPG MTIF, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Micro TI Investment 2, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Micro TI Investment, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "MTI 20 Investment, LLC",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Heighten Clay M",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Soderstrom Carl D",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Garcia Gilbert G. II",
+    "value": 49999.5,
+    "acc": "0001193125-26-288992"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Green Park & Golf Ventures II, LLC",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "MTI 2015 Investment, LLC",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "GPG MOBI, LLC",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Heighten Clay M",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Soderstrom Carl D",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Garcia Gilbert G. II",
+    "value": 202500.0,
+    "acc": "0001193125-26-288984"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-06-09",
+    "ticker": "MOBI",
+    "insider": "Curnes Nelson Bunker",
+    "value": 63968.99999999999,
+    "acc": "0001193125-26-268109"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University GP III, LLC",
+    "value": 999997.5,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University Partners III, LP",
+    "value": 999997.5,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University GP IV, LLC",
+    "value": 999997.5,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University Partners IV, LP",
+    "value": 999997.5,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University GP III, LLC",
+    "value": 1000001.25,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University Partners III, LP",
+    "value": 1000001.25,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University GP IV, LLC",
+    "value": 1000001.25,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Osage University Partners IV, LP",
+    "value": 1000001.25,
+    "acc": "0001193125-26-219510"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Tansey Casey M",
+    "value": 999990.0,
+    "acc": "0001628280-26-033820"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HARRINGTON WILLIAM T",
+    "value": 3999990.0,
+    "acc": "0001628280-26-033811"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "HARRINGTON WILLIAM T",
+    "value": 4000005.0,
+    "acc": "0001628280-26-033811"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Lucchese Cynthia L",
+    "value": 1875000.0,
+    "acc": "0001628280-26-033810"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Leavitt Chase C.",
+    "value": 45000.0,
+    "acc": "0001628280-26-033808"
+   },
+   {
+    "filing": "2026-06-29",
+    "trade": "2026-05-11",
+    "ticker": "MOBI",
+    "insider": "Mead Dana G Jr.",
+    "value": 105000.0,
+    "acc": "0001628280-26-033807"
+   }
+  ],
+  "n_strings": 27,
+  "n_beneficial": 15,
+  "artifact": false
+ }
+]

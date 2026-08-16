@@ -1,0 +1,35 @@
+# Secrets — never commit
+.env
+
+# Personal finances / raw scratch inputs — never commit (raw_input is local-only)
+raw_input/
+FINANCES.md
+# live-book seed = spent bootstrap, DELETED; guard kept so a re-seed of real cost basis can't
+# be committed. book.csv itself IS tracked (private repo) — that's the live book.
+research/book_seed.csv
+
+# Database (includes SQLite WAL/SHM side-files)
+db/*.db*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Logs
+*.log
+
+# Large generated data (reproducible)
+research/data/sp500_components_raw.csv
+research/data/_lockup_closes.json
+research/data/edgar_cache/
+# research/data/sec_cache/ is deliberately NOT ignored — it is small (~4KB/day), and the
+# pending [ARC 3 #1d] audit needs it. Kept TRACKED by decision, not by a stray `git add -A`.
+# NOTE: insider_sec.PARSER_V versions the path, so bumping it commits a whole new copy. If
+# that ever matters, ignore the directory rather than deleting days — they are evidence.

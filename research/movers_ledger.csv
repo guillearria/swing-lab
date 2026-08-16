@@ -1,0 +1,746 @@
+seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,rationale,status,pattern_tag,x21_pct,x63_pct,universe
+2026-06-28T07:47:18+00:00,2026-06-26,ON,-25.5,3.6,short,skip,2026-06-28T16:27:46+00:00,"already a live bet (long ON 21d vs SOXX, 06-26) - do not double-count",skip,,+4.70,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,TECH,+22.5,4.4,long,skip,2026-06-28T16:28:01+00:00,"Merck 11.3B all-cash buyout TARGET; merger-arb pinned to deal price, no directional edge",skip,,+1.67,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,WDC,-21.4,2.9,short,skip,2026-06-28T16:27:46+00:00,"semiconductor sector rotation (Broadcom AI guide-down + oil/rate macro); moved with SOXX, no name-specific divergence",skip,,+28.88,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ORCL,-19.4,1.4,short,skip,2026-06-28T16:27:46+00:00,real AI-capex debt overhang but already -22pct/30d; late and poor risk-reward vs XLK; beat-and-raise muddies a short,skip,,+18.51,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ABBV,+17.0,9.6,long,skip,2026-06-28T16:28:01+00:00,"Apogee 10.9B M&A already announced Jun22 + all-time high; catalyst in the tape, large-cap arbitraged",skip,,+4.25,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,CRL,+16.6,1.7,long,skip,2026-06-28T16:28:01+00:00,"life-science tools re-rating read-through from Merck/Bio-Techne deal; pop already in, speculative",skip,,+6.61,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ALB,-16.6,2.0,short,skip,2026-06-28T16:27:46+00:00,lithium/materials macro risk-off; no idiosyncratic read,skip,,+12.75,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,QCOM,-16.2,1.6,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+13.67,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MPWR,-16.0,4.1,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.18,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,STX,-15.9,2.5,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+22.82,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,INCY,+15.8,1.9,long,skip,2026-06-28T16:28:01+00:00,biotech riding the healthcare defensive rotation; no name-specific high-conviction read,skip,,+13.34,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ARES,-15.6,1.7,short,skip,2026-06-28T16:27:47+00:00,"private-credit redemption stress, but betting the epicenter APO instead - do not double-bet one thesis",skip,,-18.89,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,UAL,+15.0,1.0,long,skip,2026-06-28T16:28:01+00:00,oil collapse <70 is a sector/commodity tailwind at a record high (priced); weak Q2 EPS print Jul15 inside window = poor risk-reward,skip,,-8.43,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MRVL,-14.1,0.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX (rel-vol only 0.6x)",skip,,+37.15,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,APO,-14.0,3.5,short,take,2026-06-28T16:27:47+00:00,"private-credit redemption gates + SEC valuation probe + fiduciary investigation; 80x PE on declining revenue; idiosyncratic vs XLF, structural overhang",taken,,-8.61,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,IQV,+13.9,1.0,long,skip,2026-06-28T16:28:01+00:00,"life-science tools/CRO re-rating read-through (Bio-Techne deal); sector, thin idiosyncratic edge",skip,,+25.71,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,GLW,+13.4,3.6,long,skip,2026-06-28T16:28:01+00:00,"AI-optical theme (Amazon deal + Nvidia endorsement) but +106pct YTD extended; same thesis as CIEN, betting the less-extended name",skip,,-50.70,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,RVTY,+13.0,2.4,long,skip,2026-06-28T16:28:02+00:00,"life-science tools re-rating read-through; sector, thin",skip,,+0.35,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MRK,+13.0,1.5,long,skip,2026-06-28T16:28:02+00:00,"acquirer in Bio-Techne deal + pharma defensive rotation; large-cap beta vs XLV, no clean read",skip,,+1.90,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,PLTR,-12.1,1.5,short,skip,2026-06-28T16:27:47+00:00,high-multiple software de-rating in the AI/tech rotation; beta and momentum-chase,skip,,-6.79,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,CIEN,+12.0,2.5,long,take,2026-06-28T16:28:02+00:00,fQ2 blowout rev +40pct YoY + raised FY guide (Jun4) + AI-optical leadership; post-earnings drift + intra-AI rotation as chips roll over,taken,,-26.80,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MCHP,-11.9,2.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+14.97,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,VEEV,+11.8,2.0,long,skip,2026-06-28T16:28:02+00:00,"healthcare-software riding the rotation; large-cap, thin idiosyncratic read",skip,,+14.19,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,TXN,-11.6,3.3,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.93,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,JNJ,+11.5,2.0,long,skip,2026-06-28T16:28:02+00:00,"pure defensive rotation to all-time high; beta vs XLV, catalyst-free",skip,,+3.20,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,AXON,+30.0,1.5,long,skip,2026-07-02T14:46:51+00:00,"narrative-driven 5d spike (Trump-disclosure/ICE $220M TASER solicitation) at all-time high; strong fundamentals but extended, spike-fade risk, no clean forward edge",skip,,-8.32,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,PANW,+23.4,0.8,long,skip,2026-07-02T14:46:52+00:00,large-cap security riding broad tech rebound; no differentiated name-specific catalyst; arbitraged arena,skip,,-3.76,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,APP,+21.4,1.0,long,skip,2026-07-02T14:46:52+00:00,"AppLovin momentum name, extended; no fresh readable catalyst beyond momentum",skip,,-26.16,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,TECH,+20.6,4.4,long,skip,2026-07-02T14:46:52+00:00,"Merck KGaA $73 all-cash buyout; trades near deal price = merger arb, no directional forward edge",skip,,+0.87,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,MRNA,+20.0,1.2,long,skip,2026-07-02T14:46:52+00:00,"ran ~40% to 52wk highs into a KNOWN PDUFA (Aug5) + Science Day; buy-the-rumor extended, sell-the-news risk",skip,,-33.44,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,DDOG,+18.8,0.6,long,skip,2026-07-02T14:46:52+00:00,low-volume (0.6x) tech-rebound drift; no name-specific catalyst,skip,,+6.29,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,ON,-18.2,1.4,short,skip,2026-07-02T14:46:54+00:00,already a live open bet (long 21d vs SOXX); do not double-log,skip,,+15.94,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,CRWD,+14.8,0.7,long,skip,2026-07-02T14:46:52+00:00,"security large-cap rebound, extended; no differentiated read",skip,,+0.73,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,SMCI,-14.8,0.7,short,skip,2026-07-02T14:46:52+00:00,"perennial governance/volatility name; no clean readable forward edge, avoid the mess",skip,,-4.48,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,VEEV,+14.2,1.1,long,skip,2026-07-02T14:46:52+00:00,vertical-SaaS rebound beta; no fresh catalyst,skip,,+6.57,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,HUM,+13.5,1.1,long,skip,2026-07-02T14:46:53+00:00,"MA-rate tailwind real but +122% in 3mo, hugely extended; next event (Q2 earnings) is risk not fresh edge",skip,,-5.52,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,FDS,+13.4,2.0,long,skip,2026-07-02T14:46:54+00:00,already a live open bet (short 63d vs SPY); do not double-log/conflict,skip,,+6.08,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,CRL,+13.4,1.3,long,take,2026-07-02T14:46:51+00:00,"Lilly TuneLab AI/ML drug-discovery partnership + analyst re-rating cluster (CLSA Outperform, Evercore/Baird/Barclays PT raises) on a beaten-down CRO turning; readable re-rating catalyst",taken,,-1.09,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,TSLA,+13.3,0.9,long,skip,2026-07-02T14:46:53+00:00,"headline/narrative-driven mega-cap; no differentiated read, heavily arbitraged",skip,,-24.12,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,NOW,+12.8,0.8,long,skip,2026-07-02T14:46:54+00:00,already a live open bet (long 63d vs QQQ); do not double-log,skip,,+4.95,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,GPN,+11.9,0.9,long,skip,2026-07-02T14:46:53+00:00,"no specific catalyst, mixed analyst ratings; market-rebound beta",skip,,+10.49,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,HOOD,+11.8,0.8,long,skip,2026-07-02T14:46:53+00:00,high-beta broker riding rally + crypto; no differentiated read,skip,,-24.00,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,CEG,-11.7,2.0,short,skip,2026-07-02T14:46:53+00:00,"single Citi PT cut to fresh 52wk low, downtrend intact; no positive catalyst (falling knife)",skip,,-10.47,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,JKHY,+11.2,0.7,long,skip,2026-07-02T14:46:53+00:00,fintech-processor rebound; no name-specific catalyst,skip,,+6.08,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,MKC,+11.2,1.1,long,skip,2026-07-02T14:46:53+00:00,McCormick defensive bounce; no fresh readable edge,skip,,-1.35,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,VLO,+11.1,0.8,long,skip,2026-07-02T14:46:54+00:00,"refiner +45% YTD near 52wk high, extended; earnings Jul30 event-risk inside window",skip,,+13.36,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,GEN,+10.8,1.2,long,skip,2026-07-02T14:46:54+00:00,Gen Digital low-signal consumer-software drift; no catalyst,skip,,+5.05,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,PLTR,+10.8,1.3,long,skip,2026-07-02T14:46:54+00:00,"narrative/momentum mega-cap at extreme valuation; no differentiated read, arbitraged",skip,,-6.05,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,KLAC,+10.7,1.8,long,skip,2026-07-02T14:46:54+00:00,"semi-equipment rebound; already hold semi exposure (AVGO/MU/ON), no differentiated add",skip,,-22.52,,sp500
+2026-07-02T04:03:54+00:00,2026-07-01,APD,+10.6,1.9,long,take,2026-07-02T14:46:51+00:00,Jun30 scrapped $2.9B Louisiana clean-energy + AZ hydrogen project -> capital-discipline pivot rewarded (+8% on a writedown); new-CEO cash-return re-rating + Yara ammonia deal,taken,,-6.00,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,AXON,+34.2,0.9,long,skip,2026-07-03T22:28:28+00:00,"Trump/ICE-contract + drone news; quality compounder but +34% 5d = chasing, no short thesis",skip,,-8.32,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,MRNA,+33.5,1.8,long,skip,2026-07-03T22:28:28+00:00,+70% 3wk squeeze on FDA flu-vaccine advisory (PDUFA 8/5 ahead); catalyst behind it but active short-squeeze + positive binary = coin-flip fade,skip,,-33.44,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,SNDK,-25.3,1.6,short,skip,2026-07-03T22:28:27+00:00,"memory-glut cohort selloff; +713% YTD parabola -25% wk on supply-glut fears; fresh short = squeeze/bounce coin-flip, no asymmetry",skip,,+27.01,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,ON,-23.2,1.4,short,skip,2026-07-03T22:28:25+00:00,already a live long bet (bets_catalogue 6/26); not re-betting,skip,,+15.94,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,VEEV,+21.9,0.9,long,skip,2026-07-03T22:28:26+00:00,"life-sci SaaS in software melt-up cohort; sector beta; chasing +22% 5d, no edge",skip,,+6.57,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,TER,-21.8,1.2,short,skip,2026-07-03T22:28:27+00:00,semicap in memory/semi selloff cohort; sector beta; no name-specific read,skip,,+4.47,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,HOOD,+20.6,1.1,long,skip,2026-07-03T22:28:26+00:00,fintech/crypto risk-on cohort (with COIN); beta not name-specific; chasing +21% 5d,skip,,-24.00,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,PLTR,+20.5,1.4,long,skip,2026-07-03T22:28:26+00:00,"AI-software melt-up cohort (Snowflake-led earnings breakouts); sector beta, chasing +20% 5d = no edge",skip,,-6.05,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,WDC,-20.2,1.0,short,skip,2026-07-03T22:28:27+00:00,memory/storage glut cohort selloff (+251% YTD); sector beta; fresh short into -20% wk = bounce risk,skip,,+9.55,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,STX,-20.0,1.5,short,skip,2026-07-03T22:28:27+00:00,storage glut cohort selloff; sector beta; fresh short into crash = coin-flip,skip,,+5.13,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,FDS,+19.8,1.3,long,skip,2026-07-03T22:28:26+00:00,already a live short bet (bets_catalogue 6/25); not re-betting,skip,,+6.08,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,MU,-19.6,1.1,short,skip,2026-07-03T22:28:25+00:00,already a live long bet (bets_catalogue 6/25); not re-betting,skip,,+16.62,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,WDAY,+19.0,0.8,long,skip,2026-07-03T22:28:26+00:00,"AI-software melt-up cohort; sector beta; chasing +19% 5d, no name-specific read",skip,,+18.76,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,NOW,+18.8,0.6,long,skip,2026-07-03T22:28:25+00:00,"already a live long bet (bets_catalogue 6/24); working, not re-betting",skip,,+4.95,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,PANW,+18.8,0.9,long,skip,2026-07-03T22:28:26+00:00,"software/cyber melt-up cohort; sector beta; chasing +19% 5d, no edge",skip,,-3.76,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,APP,+18.2,1.1,long,skip,2026-07-03T22:28:26+00:00,momentum melt-up (AppLovin); chasing +18% 5d into strength; no fade/long asymmetry,skip,,-26.16,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,COHR,-18.1,1.1,short,skip,2026-07-03T22:28:27+00:00,optical/semi in selloff cohort; sector beta; thin read,skip,,+15.02,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,DDOG,+17.8,0.5,long,skip,2026-07-03T22:28:26+00:00,"AI-software melt-up cohort; +18% on 0.5x vol = drift not discrete catalyst; chasing, no edge",skip,,+6.29,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,SPGI,+17.7,1.5,long,skip,2026-07-03T22:28:27+00:00,financial-data cohort moved w/ FDS; sector beta not name-specific; no clean read,skip,,-7.78,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,GPC,+17.3,2.8,long,skip,2026-07-03T22:28:28+00:00,"ORLY ~10B bid for NAPA auto-parts div; M&A-rumor pop, antitrust-uncertain; merger-arb not a read, no edge on deal outcome",skip,,-0.96,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,COIN,+16.1,1.1,long,skip,2026-07-03T22:28:27+00:00,crypto beta risk-on cohort; not a name-specific read; chasing +16% 5d,skip,,-14.10,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,AJG,+15.9,1.5,long,skip,2026-07-03T22:28:28+00:00,insurance broker +16% on 1.5x vol; no readable name-specific catalyst; thin read,skip,,-1.64,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,FOXA,+15.6,1.1,long,skip,2026-07-03T22:28:27+00:00,"media, no readable name-specific catalyst found; thin read",skip,,+4.21,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,LITE,-15.5,0.9,short,skip,2026-07-03T22:28:28+00:00,optical/semi (Lumentum) in selloff cohort; sector beta; thin read,skip,,-5.80,,sp500
+2026-07-03T22:23:08+00:00,2026-07-02,Q,-15.4,1.3,short,skip,2026-07-03T22:28:28+00:00,"thin/unclear catalyst, tech/semi cohort; no read",skip,,+9.97,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,AXON,+33.9,1.0,long,skip,2026-07-06T22:13:23+00:00,"+34pct narrative spike on un-awarded ICE contract + Trump stock purchase; momentum on unconfirmed news, no clean edge",skip,,-8.35,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,MRNA,+21.6,1.7,long,skip,2026-07-06T22:13:23+00:00,"+21pct bounce on positive flu-vaccine AdCom but multi-year structural decliner; dead-cat risk, thin read",skip,,-31.72,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,HOOD,+19.1,0.7,long,skip,2026-07-06T22:13:23+00:00,financials/crypto beta in broad risk-on rally week; market-wide not name-specific,skip,,-20.33,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,PANW,+17.5,0.9,long,skip,2026-07-06T22:13:23+00:00,AI-software momentum rally beta (Nasdaq record week); no name-specific catalyst,skip,,+5.53,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,PLTR,+17.4,0.8,long,skip,2026-07-06T22:13:23+00:00,"AI-software momentum rally beta; parabolic, no differentiated read",skip,,+17.89,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,SNDK,-16.6,0.8,short,skip,2026-07-06T22:13:24+00:00,"+756pct YTD parabola, -16pct memory-glut pullback but GS PT raised to 2200 Buy; coin-flip both ways",skip,,+14.91,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,SPGI,+15.8,1.0,long,skip,2026-07-06T22:13:24+00:00,financials sector rally (XLF +2.2pct); market-wide move,skip,,-10.13,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,APP,+14.0,1.1,long,skip,2026-07-06T22:13:24+00:00,"AI-software momentum beta; parabolic, no read",skip,,-23.67,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,CRWD,+13.8,0.7,long,skip,2026-07-06T22:13:24+00:00,AI-software momentum rally beta; no name-specific catalyst,skip,,+5.37,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,COIN,+13.3,0.7,long,skip,2026-07-06T22:13:24+00:00,crypto/risk-on beta rally; market-wide,skip,,-10.98,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,TER,-13.1,0.6,short,skip,2026-07-06T22:13:24+00:00,"semi-test pullback in memory/hardware rotation; coin-flip, thin read",skip,,-14.46,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,MU,-13.0,0.6,short,skip,2026-07-06T22:13:24+00:00,already a live long bet (2026-06-25); no new bet,skip,,+8.03,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,CVNA,+12.9,0.5,long,skip,2026-07-06T22:13:24+00:00,parabolic consumer-momentum name; no differentiated read,skip,,-2.36,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,IRM,-12.1,1.2,short,take,2026-07-06T22:13:23+00:00,"short: P/E 128 vs 106 median, 13pct above GF fair value, insiders sold 17M no buys, breaking down 3 days while tape rips to records = name-specific relative weakness",taken,,-5.27,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,AMP,+12.1,0.8,long,skip,2026-07-06T22:13:25+00:00,financials sector rally beta; market-wide,skip,,+6.19,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,VEEV,+12.1,0.6,long,skip,2026-07-06T22:13:25+00:00,software momentum rally beta; no read,skip,,+7.01,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,APD,+11.9,0.7,long,skip,2026-07-06T22:13:25+00:00,"already a live long bet (2026-07-02); mover confirms thesis, no new bet",skip,,-6.55,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,GLW,-11.9,0.7,short,skip,2026-07-06T22:13:25+00:00,optical/hardware pullback in AI-hardware rotation; thin read,skip,,+16.91,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,COHR,-11.8,0.4,short,skip,2026-07-06T22:13:25+00:00,"optical/hardware pullback, low volume 0.4x; thin read",skip,,+0.10,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,ARES,+11.6,0.7,long,skip,2026-07-06T22:13:25+00:00,financials/private-credit sector rally beta; market-wide,skip,,+15.24,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,FOXA,+11.5,0.7,long,skip,2026-07-06T22:13:25+00:00,"+11.5pct media, no identified catalyst read; thin",skip,,+4.42,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,RJF,+11.4,0.5,long,skip,2026-07-06T22:13:26+00:00,financials sector rally beta; market-wide,skip,,+3.39,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,SMCI,-11.2,0.4,short,skip,2026-07-06T22:13:26+00:00,"perennial high-vol name, low volume 0.4x pullback; no clean read",skip,,-17.56,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,WDAY,+11.1,0.6,long,skip,2026-07-06T22:13:26+00:00,software momentum rally beta; no name-specific catalyst,skip,,+16.08,,sp500
+2026-07-06T22:10:56+00:00,2026-07-06,SCHW,+11.0,0.9,long,skip,2026-07-06T22:13:26+00:00,financials sector rally beta (XLF +2.2pct); market-wide,skip,,+1.18,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,GLW,-28.0,0.4,short,skip,2026-07-08T22:14:13+00:00,"-28% is company-specific-negative not clean contagion: Q2 rev guide below consensus + 3 prior rev misses + $54M insider selling (0 buys) + still ~75x P/E; two-sided, no clean overreaction-long",skip,,+20.54,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,TER,-27.3,0.6,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,-3.86,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,KLAC,-26.7,0.8,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+18.06,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,SNDK,-24.0,1.0,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+34.51,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,LRCX,-23.1,0.6,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+15.66,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,MRVL,-22.2,0.3,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+15.67,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,AMAT,-21.1,0.6,short,skip,2026-07-08T22:14:11+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+12.63,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,INTC,-21.0,0.8,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+13.55,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,COHR,-19.6,0.5,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+0.11,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,GNRC,-19.2,0.9,short,skip,2026-07-08T22:14:13+00:00,"datacenter-power adjacency swept into the same AI-capex-fear unwind; thin, sector beta",skip,,+12.71,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,MU,-17.8,0.7,short,skip,2026-07-08T22:14:13+00:00,"already an open bet (long 21d vs SOXX, 2026-06-25) — dont double-count",skip,,+13.35,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,FLEX,-17.7,0.4,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read (contract-mfg, same capex-fear complex)",skip,,+14.60,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,LITE,-17.6,0.4,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,-4.41,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,BLDR,-17.1,1.0,short,skip,2026-07-08T22:14:13+00:00,"datacenter-buildout adjacency in the same capex-fear unwind; thin, sector beta",skip,,+4.96,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,JBL,-15.6,0.5,short,skip,2026-07-08T22:14:13+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read (contract-mfg, same capex-fear complex)",skip,,-1.42,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,FIX,-15.0,0.8,short,skip,2026-07-08T22:14:13+00:00,"datacenter-HVAC buildout adjacency in the same capex-fear unwind; thin, sector beta",skip,,+6.05,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,WDC,-13.8,0.6,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+24.13,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,SWKS,-13.7,1.3,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,-9.25,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,PLTR,+13.3,1.0,long,skip,2026-07-08T22:14:14+00:00,"+13% on DA Davidson upgrade + Army NGC2 contract, 7 up days; momentum darling at extreme valuation, chasing — no differentiated edge",skip,,+18.59,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,HOOD,+13.2,0.5,long,skip,2026-07-08T22:14:14+00:00,"+13% on Mizuho PT raise to $130; analyst-driven pop, thin",skip,,-23.44,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,Q,-12.9,0.9,short,skip,2026-07-08T22:14:12+00:00,"semi/AI-capex beta: SK Hynix HBM slowdown + AI-capex ROI fears + hawkish Fed unwind; arbitraged large-cap, no name-specific differentiated read",skip,,+9.27,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,WDAY,+12.6,0.8,long,skip,2026-07-08T22:14:14+00:00,no identifiable name-specific catalyst; thin,skip,,+20.82,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,NCLH,-12.5,1.0,short,skip,2026-07-08T22:14:14+00:00,"no identifiable catalyst, cautious analyst outlook; thin read",skip,,+4.22,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,WTW,+11.9,0.8,long,skip,2026-07-08T22:14:14+00:00,no identifiable name-specific catalyst; thin,skip,,+15.36,,sp500
+2026-07-08T22:11:00+00:00,2026-07-08,SPGI,+11.8,0.8,long,skip,2026-07-08T22:14:14+00:00,"+12% distorted by Mobility spinoff completion + upgrade; corporate-action move, no clean forward edge",skip,,-8.64,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,HPE,+17.7,0.7,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,+12.56,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,ANET,+16.9,0.6,long,skip,2026-07-10T22:13:08+00:00,"AI-networking rally into record highs on low rel-vol; analyst-target chase (KeyBanc/BofA $200, 1.6Tbps switch launch) fully covered — no name-specific edge",skip,,+2.54,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,META,+14.8,2.0,long,skip,2026-07-10T22:13:08+00:00,"already a live forward bet (long); rally beta, no separate mover read",skip,,-12.60,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,MRNA,-14.4,1.0,short,skip,2026-07-10T22:13:17+00:00,"profit-taking after +160% YTD/+48% June; RSV EU deal hollow (no-minimum) but already -14% in 5d, biotech squeeze/bounce risk — no short edge into the drop",skip,,+13.93,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,AKAM,+11.5,0.7,long,skip,2026-07-10T22:13:09+00:00,"tech-rally beta, low vol, no name-specific catalyst read",skip,,-9.16,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,STX,+11.0,0.8,long,skip,2026-07-10T22:12:59+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,-10.12,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,AVGO,+11.0,0.4,long,skip,2026-07-10T22:13:08+00:00,"already a live forward bet (long); rally beta, no separate mover read",skip,,+6.80,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,BLDR,-10.6,0.5,short,skip,2026-07-10T22:13:18+00:00,"housing/building-products peer weakness (Fortune Brands/Gibraltar), no name-specific read",skip,,+5.27,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,HPQ,+10.4,0.6,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,+17.12,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,DELL,+10.3,0.6,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,+4.20,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,LITE,+10.1,0.6,long,skip,2026-07-10T22:13:08+00:00,"AI-networking rally into record highs on low rel-vol; analyst-target chase (KeyBanc/BofA $200, 1.6Tbps switch launch) fully covered — no name-specific edge",skip,,+2.72,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,SNDK,+9.8,0.9,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,-29.23,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,NTAP,+9.5,1.0,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,+18.04,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,PSKY,-9.4,1.0,short,skip,2026-07-10T22:13:18+00:00,no readable name-specific catalyst; thin read,skip,,+6.12,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,CIEN,+9.1,0.3,long,skip,2026-07-10T22:13:09+00:00,"already a live forward bet (long); rally beta, no separate mover read",skip,,-16.15,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,BKR,+9.1,0.6,long,skip,2026-07-10T22:13:09+00:00,"energy/oil-services bounce with crude, no differentiated read",skip,,+8.34,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,ARE,-8.9,0.7,short,skip,2026-07-10T22:13:18+00:00,"life-science REIT rate weakness, no specific catalyst identified",skip,,+2.62,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,INTC,-8.7,0.5,short,skip,2026-07-10T22:13:18+00:00,"18A yield delay + AMD DC-rev lead are real thesis-breakers, but battleground short into Jul23 earnings binary after -21% wk — event risk too high",skip,,+8.62,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,CPRT,-8.3,0.7,short,skip,2026-07-10T22:13:18+00:00,no identifiable name-specific catalyst; thin read,skip,,-4.61,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,NVDA,+8.3,0.9,long,skip,2026-07-10T22:13:08+00:00,"AI-networking rally into record highs on low rel-vol; analyst-target chase (KeyBanc/BofA $200, 1.6Tbps switch launch) fully covered — no name-specific edge",skip,,+3.70,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,CDW,+8.3,0.6,long,skip,2026-07-10T22:13:01+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,-8.68,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,OXY,+8.1,0.7,long,skip,2026-07-10T22:13:09+00:00,"oil bounce beta, no name-specific catalyst read",skip,,+3.82,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,WDC,+8.1,0.4,long,skip,2026-07-10T22:13:00+00:00,"memory/storage supercycle momentum chase into 52w highs on low rel-vol; public catalyst (Samsung 19x profit, DRAM/NAND contract hikes, UBS/Citi/BofA upgrades) fully arbitraged — no differentiated read",skip,,-24.28,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,VRTX,-8.1,0.8,short,skip,2026-07-10T22:13:17+00:00,"acquirer-weakness on Crinetics $10B M&A — known mechanical reaction, no edge",skip,,-5.91,,sp500
+2026-07-10T22:11:07+00:00,2026-07-10,CSCO,+8.1,0.9,long,skip,2026-07-10T22:13:08+00:00,"AI-networking rally into record highs on low rel-vol; analyst-target chase (KeyBanc/BofA $200, 1.6Tbps switch launch) fully covered — no name-specific edge",skip,,-0.40,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,APP,-18.6,1.8,short,skip,2026-07-13T22:15:30+00:00,"semi/AI selloff on BofA AI-bubble note — sector beta, no clean idiosyncratic catalyst",skip,,+31.51,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,MRNA,-18.1,0.9,short,take,2026-07-13T22:15:33+00:00,"JPM reaffirmed Sell, precarious cash, $950M litigation due Q3, Q2 rev guided to collapse $50-100M, mean PT $38 vs ~$68 — durable idiosyncratic bear, not just sector",taken,,+12.68,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,INTC,-15.6,0.8,short,skip,2026-07-13T22:15:31+00:00,"18A yield delay + AMD data-center lead, but +270% YTD & binary Q2 earnings ~7/23 inside window — no clean directional edge",skip,,+11.82,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,CBOE,+13.1,0.7,long,skip,2026-07-13T22:15:32+00:00,"volatility/geopolitics beneficiary + earnings 7/31 — macro beta, not a readable idiosyncratic edge",skip,,+0.33,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,MRVL,-12.7,0.4,short,skip,2026-07-13T22:15:31+00:00,"semi/AI selloff on BofA AI-bubble note — sector beta, no clean idiosyncratic catalyst",skip,,+7.05,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,OXY,+12.3,1.3,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+5.74,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,AXON,-12.1,0.8,short,skip,2026-07-13T22:15:32+00:00,"profit-take after +40% ICE-contract/Trump-stake rally; CEO 10b5-1 sale is a non-signal — 74x, no edge",skip,,-13.78,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,GNRC,-12.0,0.6,short,skip,2026-07-13T22:15:32+00:00,"valuation de-rate (73x P/E, 57% above GF value) with no fresh catalyst — drift, not readable",skip,,+6.60,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,PSX,+11.8,1.1,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+8.88,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,DOW,+11.1,1.0,long,skip,2026-07-13T22:15:30+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+0.64,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,AKAM,+11.0,0.6,long,take,2026-07-13T22:15:33+00:00,AI-agent security framework launch (Visa/Experian partners) + $205M LayerX buy + Oppenheimer Outperform $180 vs $118; name-specific AI-security re-rating,taken,,-9.98,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,BLDR,-10.7,0.5,short,skip,2026-07-13T22:15:31+00:00,"housing cyclical hit by risk-off yields/oil spike — macro beta, no BLDR-specific catalyst",skip,,+2.57,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,MPC,+10.4,0.8,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+8.39,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,FANG,+10.3,0.9,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+3.29,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,TER,-10.1,0.5,short,skip,2026-07-13T22:15:31+00:00,"semi/AI selloff on BofA AI-bubble note — sector beta, no clean idiosyncratic catalyst",skip,,-4.96,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,LYB,+10.1,1.1,long,skip,2026-07-13T22:15:30+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+6.78,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,HPQ,+9.6,0.8,long,skip,2026-07-13T22:15:32+00:00,sympathy to HPE/AI-hardware rotation — no idiosyncratic catalyst,skip,,+15.54,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,GEV,-9.5,0.6,short,skip,2026-07-13T22:15:31+00:00,"sympathy to Barclays Siemens-Energy peak-cycle cut + AI-datacenter unwind — thematic, no GEV catalyst",skip,,+7.57,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,HPE,+9.5,0.6,long,skip,2026-07-13T22:15:32+00:00,"post-earnings drift on beat+raise but +75% 90d into an AI-infra unwind tape — poor timing, thin edge",skip,,+7.23,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,VLO,+9.4,0.8,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+5.39,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,META,+9.4,0.9,long,skip,2026-07-13T22:15:33+00:00,already a live long bet (6/24) — do not re-bet the same name,skip,,-11.86,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,VRTX,-9.3,0.6,short,skip,2026-07-13T22:15:33+00:00,"biotech sector flush (XBI -4%) — sector beta, no VRTX-specific catalyst",skip,,-8.71,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,IFF,-9.3,1.1,short,skip,2026-07-13T22:15:30+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,-11.34,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,RMD,-9.1,1.1,short,skip,2026-07-13T22:15:33+00:00,MS downgrade to EW but GLP-1/Philips-reentry overhang is well-worn & analyst fair value $256 > price — thin fresh edge,skip,,-14.00,,sp500
+2026-07-13T22:11:40+00:00,2026-07-13,COP,+8.9,0.7,long,skip,2026-07-13T22:15:29+00:00,"oil +7% on Iran MOU end / Hormuz threat — energy/materials sector & geopolitical beta, not name-specific; can't read geopolitics",skip,,+10.07,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,IBM,-30.1,3.4,short,skip,2026-07-15T22:19:57+00:00,"worst day since 1987 on prelim Q2 warning; FY outlook DEFERRED to Jul22 call (7d, inside window) = binary event risk, coin-flip direction. capex-reprioritization to hardware could be timing or structural software-moat erosion; no differentiated read",skip,,-5.42,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,PYPL,+24.7,5.3,long,skip,2026-07-15T22:19:57+00:00,"unconfirmed $53B Stripe/Advent bid @$60.50 (28% prem); stock ~$55 = ~10% spread already prices deal skepticism (severe payments antitrust, financing-dependent). merger-arb, not our read",skip,,+3.19,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,ERIE,-16.4,2.6,short,skip,2026-07-15T22:19:57+00:00,insurance-sector drag on loss-cost fears; no specific readable catalyst for ERIE itself,skip,,-9.61,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,APP,-13.3,0.8,short,skip,2026-07-15T22:20:06+00:00,-13% on 0.8x volume = drift not event; no clean catalyst,skip,,+31.65,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,META,+13.0,1.0,long,skip,2026-07-15T22:19:58+00:00,already hold open META long bet (2026-06-24); no re-bet,skip,,-14.09,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,PNR,-12.2,5.6,short,take,2026-07-15T22:19:57+00:00,"graduated to scored bet: guidance-cut-overreaction, transitory pool destocking reversal, washed out at 52wk-low",taken,,+1.38,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,IVZ,+12.1,0.9,long,skip,2026-07-15T22:20:16+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+3.18,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,GS,+11.9,1.2,long,skip,2026-07-15T22:20:15+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,-8.44,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,PGR,-11.9,1.9,short,skip,2026-07-15T22:19:57+00:00,"beat Q2 EPS $5.67 but June combined-ratio deteriorated 86.6->90.0 (loss costs > premium); auto underwriting-cycle turn is a macro call, hard to time on 1mo data. no edge",skip,,+2.13,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,MOS,+11.6,0.6,long,skip,2026-07-15T22:20:07+00:00,"fertilizer up on commodity move; macro/commodity, no company-specific read",skip,,-6.95,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,MRVL,-11.0,0.5,short,skip,2026-07-15T22:20:07+00:00,-11% on 0.5x volume = low-vol drift; no clean event,skip,,-14.37,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,PANW,+10.4,0.9,long,skip,2026-07-15T22:20:16+00:00,"cyber up on sector strength; covered large-cap, no differentiated read",skip,,+8.25,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,BLK,+10.4,1.7,long,skip,2026-07-15T22:20:15+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+5.19,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,AXON,-9.8,0.5,short,skip,2026-07-15T22:20:07+00:00,-9.8% on 0.5x volume = drift; no catalyst,skip,,-10.01,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,BBY,+9.4,1.1,long,skip,2026-07-15T22:20:07+00:00,retail +9%; no specific readable catalyst,skip,,-3.55,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,COF,+8.8,0.9,long,skip,2026-07-15T22:20:15+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+2.00,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,SYF,+8.5,0.5,long,skip,2026-07-15T22:20:15+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+4.66,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,NDAQ,+8.3,1.1,long,skip,2026-07-15T22:20:15+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,-0.07,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,KKR,+8.2,1.3,long,skip,2026-07-15T22:20:16+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+8.81,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,CRWD,+8.2,1.0,long,skip,2026-07-15T22:20:16+00:00,"cyber up on sector strength; covered large-cap, no differentiated read",skip,,+7.07,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,BNY,+8.1,1.9,long,skip,2026-07-15T22:20:16+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,-2.35,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,EXPD,+8.1,0.6,long,skip,2026-07-15T22:20:07+00:00,freight-forwarder up; no specific catalyst read,skip,,-0.82,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,HCA,-7.7,1.4,short,skip,2026-07-15T22:20:07+00:00,"hospital -7.7%; no specific readable catalyst (policy noise), no edge",skip,,-3.12,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,YUM,-7.7,1.8,short,skip,2026-07-15T22:20:07+00:00,-7.7% on 1.8x vol; no confirmed company-specific catalyst read,skip,,+4.44,,sp500
+2026-07-15T22:13:30+00:00,2026-07-15,AMP,+7.5,0.6,long,skip,2026-07-15T22:20:16+00:00,"bank/asset-mgr earnings-season move; covered large-cap financial, no differentiated read",skip,,+3.74,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,SNDK,-29.3,1.6,short,skip,2026-07-17T22:15:15+00:00,"memory-complex crowded-trade unwind (SK Hynix/Samsung-led bear market); real shortage tailwind vs positioning washout = two-sided, most-arbitraged trade of 2026, no name edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,IBM,-26.0,1.4,short,skip,2026-07-17T22:15:26+00:00,"worst-day-ever -26% on Q2 warning (software->hardware budget shift); full Q2 report 7/22 inside window = binary event, no edge on bounce vs continuation",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,PYPL,+22.1,1.2,long,skip,2026-07-17T22:15:26+00:00,"M&A: Stripe/Advent $60.50 bid REJECTED as inadequate; binary deal outcome (antitrust risk vs sweetened/counter bid), most of spread already captured at ~54.5 — merger-arb coin-flip, no edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,MRVL,-20.0,0.6,short,skip,2026-07-17T22:15:16+00:00,"broad semi/AI-spend selloff beta (vol 0.6x); market-wide not name-specific, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,GLW,-19.0,0.8,short,skip,2026-07-17T22:15:16+00:00,optical/AI-infra beta in the market-wide selloff; thin read,skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,CIEN,-18.7,1.1,short,skip,2026-07-17T22:15:02+00:00,"already a live bet (CIEN long 21d post-earnings-drift, opened 6/28)",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,WDC,-18.1,1.1,short,skip,2026-07-17T22:15:15+00:00,"memory/storage crowded-trade unwind; two-sided (shortage tailwind vs positioning washout), most-arbitraged 2026 trade, no name edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,PNR,-18.0,2.4,short,skip,2026-07-17T22:15:02+00:00,"already a live bet (PNR long 63d guidance-cut-overreaction, opened 7/15)",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,APP,-16.3,1.0,short,skip,2026-07-17T22:15:16+00:00,"high-beta adtech/AI risk-off; no name-specific catalyst, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,ISRG,-15.1,4.6,short,skip,2026-07-17T22:15:26+00:00,"Q2 beat but guidance held, not raised; US procedure moderation from ACA subsidy-expiry deferrals is a DURABLE headwind — negative read is structural, two-sided, no clean edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,SMCI,-14.6,0.5,short,skip,2026-07-17T22:15:16+00:00,AI-server semi beta (vol 0.5x) + idiosyncratic accounting baggage; thin read,skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,COHR,-14.5,1.1,short,skip,2026-07-17T22:15:16+00:00,"optical/AI-infra semi beta; market-wide selloff, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,CDNS,-14.1,2.2,short,skip,2026-07-17T22:15:17+00:00,"EDA down on semi-capex/AI-spend contagion; no confirmed name-specific catalyst, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,CTAS,+13.8,1.4,long,take,2026-07-17T22:15:01+00:00,Q4 double beat + FY27 guide above consensus; BofA/GS upgraded to Buy (PT 230-231). Defensive quality compounder INSULATED from the semi/AI-spend selloff hammering the tape — clean beat-and-raise PEAD long.,taken,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,SNPS,-13.7,2.5,short,skip,2026-07-17T22:15:17+00:00,"EDA contagion (semi-capex/AI-spend worry); no confirmed name catalyst, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,STX,-13.5,1.4,short,skip,2026-07-17T22:15:16+00:00,"storage/memory crowded-trade unwind; two-sided, arbitraged complex, no name edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,INTC,-13.5,1.0,short,skip,2026-07-17T22:15:16+00:00,semi beta + idiosyncratic turnaround baggage; thin read,skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,MU,-13.3,1.2,short,skip,2026-07-17T22:15:02+00:00,"already a live bet (MU long 21d, opened 6/25)",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,FLEX,-12.2,0.5,short,skip,2026-07-17T22:15:16+00:00,"EMS/semi beta (vol 0.5x); market-wide, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,AMAT,-12.1,0.8,short,skip,2026-07-17T22:15:17+00:00,"semi-cap equipment beta (vol 0.8x); market-wide selloff, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,AMD,-11.1,1.0,short,skip,2026-07-17T22:15:17+00:00,"semi beta; market-wide AI-spend selloff, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,HOOD,-10.7,0.8,short,skip,2026-07-17T22:15:26+00:00,"high-beta risk-off; no name-specific catalyst, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,LRCX,-10.6,0.9,short,skip,2026-07-17T22:15:17+00:00,"semi-cap equipment beta; market-wide selloff, thin read",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,ELV,-10.4,1.2,short,skip,2026-07-17T22:15:26+00:00,"managed-care medical-cost blowup (BER 88.9%, +260bps), guide raise < beat; sector-wide utilization problem in a deeply-beaten group — chasing a structural short, no edge",skip,,,,sp500
+2026-07-17T22:11:04+00:00,2026-07-17,TER,-10.4,0.6,short,skip,2026-07-17T22:15:17+00:00,"semi-test beta (vol 0.6x); market-wide, thin read",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,IBM,-26.6,1.2,short,skip,2026-07-20T22:14:45+00:00,"Preannounced Q2 miss (worst day since 1968); structural software/mainframe->AI-server rotation, not a one-off. Full report 7/22 = binary event risk inside window; no clean asymmetry.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,PYPL,+19.2,1.4,long,skip,2026-07-20T22:14:45+00:00,"+19% on $53B Stripe/Advent takeover bid ($60.50); trades below bid = merger-arb spread on antitrust/financing risk. Binary deal outcome, not a readable durable edge.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,PNR,-18.8,1.5,short,skip,2026-07-20T22:14:45+00:00,"Already a live bet (long, 7/15, guidance-cut-overreaction); not re-betting.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,SNDK,-16.9,1.0,short,skip,2026-07-20T22:14:46+00:00,"Memory/storage in a sector-wide bear market (SK Hynix/Samsung/Micron drag + memory-cost fear). Market-wide, not name-specific.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,GLW,-16.4,0.4,short,skip,2026-07-20T22:14:46+00:00,"Corning caught in the broad semi/AI-spend selloff; 0.4x vol, no name-specific catalyst read.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,CIEN,-15.0,0.5,short,skip,2026-07-20T22:14:46+00:00,"Already a live bet (long, 6/28, post-earnings-drift).",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,SMCI,-13.8,0.4,short,skip,2026-07-20T22:14:46+00:00,"AI-server name in the sector selloff; 0.4x vol, high-beta; no differentiated read.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,ISRG,-13.3,2.3,short,skip,2026-07-20T22:14:46+00:00,"Beat Q2 but soft FY procedure-growth guide + da Vinci Class II recall + benign-surgery deferral = real demand moderation, not overreaction. No clean long.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,SNPS,-12.8,1.2,short,skip,2026-07-20T22:14:46+00:00,"Same Kimi-K3 EDA-moat fear as CDNS; taking CDNS as the cleaner pure-play, not double-betting one catalyst.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,CDNS,-12.7,0.9,short,take,2026-07-20T22:14:57+00:00,EDA moat fear on Kimi-K3 45nm open-source demo — generations behind the 2/3nm frontier where the moat is deepest; BNP says buy the dip. Name-specific overreaction on a wide-moat compounder -> graduates to a long bet.,taken,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,WDC,-12.3,0.5,short,skip,2026-07-20T22:14:57+00:00,"Storage in the memory-cost/sector bear market; market-wide, no name-specific read.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,MRNA,-11.2,0.4,short,skip,2026-07-20T22:14:57+00:00,"Already a live bet (short, 7/13, analyst-rerating).",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,ABT,+11.2,0.9,long,skip,2026-07-20T22:14:57+00:00,"+11% likely beat/raise but didn't read the catalyst deeply enough for conviction; thin read = skip, not a coin-flip take.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,DELL,-10.6,0.6,short,skip,2026-07-20T22:14:58+00:00,AI-server hardware in the sector selloff; 0.6x vol; market-wide.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,MRVL,-10.4,0.5,short,skip,2026-07-20T22:14:58+00:00,Semi in the sector-wide selloff; 0.5x vol; market-wide.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,PSKY,-10.3,1.0,short,skip,2026-07-20T22:14:58+00:00,No clear name-specific catalyst identified; thin read.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,ELV,-10.1,0.8,short,skip,2026-07-20T22:14:58+00:00,"Managed-care selloff on elevated medical-cost/MLR pressure (ongoing structural sector deterioration), not an overreaction.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,CDW,-9.9,0.9,short,skip,2026-07-20T22:14:58+00:00,IT reseller on tech-spend/AI-capex-rotation fear; no differentiated name-specific read.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,CTAS,+9.8,1.0,long,skip,2026-07-20T22:14:58+00:00,"Already a live bet (long, 7/17, post-earnings-drift); re-issuing its sized suggestion this run.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,HOOD,-9.6,0.6,short,skip,2026-07-20T22:14:59+00:00,High-beta retail/crypto broker sold off with the risk-off tape; no name-specific catalyst.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,CMG,-9.6,1.0,short,skip,2026-07-20T22:14:59+00:00,"Restaurant/consumer-slowdown drop; thin read, no differentiated edge.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,PGR,-9.5,0.5,short,skip,2026-07-20T22:14:59+00:00,"Insurer selloff; 0.5x vol; sector move, no name-specific overreaction read.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,ERIE,-9.0,0.8,short,skip,2026-07-20T22:14:59+00:00,"Insurer selloff, same sector move; thin read.",skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,YUM,-8.9,0.9,short,skip,2026-07-20T22:14:59+00:00,Restaurant/consumer-slowdown; thin read.,skip,,,,sp500
+2026-07-20T22:11:20+00:00,2026-07-20,AMAT,-8.6,0.5,short,skip,2026-07-20T22:14:59+00:00,Semi-equipment in the sector-wide selloff; 0.5x vol; market-wide.,skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,MRNA,-15.0,0.4,short,skip,2026-07-22T22:16:54+00:00,"already a live bet (short MRNA 63d vs XBI, added 7/13).",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,SMCI,+13.6,3.3,long,take,2026-07-22T22:16:37+00:00,Prelim: $60B record backlog + GM guide DOUBLED 8%->15-17%. Genuine fundamental reset; post-earnings drift long (fast 21d). Accounting baggage = event risk.,taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,TRV,+13.0,1.2,long,take,2026-07-22T22:16:37+00:00,"Q2 88% EPS beat (10.04 vs 5.41), combined ratio 83.6%, core income +44%. Operational strength; drift long. Caveat: low-cat + reserve releases partly non-repeat.",taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,ABT,+12.7,0.7,long,take,2026-07-22T22:16:37+00:00,"Q2 beat + RAISED FY EPS guide; Exact Sciences fueling +13% rev. Post-earnings drift long. Caveat: CGM competition + Nutrition soft, low vol on move.",taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,ISRG,-12.4,1.6,short,take,2026-07-22T22:16:37+00:00,"Q2 beat (EPS 2.80 vs 2.48, rev +18.5%); -12% on procedure decel to 12% + guide held not raised. Down 29% YTD = valuation reset on a quality name.",taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,GLW,-11.7,0.6,short,skip,2026-07-22T22:16:54+00:00,"valuation deflation already -36% from Jun30 peak; easy part of the P/E>105 unwind done, no clean edge either way.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,WAB,+11.7,3.8,long,take,2026-07-22T22:16:37+00:00,"Q2 double beat (EPS 2.76 vs 2.63) + RAISED FY rev+EPS guide; high-quality industrial, company-specific. Post-earnings drift long.",taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,SNPS,-11.2,1.3,short,skip,2026-07-22T22:16:54+00:00,"same EDA/Kimi-K3 autonomous-chip-design fear as CDNS; correlated duplicate of a live bet, not an independent read.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,CVNA,-11.1,0.7,short,skip,2026-07-22T22:16:55+00:00,no clear company catalyst (rate-sensitivity/risk-off); earnings 7/29 = binary event risk inside window.,skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,DHR,-10.8,2.6,short,take,2026-07-22T22:16:37+00:00,"Q2 beat + RAISED FY EPS guide; -11% drop driven by ~$100M bioprocessing shipments PUSHED to 2027 (timing, not demand loss). Quality compounder overreaction.",taken,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,HAS,+10.6,1.3,long,skip,2026-07-22T22:16:55+00:00,"thin read; no confirmed idiosyncratic catalyst identified, movers = arbitraged arena → skip.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,LITE,+10.3,0.8,long,skip,2026-07-22T22:16:55+00:00,"optical/AI-networking sector momentum, low vol (0.8x), no fresh company catalyst.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,SWKS,+9.8,0.6,long,skip,2026-07-22T22:16:55+00:00,"low vol (0.6x), semis sympathy move, no clean company catalyst.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,EQT,+9.7,2.1,long,skip,2026-07-22T22:16:54+00:00,"Q2 inline non-event (+0.4% AH); 5d move is gas-price/sector, no company-specific catalyst.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,STX,+9.6,1.0,long,skip,2026-07-22T22:16:56+00:00,"extended AI-storage momentum on analyst PT hikes (already ran huge); chasing at highs, no fresh catalyst.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,HOOD,-9.6,0.4,short,skip,2026-07-22T22:16:55+00:00,"low vol (0.4x), sector/retail-trading beta, no clean company catalyst to read.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,CDNS,-9.3,1.0,short,skip,2026-07-22T22:16:54+00:00,"already a live bet (long CDNS 63d spike-fade, added 7/20).",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,TTD,-9.2,0.7,short,skip,2026-07-22T22:16:56+00:00,"part of broad software/AI-disruption-fear selloff; sector rotation, no clean single-name window.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,AXON,-9.2,0.5,short,skip,2026-07-22T22:16:56+00:00,"sector software selloff, low vol (0.5x), no company-specific catalyst.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,APP,-8.9,1.3,short,skip,2026-07-22T22:16:56+00:00,"already -43% from high on BofA e-comm-cooling note; concern unresolved pre-earnings, catching a knife.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,CRWD,-8.9,0.8,short,skip,2026-07-22T22:16:57+00:00,"sector profit-taking + IT-spend-slowdown fear; still richly valued, no clean overreaction read.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,NOW,-8.9,1.5,short,skip,2026-07-22T22:16:54+00:00,"already a live bet (long NOW 63d vs QQQ, added 6/24).",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,PTC,-8.5,1.1,short,skip,2026-07-22T22:16:57+00:00,"broad software selloff, no clean company-specific catalyst identified.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,WDC,+8.3,0.5,long,skip,2026-07-22T22:16:56+00:00,"same as STX: analyst-initiation/PT-hike driven, already ran $400->$589; extended, chasing.",skip,,,,sp500
+2026-07-22T22:11:28+00:00,2026-07-22,SJM,+8.3,1.5,long,skip,2026-07-22T22:16:55+00:00,"pop on a single Hedgeye long note + dividend hike; no earnings confirmation, move already ran +13% on soft catalysts.",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SMCI,+24.5,1.0,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 21d post-earnings-drift),skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,TSLA,-17.8,1.5,short,skip,2026-07-24T22:14:44+00:00,"most-arbitraged name; EPS miss vs rev beat, binary robotaxi/capex narrative fully priced, no differentiated read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,WAB,+15.4,1.3,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 63d post-earnings-drift),skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ROL,-14.5,2.0,short,take,2026-07-24T22:14:43+00:00,"valuation-deflation short: Q2 EPS/rev miss, residential pest demand slowing, margin -1.2pt, analysts cutting PTs, ~40x perfection multiple, -34% YTD",taken,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,LMT,+14.5,1.2,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift long: beat-and-raise, record backlog, +10% pop, durable rearmament tailwind",taken,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DLR,+14.5,2.7,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift/analyst-rerating long: FFO crushed est, raised FY guide, TD Cowen/Guggenheim upgrades, AI-datacenter demand",taken,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,MRNA,-12.5,0.5,short,skip,2026-07-24T22:14:43+00:00,already live bet (short 63d analyst-rerating),skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,MSCI,-12.4,1.6,short,skip,2026-07-24T22:14:44+00:00,"mixed: beat but expense-guide up + retention scare; retention still 95%+, no crisp directional read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,IP,+12.2,2.2,long,skip,2026-07-24T22:14:44+00:00,"earnings not until 7/30; +12% is sector sympathy, no company catalyst yet",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ALLE,+11.7,1.1,long,skip,2026-07-24T22:14:44+00:00,"thin read, no crisp differentiated catalyst",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SLB,+11.6,1.7,long,skip,2026-07-24T22:14:44+00:00,"oilfield beat, no durable differentiated read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,T,+10.6,1.0,long,skip,2026-07-24T22:14:44+00:00,"telecom earnings pop, low vol 1.0x, thin read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DELL,+10.6,0.5,long,skip,2026-07-24T22:14:44+00:00,"low vol 0.5x AI-server momentum, no fresh catalyst",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CHRW,-10.5,2.1,short,skip,2026-07-24T22:14:54+00:00,"freight broker weakness, covered, no differentiated read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CVNA,-10.2,0.6,short,skip,2026-07-24T22:14:54+00:00,"low vol 0.6x high-beta drop, no clear catalyst",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,RTX,+10.0,1.3,long,skip,2026-07-24T22:14:54+00:00,"same defense beat-and-raise as LMT; correlated, taking LMT as the sector rep",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DECK,-9.8,2.0,short,skip,2026-07-24T22:14:54+00:00,"consumer-disc drop, need earnings detail, no crisp read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CRWD,-9.7,0.4,short,skip,2026-07-24T22:14:54+00:00,"AI-displacement cyber scare, both sides loudly priced (Cramer/Wedbush bull vs AI-scare bear), no differentiated edge",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,PANW,-9.7,0.7,short,skip,2026-07-24T22:14:54+00:00,"same cyber AI-scare, covered/crowded, no edge",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SW,+9.6,1.5,long,skip,2026-07-24T22:14:54+00:00,"packaging sector sympathy, thin",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,NRG,+9.2,0.5,long,skip,2026-07-24T22:14:54+00:00,"low vol 0.5x power/AI narrative, thin",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,URI,+9.2,1.1,long,skip,2026-07-24T22:14:55+00:00,"equipment rental pop, thin read",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,PKG,+9.1,2.1,long,skip,2026-07-24T22:14:55+00:00,"mixed Q2 (rev beat, EPS miss, margin down), no directional edge",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ORCL,-9.0,1.2,short,skip,2026-07-24T22:14:55+00:00,"software-selloff sympathy, no fresh catalyst",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,UBER,-9.0,1.3,short,skip,2026-07-24T22:14:55+00:00,"robotaxi-threat narrative, binary/covered, both sides priced",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,SMCI,+25.1,0.8,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/22 long 21d) — not re-betting,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,IP,+17.0,1.4,long,take,2026-07-28T11:37:40+00:00,"Containerboard 40/ton hike (PCA, Sep 1) + RBC PT->48 Outperform; laggard vs PKG record high. Real industry pricing catalyst, name re-rating.",taken,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,WAB,+16.7,1.3,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/22 long 63d) — not re-betting,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,TSLA,-16.3,1.1,short,skip,2026-07-28T11:37:41+00:00,"Q2 margin collapse (op margin 1.4%, EPS 0.33 vs 0.53) is real but most-arbitraged narrative name; -14.5% single day = high bounce risk, Musk/sentiment event risk. No differentiated edge.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,SW,+16.1,1.4,long,skip,2026-07-28T11:37:41+00:00,Earnings 7/29 (tomorrow) — packaging pop partly pre-earnings buying; binary event risk. Prefer IP as the clean laggard expression of the same catalyst.,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,CHRW,-15.2,1.9,short,skip,2026-07-28T11:37:41+00:00,"Earnings 7/29 (tomorrow) — binary event inside any window; drop is pre-earnings positioning, not a resolved catalyst.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,GM,+14.8,1.4,long,take,2026-07-28T11:37:39+00:00,Q2 double beat + 2nd FY guidance raise of 2026; record H1 adj EPS 7.27 (+35% YoY); 42% full-size pickup share; tariff cost flat/managed. Clean beat-and-raise catalyst.,taken,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,ALLE,+14.5,1.4,long,skip,2026-07-28T11:37:41+00:00,"Large-cap Q2 pop, no differentiated read; post-earnings-drift tag already heavily sampled this week.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,LMT,+13.8,0.9,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/24 long 63d) — not re-betting,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,ROL,-12.7,1.4,short,skip,2026-07-28T11:37:40+00:00,already live in bets (7/24 short 63d) — not re-betting,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,RTX,+12.3,1.8,long,take,2026-07-28T11:37:40+00:00,"Q2 beat (rev 24.7B vs 22.9B, EPS 1.89 vs 1.66), raised guide 3x, record 289B backlog, margins up all 3 segs, 18% Raytheon growth. High-vol confirmed.",taken,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,MMM,+12.0,1.5,long,take,2026-07-28T11:37:40+00:00,Q2 beat (EPS 2.40 vs 2.24) + raised FY guide to 8.80-8.95; turnaround/margin inflection + AI-datacenter demand. Name-specific re-rating.,taken,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,DELL,+12.0,0.7,long,skip,2026-07-28T11:37:41+00:00,"AI-server narrative already crowded (SMCI live covers the theme); low vol 0.7x, thin read.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,DGX,+11.6,1.3,long,skip,2026-07-28T11:37:42+00:00,"Quest Q2 defensive pop, no differentiated read; thin.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,URI,+11.4,1.1,long,skip,2026-07-28T11:37:42+00:00,"United Rentals cyclical Q2 pop already run; no name-specific edge, thin read.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,T,+11.3,0.9,long,skip,2026-07-28T11:37:42+00:00,"AT&T Q2, low vol 0.9x, defensive telco; thin read.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,SLB,+11.1,1.2,long,skip,2026-07-28T11:37:42+00:00,"Schlumberger — energy/oil-beta driven, market-wide sector move not name-specific.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,DLR,+11.1,0.8,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/24 long 63d) — not re-betting,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,HAS,+11.1,0.7,long,skip,2026-07-28T11:37:42+00:00,"Hasbro Q2, low vol 0.7x; thin read.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,PKG,+10.5,2.0,long,skip,2026-07-28T11:37:41+00:00,Originated the containerboard hike news but at record all-time high = chasing/extended; worse entry than IP for the same theme.,skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,BKR,+9.9,1.6,long,skip,2026-07-28T11:37:42+00:00,"Baker Hughes — energy-beta driven, market-wide not name-specific.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,HPQ,+9.6,0.9,long,skip,2026-07-28T11:37:42+00:00,"HP, low vol 0.9x, PC-cycle; thin read no differentiated angle.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,TMUS,-9.4,1.0,short,skip,2026-07-28T11:37:42+00:00,"T-Mobile -9% telco, defensive/low-beta, no context differentiating the read; thin.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,EMR,+9.3,1.1,long,skip,2026-07-28T11:37:43+00:00,"Emerson Q2 industrial pop, no differentiated read; tag over-sampled.",skip,,,,sp500
+2026-07-28T11:34:33+00:00,2026-07-27,CRWD,-9.3,0.6,short,skip,2026-07-28T11:37:41+00:00,"Just profit-taking on premium multiple (8 down days); analysts RAISING PTs (UBS/Benchmark), no fundamental catalyst, low vol 0.6x. Fighting the tape to short.",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,SNDK,-31.0,1.9,short,skip,2026-07-29T11:38:45+00:00,Memory selloff on hyperscaler-capex fear + China CXMT IPO overhang; hostage to MSFT/META/AMZN capex prints Wed/Thu — no edge into a 2-day binary in the arbitraged arena,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,COHR,-23.3,1.7,short,skip,2026-07-29T11:38:45+00:00,"Optics rout triggered by Corning Q2; same hyperscaler-capex binary this week, no differentiated edge",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,GLW,-22.4,2.8,short,skip,2026-07-29T11:38:46+00:00,Corning fell -12% on its own Q2 but is the epicenter of AI-capex doubt; binary hyperscaler prints Wed/Thu dominate any short window — thin read,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LITE,-22.2,1.2,short,skip,2026-07-29T11:38:46+00:00,"Optics sympathy selloff (Corning-triggered); capex binary, no idiosyncratic read",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,IP,+21.3,1.4,long,take,2026-07-29T11:38:46+00:00,"Already live bet (long 7/28, containerboard price hike) — positioned",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,IQV,+20.5,3.9,long,take,2026-07-29T11:38:58+00:00,"Own Q2 double-beat (EPS 3.15 vs 3.04, rev 4.37B vs 4.30B) + FY guide RAISED across the board + record bookings + AI-demand tailwind; fresh idiosyncratic catalyst, sector-distinct from my industrial PEAD cluster → graduates to a scored bet",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CHRW,-19.1,1.6,short,skip,2026-07-29T11:38:46+00:00,"C.H. Robinson -19%, no differentiated read on the logistics print",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,TSLA,-18.9,1.0,short,skip,2026-07-29T11:38:46+00:00,"Mega-cap, fully arbitraged, no differentiated view on the move",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,INTC,-18.2,1.4,short,skip,2026-07-29T11:38:47+00:00,Intel own troubles + semi selloff; no edge,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,SW,+18.0,1.7,long,skip,2026-07-29T11:38:47+00:00,"Smurfit Westrock reports today 7/29; the +18% was positioning INTO the print — reaction undigested = event risk, thin read",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,ALLE,+17.4,1.4,long,skip,2026-07-29T11:38:47+00:00,Clean beat-and-raise but post-earnings-drift tag already heavily sampled this week (consistent w/ 7/28 skip); a bigger pop is not a new catalyst — no re-take goalpost-move,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,ACN,+16.9,1.0,long,take,2026-07-29T11:38:58+00:00,"Already live bet (long 6/25, -18% overreaction) — positioned, now recovering",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,AMD,-16.5,1.3,short,skip,2026-07-29T11:38:58+00:00,"Semi/AI selloff on hyperscaler-capex fear; 2-day binary, no edge",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LRCX,-16.3,1.2,short,skip,2026-07-29T11:38:58+00:00,"Semicap selloff, capex binary, no idiosyncratic read",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,STX,-16.2,1.7,short,skip,2026-07-29T11:38:58+00:00,Storage/memory selloff (CXMT overhang + capex fear); no edge,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,MRVL,-16.1,0.9,short,skip,2026-07-29T11:38:59+00:00,Optics/AI-semi selloff (Corning-triggered); capex binary,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,WAB,+16.0,1.4,long,take,2026-07-29T11:38:59+00:00,"Already live bet (long 7/22, post-earnings-drift) — positioned",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,AMAT,-15.6,0.8,short,skip,2026-07-29T11:38:59+00:00,"Semicap selloff, capex binary, no edge",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,MU,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory selloff, CXMT China-supply overhang + capex binary; arbitraged",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,WDC,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory/storage selloff, same capex binary + supply-glut fear",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CTSH,+15.3,1.2,long,skip,2026-07-29T11:39:08+00:00,"Cognizant reports today 7/29; the +15% ran INTO the print (name up ~40% YTD off lows), reaction undigested = event risk, thin read",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,FDS,+15.0,1.6,long,take,2026-07-29T11:39:08+00:00,"Already live SHORT bet (6/25); mover is +15% AGAINST the short — positioned, not adding",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LMT,+14.6,1.1,long,take,2026-07-29T11:39:09+00:00,"Already live bet (long 7/24, post-earnings-drift) — positioned",taken,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,TER,-14.3,1.3,short,skip,2026-07-29T11:39:09+00:00,"Semicap/AI-test selloff; capex binary, no idiosyncratic edge",skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CIEN,-14.2,1.6,short,skip,2026-07-29T11:39:09+00:00,Optical networking selloff (Corning-triggered); capex binary,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,SNDK,-36.5,1.8,short,skip,2026-07-30T11:40:44+00:00,"Memory selloff on capex fear; hyperscaler capex RAISED this week = wrong side to short; arbitraged, no idiosyncratic edge",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,CTSH,+29.6,1.8,long,skip,2026-07-30T11:40:44+00:00,"Reported: rev beat, EPS miss 1.37 vs 1.38, raised FY guide, +11pct on print - but already ran +29pct incl pre-print runup; PEAD tag oversampled; same IT-svcs sleeve as ACN/IQV already long - thin marginal read",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,COHR,-28.9,1.5,short,skip,2026-07-30T11:40:44+00:00,"Optics rout on AI-capex fear; capex raised this week; arbitraged, no differentiated read",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,LITE,-27.4,1.4,short,skip,2026-07-30T11:40:44+00:00,Optics sympathy selloff (Corning-triggered); same capex binary resolved up; no idiosyncratic edge,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,WDAY,+26.9,1.7,long,skip,2026-07-30T11:40:45+00:00,Real move +10pct AI-software-rotation runup INTO unreported Q2 earnings (event risk); scan magnitude inflated; arbitraged mega-cap,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,VRT,-25.9,3.6,short,take,2026-07-30T11:40:43+00:00,"Q2 beat EPS 1.52 vs 1.42 + RAISED FY guide (6.65-6.75) + next-Q guide above cons; sold off ~-10pct on a timing-only revenue miss (mgmt: timing not demand). Hyperscaler capex RAISED this week (MSFT ~190B, Meta 125-145B) = direct data-center power/cooling demand tailwind -> overreaction long; graduates to scored bet",taken,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,IT,+25.4,1.1,long,skip,2026-07-30T11:40:45+00:00,Gartner software-rotation runup; reports early Aug (event risk); no differentiated read,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,IQV,+24.7,1.8,long,take,2026-07-30T11:40:43+00:00,"Already live bet (long 7/29 PEAD, own Q2 double-beat + raise) - positioned",taken,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,ACN,+23.6,1.1,long,take,2026-07-30T11:40:43+00:00,Already live bet (long 6/25 overreaction) - positioned,taken,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,MU,-23.0,1.4,short,skip,2026-07-30T11:40:45+00:00,Memory selloff + CXMT overhang + capex fear resolved up; arbitraged,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,GRMN,+22.6,4.2,long,skip,2026-07-30T11:40:45+00:00,"Clean Q2 beat-and-raise but rallied +17pct to a 52-wk high (runup done, not overreaction); PEAD tag oversampled; chasing a high is not a differentiated read",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,MRVL,-22.6,0.9,short,skip,2026-07-30T11:40:46+00:00,AI-semi/optics selloff; capex binary resolved up; arbitraged,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,AMD,-22.2,1.1,short,skip,2026-07-30T11:40:46+00:00,Semi/AI selloff on capex fear; capex raised this week; arbitraged mega-cap,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,NOW,+21.3,2.0,long,take,2026-07-30T11:40:44+00:00,Already live bet (long 6/24 ServiceNow) - positioned,taken,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,AMAT,-21.2,0.9,short,skip,2026-07-30T11:40:46+00:00,"Semicap selloff, capex binary resolved up; arbitraged, no edge",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,ROP,+21.2,1.3,long,skip,2026-07-30T11:40:46+00:00,Roper +21pct @1.3x vol (magnitude suspect/rotation); oversampled PEAD tag; no differentiated read,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,LRCX,-21.0,1.3,short,skip,2026-07-30T11:40:46+00:00,"Semicap selloff, capex resolved up; arbitraged",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,KLAC,-20.7,1.5,short,skip,2026-07-30T11:40:47+00:00,"Semicap selloff, capex resolved up; arbitraged",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,ADBE,+20.6,1.7,long,skip,2026-07-30T11:40:47+00:00,"Adobe reports Sept (no near catalyst); +20pct @1.7x = AI-rotation/partly artifact; arbitraged, no read",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,ADSK,+20.5,1.0,long,skip,2026-07-30T11:40:47+00:00,Autodesk reports Aug; +20pct @1.0x vol physically implausible = data-artifact/rotation; no read,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,TSLA,-20.2,1.0,short,skip,2026-07-30T11:40:47+00:00,"Mega-cap, fully arbitraged, no differentiated view on the move",skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,INTC,-20.2,1.4,short,skip,2026-07-30T11:40:47+00:00,Intel own troubles + semi selloff; no edge,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,GLW,-19.5,1.6,short,skip,2026-07-30T11:40:48+00:00,Corning optics epicenter; capex resolved up (wrong side to short); consistent w/ prior skip,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,LII,-19.3,4.2,short,skip,2026-07-30T11:40:48+00:00,Lennox CUT FY EPS guide on real housing/residential weakness (not an overreaction); no differentiated housing-cycle view either way,skip,,,,sp500
+2026-07-30T11:34:38+00:00,2026-07-29,FLEX,-18.9,2.0,short,skip,2026-07-30T11:40:48+00:00,EMS/semi sympathy selloff; capex resolved up; arbitraged,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,CHRW,-28.5,4.5,short,skip,2026-07-31T11:37:37+00:00,beat but -15pct on adverse jury verdict + deepest freight trough in 15 quarters; selloff has identifiable non-overreaction cause,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,CTSH,+25.3,1.3,long,take,2026-07-31T11:37:37+00:00,rev beat + raised FY EPS guide + Fin-Svcs +12pct + Citi PT 45->60 re-rating -> bet long 63d XLK,taken,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,VRT,-25.2,2.5,short,skip,2026-07-31T11:37:37+00:00,already live bet (07-30 revenue-miss-overreaction long),skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,GRMN,+23.9,1.6,long,skip,2026-07-31T11:37:37+00:00,"covered large-cap; +24pct reflects known earnings beat, no differentiated name-specific read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,WDAY,+23.6,1.6,long,skip,2026-07-31T11:37:38+00:00,broad software/AI rotation (SFDC/NOW/WDAY all +7-10pct same days); market-wide move not name-specific edge,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,BAX,+23.4,3.9,long,take,2026-07-31T11:37:36+00:00,51pct EPS beat + raised FY guide + FCF turnaround; name-specific -> bet long 63d XLV,taken,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,LII,-22.4,2.1,short,skip,2026-07-31T11:37:39+00:00,"HVAC down -22pct; no read on the driver, thin",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,PTC,+20.6,2.0,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,SNDK,-20.5,1.8,short,skip,2026-07-31T11:37:38+00:00,"memory selloff; sector/cyclical move, no differentiated read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,COHR,-20.5,1.4,short,skip,2026-07-31T11:37:39+00:00,"optical selloff (with LITE); sector move, thin read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,CMG,+20.3,1.8,long,take,2026-07-31T11:37:36+00:00,beat+comps re-accelerated to +2.2% & RAISED FY comp guide; name-specific turnaround inflection -> bet long 63d XLY,taken,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,NOW,+19.7,1.3,long,skip,2026-07-31T11:37:37+00:00,already live bet (06-24 long); also part of broad software/AI rotation,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,MSFT,+18.2,2.6,long,skip,2026-07-31T11:37:38+00:00,"mega-cap Azure beat; textbook-arbitraged drift, no differentiated edge",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,ACN,+17.7,0.9,long,skip,2026-07-31T11:37:37+00:00,already live bet (06-25 long),skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,KLAC,-17.6,1.3,short,skip,2026-07-31T11:37:39+00:00,"semicap selloff; sector move, thin read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,LITE,-16.8,1.2,short,skip,2026-07-31T11:37:39+00:00,"optical selloff (with COHR); sector move, thin read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,ADBE,+16.8,1.2,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,WTW,+16.5,2.0,long,skip,2026-07-31T11:37:39+00:00,"insurance broker up on earnings; covered, no differentiated read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,DASH,+16.4,0.8,long,skip,2026-07-31T11:37:39+00:00,"covered; move on low volume (0.8x), no conviction",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,CRM,+15.2,1.0,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,FIS,+14.9,1.6,long,skip,2026-07-31T11:37:39+00:00,"fintech up on earnings; thin read, no differentiated edge",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,HOOD,-14.7,1.3,short,skip,2026-07-31T11:38:13+00:00,"Robinhood -14.7pct; profit-taking after large run / crypto-beta unwind, no differentiated catalyst read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,IQV,+14.7,1.4,long,skip,2026-07-31T11:37:37+00:00,already live bet (07-29 post-earnings-drift long),skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,ADSK,+14.5,1.1,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,IT,+14.4,1.7,long,skip,2026-07-31T11:37:38+00:00,"software/research complex, part of rotation; thin name-specific read",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,LII,-23.1,2.2,short,take,2026-08-03T11:43:18+00:00,guidance-cut overreaction: -23% on only a ~3-5% FY EPS trim (23.00-24.00 vs 23.50-25.00); residential weak but commercial +24% offsets; move overdone,taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,CTSH,+21.8,0.9,long,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-07-31 post-earnings-drift) — don't re-bet,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,MSFT,+21.8,1.5,long,skip,2026-08-03T11:43:21+00:00,"mega-cap, most-arbitraged; already +8% on print; beat partly one-time investment gain; residual drift thin",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,GRMN,+20.9,1.4,long,take,2026-08-03T11:43:19+00:00,"record Q2 double beat (EPS 2.81 vs 2.29) + raised FY EPS to $10 from 9.35; fitness +25%, GM 62.4%; clean beat-and-raise drift",taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,CHRW,-20.8,2.4,short,skip,2026-08-03T11:43:21+00:00,conflicting read: beat EPS/rev but -20% 5d; freight in deepest trough in 15 quarters; no clean direction,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,WDAY,+18.5,0.9,long,skip,2026-08-03T11:43:21+00:00,no fresh earnings — move is software AI-rotation + valuation bounce; reports late Aug = unresolved event risk ahead,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,CHTR,+17.6,0.8,long,skip,2026-08-03T11:43:21+00:00,"secular broadband erosion (lost 172k subs vs 145k est); analysts cut forecasts; +17% is a technical bounce, not a fixed thesis",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,CMG,+17.1,0.7,long,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-07-31) — don't re-bet,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,AMZN,+17.0,2.5,long,skip,2026-08-03T11:43:21+00:00,"mega-cap, already +9% on print; headline EPS beat inflated by $53B Anthropic gain; AWS reaccel real but priced",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,VRT,-16.8,1.9,short,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-07-30) — don't re-bet,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,BAX,+16.8,1.6,long,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-07-31) — don't re-bet,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,DXCM,+16.6,2.7,long,take,2026-08-03T11:43:19+00:00,"multi-catalyst: Q2 beat+raise + FDA TEMPO pilot + PBM coverage 7M non-insulin T2 + CONNECT Level-A evidence = durable reimbursement re-rating, not just a beat",taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,REGN,+16.3,1.5,long,take,2026-08-03T11:43:19+00:00,"huge Q2 beat (EPS 14.29 vs 10.53, +40% above cons) on Eylea-HD + Sanofi collab +51%; recovering from multi-month lows; drift (risk: Eylea biosimilar overhang)",taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,PTC,+15.8,1.5,long,skip,2026-08-03T11:43:22+00:00,"raised FY guide + buyback but immediate reaction MIXED (-1.9% on print); the +15.8% is mostly software rotation, no clean drift signal",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,SNDK,-15.4,1.5,short,skip,2026-08-03T11:43:22+00:00,"momentum unwind: +857% H1 then -24% July; a crowded-trade reversal, not a readable catalyst",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,NXPI,-14.9,1.6,short,skip,2026-08-03T11:43:22+00:00,semi-sector unwind (PHLX -18% in July); beat rev but weak auto guide; cyclical inventory correction is the driver,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,WTW,+13.8,1.5,long,take,2026-08-03T11:43:19+00:00,"Q2 beat (EPS 3.35 vs 3.13, +17% YoY), 5% organic, +100bp margin, Propel AI plan ($400M run-rate savings, path to 30% margin 2028); quality-compounder drift",taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,HII,+13.5,2.1,long,take,2026-08-03T11:43:19+00:00,"defense shipbuilding beat-and-raise: EPS 5.27 vs 3.86, rev +11%, raised shipbuilding rev + margin guide (Newport News/Ingalls inflection); durable backlog drift",taken,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,DASH,+13.4,0.8,long,skip,2026-08-03T11:43:22+00:00,earnings 8/5 (inside window) = unresolved binary event; +13% is pre-earnings run-up,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,EXPE,+13.4,0.8,long,skip,2026-08-03T11:43:22+00:00,earnings 8/5 (inside window) = unresolved event; +13% is analyst optimism/pre-earnings run-up,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,KLAC,-13.2,1.0,short,skip,2026-08-03T11:43:22+00:00,semi-sector unwind (PHLX -18% July); no clean name-specific mispricing; falling-knife in a de-rating group,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,ZBRA,+13.0,1.4,long,skip,2026-08-03T11:43:23+00:00,earnings 8/4 (tomorrow) = unresolved event; run-up ahead of print,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,IQV,+13.0,1.1,long,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-07-29) — don't re-bet,skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,ORCL,+12.9,0.9,long,skip,2026-08-03T11:43:23+00:00,"no fresh earnings (reports Sept); +12.9% is AI/cloud rotation, no name-specific catalyst to read",skip,,,,sp500
+2026-08-03T11:34:27+00:00,2026-07-31,ACN,+12.9,1.0,long,skip,2026-08-03T11:43:20+00:00,already a live bet (2026-06-25) — don't re-bet,skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,COHR,+33.0,2.0,long,skip,2026-08-05T11:41:09+00:00,"optical/AI-memory rally beta; +33pct extended market-wide move, momentum-continuation on arbitraged large-cap = fat-tail entry",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,PLTR,+31.7,4.6,long,skip,2026-08-05T11:41:09+00:00,"mega-cap earnings blowout, most-arbitraged, +32pct already ran",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,LITE,+30.3,1.6,long,skip,2026-08-05T11:41:09+00:00,"Lumentum optical/AI rally beta, extended market-wide move",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,SNDK,+30.2,1.0,long,skip,2026-08-05T11:41:09+00:00,"memory supercycle beta (SanDisk/SK Hynix HBF standard); market-wide extended rally, chasing = fat-tail entry",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,ZBRA,+29.7,3.9,long,take,2026-08-05T11:41:14+00:00,"beat-and-raise, pricing power vs memory-cost headwind, differentiated from semi beta — graduated to scored bet vs XLK 63d",taken,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,GLW,+26.9,1.4,long,skip,2026-08-05T11:41:09+00:00,"Corning optical/AI-datacenter rally beta, extended",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,TER,+25.9,1.1,long,skip,2026-08-05T11:41:10+00:00,"Teradyne semi-test rally beta, market-wide",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,MRVL,+25.3,1.3,long,skip,2026-08-05T11:41:10+00:00,"Marvell AI-silicon rally beta, +25pct extended",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,MSFT,+25.3,1.6,long,skip,2026-08-05T11:41:10+00:00,"mega-cap post-earnings, +25pct already ran, most-arbitraged",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,FICO,-21.6,2.1,short,skip,2026-08-05T11:41:10+00:00,"-21pct on VantageScore/GSE alt-score competitive threat + Wolfe downgrade; real structural moat erosion, two-sided, no clean bounce",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,ORCL,+21.5,1.1,long,skip,2026-08-05T11:41:10+00:00,"mega-cap AI/cloud rally beta, extended",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,GRMN,+21.2,1.6,long,skip,2026-08-05T11:41:10+00:00,already a live bet (2026-08-03 post-earnings-drift),skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,FSLR,+20.3,2.4,long,skip,2026-08-05T11:41:10+00:00,"First Solar solar policy/earnings; policy-driven volatile, thin read",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,AMZN,+20.2,1.7,long,skip,2026-08-05T11:41:10+00:00,"mega-cap earnings, +20pct ran, arbitraged",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,APTV,-19.7,7.3,short,skip,2026-08-05T11:41:11+00:00,"-19.7pct on real Q2 guidance/FX deterioration (EPS -33pct YoY); real weakness, not clean overreaction",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,IT,+19.2,3.0,long,skip,2026-08-05T11:41:11+00:00,"Gartner post-earnings; redundant with heavy post-earnings-drift-long stack (one-macro-draw), no differentiated edge over ZBRA",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,DELL,+19.2,1.1,long,skip,2026-08-05T11:41:11+00:00,"AI-server/memory rally beta, extended",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,APH,+19.1,1.2,long,skip,2026-08-05T11:41:11+00:00,Amphenol connectivity/AI rally beta,skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,WDC,+18.3,1.1,long,skip,2026-08-05T11:41:11+00:00,"memory supercycle beta, +18pct extended",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,LII,-17.9,1.5,short,skip,2026-08-05T11:41:11+00:00,already a live bet (2026-08-03 guidance-cut-overreaction),skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,LRCX,+17.9,1.3,long,skip,2026-08-05T11:41:11+00:00,Lam Research semi-cap-equipment rally beta,skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,PWR,+17.8,1.4,long,skip,2026-08-05T11:41:12+00:00,"Quanta data-center-power theme, thin read, no differentiated catalyst",skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,CIEN,+17.3,1.0,long,skip,2026-08-05T11:41:12+00:00,Ciena optical/AI rally beta,skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,INTC,+16.9,1.1,long,skip,2026-08-05T11:41:12+00:00,already a live bet (2026-07-27 post-earnings-drift),skip,,,,sp500
+2026-08-05T11:34:12+00:00,2026-08-04,BAX,+16.3,1.8,long,skip,2026-08-05T11:41:12+00:00,already a live bet (2026-07-31 post-earnings-drift),skip,,,,sp500
+2026-08-05T11:35:02+00:00,2026-08-04,AHCO,-40.2,17.4,short,skip,2026-08-05T11:41:12+00:00,"TAIL: -40pct earnings disaster (adj LOSS 0.99 vs +0.15, 144M goodwill impairment, FY guide -17.7pct); real deterioration",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,IESC,+39.9,0.6,long,skip,2026-08-05T11:41:12+00:00,"TAIL: +40pct on 0.6x volume — no volume confirmation, illiquid, no named mechanism",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,FORM,+36.3,1.4,long,skip,2026-08-05T11:41:12+00:00,"TAIL: FormFactor semi-test rally beta, high bar, no idiosyncratic mechanism",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,VRRM,+33.5,1.3,long,skip,2026-08-05T11:41:13+00:00,TAIL: reports earnings TODAY 8/5 = binary event risk in entry window; already ran on JPM upgrade,skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,MKTX,+33.0,2.1,long,skip,2026-08-05T11:41:13+00:00,"TAIL: +33pct, no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,EFOR,+32.1,1.2,long,skip,2026-08-05T11:41:13+00:00,"TAIL: no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,UFPT,+29.7,3.0,long,skip,2026-08-05T11:41:13+00:00,"TAIL: UFP Tech, no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,NEOG,+28.5,2.0,long,skip,2026-08-05T11:41:13+00:00,"TAIL: Neogen, no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,ALHC,-26.6,2.7,short,skip,2026-08-05T11:41:13+00:00,"TAIL: -26.6pct, no clean overreaction read, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,BLKB,+26.6,0.9,long,skip,2026-08-05T11:41:13+00:00,"TAIL: Blackbaud, no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,WHD,+26.5,1.6,long,skip,2026-08-05T11:41:14+00:00,"TAIL: Cactus/WHD, no named mechanism, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,PI,+26.0,1.9,long,skip,2026-08-05T11:41:14+00:00,"TAIL: Impinj RFID, semi-adjacent rally beta, no differentiated read",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,AEIS,+24.9,2.6,long,skip,2026-08-05T11:41:14+00:00,"TAIL: Advanced Energy semi-power rally beta, high bar",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,ITGR,+24.6,8.3,long,skip,2026-08-05T11:41:14+00:00,"TAIL: Integer Holdings +24.6pct/8.3x vol likely earnings beat but tail high bar, med-device-components; not tilting to tail",skip,,,,tail
+2026-08-05T11:35:02+00:00,2026-08-04,COHU,+24.4,0.9,long,skip,2026-08-05T11:41:14+00:00,"TAIL: Cohu semi-test rally beta, high bar",skip,,,,tail
+2026-08-06T11:34:01+00:00,2026-08-05,COHR,+47.8,1.3,long,skip,2026-08-06T11:40:07+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,LITE,+37.2,0.8,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,SNDK,+32.9,1.0,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,ZBRA,+30.4,2.0,long,skip,2026-08-06T11:40:26+00:00,"already a live bet (ZBRA long 63d XLK, 2026-08-05, registered yesterday) — same catalyst, no re-bet",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,MRVL,+29.1,0.7,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,PLTR,+28.8,1.7,long,skip,2026-08-06T11:40:10+00:00,"AI-momentum leader riding the same capex-demand wave; crowded, richest multiple in software, no fresh idiosyncratic catalyst here = beta/momentum, not an edge read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,GLW,+26.3,0.6,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,DELL,+25.2,1.0,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,ANET,+24.9,2.7,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,MSFT,+24.8,1.0,long,skip,2026-08-06T11:40:08+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,VRT,+24.6,1.1,long,skip,2026-08-06T11:40:26+00:00,"already a live bet (VRT long 63d XLI, 2026-07-30) — do not re-bet a ticker already in the catalogue",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,CIEN,+23.7,0.9,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,ETN,+23.6,1.0,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,INTC,+23.4,0.7,long,skip,2026-08-06T11:40:26+00:00,"already a live bet (INTC long 63d SOXX, 2026-07-27); current pop is the AI-capex/semis wave, thesis already registered",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,ORCL,+22.6,0.6,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,AMAT,+22.4,0.6,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,EME,+22.3,0.8,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,TER,+21.9,0.8,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,PODD,-21.9,5.5,short,take,2026-08-06T11:39:59+00:00,"beat + Omnipod soaring, -20% on a ~1-3% FY guide trim = overshoot; fast overreaction-fade -> bet PODD long 21d XLV (LOW-MED, US pump-demand decel is the risk)",taken,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,LRCX,+21.8,0.8,long,skip,2026-08-06T11:40:09+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,PWR,+21.7,0.8,long,skip,2026-08-06T11:40:10+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,DVA,-21.7,5.5,short,skip,2026-08-06T11:40:26+00:00,"Q2 EPS beat but FY guide merely HELD (not raised) into RPT decline + falling ACA enrollment; -7.5% is a mild reset on a cheap dialysis name with real structural headwinds = thin two-sided read, not a fadeable overreaction",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,MU,+20.9,0.7,long,skip,2026-08-06T11:40:26+00:00,"already tested — MU bet settled (-8.65% vs SOXX); current +21% is AI-memory/capex wave beta, no new idiosyncratic read",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,FICO,-20.5,1.3,short,skip,2026-08-06T11:40:27+00:00,"mixed Q3 + program delay + the VantageScore mortgage-score competition overhang (Freddie/Fannie now accept it; FICO cut score price to $0.99); guide was RAISED though = genuinely ambiguous (moat-erosion bear vs guide-raise bull), -50% from peak = coin-flip knife, no clean direction",skip,,,,sp500
+2026-08-06T11:34:01+00:00,2026-08-05,AMZN,+20.3,1.1,long,skip,2026-08-06T11:40:10+00:00,"AI-capex melt-up wave (MSFT/AMZN cloud beats -> datacenter/semis/networking/power); market-wide beta on a covered large-cap, no name-specific mispricing = one macro draw, not a read",skip,,,,sp500
+2026-08-06T11:34:45+00:00,2026-08-05,IESC,+58.0,0.8,long,skip,2026-08-06T11:40:44+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,MTRN,+56.9,2.8,long,skip,2026-08-06T11:40:44+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,AHCO,-39.8,9.4,short,skip,2026-08-06T11:40:27+00:00,"TAIL (higher bar): huge miss (loss $0.99 vs +$0.15 est), FY rev guide slashed $3.49B->$2.87B, EBITDA cut hard on West-Coast fixed-price-contract margin destruction = structural, not overreaction; chasing a -40% gap on a thin tail name = knife catch + wide spread",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,FORM,+37.1,1.0,long,skip,2026-08-06T11:40:44+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,ENTG,+36.0,0.9,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,QLYS,+35.6,2.1,long,take,2026-08-06T11:39:59+00:00,"beat-and-raise, Q3 guide above cons, new AI product, 52wk-high on fundamentals; idiosyncratic cybersec NOT the AI-capex wave -> bet QLYS long 63d IGV",taken,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,EFOR,+35.2,1.1,long,skip,2026-08-06T11:40:46+00:00,"TAIL: +35% but no verified idiosyncratic catalyst read; thin unread small-cap, tail bar demands a named mechanism = skip",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,COHU,+31.5,1.0,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,AEIS,+30.4,1.3,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,MKTX,+29.2,2.8,long,skip,2026-08-06T11:40:27+00:00,"TAIL: merger-arb, not a directional read — ICE acquiring MKTX all-cash at $167 (guidance withdrawn, call canceled); stock pinned to deal price, upside capped, only downside is deal-break = no clean forward window, not our game",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,ADEA,+29.1,0.8,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,TTMI,+29.0,1.8,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,ECG,+28.9,2.4,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,SEI,+28.0,0.9,long,skip,2026-08-06T11:40:45+00:00,"TAIL (higher bar per ARC 5 #11): same AI-datacenter/semis-capex melt-up wave in the tail (semis materials/test/power, datacenter infra); no distinct name-specific mispricing verified + tail spread/liquidity friction = skip, do not tilt to the tail to chase the story",skip,,,,tail
+2026-08-06T11:34:45+00:00,2026-08-05,PENG,+27.5,0.3,long,skip,2026-08-06T11:40:46+00:00,"TAIL: +27% on 0.3x volume = illiquid, no conviction behind the move; wide-spread tail name, no named mechanism = skip",skip,,,,tail
+2026-08-07T11:34:17+00:00,2026-08-06,COHR,+34.2,1.3,long,skip,2026-08-07T11:40:05+00:00,"+34pct risk-on AI-optics rally, +108pct YTD, above avg analyst target; earnings not until 8/12 -> chasing an extended momentum name into a binary print, thin read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,PLTR,+27.5,1.2,long,skip,2026-08-07T11:40:22+00:00,"mega-cap momentum pop post-earnings; extremely crowded/expensive, +27pct in 5d = chase, no differentiated read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,ZBRA,+26.2,1.1,long,skip,2026-08-07T11:40:04+00:00,already bet long 08-05 (post-earnings-drift); not re-logging,skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,DVA,-24.4,2.7,short,take,2026-08-07T11:40:03+00:00,"beat Q2 EPS+rev but held FY guide FLAT (mid 14.65 vs 14.88 cons) -> -21pct 5d; defensive dialysis duopoly + Berkshire anchor, small miss = overreaction; long 21d vs XLV",taken,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,HONA,-23.4,6.4,short,skip,2026-08-07T11:41:04+00:00,"Honeywell Aerospace (Jun-2026 spinoff) first standalone print: EPS miss 1.87 vs 2.13 + FY organic guide CUT to 4-5pct from 7-9pct on supply-chain; real cut not overreaction, spinoff w/ no floor, -23pct at 52wk low = no clean entry either side",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,VRT,+21.0,0.9,long,skip,2026-08-07T11:40:04+00:00,already bet long 07-30 (revenue-miss-overreaction),skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,LITE,+20.9,0.9,long,skip,2026-08-07T11:40:22+00:00,"AI-optics risk-on sympathy (COHR/LITE); extended, no name-specific edge over the tape",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,IT,+20.9,1.3,long,skip,2026-08-07T11:40:22+00:00,"Gartner pop; large-cap covered subscription-research, no differentiated read vs the print",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,LDOS,+20.3,1.4,long,skip,2026-08-07T11:40:22+00:00,"defense-IT beat pop; covered large-cap, +20pct extended, no edge over the tape",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,APTV,-20.3,2.8,short,skip,2026-08-07T11:40:22+00:00,"auto-supplier drop; cyclical/covered, no clean overreaction read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,FSLR,+18.5,2.0,long,skip,2026-08-07T11:40:22+00:00,"solar policy/earnings pop; policy-driven and binary, no durable read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,APP,-16.9,2.7,short,skip,2026-08-07T11:40:05+00:00,"-21pct to 52wk lows on rev miss + first-ever guide-midpoint miss since IPO + multi-analyst PT cuts; genuine narrative break but already crushed, no clean short entry at the low (bounce risk)",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,GLW,+16.2,0.9,long,skip,2026-08-07T11:40:23+00:00,Corning optical pop on BELOW-avg volume (0.9x) = weak conviction; thin read,skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,PSKY,+16.0,1.3,long,skip,2026-08-07T11:40:23+00:00,Paramount-Skydance merger dynamics; special-sit I cannot handicap cleanly,skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,PODD,-15.9,2.5,short,skip,2026-08-07T11:40:04+00:00,already bet long 08-06 (guidance-cut-overreaction),skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,ETN,+15.8,0.8,long,skip,2026-08-07T11:40:23+00:00,"Eaton datacenter-electrical pop; quality but covered mega-cap, extended",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,AMZN,+15.6,0.7,long,skip,2026-08-07T11:40:23+00:00,"mega-cap earnings pop on BELOW-avg volume (0.7x) = weak conviction; most-covered name, no edge",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,WDC,-15.3,2.2,short,skip,2026-08-07T11:40:23+00:00,"memory/HDD drop; cyclical semi, covered, no clean read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,MRVL,+14.9,0.7,long,skip,2026-08-07T11:40:23+00:00,"semi pop on LOW volume (0.7x); crowded AI-semi, thin",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,DDOG,-14.6,3.7,short,skip,2026-08-07T11:40:05+00:00,"beat + raised guide but -17pct on REAL forward overhang: 9-figure AI top-customer cutting usage Q3 + FCF margin 29->25pct; expensive momentum name, sell-off justified not overreaction",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,EIX,-14.6,2.0,short,skip,2026-08-07T11:40:05+00:00,"core EPS +59pct, FY guide reaffirmed, but -14.6pct is wildfire-liability overhang (Eaton Fire loss unestimable, reform may fail -> downgrade risk); the tail IS the story and unquantifiable",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,CTVA,-14.0,1.7,short,skip,2026-08-07T11:40:23+00:00,"Corteva ag drop; covered, no differentiated read",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,CRL,+13.2,1.5,long,skip,2026-08-07T11:40:04+00:00,already bet long 07-02 (analyst-rerating),skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,TSCO,+12.8,1.3,long,skip,2026-08-07T11:40:24+00:00,"Tractor Supply pop; covered retail, no edge",skip,,,,sp500
+2026-08-07T11:34:17+00:00,2026-08-06,CMG,-12.5,0.9,short,skip,2026-08-07T11:40:04+00:00,already bet long 07-31 (post-earnings-drift),skip,,,,sp500
+2026-08-07T11:35:01+00:00,2026-08-06,AHCO,-43.4,10.4,short,skip,2026-08-07T11:40:05+00:00,"tail -40pct on earnings miss + hard guide cut (560-670M) from structural fixed-price-contract margin damage; genuine reset not overreaction, wide spread, no asymmetric entry",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,IESC,+34.4,0.8,long,skip,2026-08-07T11:40:34+00:00,"tail, LOW volume (0.8x) on a +34pct move = suspect/illiquid; no named mechanism",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,PAYC,+33.7,4.9,long,skip,2026-08-07T11:40:34+00:00,"Paycom earnings pop; covered payroll SaaS, +34pct extended, no tail-specific edge",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,MTRN,+33.7,1.8,long,skip,2026-08-07T11:40:35+00:00,"Materion tail pop; no named mechanism, small-cap spread risk",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,CACI,+31.7,3.3,long,skip,2026-08-07T11:40:35+00:00,"defense-IT beat; +32pct extended, no differentiated read",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,UTI,-30.4,7.1,short,skip,2026-08-07T11:40:35+00:00,"for-profit education tail drop; no named mechanism, thin float",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,SITM,+30.2,3.0,long,skip,2026-08-07T11:40:35+00:00,"SiTime timing-chip pop; +30pct extended small-cap, no named catalyst read",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,QLYS,+28.3,1.6,long,skip,2026-08-07T11:40:04+00:00,already bet long 08-06 (post-earnings-drift),skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,ALHC,-28.1,1.2,short,skip,2026-08-07T11:40:35+00:00,Medicare-Advantage insurer tail drop; MA-cost overhang I cannot handicap,skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,DXPE,+28.1,2.5,long,skip,2026-08-07T11:40:35+00:00,DXP industrial-distribution tail pop; no named mechanism,skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,LZ,-27.9,5.1,short,skip,2026-08-07T11:40:35+00:00,"LegalZoom tail drop; small-cap SaaS, no named mechanism or asymmetric entry",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,VAC,+27.8,4.5,long,skip,2026-08-07T11:40:36+00:00,"Marriott Vacations timeshare pop; leisure-cyclical, no durable tail read",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,TRIP,-26.6,4.0,short,skip,2026-08-07T11:40:36+00:00,"TripAdvisor tail drop; secular-pressure name, no clean overreaction read",skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,ITGR,+25.0,4.2,long,skip,2026-08-07T11:40:36+00:00,Integer medical-device pop; no tail-specific mechanism,skip,,,,tail
+2026-08-07T11:35:01+00:00,2026-08-06,GTM,+24.7,2.1,long,skip,2026-08-07T11:40:36+00:00,GTM tail pop; unclear catalyst / no named mechanism,skip,,,,tail
+2026-08-10T11:35:23+00:00,2026-08-07,COHR,+44.2,2.4,long,skip,2026-08-10T11:40:39+00:00,"AI-optics +44pct 5d already run, large-cap covered, no differentiated mispricing — chasing",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,PLTR,+39.8,2.3,long,skip,2026-08-10T11:40:40+00:00,"earnings pop +40pct 5d, extreme valuation, most-covered name in market — no edge",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,ZBRA,+28.1,1.1,long,skip,2026-08-10T11:40:25+00:00,"already open long bet 08-05 (post-earnings-drift) — read exists, no re-bet",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,LITE,+24.7,1.3,long,skip,2026-08-10T11:40:40+00:00,"Lumentum AI-optics momentum, covered, chasing a +25pct run",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,TTD,-23.5,9.8,short,take,2026-08-10T11:40:25+00:00,"Q2 miss (rev +3pct YoY, EPS 0.34 v 0.40) + Q3 guide 650M ~19pct below implying sequential DECLINE + CFO/CMO/commercial-chief all replaced; broken-growth continuation-down, short 21d vs IGV",taken,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,DVA,-23.5,1.9,short,skip,2026-08-10T11:40:26+00:00,already open long bet 08-07 (guidance-cut-overreaction) — read exists,skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,IT,+22.9,0.9,long,skip,2026-08-10T11:40:40+00:00,"Gartner earnings pop, low vol 0.9x, covered, no differentiated read",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,NEM,+20.6,1.5,long,skip,2026-08-10T11:40:40+00:00,"gold-miner move = commodity/macro beta (gold rally), not a name-specific read",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,WDC,-20.3,1.6,short,skip,2026-08-10T11:40:40+00:00,"beat both lines but guide-down on peak-margin + China DUV fears amid crowded AI-memory unwind — concerns substantive, not overreaction",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,GLW,+19.8,0.8,long,skip,2026-08-10T11:40:40+00:00,"Corning AI-optics momentum, low vol 0.8x, covered — chasing",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,LDOS,+19.0,1.4,long,skip,2026-08-10T11:40:40+00:00,"Leidos defense-IT earnings, covered gov name, chasing +19pct",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,HONA,-18.5,2.6,short,skip,2026-08-10T11:40:40+00:00,"Honeywell-complex structural/spin name, no clean identifiable mispricing this run",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,FSLR,+18.5,2.8,long,skip,2026-08-10T11:40:41+00:00,"First Solar policy/momentum move, covered, chasing +18pct",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,ABNB,+17.5,4.8,long,skip,2026-08-10T11:40:41+00:00,"Airbnb Q2 pop, large-cap covered consumer; catalogue already saturated with post-earnings longs",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,MRVL,+16.6,0.8,long,skip,2026-08-10T11:40:41+00:00,"Marvell AI-semis momentum, low vol 0.8x, mega-cap covered",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,PSKY,+15.5,0.9,long,skip,2026-08-10T11:40:41+00:00,"Paramount Skydance merger-entity, media M&A, no differentiated near-term read",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,TPL,-15.4,1.8,short,skip,2026-08-10T11:40:41+00:00,"Texas Pacific Land = oil-royalty/land, commodity-macro driven, no name read",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,CRL,+15.0,0.7,long,skip,2026-08-10T11:40:26+00:00,already open long bet 07-02 (analyst-rerating) — read exists,skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,PODD,-14.6,1.3,short,skip,2026-08-10T11:40:26+00:00,already open long bet 08-06 (guidance-cut-overreaction) — read exists,skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,MCHP,+14.0,1.8,long,skip,2026-08-10T11:40:41+00:00,"Microchip semis-cycle bounce, covered, chasing",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,QCOM,+13.7,0.7,long,skip,2026-08-10T11:40:41+00:00,"Qualcomm earnings, low vol 0.7x, mega-cap covered",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,CVNA,+13.6,1.0,long,skip,2026-08-10T11:40:41+00:00,"Carvana high-beta earnings pop, richly valued, no differentiated read",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,SWKS,+13.4,0.6,long,skip,2026-08-10T11:40:42+00:00,"Skyworks semis, low vol 0.6x, Apple-supplier covered",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,ORCL,+13.2,0.6,long,skip,2026-08-10T11:40:42+00:00,"Oracle drift up, low vol 0.6x, mega-cap covered",skip,,,,sp500
+2026-08-10T11:35:23+00:00,2026-08-07,VEEV,+13.1,1.6,long,skip,2026-08-10T11:40:42+00:00,"Veeva SaaS, covered, no differentiated catalyst read",skip,,,,sp500
+2026-08-10T11:36:03+00:00,2026-08-07,AHCO,-47.3,5.4,short,skip,2026-08-10T11:40:53+00:00,"tail falling-knife; -1.07 v +0.15 EPS + FY guide slashed (3.45B->2.85B) largely on discontinued Diabetes Health ops — structural, illiquid, no resolving catalyst",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,HTZ,+43.2,11.8,long,skip,2026-08-10T11:40:54+00:00,"Hertz +43pct squeeze on 11.8x vol, tail short-squeeze dynamics, wide spread — not a durable read",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,MTRN,+37.6,1.3,long,skip,2026-08-10T11:40:54+00:00,"Materion tail, low vol 1.3x, no named mechanism this run",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,QNST,+36.0,7.2,long,skip,2026-08-10T11:40:54+00:00,"QuinStreet tail earnings spike +36pct on 7.2x vol, thin float, chasing a vertical move",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,SITM,+35.5,1.6,long,skip,2026-08-10T11:40:54+00:00,"SiTime AI-timing semis tail, +35pct run, chasing momentum",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,CRSR,+35.2,6.7,long,skip,2026-08-10T11:40:54+00:00,"Corsair tail +35pct on 6.7x vol, low-quality consumer-hardware squeeze, wide spread",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,PAYC,+31.1,1.6,long,skip,2026-08-10T11:40:54+00:00,"Paycom tail earnings pop, covered SaaS, chasing +31pct",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,DOCS,+31.0,22.6,long,skip,2026-08-10T11:40:54+00:00,"Doximity tail +31pct on 22.6x vol earnings blowout — vertical, already fully repriced",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,KTOS,+30.4,1.4,long,skip,2026-08-10T11:40:54+00:00,"Kratos defense-drone tail momentum, no differentiated near-term read, chasing",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,CACI,+29.5,1.6,long,skip,2026-08-10T11:40:55+00:00,"CACI defense-IT tail earnings, covered gov name",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,FN,+29.2,0.9,long,skip,2026-08-10T11:40:55+00:00,"Fabrinet AI-optics tail, low vol 0.9x, chasing +29pct",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,DIOD,+27.8,1.4,long,skip,2026-08-10T11:40:55+00:00,"Diodes semis-cycle tail bounce, chasing",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,ENTG,+27.7,0.7,long,skip,2026-08-10T11:40:55+00:00,"Entegris semis-materials tail, low vol 0.7x, chasing",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,PRGO,+27.0,0.7,long,skip,2026-08-10T11:40:55+00:00,"Perrigo tail +27pct low vol 0.7x, consumer-health, no differentiated read",skip,,,,tail
+2026-08-10T11:36:03+00:00,2026-08-07,QLYS,+26.8,1.0,long,skip,2026-08-10T11:40:26+00:00,already open long bet 08-06 (post-earnings-drift) — read exists,skip,,,,tail
+2026-08-11T11:37:39+00:00,2026-08-10,PLTR,+39.5,1.6,long,skip,2026-08-11T11:44:31+00:00,"+39.5% mega-cap AI momentum, crowded and covered, parabolic — no name-specific mispricing a read can exploit",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,ZBRA,+29.6,0.8,long,skip,2026-08-11T11:44:31+00:00,already live long (bet 2026-08-05 post-earnings-drift) — not a new read,skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,IT,+27.5,1.2,long,take,2026-08-11T11:44:30+00:00,"Q2 beat-and-raise (rev 1.68B, adj EPS 4.37, op margin +5.6pp, raised FY guide, buyback accel) on a name priced for AI-disruption decline over the past year — narrative-invalidation re-rating, the durable multiple-expansion piece is what the read adds",taken,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,TTD,-26.8,4.2,short,skip,2026-08-11T11:44:31+00:00,already live short (bet 2026-08-10 guide-down continuation),skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NEM,+23.0,1.4,long,skip,2026-08-11T11:44:31+00:00,"gold-miner move is macro (gold rally), not name-specific — no differentiated read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,ABNB,+22.6,2.9,long,skip,2026-08-11T11:44:31+00:00,"large-cap earnings pop already +22%, covered and arbitraged, thin read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,HONA,-21.7,1.7,short,skip,2026-08-11T11:44:32+00:00,"recent Honeywell-complex spinoff stub, thin and ambiguous catalyst, no clean mechanism",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,DVA,-21.4,1.2,short,skip,2026-08-11T11:44:32+00:00,already live long plus book position (bet 2026-08-07),skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CRL,+20.0,1.2,long,skip,2026-08-11T11:44:32+00:00,"Charles River earnings rebound, covered large-cap, +20% already, thin read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,LDOS,+17.2,1.4,long,skip,2026-08-11T11:44:32+00:00,"defense-IT sector momentum, already hold defense (LMT/RTX/HII), chasing +17% same macro draw",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,WDC,-16.9,1.0,short,skip,2026-08-11T11:44:32+00:00,"memory/semi sector move, not name-specific, thin",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,APP,-16.5,1.0,short,skip,2026-08-11T11:44:33+00:00,"adtech growth-deceleration but already -16% (chasing) and a near-duplicate of live TTD short, same macro draw would shrink effective N",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,PODD,-15.8,1.2,short,skip,2026-08-11T11:44:33+00:00,already live long (bet 2026-08-06),skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CMG,-14.2,0.9,short,skip,2026-08-11T11:44:33+00:00,already held (book plus bet 2026-07-31 long),skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NRG,-14.1,1.0,short,skip,2026-08-11T11:44:33+00:00,"IPP/power volatility, no clean idiosyncratic catalyst",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,VEEV,+13.8,1.1,long,skip,2026-08-11T11:44:33+00:00,"software up-move, covered large-cap, thin read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,TPL,-13.7,1.7,short,skip,2026-08-11T11:44:34+00:00,"Texas Pacific Land high-vol royalty name, no clean readable catalyst",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,APTV,-13.0,1.5,short,skip,2026-08-11T11:44:34+00:00,"auto-supplier weakness is cyclical/secular (EV and tariff headwinds), not an overreaction to fade",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,COHR,+12.8,2.1,long,skip,2026-08-11T11:44:34+00:00,"optical/AI semi sector momentum, not name-specific",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,PSKY,+12.8,0.9,long,skip,2026-08-11T11:44:34+00:00,"Paramount-Skydance post-merger, messy special situation, no clean forward window",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,SWKS,+12.2,0.9,long,skip,2026-08-11T11:44:34+00:00,"semi sector move, thin name-specific read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CVNA,+12.1,1.1,long,skip,2026-08-11T11:44:34+00:00,"high-beta momentum, covered, chasing",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NOW,+11.6,0.7,long,skip,2026-08-11T11:44:35+00:00,"mega-cap software earnings pop, covered and arbitraged",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,WDAY,+11.6,0.9,long,skip,2026-08-11T11:44:35+00:00,"large-cap software pop, covered, thin read",skip,,,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,VRTX,+11.3,1.8,long,skip,2026-08-11T11:44:35+00:00,"5d +11% is diffuse (sector plus Crinetics deal), stock fell on its own Q2, no clean single catalyst",skip,,,,sp500
+2026-08-11T11:38:34+00:00,2026-08-10,AHCO,-51.8,7.0,short,skip,2026-08-11T11:44:35+00:00,"-52% is a real guidance slash / structural DME-reimbursement deterioration, not a quality-name overreaction, no forced-buyer mechanism",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,HZO,+48.4,27.0,long,skip,2026-08-11T11:44:35+00:00,"all-cash 53 buyout (Safe Harbor/Blackstone), spread ~1.75% = merger arb, capped upside, no directional edge",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,QNST,+41.1,2.7,long,skip,2026-08-11T11:44:35+00:00,"small-cap earnings pop +41%, thin float and wide spread, no differentiated mechanism",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,HTZ,+38.6,3.8,long,skip,2026-08-11T11:44:36+00:00,"meme/turnaround volatility, no durable readable catalyst",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,NABL,-36.6,3.6,short,skip,2026-08-11T11:44:36+00:00,"software guide-down, real deceleration in a thin-float small-cap, not an overreaction to fade",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,UTI,-35.3,3.3,short,skip,2026-08-11T11:44:36+00:00,"for-profit education small-cap drop, thin, no clean mechanism",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,LZ,-31.2,2.1,short,skip,2026-08-11T11:44:36+00:00,"LegalZoom guide-down, secular consumer-legal weakness, not a quality-name overreaction",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,MTRN,+30.9,1.0,long,skip,2026-08-11T11:44:36+00:00,"Materion +31% on flat 1.0x volume, no confirming flow, thin read",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,SEDG,-28.6,1.6,short,skip,2026-08-11T11:44:36+00:00,"SolarEdge chronic solar-sector weakness, not a fadeable overreaction",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,SEZL,-27.6,3.0,short,skip,2026-08-11T11:44:37+00:00,"Sezzle BNPL high-flyer momentum unwind, no clean mispricing to read",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,TWLO,+27.2,2.0,long,skip,2026-08-11T11:44:37+00:00,"Twilio earnings pop already +27%, chasing, generic beat no differentiated read",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,CRSR,+26.9,2.0,long,skip,2026-08-11T11:44:37+00:00,"Corsair small-cap pop, thin float, no durable catalyst",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,KTOS,+26.8,1.3,long,skip,2026-08-11T11:44:37+00:00,"Kratos defense-drone momentum +27%, chasing hot sector, already hold defense",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,PAYC,+26.5,1.6,long,skip,2026-08-11T11:44:37+00:00,"Paycom earnings pop +27%, covered, chasing",skip,,,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,CACI,+26.4,1.5,long,skip,2026-08-11T11:44:38+00:00,"defense-IT earnings pop +26%, already hold defense, same macro draw, chasing",skip,,,,tail
+2026-08-12T11:34:20+00:00,2026-08-11,TTD,-29.9,2.2,short,skip,2026-08-12T11:41:15+00:00,already live: short bet registered 2026-08-10,skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,APP,-24.1,1.3,short,skip,2026-08-12T11:41:16+00:00,first-ever guidance miss + downgrades but still 53% growth/66% margin; short a hypergrower on one miss or buy a broken high-flyer both coin-flips - ambiguous,skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,ABNB,+23.4,2.3,long,skip,2026-08-12T11:41:16+00:00,"large-cap earnings pop, arbitraged, extended - thin read",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,HONA,-23.4,1.6,short,skip,2026-08-12T11:41:16+00:00,"Honeywell Aerospace spinoff, new-listing dislocation, no clean basis",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,DVA,-21.8,1.4,short,skip,2026-08-12T11:41:15+00:00,already live: long bet + book position (2026-08-07),skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CRL,+20.5,1.4,long,take,2026-08-12T11:40:59+00:00,Q2 beat 3.02 vs 2.74 + RAISED FY; FIRST organic growth since Q3'23 and DSA book-to-bill at 4-yr high = CRO demand inflection -> fast momentum-continuation,taken,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,WDC,-20.2,0.8,short,skip,2026-08-12T11:41:16+00:00,memory-cycle macro drop on below-avg volume (0.8x) - not name-specific,skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,NEM,+19.9,1.0,long,skip,2026-08-12T11:41:16+00:00,"gold-miner commodity beta on gold rally - macro, not name-specific",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,DDOG,-14.4,1.1,short,skip,2026-08-12T11:41:17+00:00,"beat+raised guide but sold 17-21% on largest AI customer usage cut + Q3 decel = real forward concern, direction ambiguous, not clean overreaction",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,APA,+13.5,1.2,long,skip,2026-08-12T11:41:17+00:00,"oil E&P, crude/commodity beta - macro",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PODD,-13.3,1.0,short,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-08-06,skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CDW,-12.1,0.7,short,skip,2026-08-12T11:41:17+00:00,"IT-reseller drop on below-avg volume (0.7x) - thin, low conviction",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PSKY,+11.9,0.7,long,skip,2026-08-12T11:41:17+00:00,"Paramount Skydance merger-arb noise, low vol (0.7x) - deal-driven, no edge",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,VEEV,+11.7,1.1,long,skip,2026-08-12T11:41:17+00:00,"large-cap SaaS earnings pop, arbitraged",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,SNDK,-11.0,0.6,short,skip,2026-08-12T11:41:17+00:00,"memory-cycle drop on low vol (0.6x) - macro, thin",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,HST,-10.8,1.6,short,skip,2026-08-12T11:41:18+00:00,"Host Hotels REIT - rate/macro sensitive, no differentiated read",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,VRTX,+10.6,0.7,long,skip,2026-08-12T11:41:18+00:00,"large-cap biopharma pop on low vol (0.7x), arbitraged",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CVS,-10.5,1.1,short,skip,2026-08-12T11:41:18+00:00,"CVS Health, well-covered, no differentiated read vs consensus",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,BKNG,+9.6,0.6,long,skip,2026-08-12T11:41:18+00:00,"Booking large-cap pop on low vol (0.6x), arbitraged",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,UBER,+9.1,1.2,long,skip,2026-08-12T11:41:18+00:00,"Q2 rev + guide light, stock fell on print; 5d-up is a bounce - mixed mega-cap, arbitraged",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,COR,+9.0,1.0,long,skip,2026-08-12T11:41:19+00:00,"Cencora drug distributor, defensive, arbitraged",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PSX,+9.0,1.1,long,skip,2026-08-12T11:41:19+00:00,"Phillips 66 refiner - crack-spread/commodity beta, macro",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,GOOGL,-9.0,0.9,short,skip,2026-08-12T11:41:19+00:00,"Alphabet mega-cap - most-arbitraged name, no edge",skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,ISRG,+8.9,1.0,long,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-07-22,skip,,,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,LLY,+8.9,0.9,long,skip,2026-08-12T11:41:19+00:00,"Eli Lilly mega-cap GLP-1, arbitraged",skip,,,,sp500
+2026-08-12T11:35:12+00:00,2026-08-11,HTZ,+62.3,5.7,long,skip,2026-08-12T11:41:32+00:00,"meme/short-squeeze rip (vol 5.7x), no fundamental mechanism, uninvestable friction",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,HZO,+45.8,7.5,long,skip,2026-08-12T11:41:32+00:00,"MarineMax thin-float spike (vol 7.5x) - illiquid, no clean read",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,UTI,-39.6,2.9,short,skip,2026-08-12T11:41:33+00:00,"for-profit education small-cap - no differentiated read, small-cap friction",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,NABL,-39.5,2.0,short,skip,2026-08-12T11:41:33+00:00,"N-able earnings collapse = real deterioration/guidance cut, small-cap, not overreaction",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,LZ,-35.2,1.1,short,skip,2026-08-12T11:41:33+00:00,"LegalZoom broken-story drop - thin, no edge",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,QNST,+33.7,3.2,long,skip,2026-08-12T11:41:33+00:00,"QuinStreet small-cap performance-marketing spike (vol 3.2x) - illiquid, thin read",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,TWLO,+31.9,1.7,long,skip,2026-08-12T11:41:33+00:00,"beat+raise but already ripped +24% to ~239 = at analyst PTs, move already realized/extended",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,SEDG,-31.7,1.2,short,skip,2026-08-12T11:41:34+00:00,"SolarEdge - solar-policy/structural decline, no edge",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,P,+30.3,2.3,long,skip,2026-08-12T11:41:34+00:00,"small-cap spike (vol 2.3x), unclear catalyst, illiquid",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,DAVE,-27.8,0.9,short,skip,2026-08-12T11:41:34+00:00,Dave Inc fintech small-cap drop on below-avg vol - thin,skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,SEZL,-27.6,2.1,short,skip,2026-08-12T11:41:34+00:00,"Sezzle BNPL small-cap high-vol swing (2.1x) - illiquid, no edge",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,CACI,+27.4,1.1,long,take,2026-08-12T11:40:58+00:00,"fiscal Q4 blowout: EPS 8.91 vs 7.32 + FY27 guide 17% above consensus (EPS 32.96-33.86 vs 28.16, rev 10.65-10.85B vs 9.55B), funded backlog +29% -> multi-week estimate revisions; defense-IT compounder not a meme",taken,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,COLL,-27.3,3.6,short,skip,2026-08-12T11:41:34+00:00,"Collegium small-cap pharma drop (vol 3.6x) - binary/friction, no differentiated read",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,FOUR,-26.2,1.3,short,skip,2026-08-12T11:41:34+00:00,"beat but LOWERED FY guide + Middle East disruption + leverage concern = real guidance cut, not overreaction",skip,,,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,EXTR,-26.1,0.7,short,skip,2026-08-12T11:41:35+00:00,"Extreme Networks drop on low vol (0.7x) - thin, low conviction",skip,,,,tail
+2026-08-13T11:35:41+00:00,2026-08-12,MNST,-51.2,1.5,short,skip,2026-08-13T11:40:19+00:00,"-51pct is a 2-for-1 split artifact (8/10); real move ~-6pct on margin miss, rich 40x P/E — no tradable dislocation",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,TTD,-28.9,1.6,short,skip,2026-08-13T11:40:19+00:00,already open short bet (2026-08-10); not re-betting,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,APP,-27.3,1.4,short,skip,2026-08-13T11:40:20+00:00,"first guidance miss since IPO but tiny top-line miss (1.92 vs 1.94B); direction two-sided (AI-model deceleration vs overdone), crowded/volatile — thin read",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,SMCI,+24.0,3.8,long,skip,2026-08-13T11:40:20+00:00,already open long bet (2026-07-22); not re-betting,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,ABNB,+18.1,1.7,long,take,2026-08-13T11:40:07+00:00,"Q2 beat (EPS 1.37 vs 1.26, rev 3.61B vs 3.58B) + RAISED FY guide (mid-teens rev, EBITDA margin >=35.5pct); broad-based travel demand — clean beat-and-raise, PED long",taken,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,HONA,-17.6,1.5,short,skip,2026-08-13T11:40:20+00:00,"Honeywell spinoff/newly-listed — no price history, forced index flows — unreadable",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,MPC,+17.0,1.2,long,skip,2026-08-13T11:40:20+00:00,"energy/refiner macro draw (record crack spreads + Iran); sector beta not name-specific, +80pct YTD extended",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,APA,+15.3,1.3,long,skip,2026-08-13T11:40:20+00:00,energy macro draw (oil/Iran); sector beta not name-specific,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,DDOG,-14.9,1.5,short,skip,2026-08-13T11:40:20+00:00,"beat+raise but largest AI customer (likely OpenAI) cutting Q3 usage — real deceleration/concentration risk; two-sided, not a clean overreaction",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,MRNA,+13.2,1.2,long,skip,2026-08-13T11:40:20+00:00,already open short bet (2026-07-13); not re-betting,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,VEEV,+13.1,1.2,long,skip,2026-08-13T11:40:21+00:00,no confirmed fresh catalyst (earnings late-Aug); +13pct unexplained — thin read,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,NEM,+13.0,1.0,long,skip,2026-08-13T11:40:21+00:00,"gold/commodity macro draw, vol 1.0x (no volume confirmation) — not name-specific",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,LITE,+12.9,2.6,long,skip,2026-08-13T11:40:21+00:00,"Lumentum AI-optical, strong vol but no confirmed earnings read this run — thin",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,WDC,-12.5,0.8,short,skip,2026-08-13T11:40:21+00:00,down on below-avg vol 0.8x (no conviction); no clean catalyst read,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,PSX,+11.4,1.0,long,skip,2026-08-13T11:40:21+00:00,"energy/refiner macro draw; sector beta, extended",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,LDOS,+10.7,1.1,long,skip,2026-08-13T11:40:21+00:00,"defense-IT, redundant with CACI/LMT/HII/RTX exposure already carried; correlated draw",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,COP,+10.7,1.0,long,skip,2026-08-13T11:40:21+00:00,energy macro draw (oil/Iran); sector beta,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,UBER,+10.5,1.1,long,skip,2026-08-13T11:40:22+00:00,earnings move but catalyst not confirmed cleanly this run — no bet without the read,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,HPE,+10.5,1.3,long,skip,2026-08-13T11:40:22+00:00,no clean confirmed catalyst; covered large-cap — thin read,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,TPL,-10.2,1.8,short,skip,2026-08-13T11:40:22+00:00,"rich royalty name -10pct, no clean mechanism",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,DXCM,+9.8,1.0,long,skip,2026-08-13T11:40:22+00:00,already open long bet (2026-08-03); not re-betting,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,HST,-9.3,1.1,short,skip,2026-08-13T11:40:32+00:00,"hotels -9pct, no name-specific catalyst — thin",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,VLO,+9.2,1.0,long,skip,2026-08-13T11:40:32+00:00,"energy/refiner macro draw; sector beta, extended",skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,CRL,+9.1,1.3,long,skip,2026-08-13T11:40:32+00:00,already open long bet (latest 2026-08-12); not re-betting,skip,,,,sp500
+2026-08-13T11:35:41+00:00,2026-08-12,TSCO,+9.0,1.7,long,skip,2026-08-13T11:40:32+00:00,"retail earnings, covered large-cap — thin read, no edge",skip,,,,sp500
+2026-08-13T11:36:25+00:00,2026-08-12,HTZ,+79.5,3.9,long,skip,2026-08-13T11:40:32+00:00,"meme/squeeze +79pct on 3.9x vol; no durable mechanism, high friction",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,HZO,+44.7,2.5,long,skip,2026-08-13T11:40:33+00:00,"boat retailer +44pct, no confirmed mechanism (buyout/earnings?) — unreadable tail",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,UTI,-39.5,1.9,short,skip,2026-08-13T11:40:33+00:00,"for-profit education -39pct, small-cap, no clean read",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,NABL,-35.1,2.2,short,skip,2026-08-13T11:40:33+00:00,"IT software -35pct, small-cap thin, no confirmed mechanism",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,QNST,+34.4,1.7,long,skip,2026-08-13T11:40:33+00:00,"digital-marketing +34pct tail, no confirmed mechanism — thin",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,P,+33.0,1.9,long,skip,2026-08-13T11:40:33+00:00,"ticker ambiguous/unidentified, no clean read",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,LZ,-33.0,1.5,short,skip,2026-08-13T11:40:33+00:00,"LegalZoom -33pct, small-cap, no confirmed mechanism",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,CACI,+31.3,1.4,long,skip,2026-08-13T11:40:33+00:00,already open long bet (2026-08-12); not re-betting,skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,HP,+29.1,1.6,long,skip,2026-08-13T11:40:34+00:00,driller — energy macro draw; sector beta,skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,COLL,-28.1,2.9,short,skip,2026-08-13T11:40:34+00:00,"pharma -28pct small-cap, no confirmed mechanism",skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,SEZL,-28.1,1.0,short,skip,2026-08-13T11:40:34+00:00,BNPL -28pct on vol 1.0x (no volume confirmation); thin small-cap,skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,TWLO,+27.6,1.7,long,take,2026-08-13T11:40:07+00:00,"Q2 beat (EPS 1.47, rev 1.5B record) + RAISED FY to 18pct + Q3 guide above Street + 5 analyst PT raises/Stifel upgrade to Buy; large-cap liquid — beat-and-raise drift, fast sleeve",taken,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,DAVE,-26.5,1.0,short,skip,2026-08-13T11:40:34+00:00,fintech -26pct on vol 1.0x (no confirmation); thin small-cap,skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,SITM,+25.3,1.0,long,skip,2026-08-13T11:40:34+00:00,+25pct on vol 1.0x (no volume confirmation on a big move = gappy); thin,skip,,,,tail
+2026-08-13T11:36:25+00:00,2026-08-12,DIOD,+25.1,0.9,long,skip,2026-08-13T11:40:34+00:00,"+25pct on vol 0.9x (below-avg, no confirmation); thin",skip,,,,tail
+2026-08-14T11:54:12+00:00,2026-08-13,MNST,-50.6,1.8,short,skip,2026-08-14T12:05:58+00:00,"-50.6% is the 2-for-1 stock split effective 8/11 (100% stock dividend) — mechanical price halving, not a real move; data artifact",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,SMCI,+33.3,2.8,long,skip,2026-08-14T12:05:58+00:00,already live: SMCI 21d post-earnings-drift bet open (7/22) — do not re-bet,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,ABNB,+22.1,1.4,long,skip,2026-08-14T12:05:58+00:00,"mega-cap post-earnings pop, heavily covered/arbitraged; no differentiated read",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,SNDK,+21.4,1.3,long,skip,2026-08-14T12:05:58+00:00,"NAND memory upcycle widely known and name already ran; momentum, no name-specific mispricing",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,WDAY,+21.3,3.7,long,skip,2026-08-14T12:05:59+00:00,"PRE-earnings run-up (reports ~8/27) on AI narrative; Morgan Stanley cut to Underweight; earnings event-risk inside window, no drift to ride",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,TPR,-20.7,4.0,short,take,2026-08-14T12:06:17+00:00,"beat (rev +8.9% to $1.88B in-line, non-GAAP EPS $1.32 +3.4% above cons) but -15% on FY27 rev guide $8.4-8.5B marginally below $8.47B est + Kate Spade -10% + tariff noise — punishment outsized vs a marginal guide trim",taken,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,MPC,+19.1,1.1,long,skip,2026-08-14T12:05:59+00:00,"refiner crack-spread MACRO rally (record 3-2-1 spread, +80% YTD); market-wide sector momentum, late, no name edge",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,MRNA,+18.2,1.5,long,skip,2026-08-14T12:05:59+00:00,already live: MRNA short bet open (7/13) — leave thesis to score,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,AXON,+17.8,1.0,long,skip,2026-08-14T12:05:59+00:00,"high-valuation momentum post-beat, well-covered; thin read",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,TTD,-17.6,1.9,short,skip,2026-08-14T12:05:59+00:00,already live: TTD short bet open (8/10),skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,VEEV,+16.0,1.6,long,skip,2026-08-14T12:05:59+00:00,"large-cap SaaS, covered; no differentiated read",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,PLTR,+14.8,0.8,long,skip,2026-08-14T12:05:59+00:00,"below-average volume (0.8x) momentum, no fresh catalyst",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,HPE,+14.1,1.5,long,skip,2026-08-14T12:06:00+00:00,covered large-cap; thin read,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,PSX,+13.2,0.9,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,VLO,+13.2,0.8,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,DELL,+13.0,1.3,long,skip,2026-08-14T12:06:00+00:00,covered large-cap AI-server narrative; thin read,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,APO,+12.2,1.0,long,skip,2026-08-14T12:06:00+00:00,already live: APO short bet open (6/28); alt-manager sector move,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,BX,+11.9,0.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move (rate-cut narrative), market-wide, below-avg volume",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,KKR,+11.8,1.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move, market-wide",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,CSGP,+11.7,1.0,long,skip,2026-08-14T12:06:01+00:00,covered; no differentiated read,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,INTU,+11.3,1.1,long,skip,2026-08-14T12:06:01+00:00,"large-cap, covered; thin read",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,GDDY,+11.2,1.5,long,skip,2026-08-14T12:06:01+00:00,covered; no edge,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,HPQ,+11.1,1.5,long,skip,2026-08-14T12:06:01+00:00,covered large-cap; thin read,skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,LRCX,+10.2,0.8,long,skip,2026-08-14T12:06:01+00:00,"semicap momentum, below-avg volume, covered",skip,,,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,DXCM,+10.2,0.9,long,skip,2026-08-14T12:06:01+00:00,already live: DXCM 21d post-earnings-drift bet open (8/3),skip,,,,sp500
+2026-08-14T11:54:55+00:00,2026-08-13,HZO,+48.1,2.5,long,skip,2026-08-14T12:06:15+00:00,"boat-retailer +48% illiquid pop, no clear named mechanism; tail friction fails the higher bar",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,QNST,+36.3,1.2,long,skip,2026-08-14T12:06:15+00:00,"small-cap momentum, no differentiated read; tail friction",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,P,+34.5,1.7,long,skip,2026-08-14T12:06:15+00:00,"micro/tail momentum, unclear catalyst, illiquid",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,TWLO,+29.1,1.1,long,skip,2026-08-14T12:06:15+00:00,earnings pop already extended; no name-specific edge,skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,DOCS,+28.7,1.3,long,skip,2026-08-14T12:06:15+00:00,"8/7 earnings pop already ran +100% AH / ~40% session — too extended to chase, drift priced",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,SEZL,-27.3,1.0,short,skip,2026-08-14T12:06:15+00:00,"BNPL selloff, no clear overreaction read; avg volume, tail friction",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,CRSR,+26.8,1.4,long,skip,2026-08-14T12:06:15+00:00,"gaming-hardware pop, tail, no durable named mechanism",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,ONTO,+25.7,0.8,long,skip,2026-08-14T12:06:16+00:00,"semicap tail, below-avg volume, no edge",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,NABL,-24.4,2.6,short,skip,2026-08-14T12:06:16+00:00,"software guide-down; no differentiated overreaction read, tail friction",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,TNDM,+23.1,0.7,long,take,2026-08-14T12:06:16+00:00,"profitability inflection medtech: op margin -21.5%->-5.4% YoY + adj EBITDA $6.42M vs $3.52M cons + PayGo recurring-rev shift (10% of shipments, 45% formulary) — named mechanism re-rating, not just a beat",taken,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,REZI,-21.5,3.1,short,skip,2026-08-14T12:06:16+00:00,"Resideo earnings miss; no clean overreaction read, tail friction",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,PBF,+21.4,0.7,long,skip,2026-08-14T12:06:16+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,CELH,+21.1,0.8,long,skip,2026-08-14T12:06:16+00:00,"energy-drink pop, below-avg volume, covered mid-cap",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,NOG,+20.6,0.7,long,skip,2026-08-14T12:06:16+00:00,"oil&gas momentum with energy complex, below-avg volume",skip,,,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,LQDA,-19.4,3.2,short,skip,2026-08-14T12:06:17+00:00,"biotech binary/litigation (Liquidia vs United Therapeutics); binary legal risk, not readable drift",skip,,,,tail
