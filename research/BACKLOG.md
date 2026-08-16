@@ -97,9 +97,9 @@ P1 = code + ledger closes + closing verdict + `book retire`, ONE commit, that se
   PUSHED: `scripts/build_public_seed.py` (private-only tool, EXCLUDED from its own output) copies
   the tracked tree, applies exact-match redaction rules (aborts unless each matches exactly once)
   then a zero-tolerance redlist verifier; the seed is ONE "history begins here" commit at
-  github.com/guillearria/swing-lab — PRIVATE, suite 219 green inside the seed tree. (4) **THE ONE
-  REMAINING OWNER CLICK: review that repo, then Settings → change visibility → Public.** If
-  commits land here first, re-run the script and force-push the refreshed seed before flipping.
+  github.com/guillearria/swing-lab — suite 219 green inside the seed tree. (4) **DONE 2026-08-16 —
+  the owner reviewed the seed and flipped swing-lab PUBLIC. This repo IS that seed; work continues
+  here, and the old private repo is the frozen evidence archive.**
   **CUTOVER SEQUENCE after seed:** enable Pages on the new repo (`docs/` on the default branch —
   public repo = free Pages); repoint the 3 cloud routines (list + patch in the SAME session, per
   SKILL); delete `publish-ledger.yml` + the `LEDGER_DEPLOY_KEY` secret + the mirror repo (the
@@ -112,6 +112,16 @@ P1 = code + ledger closes + closing verdict + `book retire`, ONE commit, that se
   seed is a new root.] Protection facts: strangers can never
   push to a public repo (PR-only, owner merges); Actions keeps the first-time-contributor approval
   default; issues can be disabled if unwanted.
+  **CUTOVER STATUS 2026-08-16 (all agent-side steps DONE):** Pages ENABLED —
+  https://guillearria.github.io/swing-lab/ serves `docs/` from master; all 3 cloud routines
+  REPOINTED via RemoteTrigger with full-body echoes verified (settle tonight 22:34Z is the first
+  run against this repo; read Monday pre-market; watchdog 19:13Z — its 36h ledger-commit window
+  carries over cleanly since the seed commit is dated today), and the read prompt's scope line now
+  uses the cleansed phrasing; local working clone at `~/code/swing-lab` with the gitignored
+  privates copied over; the old mirror page now redirects here; HQ boards updated. REMAINING
+  (owner, after tonight's first green settle here): archive the old private repo on GitHub
+  (Settings → Archive), and optionally delete the retired mirror repo once the redirect has
+  outlived any shared links.
   **X layer (P7b) legal frame (researched 2026-08-15; public-source research, NOT legal advice):**
   the publisher's exclusion (Lowe v. SEC 1985) keeps impersonal + bona fide + REGULAR-cadence
   publication outside "investment adviser" status — paid or free. Every modern enforcement case is
@@ -134,6 +144,12 @@ P1 = code + ledger closes + closing verdict + `book retire`, ONE commit, that se
   regenerated, and the mirror updated directly. Residuals kept in the seed BY DESIGN: sell-side
   "Morgan Stanley note" mentions (market prose), the generic employee-stock-plan lesson in SKILL,
   and the SPCX conflict-of-interest exclusion — the accepted weak inference, zero figures.
+
+- [ ] **P9 — README voice pass (owner request, 2026-08-16).** The public preamble was written
+  owner-facing and reads as the agent narrating the project's inner workings. Rewrite the top of
+  `README.md` for a public reader: neutral voice, state what the project is and shows, drop the
+  process narration. KEEP: the disclaimer block, the edge-graduation rule, the license line.
+  Display/voice only — no rule or contract changes ride along.
 
 - [x] **P0 — log layer (2026-08-14b):** branch merged to master; [ARC 5 #12a] appended; this
   roadmap; READ_LOOP transition banner; read-trigger prompt verified delegating to the repo doc.

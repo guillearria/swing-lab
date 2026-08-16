@@ -1,4 +1,4 @@
-# claude_trader — operating contract
+# swing_lab — operating contract
 
 ## What this is
 A trade-signal research project. GOAL: find real, durable edges and trade them —
@@ -124,7 +124,7 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   it on a single Form 4 — real, but it never fired through openinsider), and **IPO-allocation
   filings are the larger false-positive mode** (5 of 18 candidates; exclude filings priced at an
   offer price near an IPO date). FINDINGS [ARC 3 #1b]–[ARC 3 #1d].
-- **SCOPE — TWO REALMS, and this repo is only one of them [2026-08-02].** claude-trader is the
+- **SCOPE — TWO REALMS, and this repo is only one of them [2026-08-02].** swing-lab (né claude-trader) is the
   **SHORT-SWING** realm: days-to-weeks reads, benchmark-scored, accruing toward a verdict.
   **LONG-TERM WEALTH lives in its own FULLY-PRIVATE repo** — its pre-registered policy, its
   holdings, and all personal-finance context stay there and are NEVER restated in this repo

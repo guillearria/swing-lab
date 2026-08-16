@@ -30,7 +30,7 @@ _CACHE_600 = "research/data/sp600_current.csv"
 def sp500() -> list[str]:
     """Current S&P 500 tickers, yfinance-formatted. Cache fallback if egress is blocked; [] only if both fail."""
     try:
-        r = requests.get(_SP500_CSV, headers={"User-Agent": "claude_trader"}, timeout=20)
+        r = requests.get(_SP500_CSV, headers={"User-Agent": "swing_lab"}, timeout=20)
         r.raise_for_status()
         reader = csv.DictReader(io.StringIO(r.text))
         syms = [row["Symbol"].strip().replace(".", "-")  # BRK.B -> BRK-B

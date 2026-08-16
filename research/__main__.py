@@ -1,4 +1,4 @@
-"""claude_trader — research control panel.
+"""swing_lab — research control panel.
 
   python3 -m research          live status: scoreboard + forward bets + signal
   python3 -m research help     the command index

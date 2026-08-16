@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Daily SETTLE for claude_trader. The cloud /schedule "settle" routine is the PRIMARY path
+# Daily SETTLE for swing_lab. The cloud /schedule "settle" routine is the PRIMARY path
 # (laptop is often off); this same script runs there and locally. It scores matured forward
 # bets + movers, then commits the updated ledgers so unattended runs land in the audit
 # trail. Generation (new bets) is the separate "read" routine — see research/READ_LOOP.md.

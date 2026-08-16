@@ -21,7 +21,7 @@ from zoneinfo import ZoneInfo
 log = logging.getLogger(__name__)
 
 CHART = "https://query1.finance.yahoo.com/v8/finance/chart/{sym}"
-UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) claude_trader research"}
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) swing_lab research"}
 TIMEOUT_S = 20
 _SECONDS = {"d": 86_400, "mo": 86_400 * 31, "y": 86_400 * 366}
 
