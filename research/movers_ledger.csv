@@ -744,3 +744,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-14T11:54:55+00:00,2026-08-13,CELH,+21.1,0.8,long,skip,2026-08-14T12:06:16+00:00,"energy-drink pop, below-avg volume, covered mid-cap",skip,,,,tail
 2026-08-14T11:54:55+00:00,2026-08-13,NOG,+20.6,0.7,long,skip,2026-08-14T12:06:16+00:00,"oil&gas momentum with energy complex, below-avg volume",skip,,,,tail
 2026-08-14T11:54:55+00:00,2026-08-13,LQDA,-19.4,3.2,short,skip,2026-08-14T12:06:17+00:00,"biotech binary/litigation (Liquidia vs United Therapeutics); binary legal risk, not readable drift",skip,,,,tail
+2026-08-17T11:36:53+00:00,2026-08-14,SNDK,+35.4,1.2,long,skip,2026-08-17T11:42:04+00:00,"AI-NAND investor-day 2028-30 guide + JPM upgrade; up 6x YTD, entire memory complex moved together = sector beta chase, no name-specific mispricing",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,SMCI,+28.0,1.4,long,skip,2026-08-17T11:42:20+00:00,already a live bet (7/22 21d); not re-betting the same name,skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,TPR,-20.6,2.6,short,skip,2026-08-17T11:42:20+00:00,already a live bet (8/14 21d); not re-betting,skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,STX,+19.8,0.9,long,skip,2026-08-17T11:42:05+00:00,"storage/HDD sector rally with the memory complex (SNDK/WDC/MU) = market-wide beta, thin read",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,MPC,+19.2,1.0,long,skip,2026-08-17T11:42:05+00:00,refiner sector rally (crack spreads); whole complex moved (PSX/VLO/FANG) = sector beta,skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,WDC,+17.2,1.2,long,skip,2026-08-17T11:42:05+00:00,"same memory/storage re-rating as SNDK/STX = sector beta, not name-specific",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,PSX,+14.6,1.0,long,skip,2026-08-17T11:42:05+00:00,"refiner sector rally, market-wide crack-spread move = beta",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,VLO,+14.5,0.7,long,skip,2026-08-17T11:42:05+00:00,"refiner sector rally = sector beta, no name-specific edge (vol 0.7x)",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,COHR,-14.1,1.6,short,skip,2026-08-17T11:42:30+00:00,"Coherent optics/networking selloff (guidance) = down-move, no overreaction-long thesis",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,AKAM,+13.1,0.6,long,skip,2026-08-17T11:42:20+00:00,"Akamai low-volume drift (0.6x), no clean name catalyst = thin",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,KKR,+11.1,1.4,long,skip,2026-08-17T11:42:19+00:00,alt-asset managers rallying together (KKR/APO) on rate/credit sentiment = sector beta,skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,MU,+10.7,0.6,long,skip,2026-08-17T11:42:05+00:00,"memory-complex beta; already tested MU in fast sleeve (settled -8% vs SOXX), no fresh name catalyst",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,WDAY,+10.6,1.9,long,skip,2026-08-17T11:42:18+00:00,"Silver Lake ~43B buyout-talk rumor (ongoing, no guarantee), halted for volatility = M&A event/rumor, round-trip risk if talks break",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,APO,+10.5,0.6,long,skip,2026-08-17T11:42:19+00:00,"alt-asset manager beta with KKR = sector move, no name-specific catalyst (vol 0.6x)",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,TER,+10.4,0.5,long,skip,2026-08-17T11:42:19+00:00,"Teradyne semis-test sympathy, low vol 0.5x = thin beta read",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,PSKY,+10.3,0.9,long,skip,2026-08-17T11:42:20+00:00,"Paramount Skydance post-merger media, no clean readable forward catalyst = low conviction skip",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,HPE,+10.3,0.7,long,skip,2026-08-17T11:42:19+00:00,"HPE AI-server/networking sympathy = thin, no fresh name catalyst (vol 0.7x)",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,OKE,+9.9,0.7,long,skip,2026-08-17T11:42:20+00:00,Oneok midstream-energy sympathy = beta (vol 0.7x),skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,FSLR,-9.8,0.9,short,skip,2026-08-17T11:42:30+00:00,"First Solar solar/policy-driven selloff = no clean long thesis, long-only regime",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,ULTA,-9.6,1.1,short,skip,2026-08-17T11:42:31+00:00,Ulta retail selloff into earnings = no long thesis,skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,NTAP,+9.3,1.0,long,skip,2026-08-17T11:42:05+00:00,"storage sector sympathy in the memory move = beta, thin",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,DDOG,+9.2,0.9,long,skip,2026-08-17T11:42:19+00:00,"Datadog software strength, no fresh name catalyst (vol 0.9x) = thin",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,APP,-9.0,0.7,short,skip,2026-08-17T11:42:31+00:00,"AppLovin high-beta adtech pullback = no long thesis, long-only",skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,FANG,+8.3,0.5,long,skip,2026-08-17T11:42:06+00:00,E&P/energy sector sympathy in the refiner-oil rally = beta (vol 0.5x),skip,,,,sp500
+2026-08-17T11:36:53+00:00,2026-08-14,DELL,+8.2,0.6,long,skip,2026-08-17T11:42:19+00:00,Dell AI-server sympathy = beta/thin (vol 0.6x),skip,,,,sp500
+2026-08-17T11:37:38+00:00,2026-08-14,HZO,+45.8,4.0,long,skip,2026-08-17T11:42:18+00:00,"Blackstone/Safe Harbor 53 all-cash deal; price ~52 = merger arb (deal spread + regulatory risk), not a directional read",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,P,+31.2,1.5,long,skip,2026-08-17T11:42:32+00:00,"single-letter small-cap pop, no clean readable catalyst = thin (tail bar not met)",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,NABL,-31.1,1.8,short,skip,2026-08-17T11:42:31+00:00,"N-able -31pct guidance-cut selloff (tail) = justified drop, no overreaction-long",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,REZI,-21.4,1.9,short,skip,2026-08-17T11:42:31+00:00,Resideo earnings/guidance selloff (tail) = no clean long thesis,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,PARR,+21.2,0.7,long,skip,2026-08-17T11:42:06+00:00,Par Pacific refiner in the sector-wide crack rally = beta,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,CAVA,+19.2,1.0,long,take,2026-08-17T11:42:04+00:00,"Q2 beat, 9% SSS (best among restaurants reporting), recovering from an overdone Cyclospora food-safety scare that pinned it below all MAs into the print; washed-out chart re-rating, drift live (60.81->74.42 post-gap)",taken,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,HP,+19.1,0.9,long,skip,2026-08-17T11:42:06+00:00,Helmerich & Payne driller/oil-services in the energy-complex rally = sector beta,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,LIF,-19.0,1.6,short,skip,2026-08-17T11:42:31+00:00,"Life360-class guidance selloff (tail) = thin, no long thesis",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,HLIT,+17.6,2.1,long,skip,2026-08-17T11:42:32+00:00,"Harmonic small-cap pop (tail), wide spread + no differentiated name mechanism = tail bar not met",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,LQDA,-17.5,1.9,short,skip,2026-08-17T11:42:31+00:00,"Liquidia biotech binary/legal-driven selloff (tail) = binary risk, skip",skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,PBF,+16.9,0.8,long,skip,2026-08-17T11:42:06+00:00,refiner sector rally (tail) = sector beta; tail bar (name mechanism) not met,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,SM,+16.9,1.2,long,skip,2026-08-17T11:42:06+00:00,SM Energy E&P in the energy-complex rally = sector beta,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,ACM,-16.8,1.2,short,skip,2026-08-17T11:42:32+00:00,Aecom engineering selloff (tail) = no long thesis,skip,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,HRB,+16.7,1.6,long,take,2026-08-17T11:42:04+00:00,Q4 beat + FY27 guide above consensus (+4.8% mid) + 10pct dividend raise + buyback; multi-pronged beat-and-raise,taken,,,,tail
+2026-08-17T11:37:38+00:00,2026-08-14,QDEL,+16.4,0.7,long,skip,2026-08-17T11:42:32+00:00,"QuidelOrtho beat but GUIDANCE CUT (China headwinds) + FCF guide withdrawn = thesis-breaker, not a clean drift",skip,,,,tail
