@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 CATALOGUE = "research/bets_catalogue.csv"
 FIELDS = ["logged_at", "ticker", "direction", "horizon_d", "benchmark",
           "thesis", "status", "entry_date", "entry", "excess_pct", "pattern_tag", "notified"]
-# notified = UTC stamp of the 🚨 that ANNOUNCED this settlement, written only after telegram
+# notified = UTC stamp of the 📊 that ANNOUNCED this settlement, written only after telegram
 # confirms the send. Blank on a closed row = the announcement never landed → the next run
 # re-sends it. Before this column the retry set was "rows that were open when settle started",
 # so a send that failed AFTER _save lost the message forever (that is how MU's -8.65%, the
@@ -117,8 +117,10 @@ def add(rows: list[dict], ticker: str, direction: str, horizon_d: int,
                  "horizon_d": str(horizon_d), "benchmark": bench.upper(), "thesis": thesis,
                  "status": "open", "entry_date": "", "entry": "", "excess_pct": "",
                  "pattern_tag": tag, "notified": ""})
-    print(f"LOGGED {direction} {ticker.upper()} {horizon_d}d vs {bench.upper()}"
-          f"{' #' + tag if tag else ''} @ {rows[-1]['logged_at']} "
+    # "bet #N" = the row's catalogue ordinal (append-only, so it never shifts) — the number
+    # the read leg's 🟢 NEW BET card carries [MSG v3], giving the owner a growing count.
+    print(f"LOGGED bet #{len(rows)} — {direction} {ticker.upper()} {horizon_d}d vs "
+          f"{bench.upper()}{' #' + tag if tag else ''} @ {rows[-1]['logged_at']} "
           f"(median ${dv / 1e6:,.1f}M/day)")
     return True
 
@@ -185,7 +187,7 @@ def is_fast(r: dict) -> bool:
 
 
 def unannounced(rows: list[dict]) -> list[dict]:
-    """Settled bets whose 🚨 was never confirmed delivered. PURE (testable).
+    """Settled bets whose 📊 was never confirmed delivered. PURE (testable).
 
     Derived from the LEDGER, not from what this process happened to settle — so a message
     lost to a crash, a dead token or a telegram outage is picked up by the NEXT run instead
@@ -195,21 +197,27 @@ def unannounced(rows: list[dict]) -> list[dict]:
 
 
 def settle_msg(done: list[dict], s: tuple | None) -> str:
-    """Telegram text for newly settled bets + the running pooled tally. PURE (testable).
-    A settling SHORT is announced (diagnostic row) but the tally line is always the long-only
-    verdict population [ARC 5 #12a] — s=None (no longs settled yet) must not kill the announce."""
-    lines = [f"SETTLED {r['direction']} {r['ticker']} {r['horizon_d']}d vs "
-             f"{r['benchmark']}: {r['excess_pct']}%"
-             + (" (short — diagnostic, outside the verdict pool)"
-                if r.get("direction") == "short" else "")
-             for r in done]
-    bar = f"(bar N≥{BAR_N}, median>+{BAR_MEDIAN:.0f}%, beat>{BAR_BEAT:.0f}%)"
+    """Telegram text for newly settled bets — 📊 SCORED, the moment-of-result pulse. PURE.
+
+    v3 [MSG 2026-08-18]: 🚨 now means FAILURE ONLY (heartbeat/watchdog); a routine result is
+    the experiment visibly working and dresses like it. Plain counts, no stats vocabulary —
+    Σ/p/α stay CLI-side. A settling SHORT is announced (diagnostic row) but the tally line is
+    always the long-only verdict population [ARC 5 #12a] — s=None (no longs settled yet) must
+    not kill the announce."""
+    lines = []
+    for r in done:
+        verdict = "beat ✓" if float(r["excess_pct"]) > 0 else "miss"
+        short = (" (short — diagnostic, outside the pool)"
+                 if r.get("direction") == "short" else "")
+        lines.append(f"📊 SCORED — {r['ticker']} {r['horizon_d']}d vs {r['benchmark']}: "
+                     f"{r['excess_pct']}%, {verdict}{short}")
     if s:
         n, _, md, beat = s
-        lines.append(f"pooled long-only [#12a]: n={n} median {md:+.2f}% beat {beat:.0f}% {bar}")
+        c = round(n * beat / 100)          # beat% round-trips exactly back to its count
+        lines.append(f"🧪 now {n} of {BAR_N} settled · {c} of {n} beat · median {md:+.1f}%")
     else:
-        lines.append(f"pooled long-only [#12a]: 0 settled {bar}")
-    return "🚨 " + "\n".join(lines)  # 🚨 = a REAL scored result (vs the daily ✅ heartbeat)
+        lines.append(f"🧪 0 of {BAR_N} settled (long-only)")
+    return "\n".join(lines)
 
 
 def next_maturity(rows: list[dict]) -> tuple[str, str] | None:
@@ -385,7 +393,7 @@ def show(rows: list[dict]) -> None:
 
 
 def run(argv: list[str]) -> int:
-    """Returns a shell exit code — nonzero when scoring or the 🚨 push failed, so
+    """Returns a shell exit code — nonzero when scoring or the 📊 push failed, so
     scripts/daily.sh counts a LOST ANNOUNCEMENT as a failed step (it previously exited 0
     on a dropped message and no heartbeat ever fired). Mirrors digest.run."""
     rows = _load()

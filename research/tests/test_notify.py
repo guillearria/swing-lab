@@ -84,9 +84,9 @@ def test_bets_settle_msg_format():
     done = [{"direction": "long", "ticker": "ACN", "horizon_d": "63",
              "benchmark": "XLK", "excess_pct": "+4.20"}]
     msg = B.settle_msg(done, (1, 4.2, 4.2, 100.0))
-    assert msg.startswith("🚨")           # attention marker: real scored result
-    assert "SETTLED long ACN 63d vs XLK: +4.20%" in msg
-    assert "n=1 median +4.20% beat 100%" in msg
+    assert msg.startswith("📊")           # v3 [MSG 2026-08-18]: 🚨 means failure ONLY
+    assert "SCORED — ACN 63d vs XLK: +4.20%, beat ✓" in msg
+    assert "🧪 now 1 of 30 settled · 1 of 1 beat · median +4.2%" in msg
 
 
 def test_heartbeat_msg_clean_vs_failure():

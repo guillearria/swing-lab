@@ -191,22 +191,24 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   locally. Generation runs in the separate cloud **read** routine (`READ_LOOP.md`, PRE-MARKET
   weekdays — alerts must land before the open, never after the close).
   **Telegram contract: every scheduled run pushes ONE message — SILENCE = BROKEN; a clean weekday =
-  exactly ONE 📋 (settle, the day's full state photo) + ONE 📖 (read, the MORNING BRIEF)
-  [slim reshaped 2026-08-06 on user utility — FINDINGS [MSG]].**
-  Both come from `research/digest.py` (HTML: fail-soft per silo, DO-NOW list with paste-ready
-  commands) — **digest v2 since [ARC 5 #12a] (code P4): BOTH legs LEAD with the 🎯 POOL
-  SCOREBOARD (n settled long-only · median · beat · Σ pp vs own benchmarks · Wilcoxon p ·
-  distance to bar; 🏁 milestone banners at n=10/20/30, stateless vs git HEAD); the 💰
-  SINCE-LAST band and the live-book blocks retired with the book [#12].** Settle's 📋 = the
-  day's full photo: scoreboard + Δ-since-HEAD + DO-NOW + orders + bets/movers state + the
-  mix(last-15) mirror. Read's 📖 (`--slim`) = scoreboard + DO-NOW + run note + the 🟢 SYSTEM
-  TAKE (informational — no broker leg). READ_LOOP step 5 (rewritten P6): 🟢 card(s) + ONE
-  counterfactual order per take-carrying run; settle's `orders check` resolves pending orders
-  against real bars daily (the broker-nag machinery — `placed_at`, `orders.booked`, GTC pull
-  nags — was deleted with the broker leg [P3]). Plus
-  🚨 per scored settlement; the 🚨 heartbeat (`research/heartbeat.py`) fires ONLY when a step or
-  the digest push failed — NEVER as a ✅ success ping (one arrived 2026-08-05; it is a contract
-  violation). Transport: `research/notify.py` (fail-soft, HTML + truncation + plain retry,
+  exactly ONE 📋 SETTLE + ONE 📖 READ, plus ONE 📊 SCORED on days bets mature
+  [digest v3, 2026-08-18 — FINDINGS [MSG]: Telegram is a PULSE + ALARM channel, never a broker
+  terminal].** Both legs come from `research/digest.py` (HTML, fail-soft per silo) and LEAD with
+  the plain-English 🧪 scoreboard ("n of 30 settled · c of n beat · median · the bar in words"),
+  then ⚠️ DO-NOW **only when nonempty** (an empty list prints NOTHING — the absence of ⚠️ is the
+  all-clear), the read's 🟢 NEW BET card(s) (the note body; READ_LOOP step 5a, 3 lines, bet #
+  from `bets add`), and the 📈 open-bets line (count + next settle date). 🏁 milestones at
+  n=10/20/30 (stateless vs git HEAD) + the PASS-CANDIDATE flag ride the 🧪 block. Stats
+  vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
+  denominators and the mix mirror are CLI-side ONLY (`python3 -m research` · `bets show` ·
+  `orders show` · `movers show`) — never on Telegram. `--slim` = the read leg's push-log stamp;
+  it no longer changes composition (the headline is the leg's identity). 📊 SCORED
+  (`bets.settle_msg`, `notified`-column delivery guarantee) announces each scored settlement
+  the moment it lands; **the 🚨 glyph means FAILURE ONLY** — the heartbeat
+  (`research/heartbeat.py`) fires when a step or the digest push failed, NEVER as a ✅ success
+  ping (one arrived 2026-08-05; it is a contract violation). **Locked requirement [2026-08-18]:
+  when P7b activates, every X post mirrors to Telegram as 📣 with the posted text (the
+  vertical-agent-solutions pattern).** Transport: `research/notify.py` (fail-soft, HTML + truncation + plain retry,
   TELEGRAM_* env). **The digest prints a delivery VERDICT and that line is the only truth about
   delivery [2026-08-06]: exit 1 ≠ undelivered — a routine re-sends ONLY on `PUSH REJECTED
   (nothing sent)`, never on `PUSH UNCONFIRMED` (re-sending a maybe-delivered message is the

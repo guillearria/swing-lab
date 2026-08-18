@@ -48,7 +48,12 @@ prices.py split adjustment). The owner-approved plan is cut into PIECES — one 
 verification before committing, pull/rebase first (cloud routines commit to master daily), push
 promptly after. Tick a piece here when it lands.
 
-**Standing:** 08-18 settle RUN FAILURE (orders) diagnosed + repaired 08-18: the #13a hand-edit
+**Standing:** digest v3 SHIPPED 2026-08-18 (owner GO on the same-day proposal): Telegram =
+PULSE + ALARM — 🧪 plain-English scoreboard leads both legs, 🟢 NEW BET cards (3 lines, bet #),
+📈 open/next-settle line, ⚠️ only when real, 📊 SCORED replaces the settlement 🚨 (🚨 = failure
+only), jargon/diagnostics CLI-side; FINDINGS [MSG] v3 entry = the full record + the locked 📣
+X-mirror requirement for P7b. Delivery machinery untouched.
+08-18 settle RUN FAILURE (orders) diagnosed + repaired 08-18: the #13a hand-edit
 left an UNQUOTED COMMA in DVA's note → a 19-field row → `orders._save` (truncate-then-write)
 crashed mid-write and the cloud run committed `orders.csv` with 4 of 5 rows DESTROYED (068dd81).
 Ledger restored from cf0afcc with the note properly quoted; CAVA resolved through the normal

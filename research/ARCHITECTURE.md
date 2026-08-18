@@ -82,19 +82,20 @@ by the whole-pool stop (`book.POOL_STOP`).
   **watchdog** (daily, own hour, fresh session — 🚨 if no ledger commit in 36h; deliberately
   outside `daily.sh`, since a check that runs inside the thing it watches cannot report that
   thing dying). They never overlap.
-- Telegram contract (2026-07-03; v1.1 2026-07-10; reshaped 2026-08-05/06; **v2 2026-08-14
-  [ARC 5 #12a], code P4**): EVERY scheduled run pushes exactly ONE message — silence = broken;
-  a clean weekday = settle's 📋 + read's 📖, BOTH led by the 🎯 POOL SCOREBOARD (n settled
-  long-only · median · beat · Σ pp vs own benchmarks · Wilcoxon p · distance to bar, 🏁
-  milestone banners at n=10/20/30). Both come from `digest.py` (HTML, fail-soft per silo);
-  DO-NOW actions ride in every shape. Settle's 📋 = the full photo: scoreboard + Δ-since-HEAD
-  + orders + bets/movers state + the mix mirror. Read's `--slim` 📖 = the MORNING BRIEF:
-  scoreboard + DO-NOW + run note + the 🟢 system take (informational — no broker leg). The 💰
-  band and the live-book blocks retired with the book [#12]. Δ-since-HEAD answers "what
-  CHANGED" by diffing the ledgers against **git HEAD** — no state file, no `settled_at` column
-  [2026-08-04]. A PENDING counterfactual order is re-shown daily with today's spot beside its
-  limit [2026-08-03]; plus 🚨 per scored settlement. The 🚨 heartbeat
-  (`heartbeat.py`) is the FALLBACK — fires only when a step or the digest push failed.
+- Telegram contract (2026-07-03; v1.1 2026-07-10; reshaped 2026-08-05/06; v2 2026-08-14;
+  **v3 2026-08-18 [MSG] — PULSE + ALARM, never a broker terminal**): EVERY scheduled run
+  pushes exactly ONE message — silence = broken; a clean weekday = settle's 📋 + read's 📖,
+  BOTH led by the plain-English 🧪 scoreboard (n of 30 settled · c of n beat · median · the
+  bar in words; 🏁 milestones at n=10/20/30 + PASS-CANDIDATE ride it). Then ⚠️ DO-NOW only
+  when nonempty (empty prints NOTHING), the read's 🟢 NEW BET card(s), and the 📈 open-bets
+  line. 📊 SCORED (from `bets.settle_msg`, `notified`-column guarantee) announces each scored
+  settlement; 🚨 = failure only. Stats vocabulary (Σ/p/α), shorts, orders/band, movers
+  denominators, mix mirror: CLI-side only. `--slim` = the read leg's push-log stamp
+  (composition no longer branches on it). Milestone crossings diff the catalogue against
+  **git HEAD** — no state file, no `settled_at` column [2026-08-04]. Pending counterfactual
+  orders resolve silently in `orders check`; their state lives in `orders show`, not the push
+  [v3]. The 🚨 heartbeat (`heartbeat.py`) is the FALLBACK — fires only when a step or the
+  digest push failed.
   Transport: `notify.py` (HTML, newline-safe truncation, plain retry on rejected HTML;
   tri-state result). `digest --notify` prints the delivery VERDICT (the only truth about
   delivery — re-send ONLY on `PUSH REJECTED`) and stamps `research/data/push_log.csv`

@@ -2236,3 +2236,32 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   noted on the `orders.csv` row.
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
+
+**2026-08-18 · [MSG] DIGEST v3 — TELEGRAM RESHAPED AS PULSE + ALARM (owner utility; proposed,
+green-lit and shipped same day).** Owner on v2: "mostly cryptic" — he skipped POOL, DO NOW,
+BOOK, ORDERS, MOVERS and the "full:" footer, read only the bets cards, and found even those
+low-utility. Diagnosis: v2 was broker-terminal framing carried into a regime with no broker.
+v3 supersedes the [ARC 5 #12a] P4 SHAPE clause only — the science of #12a (long-only
+population, bars, floors, one pooled verdict) is untouched:
+- Telegram's three jobs: (1) PULSE of a growing experiment — both legs lead with the
+  plain-English 🧪 line (n of 30 settled · c of n beat · median · the bar in words; counts,
+  never bare percentages, at small n) and close with 📈 (open count + next settle date);
+  (2) strict ALARM channel — ⚠️ DO-NOW only when nonempty (empty prints NOTHING), 🚨 = failure
+  ONLY (heartbeat/watchdog); 📊 SCORED replaces the settlement 🚨 (same `notified`-column
+  delivery guarantee) so results are dressed as results; (3) at P7b activation, every X post
+  mirrors to Telegram as 📣 (LOCKED requirement, built when keys land).
+- Read carries 🟢 NEW BET card(s): 3 lines (headline with the `bets add` ordinal, WHY,
+  conviction·risk), no ref-price line. Moved CLI-side, off Telegram entirely: BOOK tombstone,
+  ORDERS block + band line, MOVERS denominators, mix mirror, Δ-since-HEAD, shorts diagnostic,
+  Σ pp / Wilcoxon p / α, the "full:" footer. Kept: 🏁 milestones, PASS-CANDIDATE, every real
+  alarm (feed, push-log, stranded, stuck, silo-DOWN), silence=broken.
+- Delivery machinery semantics UNCHANGED (push_log stamps, verdict lines, UNCONFIRMED
+  re-send rules, heartbeat, watchdog). `--slim` = read-leg stamp only; composition no longer
+  branches on it. digest.py shrank ~230 net lines; the dead live-book/orders/movers render
+  paths deleted (git history holds them; a re-funded book gets a fresh design, never a revert).
+- Residual risk, stated: the 📊-in-addition-to-📋 message count on settle days is unchanged
+  from v2 (the 🚨 it replaces had the same cadence), but the two now arrive visually distinct;
+  if the owner finds 📊 redundant beside 📋 at higher settle frequency, fold it then — with
+  the delivery-guarantee question answered first, not dropped.
+  Reproduce: `python3 -m research.digest` (settle shape) · `python3 -m pytest research/tests`
+  (205) · git diff bcd2785..HEAD.
