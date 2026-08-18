@@ -22,8 +22,10 @@ data didn't change (deterministic render — designed, not a bug). Settle prompt
    includes the TPR fill line.
 3. ~~**Monday: broker liquidation**~~ **DONE 2026-08-18** — owner liquidated 08-17, fills
    pasted, P1b runbook run in full (one adaptation: E*Trade sold **3** DVA vs book 2 — trued
-   with a 1-share row, entry assumed 178.00). Verdict: FINDINGS [ARC 5 #13] — bar FAILED
-   (−14.8% vs SPY +4.6%). Book is TERMINAL.
+   with a 1-share row; owner confirmed 3, order ledger had under-recorded). Closure: FINDINGS
+   [ARC 5 #13] + the #13a scope correction — the account number (−14.8% vs SPY +4.6%) is the
+   OWNER's inherited book, NOT the system's verdict; system-originated trades +$15 (n=4);
+   the system's verdict = the pooled bets ledger only. Book is TERMINAL.
 4. **X activation (P7b) — owner backlog** ("working on it"): developer app Read+Write → 4 keys
    in local .env + settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run
    `python3 -m research.pulse` together before the first autopost.
@@ -62,8 +64,8 @@ promptly after. Tick a piece here when it lands.
 P3 tolerances cleared when P3 landed 2026-08-14; `orders placed`/`pulled` no longer exist).
 BSX CEO-buy read (08-14): STALE — dropped, no backfilling. NIO wash-sale window to
 2026-09-12 (moot unless rebought). Liquidation DONE 2026-08-17 (recorded 08-18); the book is
-TERMINAL — closing verdict FINDINGS [ARC 5 #13]. daily.sh needs no edit (mark/snapshot
-early-return post-retire; step removal stays optional P6 cleanup).
+TERMINAL — closure FINDINGS [ARC 5 #13] + #13a (account number ≠ system verdict). daily.sh
+needs no edit (mark/snapshot early-return post-retire; step removal stays optional P6 cleanup).
 
 - [ ] **P8 — GO PUBLIC (owner-approved 2026-08-15; fresh-repo path; name LOCKED: swing-lab).**
   The project opens to the public: site + code converge in ONE public repo and the two-repo split
@@ -177,8 +179,10 @@ early-return post-retire; step removal stays optional P6 cleanup).
   READ_LOOP banner updated (fallback obsolete). Verify: digest has zero orders DO-NOWs; scratch
   `place` prints counterfactual voice (then `git checkout research/orders.csv`).
 - [x] **P1 — book retirement — DONE 2026-08-18 (P1a code 2026-08-14 · P1b liquidation session
-  2026-08-18 on the owner's 08-17 broker fills; closing verdict FINDINGS [ARC 5 #13]: bar FAILED,
-  −14.8% vs same-$-SPY +4.6% / dual-mom −2.6%; DVA trued 3-vs-2, entry assumed 178.00).** Original P1b spec: with real fills run `book close` each → final
+  2026-08-18 on the owner's 08-17 broker fills; closure FINDINGS [ARC 5 #13] + #13a scope
+  correction: account −14.8% vs same-$-SPY +4.6% / dual-mom −2.6% = the owner's inherited book,
+  not the system's verdict — system-originated trades +$15 n=4; DVA trued 3-vs-2, owner
+  confirmed).** Original P1b spec: with real fills run `book close` each → final
   `mark` + `snapshot` → FINDINGS CLOSING VERDICT entry (final vs-SPY/dual-mom from mark) →
   `book retire` → one commit → tick this box. daily.sh needs NO edit (mark/snapshot early-return
   one line post-retire; step removal is optional P6 cleanup). Original spec: code first

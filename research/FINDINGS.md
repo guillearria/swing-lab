@@ -2188,7 +2188,8 @@ against ourselves while the pool is ADVERSE.**
   the locked long-only vector: −7.99, +15.28, −6.17, −33.30, −19.09.
 
 **2026-08-18 · [ARC 5 #13] BOOK CLOSING VERDICT — liquidated at the broker 2026-08-17, book retired;
-the [ARC 5 #4] experiment FAILS its own bar.** Owner executed the P1b liquidation (all four positions,
+the [ARC 5 #4] experiment FAILS its own bar. [SCOPE CORRECTED same day → #13a: this is the ACCOUNT's
+number, not the system's verdict.]** Owner executed the P1b liquidation (all four positions,
 market, ~10:30 ET Mon 08-17): CMPS 50.136664 @ 13.48 · SPY 1.009934 @ 775.41 · CACI 1 @ 662.00 ·
 DVA 3 @ 177.49. Final mark (08-18, all-cash): equity **$3,970.42** vs seed baseline $4,662.74 =
 **−14.8% over 53 days**; same-$-in-SPY $4,878.43 (**+4.6%**) → ~19pp behind; same-$-in-dual-mom
@@ -2212,3 +2213,26 @@ $4,539.56 (−2.6%) → ~12pp behind. The pre-registered bar was beat-same-$-in-
   the equity endpoint is marked 08-18 against 08-17 fills (all-cash, so price-invariant).
   Reproduce: `python3 -m research.book show` (prints BOOK CLOSED) · final rows of
   `research/book.csv` + `research/book_equity.csv` · broker confirmations in owner records.
+
+**2026-08-18 · [ARC 5 #13a] OWNER CORRECTION, same day — the #13 "FAIL" is an ACCOUNT number,
+not a SYSTEM verdict; DVA count CONFIRMED.** Owner, on reading #13: most of the book was
+positions HE took before the system existed — HELP/NIO/XRP/CMPS entered at seed as his own
+prior bets — so "the experiment FAILS its bar" misattributes whose decisions produced −14.8%.
+Correction accepted and logged; the numbers do not move, the LABEL does:
+- The whole-pool bar [ARC 5 #4] was pre-registered on the FULL account and its number stands
+  as written (append-only; no re-scoring). What that number measures is the inherited mixed
+  account run through liquidation — nothing more.
+- Decisions the SYSTEM originated (DXCM, DVA, CACI, the SPY beta anchor): **+$15.39 realized,
+  n=4** — too small for any verdict, stated plainly. The legacy exits were system-MANAGED
+  (trim-into-strength, limit bands) but the entries were never ours; the −$641 legacy realized
+  loss belongs to pre-system decisions.
+- **The system's only skill verdict is and remains the `bets.py` pooled ledger [ARC 5 #7]** —
+  open, accruing; the book contributed zero to it BY DESIGN [ARC 5 #12]. Standing/public
+  performance claims cite that ledger, never the account closure number. (Matches the owner's
+  2026-08-16 go-public rule: positions are his, only SYSTEM performance is disclosed.)
+- DVA: owner confirms the original GTC fill was **3 shares** — the order ledger under-recorded
+  2 (a reporting miss at entry, not a broker surprise). The #13 trued row's count is now
+  CONFIRMED; entry 178.00 remains the limit-price model (residual ±$ trivial). Correction
+  noted on the `orders.csv` row.
+  Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
+  `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
