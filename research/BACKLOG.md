@@ -4,49 +4,38 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-08-15b, session-clear handoff — P7 LANDED + PUBLISHED; tests 219 green, all pushed)
+## ▶ PICK UP HERE (2026-08-18, post-liquidation — book TERMINAL; cutover to swing-lab COMPLETE)
 
-**State:** THE DASHBOARD IS PUBLIC — **https://guillearria.github.io/forward-ledger/** (P7a v3:
-predictions + performance only per the owner's audience contract; thesis behind click-to-expand;
-mirror repo `forward-ledger` + Pages, serving verified). P7b pulse code landed, INERT (no X keys).
-The 08-15 22:34Z settle ran the NEW pipeline clean: TPR counterfactual resolved **FILLED @ 127.95**
-= the [ORDERS #1] band diagnostic's first row; docs/index.html was NOT re-committed because its
-data didn't change (deterministic render — designed, not a bug). Settle prompt patched TWICE
-(site + pulse), both verified echoed. Digest v2 details: the 08-15a block below.
+**State:** The book is CLOSED — owner liquidated at both brokers 08-17, ledger closed + retired
+08-18; closure FINDINGS **[ARC 5 #13] + the #13a scope correction** (the account number −14.8%
+vs SPY +4.6% is the OWNER's inherited book; the SYSTEM's verdict = the pooled bets ledger only;
+system-originated trades +$15, n=4). Proceeds exited to the long realm (its §4 emergency fund).
+The system is PURE PAPER until the [ARC 5 #7] pass. Cutover verified live 08-18: all three
+routines commit to swing-lab (settle 08-17, read 08-18), Pages serves
+**https://guillearria.github.io/swing-lab/** (HTTP 200), HQ board repointed, claude-trader frozen
+with zero post-freeze commits. P7b pulse code landed, INERT (no X keys). The 08-15 queue's
+deploy-key task is OBSOLETE (it served the retired mirror; Pages here needs no key) and its
+Telegram-review item was overtaken by daily use. The 08-18 read ran DEGRADED (Yahoo nulled the
+08-17 closes) — expect self-heal at the next settle; if the 08-19 read is also degraded,
+investigate the feed.
 
-**OWNER QUEUE (his explicit list, 2026-08-15 evening — work these next session):**
-1. **Deploy key, 3 paste commands** (in the 08-15 session report; also recoverable from the
-   P7a HOSTING entry below) → then fire `gh workflow run publish-ledger` once to verify the
-   loop; until then the workflow skips GREEN and the public page holds its 08-15 copy.
-2. **Review the landed Telegram messages** ("let's tackle it after this round") — the 08-15 📋
-   includes the TPR fill line.
-3. ~~**Monday: broker liquidation**~~ **DONE 2026-08-18** — owner liquidated 08-17, fills
-   pasted, P1b runbook run in full (one adaptation: E*Trade sold **3** DVA vs book 2 — trued
-   with a 1-share row; owner confirmed 3, order ledger had under-recorded). Closure: FINDINGS
-   [ARC 5 #13] + the #13a scope correction — the account number (−14.8% vs SPY +4.6%) is the
-   OWNER's inherited book, NOT the system's verdict; system-originated trades +$15 (n=4);
-   the system's verdict = the pooled bets ledger only. Book is TERMINAL.
-4. **X activation (P7b) — owner backlog** ("working on it"): developer app Read+Write → 4 keys
-   in local .env + settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run
-   `python3 -m research.pulse` together before the first autopost.
-5. **Together-edit of public page wording** (owner offer) — thesis text is append-only ledger
-   evidence; any public cleanup is a display rule in site.py, never a ledger rewrite.
+**OWNER QUEUE (2026-08-18):**
+1. **Archive `claude-trader` on GitHub** — its gate (first green settle on swing-lab) passed
+   08-16; Claude's permission layer can't run it: `gh repo archive guillearria/claude-trader -y`
+2. **Delete `forward-ledger`** (owner decision 2026-08-18 — verified it holds only the redirect
+   page; everything else lives here): `gh repo delete guillearria/forward-ledger --yes` (needs
+   `gh auth refresh -h github.com -s delete_repo` first, or Settings → Delete). Pre-08-16 shared
+   links stop redirecting — accepted.
+3. **X activation (P7b)** ("working on it"): developer app Read+Write → 4 keys in local .env +
+   settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run `python3 -m research.pulse`
+   together before the first autopost.
+4. **P9 README voice pass** (item below) + decide the public page `<title>` — "Forward Ledger"
+   vs "swing-lab" is a site.py display string; rides P9 either way.
+5. **Together-edit of public page wording** (owner offer stands) — thesis text is append-only
+   ledger evidence; any public cleanup is a display rule in site.py, never a ledger rewrite.
 
-**MONDAY RUNBOOK — P1b (after the owner liquidates at the broker; ~10 min, one commit):**
-```
-python3 -m research.book close CMPS <fill>     # 50.136664 sh
-python3 -m research.book close SPY  <fill>     # 1.00993 sh
-python3 -m research.book close DVA  <fill>     # 2 sh
-python3 -m research.book close CACI <fill>     # 1 sh
-python3 -m research.book mark                  # final numbers → the CLOSING VERDICT entry
-python3 -m research.book snapshot              # the equity curve's honest endpoint
-# append the CLOSING VERDICT entry to FINDINGS (final vs-SPY/dual-mom from mark, win or lose)
-python3 -m research.book retire                # sweeps cash → __RETIRED__; ledger terminal
-python3 -m pytest research/tests -q            # stays green
-git add -A research/ && git commit && git push # one commit, tick P1 below
-```
-Broker side is the OWNER's (SELL n / KEEP m format, never arrows). NIO wash-sale window to
-2026-09-12 (moot unless rebought). Proceeds exit per [ARC 5 #12] — recorded in the private long-realm repo.
+(The 08-15b handoff this block replaces — P7 hosting detail, the P1b runbook — is preserved in
+the P7/P1 records below and in git history.)
 
 **P7 BUILDS: DONE 2026-08-15 (same day as the owner's pull) — P7a live at the URL above, P7b
 inert-complete. Full record + what superseded what (audience contract, hosting mechanics,
