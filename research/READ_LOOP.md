@@ -1,19 +1,8 @@
 # READ_LOOP — the reading-agent generation loop
 
-> **⚠ TRANSITION (2026-08-14, FINDINGS [ARC 5 #12]/[#12a] — PAPER REGIME; this banner wins over
-> any step below that contradicts it, and comes out when the step-5 rewrite lands, BACKLOG P6):**
-> the real-money book is being retired; there is NO broker leg anymore.
-> - **5a alerts are INFORMATIONAL** — a 🟢 "system take" card, no broker instruction, no
->   "place the LIMIT" text, never a DO-NOW.
-> - **5b sizing/`orders placed`/`book open` flow is SUSPENDED.** NEVER run `orders placed` or
->   `orders pulled`. The standing TPR order stays UNPLACED and expires on its own.
-> - **New cadence:** every run whose batch has ≥1 take logs exactly ONE counterfactual
->   `orders place` for the run's highest-conviction take. (Since BACKLOG P3 landed, `place` no
->   longer sizes — no cash gate, no `--shares` needed; the row is written with blank shares.)
-> - **NEW BETS ARE LONG-ONLY** and must clear the $5M liquidity floor ([#12a]; code-enforced from
->   BACKLOG P2 — until then, self-enforce: no shorts, no thin names).
-> - Ignore residual digest DO-NOWs that instruct broker actions ("place at broker", idle-cash
->   sizing) — named tolerances until BACKLOG P3 lands.
+**PAPER REGIME since [ARC 5 #12]/[#12a] (2026-08-14; step 5 rewritten 2026-08-18, P6):** there
+is NO broker leg. New bets are LONG-ONLY above the $5M liquidity floor (code-enforced — a
+REFUSED `bets add` is the rule working, not an error to route around).
 
 The FORWARD half of `LOOP.md`, operationalized and SCALED. One iteration = Claude reads a
 batch of live situations and **pre-registers a batch of forward bets**. This is the project's
@@ -34,8 +23,8 @@ longer exists — the [ARC5 2026-07-10] red-team note ("suggestions quoted at re
 execution") made operational. What this means for the run:
 - The **last complete daily bar is yesterday's close** — that is the correct, clean basis for every
   level you quote. Do NOT fabricate an intraday or pre-market print.
-- **Label every level indicative**, off yesterday's close, to be re-checked at the open. The human
-  executes at the broker; the book records the REAL fill, never your quote.
+- **Label every level indicative**, off yesterday's close. There is no broker leg [ARC 5 #12] —
+  levels exist for the scored record and the counterfactual order, never for execution.
 - Overnight news + the prior session's after-hours earnings are all visible — that is the edge of
   this slot. A catalyst that printed after yesterday's close is fresh, not stale.
 - Daily cadence (Mon–Fri) means Tue/Thu catalysts are no longer read 1–2 days late; during earnings
@@ -130,80 +119,42 @@ execution") made operational. What this means for the run:
      verdict, and AT MOST one new-hypothesis proposal + one re-arm proposal (SKILL re-arm
      protocol), each as a pre-registration DRAFT for the owner — never self-approved, and only
      if genuinely warranted. Nothing warranted = say so in one line and move on.
-5. **ALERT + DEPLOY** — the real-money bridge.
+5. **SYSTEM TAKE + COUNTERFACTUAL ORDER** — the paper-regime bridge [ARC 5 #12/#12a; this
+   section REPLACED the real-money 5a/5b on 2026-08-18 (P6) — the old text, with its broker
+   instructions and cash gates, is in git history and summarized in FINDINGS].
 
-   **5a. 🟢 TRADE ALERT (mandatory whenever the run has a TAKE — NO cash gate).** Decided with
-   the user 2026-07-24: actionable trades get PUSHED, always. Any take that graduates to a
-   scored bet is actionable by definition — the user may fund it from new capital, a recycled
-   position, or choose to pass. Never withhold a good read because the book happens to be low
-   on cash (the old ">$500" gate silently swallowed alerts). For the run's highest-conviction
-   take(s) — at most 2, ranked, or none if the batch was genuinely thin — include in the
-   step-7 push (plain text — the note is HTML-escaped):
+   **5a. 🟢 SYSTEM TAKE card (mandatory whenever the run has a take).** For the run's
+   highest-conviction take(s) — at most 2, ranked, or none if the batch was genuinely thin —
+   include in the step-7 push (plain text — the note is HTML-escaped):
 
-       🟢 TRADE ALERT — <TICKER> <long|short> · <H>d vs <BENCH>
-       LIMIT ≤<limit> GTC · stop <X> (−y%) · target <T> (+z%) · <N> sessions
+       🟢 SYSTEM TAKE — <TICKER> long · <H>d vs <BENCH>
        ref <price> = <YYYY-MM-DD> close, NOT a live quote
        WHY: <one line — the catalyst + why it is mispriced>
        conviction: <high|medium> · risk: <the one thing that kills it>
 
-   **Quote a LIMIT, never a point entry [2026-08-03].** The limit and the expiry come from
-   `orders place` (below) — do NOT compute either by hand, and do NOT restate the band or the
-   session count anywhere in this doc: both live in `config.py`. A point entry was the old
-   format and it decayed the moment it was written: measured across the 40 taken movers, the
-   median name moved 1.07% by the next open and 2.42% by the next close, with a −23.4% tail.
-   A limit does not decay, which is the entire reason the daily run may now re-push it.
+   INFORMATIONAL by design: no broker instruction, no "place the LIMIT" text, never a DO-NOW —
+   there is no broker leg. The bet is logged and scored either way, so the verdict N can never
+   be cherry-picked by execution. If the batch produced no take worth a card, say so in one
+   line: that is a scored-skip-style claim, not a free pass.
 
-   Alerts are RECOMMENDATIONS, pre-registered and scored either way — the bet is logged
-   whether or not the human executes, so the verdict N can never be cherry-picked by
-   execution. If the batch produced no take worth acting on, say so in one line: that is a
-   scored-skip-style claim, not a free pass.
-
-   **5b. SIZED order (when cash is idle).** Decided 2026-07-10: ALL free cash is available to
-   sized suggestions (the whole-pool stop `book.POOL_STOP` + the integrity guards are the backstops; deployment
-   allowed under [ARC5#6]). If book free cash clears `digest.IDLE_CASH_MIN` — the ONE place that
-   threshold lives, do not restate it here — this run MUST do one of:
-   - **(a) Place ONE working order** for the highest-conviction take of this run. Two commands,
-     bet first (the scored twin), then the order:
+   **5b. ONE counterfactual order per take-carrying run [#12a cadence].** If this run logged
+   ≥1 take, log exactly ONE counterfactual working order for its highest-conviction take —
+   bet first (the scored twin), then the order:
      `python3 -m research.bets add TICKER long H BENCH "thesis" --tag=<scenario>`
      `python3 -m research.orders place TICKER long STOP H BENCH`
-     `orders place` does ALL the arithmetic — it reads the last COMPLETE bar as the reference,
-     computes the limit, sizes by the per-trade risk unit capped by free cash net of anything
-     already working ([ORDERS #2]; constants in `config.py`, never restated here), and refuses
-     to double-commit the same dollars. Give it the read (ticker, direction, stop, horizon,
-     benchmark); do not hand it a price you worked out yourself. Add `--shares=N` only to
-     override the sizing, `--ref=P` only to reproduce a past run.
-     Then paste its output into the step-7 run note (plain text — the note is HTML-escaped):
+   `orders place` does ALL the arithmetic — it reads the last COMPLETE bar as the reference and
+   computes the limit + expiry (band and session count live in `config.py`, never restated
+   here); shares stay BLANK — no cash, no sizing, nothing to execute. Do not hand it a price
+   you worked out yourself; `--ref=P` exists only to reproduce a past run. Settle's
+   `orders check` resolves it against real bars and scores fill AND no-fill forward — the
+   [ORDERS #1] band DIAGNOSTIC, never an edge verdict, and model-vs-model until real money
+   returns [#12a]. A zero-take run logs NO order (say so in one line). **Never re-issue an
+   expired order at a new price** — it expired because the name re-rated away from us, and
+   chasing it is the exact behaviour the band exists to stop.
 
-         🟢 ORDER (working <N> sessions — the digest re-pushes it daily)
-         BUY <N> <TICKER> · LIMIT ≤<limit> GTC · stop <X> (−y%) · <H>d
-         ref <price> = <YYYY-MM-DD> close (NOT a live quote)
-         <one-line thesis>
-         place the LIMIT at the broker, then say so:
-         python3 -m research.orders placed TICKER
-         ...and when it fills, record the REAL fill:
-         python3 -m research.book open TICKER long N <fill> STOP 0 H "order YYYY-MM-DD"
-
-     The `<fill>` placeholder is deliberate — it won't parse as a float, forcing the human to
-     type the real fill. NEVER write `book.csv` or `orders.csv` by hand: the human executes at
-     the broker and the confirm commands are the bridge. **An order row without `placed_at` is a
-     modelled COUNTERFACTUAL, not a claim that anything was bought** — that distinction is why
-     the digest nags for a `book open` only on a fill the human actually placed, and merely
-     records "would have filled" on one he did not.
-     **The old `SIZED SUGGESTION:` prose marker is DEAD** — do not write it. It was a structured
-     fact hidden in a free-text thesis that no code ever read, and 2 of 2 issued suggestions
-     went unexecuted with nothing noticing. Structured facts get a column (the TICKER-keyed comment in
-     `digest._book_section` records what prose-keyed state cost us the last time — named, not
-     line-numbered, because line numbers drift).
-   - **(b) State in ONE line of the push why cash stays idle** this run. That line is a
-     scored-skip-style claim, not a free pass — a thin read of the whole batch is a valid
-     reason; forgetting is not.
-   **Twin rule [2026-08-02, user call]: NO real-money position without a pre-registered bet.**
-   5b(a) already pre-registers before it suggests, so read-generated trades comply by
-   construction; the rule exists for the DISCRETIONARY ones the human opens between runs.
-   `book open` prints a warning naming the missing twin — it does not block, because the
-   ledger's job is to record the real fill. If ORIENT finds an open book position with no
-   matching open bet, register the twin (or say in one line why it is beta/legacy, not a call)
-   before generating anything new.
+   *(Why a limit and not a point entry [2026-08-03, unchanged]: measured across the 40 taken
+   movers, a point entry decayed 1.07% by the next open / 2.42% by the next close with a −23.4%
+   tail; a limit is age-invariant, which is why the daily run may re-show it.)*
 
    **Expiry is STATE, and the daily run DOES re-push — both reversed 2026-08-03.** This used to
    read "expiry = supersession (no timers, no stored state)" and "the daily settle run never
@@ -227,17 +178,16 @@ execution") made operational. What this means for the run:
    exist and the call went unscored. Commit BEFORE step 7, always.
 7. **TELEGRAM the run report** (decided 2026-07-03: every run pushes, silence = broken) —
    ONE message, fail-soft, never blocks the run. Push the **actionable digest** [W4] with the
-   run note passed in (what you did + the step-5a 🟢 TRADE ALERT block(s), then the 5b sized
-   suggestion or idle-cash reason):
+   run note passed in (what you did + the 5a 🟢 SYSTEM TAKE card(s) + the 5b counterfactual
+   order line or the zero-take line):
    `python3 -m research.digest --notify --slim "📖 read run YYYY-MM-DD: N bets (TICKERS) · movers X take/Y skip
-   <5a alert block(s)> <5b block or idle-line>"`.
-   **`--slim` [2026-08-05, reshaped 2026-08-06]: this push is the 📖 MORNING BRIEF; settle's 📋
-   is the day's one FULL state photo.** The 📖 KEEPS the full book — every position with $ P&L
-   and stop/target distance ("where do I stand?" must be answerable from this one message) —
-   plus DO-NOW and the run note. It DROPS what settle owns: the 💰 band, the 🎯 bets / 📡
-   movers one-liners, the ORDERS display block (every pending order already rides in DO-NOW
-   with a live spot), and the 📋 banner (the headline is this message's identity). DO-NOW
-   items are never collapsed.
+   <5a card(s)> <5b line>"`.
+   **`--slim` (digest v2 [ARC 5 #12a], P4): this push is the 📖 MORNING BRIEF; settle's 📋 is
+   the day's one FULL state photo.** Both legs LEAD with the 🎯 POOL SCOREBOARD; the 📖 keeps
+   DO-NOW + the run note + the 🟢 system take and DROPS what settle owns (Δ-since-HEAD, the
+   bets/movers state blocks, the 📋 banner — the headline is this message's identity). The 💰
+   band and the live-book blocks retired with the book [#12/#12a]. DO-NOW items are never
+   collapsed.
    **Write the summary as the note's FIRST line and the alert blocks below it** — `digest` splits
    there: line 1 becomes the message headline (and the Telegram preview), the rest lands in a
    RUN NOTE block at the BOTTOM. Stacking the whole note on top buried the DO-NOW list
@@ -274,8 +224,8 @@ execution") made operational. What this means for the run:
    heartbeat is an ALARM on a failed run, and the rule bans a ✅ on a CLEAN one. It is not a
    re-send either — never re-push the digest on UNCONFIRMED; the 🚨 says the brief may be lost
    without risking the 2026-07-24 double-post.
-   The digest itself carries the 💰 SINCE-LAST band (what changed vs the last published
-   state), the ⚠️ DO-NOW list, and book/orders/bets/movers state. Done.
+   The digest itself carries the 🎯 POOL SCOREBOARD (v2 [ARC 5 #12a]), the ⚠️ DO-NOW list,
+   and the run note. Done.
 
 ## What to expect (honest)
 Most bets will lose to their benchmark — that's fine; the scoreboard decides the VERDICT at

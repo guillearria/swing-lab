@@ -195,7 +195,18 @@ needs no edit (mark/snapshot early-return post-retire; step removal stays option
   ≤1 re-arm, only if warranted); SKILL re-arm bullet (beside the deadline-reachability bullet);
   "If we resume hunting" points at #12a. Verify: full + `--slim x` both lead 🎯 POOL; no 💰
   anywhere; clean-day DO-NOW empty.
-- [ ] **P6 — doc pass + memory (docs follow code; TRIGGER SYNC ALREADY DONE 2026-08-15 ~02:00Z — both prompts updated via RemoteTrigger for digest v2 + counterfactual regime + retired verbs, verified echoed back in full; settle prompt patched AGAIN 08-15 evening for site+pulse):** CLAUDE.md (book → retired,
+- [x] **P6 — doc pass + memory — DONE 2026-08-18 (docs follow code, landed with the P1b
+  session): CLAUDE.md status leads (orders → counterfactual, book → TERMINAL #12/#13/#13a,
+  digest → v2) + site/pulse added to "Where things are" + single-source book pointer; ARCHITECTURE
+  (title, Money layer CLOSED, diagram counterfactual, convergence → SUPERSEDED-historical,
+  telegram v2, pool stop retired-with-pool, public-surface layer added); READ_LOOP transition
+  banner OUT + step-5 full rewrite (5a SYSTEM TAKE card / 5b one counterfactual order) + step-7
+  v2 anatomy; `__main__.py` + `book.py` docstring leads; README was already v2-clean. Verify
+  grep: remaining band/broker-verb hits are historical comments, tests, or text under a HISTORY
+  lead. 219 green. Memory updated (claude-trader path; swing-lab path blocked by permissions —
+  content also lives in FINDINGS #13a). RESIDUE carried, deliberate: digest.py dead live-book
+  rendering + daily.sh mark/snapshot steps stay (unreachable post-retire; removal = P6b below,
+  not urgent, live paths untouched right before a session clear).** Original spec: CLAUDE.md (book → retired,
   real-money stance ¶ → superseded by #12/#12a, digest → v2, orders → counterfactual, **+ add
   site/pulse to "Where things are" — P7 landed after the last CLAUDE.md sweep**); README rows
   24/25/26/29/38/40 + automation; ARCHITECTURE (Money layer CLOSED, convergence doctrine 60-68 →
@@ -204,6 +215,11 @@ needs no edit (mark/snapshot early-return post-retire; step removal stays option
   (banner removed); `__main__.py` LIVE_COMMANDS wording. RemoteTrigger: re-read + patch BOTH
   prompts (<2KB). Assistant memory files updated. Verify: `grep -rn "placed\b|RISK_PCT|SINCE-LAST|
   IDLE_CASH"` over docs/py → only historical FINDINGS/ARCHIVE/BACKLOG hits.
+
+- [ ] **P6b — dead-code sweep (optional, small):** delete digest.py's unreachable live-book
+  rendering (dead since `book retire`, P4 note) + drop daily.sh's `book mark`/`book snapshot`
+  steps (early-return no-ops post-retire). Pure deletion, tests must stay green; do it in a
+  quiet session, not minutes before a routine fires.
 
 **Deferred by decision (owner, 2026-08-14b):** per-run bet-cap raise + slow-bleed probe (both need
 their own pre-registration; the freed capacity argument lives in #12a); shorts/illiquid candidates

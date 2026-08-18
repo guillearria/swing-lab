@@ -137,7 +137,12 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   recorded there, not here. **Standing conflict-of-interest exclusion: SPCX is NEVER a scored,
   held, or recommended leg in this repo** (owner rule 2026-08-02; the reason is recorded in the
   private realm) — this line is the guard the cloud read routine relies on.
-- `research/orders.py` (+ `orders.csv`, tracked) — the WORKING-ORDER bridge from a read to real
+- `research/orders.py` (+ `orders.csv`, tracked) — **COUNTERFACTUAL since [ARC 5 #12a] (code
+  P3, 2026-08-14): `place/check/cancel/show`, blank shares — no cash, no sizing, nothing to
+  execute; ONE order per take-carrying read run; `placed`/`pulled` deleted with the broker leg;
+  the [ORDERS #1] band diagnostic accrues on the SAME fill model but is model-vs-model until
+  real money returns. The live-era contract below is HISTORY, kept because the fill mechanics
+  it validated are unchanged:** the WORKING-ORDER bridge from a read to real
   money: `place/placed/check/cancel/pulled/show`. A real-money entry is a **LIMIT with an expiry**, computed by
   code from the last COMPLETE bar, sized by a per-trade RISK UNIT capped by free cash [ORDERS #2]
   (band + sessions + risk unit live in `config.py`, the one place they do).
@@ -155,8 +160,13 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   no ledger expects, so the digest nags until `pulled TICKER` records that the human took it off
   [2026-08-04]. Holding that ticker does NOT silence it: that is the case where a stale limit doubles
   a position.
-- `research/book.py` (+ `book.csv`, **tracked in git — evidence ledger, public by owner decision [P8, 2026-08-15]**) — the
-  REAL-MONEY LIVE BOOK: the small experimental account (both brokers; **TRADEABLE swing capital
+- `research/book.py` (+ `book.csv`, **tracked in git — evidence ledger, public by owner decision [P8, 2026-08-15]**) —
+  **TERMINAL since 2026-08-18 [ARC 5 #12]: liquidated 2026-08-17, `book retire` run — every
+  command prints one BOOK CLOSED line; `book.csv`/`book_equity.csv` frozen evidence. Closure
+  FINDINGS [ARC 5 #13] + the #13a scope correction: the account's closing number is the OWNER's
+  inherited book, NOT the system's verdict, which lives solely in the pooled bets ledger. No
+  real money returns before the [ARC 5 #7] pooled pass. The live-era contract below is
+  HISTORY:** the REAL-MONEY LIVE BOOK: the small experimental account (both brokers; **TRADEABLE swing capital
   ONLY** — long-realm personal assets are out of scope, see above; size → `book show`, never
   restated here), REAL capital — external inflows FROZEN [2026-08-05, FINDINGS; "no more
   paper/roleplay" (2026-07-06) stands] — sized positions, stops, cash, $ P&L marked vs same-$-in-SPY AND dual-mom [ARC 5 #7].
@@ -184,15 +194,16 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   exactly ONE 📋 (settle, the day's full state photo) + ONE 📖 (read, the MORNING BRIEF)
   [slim reshaped 2026-08-06 on user utility — FINDINGS [MSG]].**
   Both come from `research/digest.py` (HTML: fail-soft per silo, DO-NOW list with paste-ready
-  commands). Settle's 📋 = everything: 💰 SINCE-LAST band (what CHANGED vs git HEAD — no state
-  file, no `settled_at` column [2026-08-04]) + full book + orders + bets/movers state. Read's 📖
-  (`--slim`) = DO-NOW + the FULL book (every position with $ P&L and stop/target distance —
-  "where do I stand?" must be answerable from the one message the human reads) + the run note +
-  🟢 WORKING ORDER for idle cash; it drops what settle owns (band, 🎯/📡 one-liners, ORDERS
-  block, 📋 banner). READ_LOOP step 5: human places the LIMIT at broker + confirms the real fill
-  via `book open`; settle re-pushes a pending order daily, `orders check` resolves it — and a
-  fill the human books FIRST flips the nag to a one-line FYI (`orders.booked`, 2026-08-06), and
-  a booked-then-CLOSED round trip stays cleared — a closed lot counts as booked [2026-08-09]. Plus
+  commands) — **digest v2 since [ARC 5 #12a] (code P4): BOTH legs LEAD with the 🎯 POOL
+  SCOREBOARD (n settled long-only · median · beat · Σ pp vs own benchmarks · Wilcoxon p ·
+  distance to bar; 🏁 milestone banners at n=10/20/30, stateless vs git HEAD); the 💰
+  SINCE-LAST band and the live-book blocks retired with the book [#12].** Settle's 📋 = the
+  day's full photo: scoreboard + Δ-since-HEAD + DO-NOW + orders + bets/movers state + the
+  mix(last-15) mirror. Read's 📖 (`--slim`) = scoreboard + DO-NOW + run note + the 🟢 SYSTEM
+  TAKE (informational — no broker leg). READ_LOOP step 5 (rewritten P6): 🟢 card(s) + ONE
+  counterfactual order per take-carrying run; settle's `orders check` resolves pending orders
+  against real bars daily (the broker-nag machinery — `placed_at`, `orders.booked`, GTC pull
+  nags — was deleted with the broker leg [P3]). Plus
   🚨 per scored settlement; the 🚨 heartbeat (`research/heartbeat.py`) fires ONLY when a step or
   the digest push failed — NEVER as a ✅ success ping (one arrived 2026-08-05; it is a contract
   violation). Transport: `research/notify.py` (fail-soft, HTML + truncation + plain retry,
@@ -214,6 +225,12 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   become a DO-NOW rather than prose. `research/watchdog.py` (its OWN routine, 36h) is the EXTERNAL
   dead-man's switch: every other alarm is emitted BY the daily run and so cannot fire when the daily
   run is what died — it NARROWS that blind spot, it does not close it (a dead platform kills both).
+- `research/site.py` → `docs/index.html` (committed) — **THE PUBLIC DASHBOARD** [P7a], GitHub
+  Pages (https://guillearria.github.io/swing-lab/): predictions + performance ONLY per the
+  audience contract — method/reasoning prose stays owner-side; thesis text behind
+  click-to-expand; deterministic render, settle re-commits it only when its data changed.
+  `research/pulse.py` — the X autopost path [P7b], INERT until API keys land (dry-run:
+  `python3 -m research.pulse`; never autopost before a dry-run together).
 - Dormant (evidence, kept for reproducibility): the Arc-1/2 probes (`dip_index`, `vix_fear`,
   `disaster`, …). Every one is cited by a `Reproduce:` line in `FINDINGS_ARCHIVE.md` — that is
   WHY they stay. **DELETED 2026-08-02:** the v1 capture→settle→paper pipeline and `reference/`
@@ -223,8 +240,8 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   (gitignored). Never commit or paste secrets/finances.
 
 **Single source of truth (anti-drift convention):** live numbers live in ONE runnable silo and
-docs reference the COMMAND, never restate the figure. Portfolio shares/cash/P&L → `python3 -m
-research.book`; probe count + verdicts → `python3 -m research.engine`; forward bets → `python3 -m
-research.bets show`. In committed `.md`, write the SHAPE/decision generically and point to the silo;
+docs reference the COMMAND, never restate the figure. Closed-book evidence → `python3 -m
+research.book` (one BOOK CLOSED line; the rows live in `book.csv`); probe count + verdicts →
+`python3 -m research.engine`; forward bets → `python3 -m research.bets show`. In committed `.md`, write the SHAPE/decision generically and point to the silo;
 dated log entries in `FINDINGS.md` keep their then-true numbers (append-only evidence), everything
 else stays generic. If you catch a hardcoded count/holding drifting, genericize it — don't re-sync it.

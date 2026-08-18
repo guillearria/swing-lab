@@ -1,4 +1,9 @@
-"""The LIVE book — the user's REAL-MONEY account (~$6-8k, capital being added), tracked so we
+"""TERMINAL [ARC 5 #12] — the book CLOSED 2026-08-18 (liquidated 2026-08-17): every command
+prints one BOOK CLOSED line; `book.csv`/`book_equity.csv` are frozen evidence. Closing scope
+[ARC 5 #13]/#13a: the account number is the owner's inherited book, not the system's verdict.
+Everything below describes the LIVE era, kept as history.
+
+The LIVE book — the user's REAL-MONEY account (~$6-8k, capital being added), tracked so we
 learn to run it well. REAL money as of 2026-07-06 — no more "paper/roleplay" framing.
 
 SEPARATE from bets.py on purpose: bets.py scores forward PREDICTIONS (%-excess vs a

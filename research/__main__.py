@@ -17,9 +17,9 @@ LIVE commands:
   python3 -m research.bets settle       score matured bets vs benchmark
   python3 -m research.dualmom current   dual-momentum core: what to hold now
   python3 -m research.movers            daily mover scan, 2 cohorts: S&P 500 + 400/600 tail [ARC 5 #11] = general candidate DENOMINATOR (show/scan/decide/settle)
-  python3 -m research.book              REAL-money LIVE book: $ P&L (seed/open/close/stop/target/mark/snapshot/show)
+  python3 -m research.book              TERMINAL evidence ledger [ARC 5 #12] — prints the one BOOK CLOSED line
   python3 -m research.orders            COUNTERFACTUAL orders [ARC 5 #12a]: a LIMIT + an expiry, band diagnostic (place/check/cancel/show)
-  python3 -m research.digest            THE Telegram push: 💰 since-last band + ⚠️ DO-NOW list + state
+  python3 -m research.digest            THE Telegram push (v2): 🎯 pool scoreboard + ⚠️ DO-NOW list + state
   python3 -m research.site              regenerate docs/index.html — the public dashboard page [P7a]
   python3 -m research.pulse             X pulse dry-run print (--post = the routine's autopost path [P7b])
   python3 -m research.watchdog          external dead-man's switch (own cloud routine; --notify)
