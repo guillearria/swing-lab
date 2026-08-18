@@ -48,7 +48,14 @@ prices.py split adjustment). The owner-approved plan is cut into PIECES — one 
 verification before committing, pull/rebase first (cloud routines commit to master daily), push
 promptly after. Tick a piece here when it lands.
 
-**Standing:** TPR RESOLVED (filled 127.95, 08-15 settle — the band diagnostic's first row; the
+**Standing:** 08-18 settle RUN FAILURE (orders) diagnosed + repaired 08-18: the #13a hand-edit
+left an UNQUOTED COMMA in DVA's note → a 19-field row → `orders._save` (truncate-then-write)
+crashed mid-write and the cloud run committed `orders.csv` with 4 of 5 rows DESTROYED (068dd81).
+Ledger restored from cf0afcc with the note properly quoted; CAVA resolved through the normal
+`check` path (filled, 08-17). Lesson: never hand-edit a ledger CSV — go through the module, or
+quote. Open (propose-first): make `_save` atomic (tmp + `os.replace`) so a bad row crashes LOUD
+without destroying the file — same pattern exists in bets/movers savers.
+TPR RESOLVED (filled 127.95, 08-15 settle — the band diagnostic's first row; the
 P3 tolerances cleared when P3 landed 2026-08-14; `orders placed`/`pulled` no longer exist).
 BSX CEO-buy read (08-14): STALE — dropped, no backfilling. NIO wash-sale window to
 2026-09-12 (moot unless rebought). Liquidation DONE 2026-08-17 (recorded 08-18); the book is
