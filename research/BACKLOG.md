@@ -20,12 +20,13 @@ Telegram-review item was overtaken by daily use. The 08-18 read ran DEGRADED (Ya
 investigate the feed.
 
 **OWNER QUEUE (2026-08-18):**
-1. **Archive `claude-trader` on GitHub** — its gate (first green settle on swing-lab) passed
-   08-16; Claude's permission layer can't run it: `gh repo archive guillearria/claude-trader -y`
+1. ~~**Archive `claude-trader` on GitHub**~~ **DONE 2026-08-18** (owner-retried; verified
+   `isArchived=true`). The old repo is now read-only — the permanent private evidence chain.
 2. **Delete `forward-ledger`** (owner decision 2026-08-18 — verified it holds only the redirect
-   page; everything else lives here): `gh repo delete guillearria/forward-ledger --yes` (needs
-   `gh auth refresh -h github.com -s delete_repo` first, or Settings → Delete). Pre-08-16 shared
-   links stop redirecting — accepted.
+   page; everything else lives here). Claude's permission layer blocks repo DELETION outright —
+   owner runs `gh repo delete guillearria/forward-ledger --confirm` (add the `delete_repo`
+   scope first via `gh auth refresh -h github.com -s delete_repo` if prompted, or Settings →
+   Delete). Pre-08-16 shared links stop redirecting — accepted.
 3. **X activation (P7b)** ("working on it"): developer app Read+Write → 4 keys in local .env +
    settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run `python3 -m research.pulse`
    together before the first autopost.
