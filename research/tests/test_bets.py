@@ -298,3 +298,18 @@ def test_next_maturity_never_advertises_a_date_in_the_past():
     # every open bet already matured -> no honest date to give
     assert B.next_maturity([{"logged_at": old + "T00:00:00+00:00", "ticker": "STUCK",
                              "horizon_d": "21", "status": "open"}]) is None
+
+
+def test_catalogue_survives_a_save_crash_and_malformed_rows_are_named(tmp_path, monkeypatch):
+    """The 2026-08-18 orders incident, guarded here too: a hand-edit's unquoted comma must be
+    refused BY NAME at load, and a writer crash must leave the file untouched (write-then-
+    replace), never truncated mid-save."""
+    p = tmp_path / "bets.csv"
+    p.write_text("logged_at,ticker\n2026-08-03,AAPL,OVERFLOW\n")
+    monkeypatch.setattr(B, "CATALOGUE", str(p))
+    with pytest.raises(ValueError, match="AAPL"):
+        B._load()
+    original = p.read_text()
+    with pytest.raises(ValueError):
+        B._save([{None: ["overflow"]}])
+    assert p.read_text() == original

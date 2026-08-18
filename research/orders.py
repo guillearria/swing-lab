@@ -78,14 +78,28 @@ def _load() -> list[dict]:
     with open(LEDGER, newline="") as f:
         # Backfill columns added after a row was written, so a schema change can never make an
         # older row raise KeyError mid-pass and take the whole resolve with it.
-        return [{**{k: "" for k in FIELDS}, **r} for r in csv.DictReader(f)]
+        rows = [{**{k: "" for k in FIELDS}, **r} for r in csv.DictReader(f)]
+    for i, r in enumerate(rows, 1):
+        # A row with MORE fields than the header (csv parks the overflow under None) is an
+        # unquoted comma from a hand-edit. Refuse BY NAME before any command runs — on
+        # 2026-08-18 this surfaced instead as DictWriter dying cryptically mid-save.
+        if None in r:
+            raise ValueError(f"{LEDGER} row {i} ({r.get('ticker') or '?'}): more fields than "
+                             f"the header — unquoted comma in a hand-edit? Fix the row; "
+                             f"nothing was modified")
+    return rows
 
 
 def _save(rows: list[dict]) -> None:
-    with open(LEDGER, "w", newline="") as f:
+    # Write-then-replace: a crash mid-write leaves the real ledger untouched. Writing in place
+    # is how the 2026-08-18 settle truncated this file to 2 of 6 rows (the writer raised on a
+    # malformed row after the header was already down) and the cloud run committed the damage.
+    tmp = LEDGER + ".tmp"
+    with open(tmp, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
+    os.replace(tmp, LEDGER)
 
 
 def pending(rows: list[dict]) -> list[dict]:

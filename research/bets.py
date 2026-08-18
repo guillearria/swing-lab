@@ -55,13 +55,20 @@ def _load() -> list[dict]:
     if not os.path.exists(CATALOGUE):
         return []
     with open(CATALOGUE, newline="") as f:
-        return list(csv.DictReader(f))
+        rows = list(csv.DictReader(f))
+    for i, r in enumerate(rows, 1):
+        if None in r:  # overflow fields = unquoted comma in a hand-edit (orders.py, 2026-08-18)
+            raise ValueError(f"{CATALOGUE} row {i} ({r.get('ticker') or '?'}): more fields "
+                             f"than the header — fix the row; nothing was modified")
+    return rows
 
 
 def _save(rows: list[dict]) -> None:
-    with open(CATALOGUE, "w", newline="") as f:
+    tmp = CATALOGUE + ".tmp"  # write-then-replace: a crash cannot truncate the ledger (2026-08-18)
+    with open(tmp, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader(); w.writerows(rows)
+    os.replace(tmp, CATALOGUE)
 
 
 def median_dollar_vol(ticker: str, today: str | None = None) -> float | None:

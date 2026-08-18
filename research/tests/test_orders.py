@@ -268,3 +268,30 @@ def test_retired_book_reconciliation_is_fully_gone():
     """digest v2 deleted booked()/booked_lot() — a revenant would mean broker-era coupling
     crept back in without a fresh pre-registration."""
     assert not hasattr(O, "booked") and not hasattr(O, "booked_lot")
+
+
+# ------------------------------------------------- ledger destruction (the 2026-08-18 incident)
+
+def test_malformed_row_is_refused_by_name_before_any_command(tmp_path, monkeypatch):
+    """An unquoted comma in a hand-edited note gives a row MORE fields than the header. On
+    2026-08-18 that reached _save, which died mid-truncate-write and destroyed 4 of 5 rows.
+    _load now refuses the file loudly, naming the row, before any command touches it."""
+    p = tmp_path / "orders.csv"
+    p.write_text("logged_at,ticker,status\n2026-08-03,DVA,pending,OVERFLOW\n")
+    monkeypatch.setattr(O, "LEDGER", str(p))
+    with pytest.raises(ValueError, match="DVA"):
+        O._load()
+
+
+def test_save_crash_leaves_the_ledger_untouched(tmp_path, monkeypatch):
+    """Write-then-replace: whatever makes the writer raise, the file on disk keeps its
+    pre-save content instead of being truncated mid-write (the 08-18 destruction mode)."""
+    p = tmp_path / "orders.csv"
+    original = "logged_at,ticker,status\n2026-08-03,DXCM,filled\n"
+    p.write_text(original)
+    monkeypatch.setattr(O, "LEDGER", str(p))
+    good = {**{k: "" for k in O.FIELDS}, "ticker": "DXCM"}
+    poisoned = {**{k: "" for k in O.FIELDS}, None: ["overflow"]}
+    with pytest.raises(ValueError):
+        O._save([good, poisoned])
+    assert p.read_text() == original

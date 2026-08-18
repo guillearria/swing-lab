@@ -65,6 +65,10 @@ def _load() -> list[dict]:
         # Backfill columns added after a row was written (orders.py pattern), so a schema
         # change can never KeyError an old row mid-pass and take a whole run with it.
         rows = [{**{k: "" for k in FIELDS}, **r} for r in csv.DictReader(f)]
+    for i, r in enumerate(rows, 1):
+        if None in r:  # overflow fields = unquoted comma in a hand-edit (orders.py, 2026-08-18)
+            raise ValueError(f"{LEDGER} row {i} ({r.get('ticker') or '?'}): more fields than "
+                             f"the header — fix the row; nothing was modified")
     for r in rows:
         # Rows written before [ARC 5 #11] predate the universe column; the scan was
         # S&P-500-only then, so the backfill is a fact, not a guess.
@@ -73,10 +77,12 @@ def _load() -> list[dict]:
 
 
 def _save(rows: list[dict]) -> None:
-    with open(LEDGER, "w", newline="") as f:
+    tmp = LEDGER + ".tmp"  # write-then-replace: a crash cannot truncate the ledger (2026-08-18)
+    with open(tmp, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
+    os.replace(tmp, LEDGER)
 
 
 def _fetch(tickers: list[str]) -> dict[str, list[dict]]:

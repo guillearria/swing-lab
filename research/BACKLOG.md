@@ -53,8 +53,9 @@ left an UNQUOTED COMMA in DVA's note → a 19-field row → `orders._save` (trun
 crashed mid-write and the cloud run committed `orders.csv` with 4 of 5 rows DESTROYED (068dd81).
 Ledger restored from cf0afcc with the note properly quoted; CAVA resolved through the normal
 `check` path (filled, 08-17). Lesson: never hand-edit a ledger CSV — go through the module, or
-quote. Open (propose-first): make `_save` atomic (tmp + `os.replace`) so a bad row crashes LOUD
-without destroying the file — same pattern exists in bets/movers savers.
+quote. FIXED same day (owner green-lit): atomic write-then-replace in the orders/bets/movers
+savers + a loud BY-NAME refusal of overflow rows at load; guard tests in all three. book.py
+untouched (frozen). All tracked CSVs field-count audited clean.
 TPR RESOLVED (filled 127.95, 08-15 settle — the band diagnostic's first row; the
 P3 tolerances cleared when P3 landed 2026-08-14; `orders placed`/`pulled` no longer exist).
 BSX CEO-buy read (08-14): STALE — dropped, no backfilling. NIO wash-sale window to

@@ -165,3 +165,19 @@ def test_scan_quiet_day_is_ok_not_outage(monkeypatch):
     assert M.scan(rows, today="2026-03-01") == 0
     sp = next(s for s in statuses if s["source"] == "sp500-movers")
     assert sp["ok"] and sp["n_ok"] == 1
+
+
+def test_ledger_survives_a_save_crash_and_malformed_rows_are_named(tmp_path, monkeypatch):
+    """The 2026-08-18 orders incident, guarded here too: a hand-edit's unquoted comma must be
+    refused BY NAME at load, and a writer crash must leave the file untouched (write-then-
+    replace), never truncated mid-save."""
+    import pytest
+    led = tmp_path / "movers.csv"
+    led.write_text("date,ticker\n2026-08-03,PNR,OVERFLOW\n")
+    monkeypatch.setattr(M, "LEDGER", str(led))
+    with pytest.raises(ValueError, match="PNR"):
+        M._load()
+    original = led.read_text()
+    with pytest.raises(ValueError):
+        M._save([{None: ["overflow"]}])
+    assert led.read_text() == original
