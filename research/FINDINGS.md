@@ -2186,3 +2186,29 @@ against ourselves while the pool is ADVERSE.**
   clock moves from the frozen equity curve to the push-log + watchdog pair.
   Reproduce: `python3 -m research.bets show` (both tallies) · `git log --oneline f6d575b..HEAD` ·
   the locked long-only vector: −7.99, +15.28, −6.17, −33.30, −19.09.
+
+**2026-08-18 · [ARC 5 #13] BOOK CLOSING VERDICT — liquidated at the broker 2026-08-17, book retired;
+the [ARC 5 #4] experiment FAILS its own bar.** Owner executed the P1b liquidation (all four positions,
+market, ~10:30 ET Mon 08-17): CMPS 50.136664 @ 13.48 · SPY 1.009934 @ 775.41 · CACI 1 @ 662.00 ·
+DVA 3 @ 177.49. Final mark (08-18, all-cash): equity **$3,970.42** vs seed baseline $4,662.74 =
+**−14.8% over 53 days**; same-$-in-SPY $4,878.43 (**+4.6%**) → ~19pp behind; same-$-in-dual-mom
+$4,539.56 (−2.6%) → ~12pp behind. The pre-registered bar was beat-same-$-in-SPY [ARC 5 #4]:
+**FAIL — the honest prior (negative-EV retail churn, Barber–Odean) held.**
+- **Diagnostic decomposition (one pool verdict stands; this is context, not re-scoring):** realized
+  −$425.89 total = legacy June seed book −$641.03 (HELP −$486.60, NIO −$115.72, XRP −$38.71) +
+  CMPS theme +$199.75 + SPY beta anchor +$37.44 + the read-era order-bridge trades −$22.05
+  (DXCM −$8.52, DVA −$1.53, CACI −$12.00). The reads the verdict engine actually scores were
+  near-flat in dollars; the drawdown was overwhelmingly the inherited seed positions.
+- **Realized −$426 ≠ equity delta −$692:** the seed baseline was marked at seed-day MARKET prices
+  while lots carry COST basis (HELP/NIO were already underwater at seed); plus the $3.86 ADR fee.
+  Both numbers are true; they answer different questions.
+- **One last book-vs-broker divergence, the GTC class [2026-08-04]:** E*Trade sold **3** DVA vs
+  book 2 — trued with a 1-share row, entry ASSUMED 178.00 (the GTC limit price; order ledger shows
+  2), realized −$0.51. Cash trued to $3,970.42.
+- Proceeds exit the project per #12 (recorded in the private long-realm repo — pointer only).
+  `book.csv` / `book_equity.csv` are frozen evidence; every book command now prints the one
+  BOOK CLOSED line. Re-fund ONLY on the [ARC 5 #7] pooled pass — no new bar, no hot-streak funding.
+- Residual risks, stated: the extra DVA share's entry is assumed, not confirmed (±$ trivial);
+  the equity endpoint is marked 08-18 against 08-17 fills (all-cash, so price-invariant).
+  Reproduce: `python3 -m research.book show` (prints BOOK CLOSED) · final rows of
+  `research/book.csv` + `research/book_equity.csv` · broker confirmations in owner records.

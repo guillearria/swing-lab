@@ -20,8 +20,10 @@ data didn't change (deterministic render — designed, not a bug). Settle prompt
    loop; until then the workflow skips GREEN and the public page holds its 08-15 copy.
 2. **Review the landed Telegram messages** ("let's tackle it after this round") — the 08-15 📋
    includes the TPR fill line.
-3. **Monday: broker liquidation** (SELL n / KEEP m format) → paste fills → run the P1b runbook
-   below, ONE commit.
+3. ~~**Monday: broker liquidation**~~ **DONE 2026-08-18** — owner liquidated 08-17, fills
+   pasted, P1b runbook run in full (one adaptation: E*Trade sold **3** DVA vs book 2 — trued
+   with a 1-share row, entry assumed 178.00). Verdict: FINDINGS [ARC 5 #13] — bar FAILED
+   (−14.8% vs SPY +4.6%). Book is TERMINAL.
 4. **X activation (P7b) — owner backlog** ("working on it"): developer app Read+Write → 4 keys
    in local .env + settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run
    `python3 -m research.pulse` together before the first autopost.
@@ -59,8 +61,9 @@ promptly after. Tick a piece here when it lands.
 **Standing:** TPR RESOLVED (filled 127.95, 08-15 settle — the band diagnostic's first row; the
 P3 tolerances cleared when P3 landed 2026-08-14; `orders placed`/`pulled` no longer exist).
 BSX CEO-buy read (08-14): STALE — dropped, no backfilling. NIO wash-sale window to
-2026-09-12 (moot unless rebought). Broker liquidation timing is the OWNER's (~Mon 2026-08-17);
-P1 = code + ledger closes + closing verdict + `book retire`, ONE commit, that session.
+2026-09-12 (moot unless rebought). Liquidation DONE 2026-08-17 (recorded 08-18); the book is
+TERMINAL — closing verdict FINDINGS [ARC 5 #13]. daily.sh needs no edit (mark/snapshot
+early-return post-retire; step removal stays optional P6 cleanup).
 
 - [ ] **P8 — GO PUBLIC (owner-approved 2026-08-15; fresh-repo path; name LOCKED: swing-lab).**
   The project opens to the public: site + code converge in ONE public repo and the two-repo split
@@ -173,8 +176,9 @@ P1 = code + ledger closes + closing verdict + `book retire`, ONE commit, that se
   nightly 📋 instructs a deleted command); `_book_section` idle-cash nag + `IDLE_CASH_MIN` deleted;
   READ_LOOP banner updated (fallback obsolete). Verify: digest has zero orders DO-NOWs; scratch
   `place` prints counterfactual voice (then `git checkout research/orders.csv`).
-- [~] **P1 — book retirement — CODE HALF (P1a) DONE 2026-08-14, all inert until `book retire`;
-  P1b = the liquidation session, now SMALL: with real fills run `book close` each → final
+- [x] **P1 — book retirement — DONE 2026-08-18 (P1a code 2026-08-14 · P1b liquidation session
+  2026-08-18 on the owner's 08-17 broker fills; closing verdict FINDINGS [ARC 5 #13]: bar FAILED,
+  −14.8% vs same-$-SPY +4.6% / dual-mom −2.6%; DVA trued 3-vs-2, entry assumed 178.00).** Original P1b spec: with real fills run `book close` each → final
   `mark` + `snapshot` → FINDINGS CLOSING VERDICT entry (final vs-SPY/dual-mom from mark) →
   `book retire` → one commit → tick this box. daily.sh needs NO edit (mark/snapshot early-return
   one line post-retire; step removal is optional P6 cleanup). Original spec: code first
