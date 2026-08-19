@@ -99,7 +99,7 @@ def forward_track():
     mat = _first_maturity(b, lambda r: int(r["horizon_d"]))
     matstr = f", first settles ~{mat}" if mat else ""
     bar = (f"N≥{bets.BAR_N} & median>+{bets.BAR_MEDIAN:.0f}% & beat>{bets.BAR_BEAT:.0f}% "
-           f"& Wilcoxon p≤{bets.WILCOXON_ALPHA} [Arc 5 #7 · long-only #12a]")
+           f"& Wilcoxon p≤{bets.WILCOXON_ALPHA} [Arc 5 #7 · long-only #12a · #14 ONE LOOK]")
     s = bets.stats(b)
     if s:
         n, _, med, beat = s
