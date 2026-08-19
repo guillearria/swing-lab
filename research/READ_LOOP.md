@@ -76,7 +76,10 @@ execution") made operational. What this means for the run:
    - Mover candidates → `python3 -m research.movers decide TICKER take|skip "why"` — clear the
      QUEUE: decide on EVERY unread SEEN mover (dashboard "unread" count). A TAKE then graduates to
      a scored `bets add ... --tag=` below; a SKIP stays logged (that's the denominator working).
-   - General theses → `python3 -m research.bets add TICKER long|short HORIZON_d BENCH "thesis" --tag=<scenario-type>`
+   - General theses → `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario-type>`
+     **LONG only** — `add` refuses a short and a name under the liquidity floor, fail-closed
+     [ARC 5 #12a]; a REFUSED add is the rule working, not a bug to route around. Shorts return
+     only through the SKILL re-arm protocol (a fresh pre-registration that changes the guard).
      Pick the benchmark the bet is measured against (its sector ETF, or QQQ/IWM/SPY). State
      conviction + event risk (e.g. earnings inside the window) in the thesis. **Tag the SCENARIO
      TYPE** (`--tag=`, kebab-case; reuse an existing tag from `cases/` when it fits — e.g.
