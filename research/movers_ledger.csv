@@ -784,3 +784,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-17T11:37:38+00:00,2026-08-14,ACM,-16.8,1.2,short,skip,2026-08-17T11:42:32+00:00,Aecom engineering selloff (tail) = no long thesis,skip,,,,tail
 2026-08-17T11:37:38+00:00,2026-08-14,HRB,+16.7,1.6,long,take,2026-08-17T11:42:04+00:00,Q4 beat + FY27 guide above consensus (+4.8% mid) + 10pct dividend raise + buyback; multi-pronged beat-and-raise,taken,,,,tail
 2026-08-17T11:37:38+00:00,2026-08-14,QDEL,+16.4,0.7,long,skip,2026-08-17T11:42:32+00:00,"QuidelOrtho beat but GUIDANCE CUT (China headwinds) + FCF guide withdrawn = thesis-breaker, not a clean drift",skip,,,,tail
+2026-08-19T11:34:04+00:00,2026-08-18,SNDK,+27.9,1.1,long,skip,2026-08-19T11:37:56+00:00,"parabolic AI-storage euphoria +653pct YTD, Investor Day news already out; chasing a +28pct 5d run is late-stage momentum, no value-add long",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,SMCI,+18.4,1.1,long,skip,2026-08-19T11:37:57+00:00,"already live (SMCI 21d long since 7/22); memory/AI-server beta, no fresh distinct catalyst",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,TPR,-17.6,1.8,short,skip,2026-08-19T11:37:57+00:00,"already live (TPR long since 8/14); todays -17.6pct is the post-print fade of that same bet, not a new setup",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,WDC,+13.3,1.1,long,skip,2026-08-19T11:37:57+00:00,"memory/HDD upcycle sector beta (moves with SNDK/STX/MU); efficient large-cap, thin name-specific read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,TRGP,+12.2,2.1,long,skip,2026-08-19T11:37:57+00:00,"energy/midstream sector move (with PSX/MPC/VLO); efficient large-cap, no name-specific edge",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,PSKY,+11.2,0.8,long,skip,2026-08-19T11:37:57+00:00,"WBD-merger regulatory/antitrust binary, up 30pct in 11d; event-binary legal overhang I cannot handicap better than market",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,FOXA,+11.1,1.2,long,skip,2026-08-19T11:37:57+00:00,"media/deal complex move with FOX/PSKY; no clean name-specific mechanism, thin read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,FOX,+10.6,0.8,long,skip,2026-08-19T11:37:57+00:00,same media/deal complex as FOXA; thin read,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,STX,+10.1,0.8,long,skip,2026-08-19T11:37:58+00:00,"memory/HDD upcycle sector beta; efficient, thin read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,BLDR,-10.0,0.5,short,skip,2026-08-19T11:37:58+00:00,"-10pct homebuilder-supply move, macro/rates driven; long-only, no overreaction edge",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,CVNA,-9.7,1.6,short,skip,2026-08-19T11:37:58+00:00,"-9.7pct on 1.6x vol; high-beta momentum unwind, no clean name-specific overreaction read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,META,-9.3,1.6,short,skip,2026-08-19T11:37:58+00:00,"-9.3pct on fresh CA+29AG youth-safety trial (started 8/17, 1.4T headline) + unresolved AI-capex/FCF bear thesis; live multi-quarter overhang, not a washed-out overreaction",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,PSX,+9.1,1.2,long,skip,2026-08-19T11:38:07+00:00,refiner/crack-spread sector move; efficient large-cap,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,MPC,+8.9,0.9,long,skip,2026-08-19T11:38:07+00:00,refiner/crack-spread sector move; efficient large-cap,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,FSLR,-8.7,0.7,short,skip,2026-08-19T11:38:08+00:00,"-8.7pct solar/policy move; long-only, no name-specific edge",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,AVGO,-8.7,1.2,short,skip,2026-08-19T11:38:08+00:00,"-8.7pct semi complex pullback; efficient mega-cap, no overreaction edge",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,MOS,-8.5,0.8,short,skip,2026-08-19T11:38:08+00:00,-8.5pct fertilizer/ag commodity move; no name-specific read,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,MU,+8.3,0.8,long,skip,2026-08-19T11:38:08+00:00,"memory upcycle sector beta (with SNDK/WDC/STX); efficient, thin read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,VLO,+8.1,0.6,long,skip,2026-08-19T11:38:08+00:00,refiner/crack-spread sector move; efficient large-cap,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,CRH,-7.6,0.8,short,skip,2026-08-19T11:38:08+00:00,-7.6pct building-materials move; no name-specific catalyst,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,XYL,-7.5,1.2,short,skip,2026-08-19T11:38:08+00:00,-7.5pct water/industrials move; thin read,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,CSCO,-7.3,1.0,short,skip,2026-08-19T11:38:09+00:00,"-7.3pct post-print networking fade; efficient large-cap, no overreaction edge",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,CPRT,+7.2,1.5,long,skip,2026-08-19T11:38:09+00:00,"+7.2pct salvage-auction move; efficient, thin read",skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,HUBB,-6.9,1.1,short,skip,2026-08-19T11:38:09+00:00,-6.9pct electrical-equipment move; no name-specific edge,skip,,,,sp500
+2026-08-19T11:34:04+00:00,2026-08-18,COHR,-6.7,1.6,short,skip,2026-08-19T11:38:09+00:00,-6.7pct optical/semi complex pullback; no overreaction edge,skip,,,,sp500
+2026-08-19T11:34:48+00:00,2026-08-18,HAE,+20.0,3.0,long,take,2026-08-19T11:37:56+00:00,"fiscal Q1 crush: adj EPS 1.14 vs 0.87 (+31pct), all segments growing + NEW CSL Plasma supply agreement + PT hikes, vol 3.0x; clean quality PED in under-covered midcap medtech",taken,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,AOSL,-18.5,1.0,short,skip,2026-08-19T11:38:22+00:00,"-18.5pct small-cap analog-semi; no clean catalyst/mechanism named, tail bar unmet",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,KALU,-16.6,1.7,short,skip,2026-08-19T11:38:22+00:00,-16.6pct Kaiser Aluminum commodity/margin move; no name-specific overreaction edge,skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,LQDA,-15.6,1.1,short,skip,2026-08-19T11:38:22+00:00,"-15.6pct Liquidia; biotech-binary (litigation/FDA), no edge on the binary",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,HTZ,-15.1,0.4,short,skip,2026-08-19T11:38:22+00:00,"-15.1pct Hertz on 0.4x vol; thin/low-conviction high-leverage turnaround, no clean read",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,XNCR,+15.0,1.4,long,skip,2026-08-19T11:38:22+00:00,"+15pct biotech on diffuse XmAb-platform optimism + modest PT hikes; tail bar needs a precise mechanism, read too thin",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,VICR,+15.0,1.7,long,skip,2026-08-19T11:38:23+00:00,"+15pct AI-data-center power +476pct YoY parabolic; extended late-stage momentum, no value-add long",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,YETI,-14.9,1.4,short,skip,2026-08-19T11:38:23+00:00,"-14.9pct beat EPS + raised EPS guide but CUT sales guide, weak US drinkware + margin compression; real demand softening, mixed read not a clean overreaction",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,EYE,-14.8,1.0,short,skip,2026-08-19T11:38:23+00:00,-14.8pct National Vision small-cap; no clean name-specific catalyst read,skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,FOUR,+13.8,1.2,long,skip,2026-08-19T11:38:23+00:00,"+13.8pct bounce off post-earnings washout (Q2 big rev miss + multiple PT cuts); murky mechanism, not a clean reversal read",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,ASTH,+13.6,0.6,long,skip,2026-08-19T11:38:23+00:00,"+13.6pct Astrana Health small-cap on 0.6x vol; thin volume, no clear catalyst",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,REZI,-13.3,1.5,short,skip,2026-08-19T11:38:23+00:00,-13.3pct Resideo; no name-specific overreaction edge,skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,LPG,+13.3,0.7,long,skip,2026-08-19T11:38:23+00:00,"+13.3pct Dorian LPG shipping-rate move on 0.7x vol; commodity/rate, no durable read",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,JBLU,-13.3,0.6,short,skip,2026-08-19T11:38:24+00:00,"-13.3pct JetBlue on 0.6x vol; airline/fuel macro, no name-specific edge",skip,,,,tail
+2026-08-19T11:34:48+00:00,2026-08-18,NXT,-13.1,1.0,short,skip,2026-08-19T11:38:24+00:00,"-13.1pct Nextracker solar/policy; long-only, no overreaction edge",skip,,,,tail
