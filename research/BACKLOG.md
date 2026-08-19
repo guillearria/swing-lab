@@ -48,10 +48,12 @@ prices.py split adjustment). The owner-approved plan is cut into PIECES — one 
 verification before committing, pull/rebase first (cloud routines commit to master daily), push
 promptly after. Tick a piece here when it lands.
 
-**Standing:** WATCH next read (08-19): first live v3 📖 — if its card still says "SYSTEM TAKE"
-instead of "NEW BET #n", the cloud read trigger's prompt drifted from READ_LOOP; refresh the
-trigger line. First live v3 📋 = 08-19 settle; first 📊 = SMCI (~Thu 08-20).
-digest v3 SHIPPED 2026-08-18 (owner GO on the same-day proposal): Telegram =
+**Standing:** the 08-19 read landed CLEAN on the drift check — its card said "NEW BET #69",
+so the cloud read trigger still follows READ_LOOP and picks up spec changes from the repo (no
+trigger-line refresh needed). WATCH next: the 08-20 read is the first v3.1 📖 (dateline
+headline, <blockquote> card, no scoreboard glyph) and SMCI is the first 📊 SCORED — check it
+says "3.2% behind SPY", not "-3.20%, miss".
+digest v3 SHIPPED 2026-08-18, v3.1 2026-08-19 (owner GO on the same-day proposal): Telegram =
 PULSE + ALARM — plain-English scoreboard leads both legs (v3.1 2026-08-19: Scored/So far/To
 pass rows, no block glyph), 🟢 NEW BET cards as a <blockquote> (4 lines, bet #),
 📈 open/next-settle line, ⚠️ only when real, 📊 SCORED replaces the settlement 🚨 (🚨 = failure
