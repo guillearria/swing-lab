@@ -2237,6 +2237,55 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
 
+**2026-08-19 · [ARC 5 #14] PROCEDURE PRE-REGISTRATION — the [ARC 5 #7] bar says WHAT passes and
+never said WHEN we look. Locked at n=5, ~2 months before the bar can be reached, so no number in
+this entry could have informed it.** Found by an independent re-read of the verdict machinery
+(owner-requested, this session). #7's science is UNTOUCHED: N≥30 · median >+1% · beat >55% ·
+one-sided Wilcoxon α≈0.017. What follows is procedure, and every clause moves AGAINST a pass.
+
+**State at writing (then-true, for the anchor):** 58 long rows — 5 settled (median −7.99%, beat
+20%), 53 open. Projected 30th settled long: **~2026-10-19**. Longs that settle AFTER it: **28**
+(63d ×27, 126d ×1). Projected verdict population: 21d ×14, 63d ×16. Long catalogue by scenario:
+30 of 58 `post-earnings-drift`. All 58 entered inside one window, 2026-06-24 → 2026-08-19.
+
+- **1 · ONE LOOK, and the calendar picks the moment.** The verdict is computed on the FIRST
+  settle run whose settled-long count reaches 30, over ALL settled longs at that instant (more
+  than 30 if several land the same day — that is the calendar's choice, not ours), and the
+  PASS/FAIL is written to FINDINGS the same day. WHY: "N≥30" is a threshold, not a stopping
+  rule. An accumulating sample re-checked at 30, then 40, then 58 is optional stopping — it
+  inflates the false-positive rate no matter what α says, and the digest's `AT BAR — verdict
+  time` line actively invites the repeat look. A missed or broken settle run does not create a
+  choice: the rule is the first run that reaches it, whenever that run happens.
+- **2 · A FAIL is FINAL for #7.** No re-declaration at larger n, ever. The catalogue keeps
+  accruing and its numbers stay DESCRIPTIVE; any new claim needs a fresh pre-registration with
+  its own bar, over bets logged AFTER the declaration date. This is the clause that makes clause
+  1 mean something — without it, "one look" is just a delay.
+- **3 · A PASS is PROVISIONAL until it replicates.** [ARC 5 #7] is the necessary condition for
+  re-funding real money [#12a·2]; a pass at the first crossing does not satisfy it alone. The
+  CONFIRMATION COHORT = every long settling after the declaration date (the 28 above, plus
+  anything logged between now and then). At **n≥20** it must show **median excess >0 and
+  beat-rate >50%** — direction replicates. The bar is deliberately WEAKER than #7's: this is a
+  replication test, not a second discovery, and demanding >+1%/55% twice would be an
+  unreasonable double-discovery standard. Stated now, before one row of it exists.
+  **Reachability (the Arc-3 lesson, applied before it can rot):** 27 of the 28 are 63d and all
+  mature by ~2026-11-17, so n≥20 is comfortable. If the cohort has not reached n≥20 by
+  **2027-03-31**, declare it UNREACHABLE and re-scope openly — declare, don't decorate.
+- **4 · Caveats that MUST travel with any pass** (pre-registered here so they can never be
+  written as excuses afterward), alongside #7's existing unbounded-selection limitation:
+  (a) the verdict population's horizon mix is an ARTIFACT of settle order, not a design choice —
+  28 of 58 pre-registered longs are outside the verdict entirely; (b) ~52% of the long catalogue
+  carries one scenario tag, so a "general read" pass is substantially a post-earnings-drift
+  result in this regime; (c) every entry comes from one ~8-week window — benchmark-relative
+  scoring strips market beta (good design) but NOT strategy-factor correlation, so the EFFECTIVE
+  independent n is materially below the nominal n and the Wilcoxon reads optimistic. None of
+  these is cheaply fixable and none is a reason to move the bar. They are the shape of the claim.
+- **5 · α stays 0.017.** Its stated rationale (Bonferroni over 2 silos) lapsed when Arc 3 closed
+  [2026-08-02]; correcting for one silo would justify 0.05. We do NOT relax a pre-registered
+  threshold in flight — the looser number is available only to a fresh pre-registration. Noted
+  because a silent mismatch between a threshold and its reason is how bars rot.
+  Reproduce: `python3 -m research.engine` (the bar line now carries `#14 ONE LOOK`) ·
+  `python3 -m research.bets show` · this entry's projections recompute from `bets_catalogue.csv`.
+
 **2026-08-19 · [SCOPE] SPCX — NO POSITION, ANYWHERE. Present-tense holding language stripped
 from the public tree.** Owner, this session: he no longer holds SPCX (the only upcoming
 long-realm action is an ESPP purchase, which is that repo's business and not restated here).

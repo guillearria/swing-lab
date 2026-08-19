@@ -98,7 +98,11 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   active frontier now that the mechanical mine is closed).
 - `research/bets.py` (+ `bets_catalogue.csv`) — forward-bet catalogue (Claude's pre-registered
   future calls, scored vs benchmark). ONE pooled general verdict (FINDINGS Arc 5 #7, supersedes
-  #1/#5); horizon (`horizon_d ≤ 30` = the **fast 21d sleeve**, else the 63/126d **core**) AND
+  #1/#5). **WHEN we look is pre-registered too [ARC 5 #14, 2026-08-19]: ONE look, on the first
+  settle run that reaches N≥30 — a FAIL is FINAL, a PASS is PROVISIONAL until the post-verdict
+  confirmation cohort replicates (n≥20, median >0, beat >50%), and four composition caveats
+  travel with any pass. Do NOT recompute the verdict at a larger n; that is the optional-stopping
+  hole #14 closed while the pool was uninformative.** horizon (`horizon_d ≤ 30` = the **fast 21d sleeve**, else the 63/126d **core**) AND
   `pattern_tag` (the SCENARIO TYPE) are DIAGNOSTIC decompositions of that one verdict, NEVER
   separate per-tag/per-horizon bars [Arc 5 #8]. `research/movers.py` (+ `movers_ledger.csv`) — the
   daily mover scan, TWO cohorts since [ARC 5 #11]: S&P 500 (unchanged) + an S&P 400/600 TAIL cohort

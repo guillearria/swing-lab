@@ -384,7 +384,7 @@ def show(rows: list[dict]) -> None:
           f"open {len(open_)} closed {len(closed)}")
     # ONE pooled verdict [Arc 5 #7], population LONG-ONLY [ARC 5 #12a]; splits stay diagnostic.
     bar = (f"bar N≥{BAR_N} & median>+{BAR_MEDIAN:.0f}% & beat>{BAR_BEAT:.0f}% "
-           f"& Wilcoxon α≈{WILCOXON_ALPHA} [Arc 5 #7 · #12a]")
+           f"& Wilcoxon α≈{WILCOXON_ALPHA} [Arc 5 #7 · #12a · #14 ONE LOOK]")
     s = stats(rows)
     if s:
         n, m, md, beat = s
