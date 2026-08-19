@@ -2321,8 +2321,19 @@ number — n is still 5 and no bet settled between #14 and #14a.**
   may not be reported as a pass on `docs/index.html` [P7a], on X [P7b], or in any external
   summary — internally it is "PROVISIONAL PASS, unconfirmed". The failure mode the reviews named:
   one signal measured twice on overlapping data, announced as two confirmations.
+- **7 · PROJECTION NOTE, same day (owner question: "more bets will land every once in a while?").**
+  Both #14 and #14a projected the crossing off a STATIC book — only rows already open. The read
+  logs ~10 long bets/week (last 4 weeks: 40 over 20 business days) and ~1 in 4 is a 21d fast bet,
+  so bets written between now and mid-September mature BEFORE the static projection. Re-simulated
+  at the recent rate and mix: **the 30th settled long lands ~2026-09-29, not ~2026-10-19** —
+  about three weeks earlier, and its population will include rows that do not exist yet.
+  **The RULE is unaffected and this is why it was written as a threshold on n rather than a
+  date** [clause 1]. Only the estimate moves. Logged because a cold session reading "~2026-10-19"
+  in September would think the bar had crossed early, and because #14's projections have now been
+  wrong twice in one day — first on a tie, then on assuming a frozen book. Treat every dated
+  projection in #14/#14a as an illustration; `bets_catalogue.csv` is the only authority.
   Reproduce: `python3 -m research.bets show` (no p below the bar) · `python3 -m pytest
-  research/tests` (214) · the cohort splits recompute from `bets_catalogue.csv` by maturity rank.
+  research/tests` (216) · the cohort splits recompute from `bets_catalogue.csv` by maturity rank.
 
 **2026-08-19 · [ARC 5 #14] PROCEDURE PRE-REGISTRATION — the [ARC 5 #7] bar says WHAT passes and
 never said WHEN we look. Locked at n=5, ~2 months before the bar can be reached, so no number in
