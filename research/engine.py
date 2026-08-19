@@ -133,8 +133,16 @@ def forward_track():
     tags: dict[str, list] = {}
     for r in b:
         tags.setdefault(r.get("pattern_tag") or "untagged", []).append(r)
+    # `*` = no case file behind the tag [ARC 5 #14b] — the decomposition is only meaningful for
+    # tags that name a documented mechanism; the rest are phrases coined at generation time.
+    cased = bets.tags_with_cases()
+    _mark = lambda t: t if (t in cased or t == "untagged") else t + "*"
     print(f"      by scenario (diagnostic, not a goalpost): "
-          f"{' · '.join(_grp(t, grp) for t, grp in sorted(tags.items()))}")
+          f"{' · '.join(_grp(_mark(t), grp) for t, grp in sorted(tags.items()))}")
+    loose = sorted(t for t in tags if t not in cased and t != "untagged")
+    if loose:
+        print(f"      * = no case file ({len(loose)} of {len(tags)}): a tag with no mechanism "
+              f"behind it decomposes a LABEL [ARC 5 #14b]")
     # per-UNIVERSE decomposition [ARC 5 #11] — same diagnostic-only rule. Classified against the
     # CURRENT committed caches (CSV-only — sp500_cached/tail, never the fetching sp500()), so a
     # ticker promoted/demoted between indices can misclassify an old bet: acceptable for a

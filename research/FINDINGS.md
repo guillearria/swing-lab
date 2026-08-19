@@ -2237,6 +2237,50 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
 
+**2026-08-19 · [ARC 5 #14b] THE CASE LAYER GOVERNED NOTHING — `pattern_tag` linked the
+reasoning layer to zero of 69 scored rows. Found by a blind adversarial review that KILLED the
+proposal it was sent to validate.**
+
+**What was proposed and rejected.** A `## Retires when` clause on every case: a pre-registered
+condition that would retire a pattern from future generation. The review killed it on five
+counts, all verified before acceptance: (1) ceremony — the case layer governs 0 of 69 rows, so
+the clause would regulate nothing; (2) it contradicts **[ARC 5 #10] verbatim** ("do NOT tilt
+generation… the `read` loop's candidate selection is UNCHANGED by this entry") — retiring a
+pattern IS tilting; (3) it reverses **[ARC 5 #12a·5a]**, decided five days earlier: NAME the mix,
+never change it mid-flight; (4) it carried no reachability deadline — the Arc-3 decorative-bar
+failure, in a proposal written two hours after [ARC 5 #14] added a deadline for exactly that
+reason; (5) the worked example ("fail to close positive at 21d, twice") was a P&L threshold in
+costume, and used ABSOLUTE return where every number in this repo is excess vs benchmark, so a
+rising tape would keep patterns for beta. Sixth, unprompted: retirement enriches the future
+catalogue with survivors, and by calendar that bias would land almost entirely on **[ARC 5 #14]'s
+confirmation cohort** — the weakest bar and the gate on real money. **Not built. Recorded here so
+it is not re-proposed.**
+
+**The real defect it exposed, measured.** Case files declared 3 tags (`real-vehicle-vs-meme`,
+`spent-catalyst-pump`, `unlock-relief`); the catalogue used 13; **the sets were DISJOINT**.
+ILLR's own bet row — the row its case says it births — was untagged. So `engine`'s by-scenario
+decomposition [Arc 5 #8] was decomposing labels coined at generation time, not mechanisms. The
+instruction to reuse `cases/` tags was ALREADY in READ_LOOP step 4 and had 0-of-69 compliance:
+the prose existed and drifted, which is the whole argument for checking it.
+
+**Fix — linkage, not a bar. No new goalpost, no threshold, no deadline to rot:**
+- `bets.tags_with_cases()` scans `cases/*.md` for declared tags (scanning, not a new CSV column —
+  a second copy of the tag is the drift this closes).
+- `bets add` prints a NOTE when a tag has no case. **A NOTE, not a refusal:** a missing case is a
+  documentation gap, not a validity one, and blocking a 07:39 pre-market bet over prose would
+  cost evidence to buy tidiness.
+- `engine` stars every unbacked tag in the by-scenario line + a legend count (**13 of 14 today**).
+  That is where the diagnostic accrues and where a cold session looks.
+- READ_LOOP step 4: the tag must be one a case DECLARES, or the run writes the stub. Two traps
+  named: do not reuse an ill-fitting tag to dodge the write (that corrupts the mix diagnostic),
+  and **NEVER backfill an untagged row** — 5 of the 14 are settled, so labelling them now is
+  retroactive tagging with the outcome in hand.
+- Explicitly NOT done: no per-tag bar, no retirement rule, no adaptive weighting. Per-tag settled
+  counts are 1 and 0; any mechanism keyed to them today would fit noise. Revisit only if a tag
+  reaches n≥10 settled — at which point `engine`'s existing decomposition shows it for free.
+  Reproduce: `python3 -m research.engine` (the starred by-scenario line) · `python3 -m pytest
+  research/tests` (216) · `python3 -c "from research import bets; print(bets.tags_with_cases())"`.
+
 **2026-08-19 · [ARC 5 #14a] AMENDMENT, SAME DAY — two blind adversarial reviews (independent
 models, no authorship context, briefed to break it) found #14's confirmation clause materially
 weaker than it claimed, one arithmetic error, and one place where CODE CONTRADICTED THE RULE.

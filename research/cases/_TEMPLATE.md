@@ -8,6 +8,10 @@
 
 **Status:** <open | settled>  ·  **Date:** <YYYY-MM-DD>  ·  **Pattern tag:** `<reusable-tag>`
 
+> The backticked tag above is the SAME string passed to `bets add --tag=` — that is the only
+> thing connecting this reasoning layer to a scored row, and it was disjoint from the catalogue
+> until 2026-08-19 [ARC 5 #14b]. `python3 -m research.engine` stars any tag with no case file.
+
 ## Move
 What happened, in price terms (qualitative — no restated figures).
 

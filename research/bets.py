@@ -14,9 +14,11 @@ history instantly (research/<probe>.py + the engine scoreboard).
   python3 -m research.bets show
 """
 import csv
+import glob
 import logging
 import math
 import os
+import re
 import sys
 from datetime import date, datetime, timedelta, timezone
 from statistics import mean, median
@@ -45,6 +47,33 @@ BAR_N = 30            # settled long bets required
 BAR_MEDIAN = 1.0      # median excess must exceed this (pp) — an effect-size floor
 BAR_BEAT = 55.0       # % of bets beating their benchmark must exceed this
 WILCOXON_ALPHA = 0.017  # one-sided signed-rank significance, computed by wilcoxon_p below
+
+
+CASES_DIR = "research/cases"
+
+
+def tags_with_cases() -> set[str]:
+    """Scenario tags that have a CASE FILE behind them [ARC 5 #14b].
+
+    `pattern_tag` is the only thing connecting the reasoning layer (`cases/`) to a scored row —
+    except it never connected: on 2026-08-19 a blind review found the cases declared 3 tags, the
+    catalogue used 13, and the two sets were DISJOINT (0 of 69 rows; ILLR's own bet row, which
+    its case says it births, was untagged). A tag with no case is a phrase coined that morning,
+    so the engine's by-scenario decomposition was decomposing LABELS, not mechanisms.
+
+    Scanning beats adding a column: the case file already carries the tag, and a second copy in
+    the CSV is exactly the drift this closes. `_TEMPLATE.md` is skipped — its placeholder is not
+    a tag.
+    """
+    tags: set[str] = set()
+    for name in sorted(glob.glob(f"{CASES_DIR}/*.md")):
+        if os.path.basename(name).startswith("_"):
+            continue
+        with open(name) as f:
+            for line in f:
+                if "Pattern tag:" in line:
+                    tags.update(re.findall(r"`([a-z0-9][a-z0-9-]*)`", line))
+    return tags
 
 
 def beat_bar_count() -> int:
@@ -141,6 +170,11 @@ def add(rows: list[dict], ticker: str, direction: str, horizon_d: int,
     print(f"LOGGED bet #{len(rows)} — {direction} {ticker.upper()} {horizon_d}d vs "
           f"{bench.upper()}{' #' + tag if tag else ''} @ {rows[-1]['logged_at']} "
           f"(median ${dv / 1e6:,.1f}M/day)")
+    # Not a refusal — a missing case is a documentation gap, not a validity one, and blocking a
+    # 07:39 pre-market bet over prose would cost evidence to buy tidiness [ARC 5 #14b].
+    if tag and tag not in tags_with_cases():
+        print(f"  NOTE scenario '{tag}' has no case file — write {CASES_DIR}/{ticker.upper()}.md "
+              f"this run so the tag names a MECHANISM, not a phrase [ARC 5 #14b]")
     return True
 
 

@@ -187,7 +187,11 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   and logged numbers can't diverge.
 - `research/cases/*.md` — the CASE-STUDY reasoning layer: WHY/HOW a notable move happened → a
   reusable pattern, each birthing one scored `bets.py` call (single source of truth — cases
-  narrate, numbers stay in their silo). `research/ARCHITECTURE.md` — the layer map (how bets/
+  narrate, numbers stay in their silo). **`pattern_tag` is the ONLY link between this layer and a
+  scored row, and it linked NOTHING until 2026-08-19 [ARC 5 #14b]: cases declared 3 tags, the
+  catalogue used 13, disjoint. A `--tag=` must now be one a case DECLARES or the run writes the
+  stub; `engine` stars unbacked tags. Never backfill an untagged row (5 are settled) and never
+  build a per-tag bar or a retirement rule [Arc 5 #8 · ARC 5 #10 · #12a·5a].** `research/ARCHITECTURE.md` — the layer map (how bets/
   cases/book/findings communicate). `research/BACKLOG.md` — engineering changelog + backlog +
   stale map (cold-session refresh, distinct from the FINDINGS science log).
 - `scripts/daily.sh` — SETTLE script (scores matured bets + movers, commits the ledgers).

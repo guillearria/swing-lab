@@ -82,10 +82,17 @@ execution") made operational. What this means for the run:
      only through the SKILL re-arm protocol (a fresh pre-registration that changes the guard).
      Pick the benchmark the bet is measured against (its sector ETF, or QQQ/IWM/SPY). State
      conviction + event risk (e.g. earnings inside the window) in the thesis. **Tag the SCENARIO
-     TYPE** (`--tag=`, kebab-case; reuse an existing tag from `cases/` when it fits — e.g.
-     `guidance-cut-overreaction`, `spike-fade`, `real-vehicle-vs-meme`, `narrative-stage-transition`,
-     `forced-flow`, `biotech-binary`) so the engine can decompose the verdict per scenario [Arc 5 #8]
-     (diagnostic only — NOT a per-tag goalpost). NEVER drop a take once logged.
+     TYPE** (`--tag=`, kebab-case) so the engine can decompose the verdict per scenario
+     [Arc 5 #8] — diagnostic only, NEVER a per-tag goalpost.
+     **The tag must be one a case file DECLARES, or this run writes `cases/<TICKER>.md` for it
+     [ARC 5 #14b].** This paragraph already said "reuse an existing tag from `cases/`" and
+     compliance was **0 of 69 rows** — the cases declared 3 tags, the catalogue used 13, disjoint
+     sets — so it is CHECKED now instead of asked: `bets add` prints a NOTE when a tag has no
+     case, and `engine` stars every unbacked tag in the by-scenario line. Two traps: (1) do NOT
+     reuse an ill-fitting tag to dodge writing the case — a wrong tag corrupts the mix diagnostic
+     [ARC 5 #12a·5a], and coining a new tag plus a case stub is the correct move; (2) NEVER
+     backfill an untagged row — 5 of the 14 are already SETTLED, and labelling those now is
+     retroactive tagging with the outcome in hand. NEVER drop a take once logged.
    - **Fast sleeve — MANDATORY when the catalyst is fast (tightened 2026-08-01).** If this run
      takes ANY candidate whose catalyst resolves in WEEKS rather than a quarter (post-earnings
      drift, an event pop, a forced flow that clears fast), **at least one bet this run MUST be
