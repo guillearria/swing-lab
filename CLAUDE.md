@@ -194,11 +194,13 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   exactly ONE 📋 SETTLE + ONE 📖 READ, plus ONE 📊 SCORED on days bets mature
   [digest v3, 2026-08-18 — FINDINGS [MSG]: Telegram is a PULSE + ALARM channel, never a broker
   terminal].** Both legs come from `research/digest.py` (HTML, fail-soft per silo) and LEAD with
-  the plain-English 🧪 scoreboard ("n of 30 settled · c of n beat · median · the bar in words"),
-  then ⚠️ DO-NOW **only when nonempty** (an empty list prints NOTHING — the absence of ⚠️ is the
-  all-clear), the read's 🟢 NEW BET card(s) (the note body; READ_LOOP step 5a, 3 lines, bet #
-  from `bets add`), and the 📈 open-bets line (count + next settle date). 🏁 milestones at
-  n=10/20/30 (stateless vs git HEAD) + the PASS-CANDIDATE flag ride the 🧪 block. Stats
+  the plain-English scoreboard (**Scored / So far / To pass rows — every row counts the
+  SAME bets, so they add up [v3.1 2026-08-19]; the bar is a COUNT ("17 of 30 beating"), the
+  median is words ("8.0% behind")**), then ⚠️ DO-NOW **only when nonempty** (an empty list
+  prints NOTHING — the absence of ⚠️ is the all-clear), the read's 🟢 NEW BET card(s) (the note
+  body; READ_LOOP step 5a, 4 lines, one field per line, rendered as a `<blockquote>`; bet #
+  from `bets add`), and the 📈 line (when evidence next lands). 🏁 milestones at
+  n=10/20/30 (stateless vs git HEAD) + the ahead-of-bar flag ride the scoreboard. Stats
   vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
   denominators and the mix mirror are CLI-side ONLY (`python3 -m research` · `bets show` ·
   `orders show` · `movers show`) — never on Telegram. `--slim` = the read leg's push-log stamp;

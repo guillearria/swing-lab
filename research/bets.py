@@ -47,6 +47,25 @@ BAR_BEAT = 55.0       # % of bets beating their benchmark must exceed this
 WILCOXON_ALPHA = 0.017  # one-sided signed-rank significance, computed by wilcoxon_p below
 
 
+def beat_bar_count() -> int:
+    """The beat bar as a COUNT at the verdict N — "17 of 30 beating", not "55% beat".
+
+    [2026-08-19 owner review] A rate next to a count ("1 of 5 beat · 55% beat") reads as two
+    different facts about the same word. Must EXCEED the rate, hence the +1.
+    """
+    return int(BAR_N * BAR_BEAT / 100) + 1
+
+
+def gap_words(pct: float) -> str:
+    """Plain English for an excess return: "8.0% behind" · "15.3% ahead".
+
+    [2026-08-19 owner review] Every number in this project is a GAP TO A BENCHMARK, but the
+    signed form hides that: "median -8.0%" reads as "we are down 8%" to anyone who does not
+    already know. The words carry the meaning the sign was silently carrying.
+    """
+    return f"{abs(pct):.1f}% {'ahead' if pct >= 0 else 'behind'}"
+
+
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
@@ -206,17 +225,20 @@ def settle_msg(done: list[dict], s: tuple | None) -> str:
     not kill the announce."""
     lines = []
     for r in done:
-        verdict = "beat ✓" if float(r["excess_pct"]) > 0 else "miss"
+        excess = float(r["excess_pct"])
         short = (" (short — diagnostic, outside the pool)"
                  if r.get("direction") == "short" else "")
+        # "vs SPY: 3.2% behind" — the benchmark first, then the gap in words. The old
+        # "{excess}%, miss" form left the reader to know that % was an excess [2026-08-19].
         lines.append(f"📊 SCORED — {r['ticker']} {r['horizon_d']}d vs {r['benchmark']}: "
-                     f"{r['excess_pct']}%, {verdict}{short}")
+                     f"{gap_words(excess)}{' ✓' if excess > 0 else ''}{short}")
     if s:
         n, _, md, beat = s
         c = round(n * beat / 100)          # beat% round-trips exactly back to its count
-        lines.append(f"🧪 now {n} of {BAR_N} settled · {c} of {n} beat · median {md:+.1f}%")
+        lines.append(f"now {n} of {BAR_N} scored · {c} of {n} beat · "
+                     f"median {gap_words(md)}")
     else:
-        lines.append(f"🧪 0 of {BAR_N} settled (long-only)")
+        lines.append(f"0 of {BAR_N} scored")
     return "\n".join(lines)
 
 

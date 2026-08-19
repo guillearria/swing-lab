@@ -2237,6 +2237,45 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
 
+**2026-08-19 · [MSG] DIGEST v3.1 — THE MESSAGE STOPPED BEING PROSE AND THE NUMBERS STARTED
+ADDING UP (owner review of the FIRST live v3 push; three rounds, same day).** v3 fixed WHAT
+Telegram says; v3.1 fixes whether it can be READ. Owner, round 1: "still pretty much a long
+sequence of words rather than a clean well formatted deliverable." Round 2, the harder one:
+"I'm not understanding the difference/overlap between 5/30 settled, 1 of 5 beat, and 63 open.
+These all seem related, but they don't add up." He was right, and it was not a wording problem:
+- **Three populations wearing one costume.** `5 of 30` = scored LONGS against a verdict TARGET;
+  `1 of 5` = of those scored; `63 open` = EVERY open bet, including the 10 shorts [ARC 5 #12a]
+  strips from the verdict. The 🧪 line and the 📈 line counted different sets, so no reader
+  could reconcile them — and the ledger's real shape (69 bets: 5+1 scored, 53+10 open) was
+  invisible. Fixed by making every row count the SAME population: `Scored: 5 of 30 needed · 53
+  still running` / `So far: 1 of 5 beat` / `To pass: 17 of 30 beating`. 5 + 53 IS the pool; 30
+  is visibly the finish line. The open COUNT moved out of the 📈 line (now timing only).
+- **Units collided.** `55% beat` (a RATE) sat beside `1 of 5 beat` (a COUNT) — same word, two
+  units. The bar is now a count at N: `beat_bar_count()` → "17 of 30 beating". And `median
+  -8.0%` read as "we are down 8%" when it is a GAP TO A BENCHMARK: `gap_words()` → "8.0%
+  behind" / "15.3% ahead", used by the digest AND `settle_msg` (📊 SCORED lost `+4.20%, beat ✓`
+  for `4.2% ahead ✓`).
+- **Layout.** v3's "contiguous by design" was an over-correction on v2's five trailing blanks:
+  five unseparated blocks read as one paragraph. Now one idea per block, one blank between.
+  The 🟢 card became an actual card — its own `<blockquote>` (indented, left-barred, so a
+  wrapped clause stays visibly inside it), bold header, bold row labels. Two takes = two quote
+  blocks. `notify` closes an open `<blockquote>` on truncation (proved: the naive newline cut
+  is unbalanced, which would reject the whole HTML message and deliver the tag-showing plain
+  retry).
+- **The contract is now ENFORCED, not trusted.** The first live v3 push carried a `mix:` mirror
+  row and a `1 take/39 skip` denominator — both CLI-only by the v3 contract, both written by
+  the read agent into the note where the fossil guard could not see them. `compose` strips them.
+- **Trimmed on owner call:** the headline is a DATELINE only ("📖 READ · Tue 2026-08-19") — the
+  ticker/why live in the card two lines below, so a "1 new bet: HAE" summary was the same news
+  twice; and the scoreboard lost both its header line and its 🧪 glyph (a label for rows that
+  already say what they are). 📖/📋/🟢/📈/⚠️/📊/🚨/🏁 stay — each marks a DIFFERENT message kind.
+- Residual risk, stated: "To pass" shows two of the bar's four conditions (N and Wilcoxon α are
+  CLI-side by contract) — the same omission v3 had, now recorded rather than silent. And the
+  scoreboard's "53 still running" is the LONG pool: 10 open shorts are real, scored, and
+  deliberately absent from the phone. If either bites, amend the contract — do not decorate.
+  Reproduce: `python3 -m research.digest` (settle shape) · `python3 -m pytest research/tests`
+  (213) · git diff 4a106e7..HEAD. Verified on-device: three preview pushes, owner-approved.
+
 **2026-08-18 · [MSG] DIGEST v3 — TELEGRAM RESHAPED AS PULSE + ALARM (owner utility; proposed,
 green-lit and shipped same day).** Owner on v2: "mostly cryptic" — he skipped POOL, DO NOW,
 BOOK, ORDERS, MOVERS and the "full:" footer, read only the bets cards, and found even those

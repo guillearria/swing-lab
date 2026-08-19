@@ -137,20 +137,22 @@ def test_stats_is_long_only_while_agg_keeps_shorts():
 
 
 def test_settle_msg_speaks_scored_results_and_the_plain_tally():
-    """[MSG v3, 2026-08-18]: 📊 SCORED per result (beat ✓ / miss stated plainly), 🧪 counts
+    """[MSG v3, 2026-08-18]: 📊 SCORED per result (beat ✓ / miss stated plainly), plain counts
     for the tally — never the 🚨 glyph, which now means failure only. A settling short is
     announced as diagnostic and the tally stays the long-only verdict population [#12a]."""
     done = [_closed("S1", "short", "+69.74")]
     msg = B.settle_msg(done, B.stats(done))       # a settling short with 0 settled longs
     assert "📊 SCORED — S1" in msg and "short — diagnostic" in msg
-    assert "🧪 0 of 30 settled (long-only)" in msg
+    assert "0 of 30 scored" in msg
     assert "🚨" not in msg
+    # The gap is spelled out [2026-08-19 owner review]: "+2.00%" left the reader to know that
+    # % was an excess over the benchmark, not the trade's return.
     win = [_closed("L1", "long", "+2.00")]
     msg2 = B.settle_msg(win, B.stats(win))
-    assert "📊 SCORED — L1 21d vs SPY: +2.00%, beat ✓" in msg2
-    assert "🧪 now 1 of 30 settled · 1 of 1 beat · median +2.0%" in msg2
+    assert "📊 SCORED — L1 21d vs SPY: 2.0% ahead ✓" in msg2
+    assert "now 1 of 30 scored · 1 of 1 beat · median 2.0% ahead" in msg2
     loss = [_closed("L2", "long", "-3.10")]
-    assert ", miss" in B.settle_msg(loss, B.stats(loss))
+    assert "3.1% behind" in B.settle_msg(loss, B.stats(loss))
 
 
 # ── wilcoxon_p [ARC 5 #12a]: the bar's significance test, computed at last ──────────────────

@@ -1,4 +1,4 @@
-"""Guard the v3 digest: the 🧪 pulse, ⚠️-only-when-real, and the alarm sections [MSG 2026-08-18].
+"""Guard the v3 digest: the pulse, ⚠️-only-when-real, and the alarm sections [MSG 2026-08-18].
 
 The v2 book/orders/movers section tests died with their sections (the book is TERMINAL, the
 diagnostics moved CLI-side); their lessons are cited where they still bind. The batch-write
@@ -70,39 +70,58 @@ def test_multiline_action_keeps_code_line_whole(monkeypatch):
 def test_tags_never_span_lines(monkeypatch):
     """The notify truncation cuts at a newline — every tag must open+close on one line."""
     monkeypatch.setattr(D, "_bets_section", lambda: (["a:\n<code>cmd</code>"], ["📈 1 open"]))
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["🧪 <b>5 of 30</b> settled"]))
+    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
     for line in D.compose().split("\n"):
         assert line.count("<b>") == line.count("</b>")
         assert line.count("<code>") == line.count("</code>")
 
 
-def test_message_is_contiguous_no_blank_walls(monkeypatch):
-    """v3 is built for one phone glance: no double blanks, no trailing blanks — the v2 shape
-    once ended in five blank lines [2026-08-04, user-reported]."""
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["🧪 <b>5 of 30</b> settled"]))
+def test_blockquote_is_the_only_element_that_spans_lines():
+    """The card must span lines to BE a card — so it is the one exception, it is balanced, and
+    notify closes it on a truncation cut (see test_notify)."""
+    out = D.compose("📖 READ\n🟢 NEW BET #1 — X long\nWhy: a\nRisk: b")
+    assert out.count("<blockquote>") == out.count("</blockquote>") == 1
+    for line in out.split("\n"):
+        for tag in ("b", "i", "code", "pre"):
+            assert line.count(f"<{tag}>") == line.count(f"</{tag}>")
+
+
+def test_blocks_are_separated_by_exactly_one_blank(monkeypatch):
+    """Air BETWEEN ideas, never inside one [2026-08-19 owner review]. v3 shipped "contiguous by
+    design" and five unseparated blocks read on a phone as one paragraph of prose; the v2 shape
+    before it ended in five blank lines [2026-08-04]. Neither, now: no double blank, no leading
+    or trailing blank, exactly one between blocks."""
+    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
     monkeypatch.setattr(D, "_bets_section", lambda: ([], ["📈 62 open"]))
     out = D.compose()
     assert "\n\n\n" not in out
-    assert out.rstrip("\n") == out
-    # the quiet settle day is exactly banner + 🧪 + 📈 — three contiguous lines
-    assert len(out.split("\n")) == 3
-    assert out.split("\n")[1:] == ["🧪 <b>5 of 30</b> settled", "📈 62 open"]
+    assert out.rstrip("\n") == out and not out.startswith("\n")
+    # the quiet settle day is banner · scoreboard · 📈 — three blocks, two blank lines
+    assert out.split("\n")[1:] == ["", "<b>Scored:</b> 5 of 30 needed", "", "📈 62 open"]
+
+
+def test_an_empty_section_adds_no_blank_line(monkeypatch):
+    """A silo that returns nothing must not leave its separator behind — that is how a message
+    grows a blank wall one dead section at a time."""
+    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], []))
+    monkeypatch.setattr(D, "_bets_section", lambda: ([], []))
+    assert "\n" not in D.compose()
 
 
 def test_run_note_headline_tops_and_cards_ride_above_the_bets_line(monkeypatch):
     """The note's first line is the leg's identity (Telegram preview); its body — the 🟢 NEW
-    BET cards — is the morning's news and lands after the 🧪 block and any ⚠️ list, ABOVE the
+    BET cards — is the morning's news and lands after the scoreboard and any ⚠️ list, ABOVE the
     📈 line. v2 demoted the cards to a bottom RUN NOTE block; v3 does not."""
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["🧪 <b>5 of 30</b> settled"]))
+    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
     monkeypatch.setattr(D, "_bets_section", lambda: (["X STUCK"], ["📈 63 open"]))
     lines = D.compose("📖 READ Wed 2026-08-19 pre-market: 1 bet\n"
                       "🟢 NEW BET #69 — CAVA long · 21d vs XLY\nWHY: capitulation").split("\n")
     assert lines[0] == "<b>📖 READ Wed 2026-08-19 pre-market: 1 bet</b>"
     assert "📋" not in "\n".join(lines)                     # headline replaces the banner
     i_do = lines.index("⚠️ <b>DO NOW (1)</b>")
-    i_card = lines.index("🟢 NEW BET #69 — CAVA long · 21d vs XLY")
+    i_card = lines.index("<blockquote><b>🟢 NEW BET #69 — CAVA long · 21d vs XLY</b>")
     i_bets = lines.index("📈 63 open")
-    assert lines.index("🧪 <b>5 of 30</b> settled") < i_do < i_card < i_bets
+    assert lines.index("<b>Scored:</b> 5 of 30 needed") < i_do < i_card < i_bets
 
 
 def test_run_note_body_is_escaped_and_never_splits_a_tag():
@@ -135,7 +154,52 @@ def test_no_broker_terminal_blocks_survive(monkeypatch):
         assert fossil not in out, fossil
 
 
-# ------------------------------------------------------------------- the 🧪 scoreboard (v3)
+# ------------------------------------------------------------------------ the 🟢 card
+
+def test_card_is_a_blockquote_with_bold_header_and_labels():
+    """The 2026-08-19 ask: a take must READ as a card, not as three more sentences. The
+    <blockquote> indents it behind a left bar (so even a wrapped clause stays visibly INSIDE
+    it), the header is bold, and every row label is its own bold anchor."""
+    out = D.compose("📖 READ\n🟢 NEW BET #69 — HAE long · 21d vs XLV\n"
+                    "Why: Q1 EPS +31%, new CSL deal\nRisk: +20% in 5d already\n"
+                    "conviction: medium")
+    assert "<blockquote><b>🟢 NEW BET #69 — HAE long · 21d vs XLV</b>" in out
+    assert "<b>Why:</b> Q1 EPS +31%, new CSL deal" in out
+    assert "<b>Conviction:</b> medium</blockquote>" in out   # label case normalized, quote closed
+
+
+def test_two_takes_are_two_separate_cards():
+    """At most 2 cards [READ_LOOP 5a] — and they must not fuse into one six-line block."""
+    out = D.compose("📖 READ\n🟢 NEW BET #1 — A long\nWhy: a\n🟢 NEW BET #2 — B long\nWhy: b")
+    assert out.count("<blockquote>") == out.count("</blockquote>") == 2
+    assert "<b>Why:</b> a</blockquote>\n\n<blockquote><b>🟢 NEW BET #2 — B long</b>" in out
+
+
+def test_zero_take_line_rides_plain_not_quoted():
+    """A run with no take still speaks — but a sentence is not a card."""
+    out = D.compose("📖 READ · no new bets\nnothing cleared the bar today")
+    assert "nothing cleared the bar today" in out and "<blockquote>" not in out
+
+
+def test_note_fossils_are_dropped_not_trusted():
+    """The note is agent-written, so the CLI-only half of the v3 contract is ENFORCED here, not
+    trusted. The FIRST live v3 read push (2026-08-19) carried both fossils: a `mix:` mirror row
+    and a scan denominator in the headline."""
+    out = D.compose("📖 READ Tue 2026-08-19 pre-market: 1 bet (HAE) · 1 take/39 skip\n"
+                    "🟢 NEW BET #69 — HAE long\nWhy: a\n"
+                    "mix: post-earnings-drift 9/15 last bets — PED-rich")
+    assert out.startswith("<b>📖 READ Tue 2026-08-19 pre-market: 1 bet (HAE)</b>")
+    assert "take/39 skip" not in out and "mix:" not in out and "9/15" not in out
+
+
+def test_a_card_row_cannot_inject_markup():
+    """Escaping survives the label split — a row is still free text from the read agent."""
+    out = D.compose("📖 READ\n🟢 <b>X</b>\nWhy: <i>y</i> & <code>z")
+    assert "&lt;b&gt;X&lt;/b&gt;" in out and "&lt;i&gt;y&lt;/i&gt; &amp; &lt;code&gt;z" in out
+    assert out.count("<b>") == out.count("</b>")
+
+
+# ------------------------------------------------------------------- the scoreboard (v3)
 
 _L = {"logged_at": "2026-06-01T00:00:00+00:00", "direction": "long", "horizon_d": "21",
       "benchmark": "SPY", "thesis": "t", "pattern_tag": "", "notified": "x",
@@ -168,42 +232,53 @@ def _board(monkeypatch, rows, head_rows=None):
     return _REAL_BOARD()
 
 
-def test_scoreboard_speaks_plain_counts_and_the_bar_in_words(monkeypatch):
-    """The owner's ask: one glance says growing/working. Counts over percentages at small n,
-    the bar in words, ZERO stats vocabulary (Σ/p/α live in `python3 -m research`)."""
-    actions, lines = _board(monkeypatch, _LIVE_POOL)
+def test_every_scoreboard_row_counts_the_same_bets(monkeypatch):
+    """The 2026-08-19 owner report: "5 of 30 settled · 1 of 5 beat · 63 open — these all seem
+    related, but they don't add up." They could not: 30 was a TARGET, 5 was the scored verdict
+    pool, and 63 counted every open bet including the shorts the verdict rule strips. Every row
+    now counts the SAME population — 5 scored + 53 running IS the pool, and 30 is visibly the
+    finish line — and the bar is a count, so "beat" never means a rate on one row and a tally
+    on the next."""
+    pool = _LIVE_POOL + [_open_bet(f"O{i}") for i in range(53)] + [_open_bet("S", "short")]
+    actions, lines = _board(monkeypatch, pool)
     assert actions == []                        # the scoreboard never asks for anything
-    line = next(l for l in lines if "🧪" in l)
-    assert "<b>5 of 30</b> settled" in line
-    assert "1 of 5 beat" in line
-    assert "median -8.0%" in line
-    assert "(bar: +1% median, 55% beat)" in line
+    assert lines == [
+        "<b>Scored:</b> 5 of 30 needed · 53 still running",
+        "<b>So far:</b> 1 of 5 beat · median 8.0% behind",
+        "<b>To pass:</b> 17 of 30 beating · median 1%+ ahead"]
+    assert all(len(D._plain(l)) <= 50 for l in lines)   # each fits one phone line, unwrapped
+    # No header, no gloss [2026-08-19, owner call]: "Scoreboard — each bet vs its benchmark"
+    # explained what the rows already show. The glyph marks the block; the rows carry the news.
+    assert len(lines) == 3 and not any("Scoreboard" in l or "benchmark" in l for l in lines)
     joined = " ".join(lines)
-    for jargon in ("Σ", "p=", "α", "long-only", "shorts", "POOL", "n="):
+    for jargon in ("Σ", "p=", "α", "long-only", "shorts", "POOL", "n=", "-8.0%", "55%"):
         assert jargon not in joined, jargon
 
 
-def test_scoreboard_zero_settled_still_states_the_bar(monkeypatch):
+def test_scoreboard_zero_scored_still_shows_the_target(monkeypatch):
+    """Nothing scored yet → no "So far" row to invent, but the target and the bar still stand."""
     _, lines = _board(monkeypatch, [_open_bet("NOW")])
-    assert lines == ["🧪 <b>0 of 30</b> settled (bar: +1% median, 55% beat)"]
+    assert lines == ["<b>Scored:</b> 0 of 30 needed · 1 still running",
+                     "<b>To pass:</b> 17 of 30 beating · median 1%+ ahead"]
 
 
 def test_scoreboard_at_bar_says_verdict_time(monkeypatch):
     full = [_closed_bet(f"T{i}", "+3.00") for i in range(30)]
     _, lines = _board(monkeypatch, full)        # head == tree → no milestone banner
-    line = next(l for l in lines if "🧪" in l)
-    assert "<b>30 of 30</b> settled" in line and "AT BAR: verdict time" in line
+    assert "<b>Scored:</b> 30 of 30 needed · 0 still running" in lines
+    assert "<b>So far:</b> 30 of 30 beat · median 3.0% ahead" in lines
+    assert "<b>AT BAR — verdict time</b>" in lines   # its own line: a state change, not a suffix
 
 
 def test_pass_candidate_appears_from_n10_and_is_labeled_below_bar(monkeypatch):
     """The early-shape flag can never be quoted as a pass — the label travels with it."""
     ten = [_closed_bet(f"T{i}", "+3.00") for i in range(10)]
     _, lines = _board(monkeypatch, ten)
-    pc = next(l for l in lines if "PASS-CANDIDATE" in l)
-    assert "below-bar" in pc and "N≥30" in pc
+    pc = next(l for l in lines if "Ahead of the bar" in l)
+    assert "nothing passes before 30 have scored" in pc     # the caveat travels with the flag
 
     _, lines2 = _board(monkeypatch, ten[:9])
-    assert not any("PASS-CANDIDATE" in l for l in lines2)   # n=9: no flag, however pretty
+    assert not any("Ahead of the bar" in l for l in lines2)  # n=9: no flag, however pretty
 
 
 def test_milestone_fires_only_on_a_crossing(monkeypatch):
@@ -211,10 +286,10 @@ def test_milestone_fires_only_on_a_crossing(monkeypatch):
     quiet. Depends on daily.sh running the digest BEFORE push_ledgers commits."""
     ten = [_closed_bet(f"T{i}", "+1.00") for i in range(10)]
     _, lines = _board(monkeypatch, ten, head_rows=ten[:9])
-    assert any("MILESTONE" in l and "n=10" in l for l in lines)
+    assert any("🏁" in l and "10 scored" in l for l in lines)
 
     _, lines2 = _board(monkeypatch, ten + [_closed_bet("T11", "+1.00")], head_rows=ten)
-    assert not any("MILESTONE" in l for l in lines2)        # 10→11 is not a crossing
+    assert not any("🏁" in l for l in lines2)                 # 10→11 is not a crossing
 
 
 def test_scoreboard_never_reads_the_book(monkeypatch):
@@ -226,7 +301,7 @@ def test_scoreboard_never_reads_the_book(monkeypatch):
     monkeypatch.setattr(book, "_load", boom)
     monkeypatch.setattr(book, "equity_marks", boom)
     _, lines = _board(monkeypatch, _LIVE_POOL)
-    assert any("🧪" in l for l in lines)
+    assert any("Scored:" in l for l in lines)
     import inspect
     imports = [l for l in inspect.getsource(D).splitlines()
                if "import" in l and not l.strip().startswith("#")]
@@ -247,9 +322,11 @@ def test_scoreboard_degrades_loud_not_silent_without_git(monkeypatch):
 
 # ------------------------------------------------------------------------ the 📈 bets line
 
-def test_bets_line_counts_open_and_dates_the_next_settle(monkeypatch):
+def test_bets_line_dates_the_next_scoring(monkeypatch):
     """Under a LOW-edge prior 'nothing to do' is the honest message most days — so it comes
-    with the day evidence next lands, weekday first (the owner reads days, not ISO dates)."""
+    with the day evidence next lands, weekday first (the owner reads days, not ISO dates).
+    The open COUNT lives in the scoreboard now [2026-08-19]: down here it counted a different
+    population than the scoreboard and the two could not be reconciled."""
     from research import bets
     monkeypatch.setattr(bets, "_load", lambda: [
         {"logged_at": "2026-08-04T00:00:00+00:00", "ticker": "SMCI", "horizon_d": "21",
@@ -257,7 +334,7 @@ def test_bets_line_counts_open_and_dates_the_next_settle(monkeypatch):
          "pattern_tag": ""}])
     actions, lines = _REAL_BETS()
     assert actions == []
-    assert lines == ["📈 1 open · next settle Wed 09-02 (SMCI)"]
+    assert lines == ["📈 next scores Wed 09-02 (SMCI)"]
 
 
 def test_overdue_bet_escalates_but_holiday_drift_does_not(monkeypatch):
@@ -282,7 +359,7 @@ def test_overdue_bet_escalates_but_holiday_drift_does_not(monkeypatch):
     actions, lines = _REAL_BETS()
     assert actions and "settlement STUCK" in actions[0] and "STUCK overdue" in actions[0]
     assert "DRIFT" not in actions[0]             # -1d is normal, not an alarm
-    assert lines[0].startswith("📈 2 open")
+    assert lines == []                           # both matured: nothing is scheduled to score
 
 
 def test_bets_line_counts_the_rest_of_the_settle_week(monkeypatch):

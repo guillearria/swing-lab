@@ -85,9 +85,10 @@ by the whole-pool stop (`book.POOL_STOP`).
 - Telegram contract (2026-07-03; v1.1 2026-07-10; reshaped 2026-08-05/06; v2 2026-08-14;
   **v3 2026-08-18 [MSG] — PULSE + ALARM, never a broker terminal**): EVERY scheduled run
   pushes exactly ONE message — silence = broken; a clean weekday = settle's 📋 + read's 📖,
-  BOTH led by the plain-English 🧪 scoreboard (n of 30 settled · c of n beat · median · the
-  bar in words; 🏁 milestones at n=10/20/30 + PASS-CANDIDATE ride it). Then ⚠️ DO-NOW only
-  when nonempty (empty prints NOTHING), the read's 🟢 NEW BET card(s), and the 📈 open-bets
+  BOTH led by the plain-English scoreboard — Scored / So far / To pass rows, every row
+  counting the SAME bets so the reader can add them up [v3.1 2026-08-19]; 🏁 milestones at
+  n=10/20/30 + the ahead-of-bar flag ride it. Then ⚠️ DO-NOW only when nonempty (empty prints
+  NOTHING), the read's 🟢 NEW BET card(s) — one <blockquote> each — and the 📈 next-scoring
   line. 📊 SCORED (from `bets.settle_msg`, `notified`-column guarantee) announces each scored
   settlement; 🚨 = failure only. Stats vocabulary (Σ/p/α), shorts, orders/band, movers
   denominators, mix mirror: CLI-side only. `--slim` = the read leg's push-log stamp

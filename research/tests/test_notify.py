@@ -33,6 +33,21 @@ def test_send_truncates_oversize_at_newline(monkeypatch):
     assert cut.endswith("</b>")            # cut fell on a newline — no split tag
 
 
+def test_truncating_inside_a_card_closes_the_blockquote(monkeypatch):
+    """The digest's \U0001f7e2 card is the ONE element that spans lines [2026-08-19]; a cut inside it
+    would leave <blockquote> open, telegram would reject the whole HTML message, and the owner
+    would get the plain-text retry with every tag showing."""
+    monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "t")
+    monkeypatch.setenv("TELEGRAM_CHAT_ID", "c")
+    sent = {}
+    monkeypatch.setattr(notify, "_post", lambda p: sent.update(p) or True)
+    body = "filler\n" * 500 + "<blockquote>card\n" + "row\n" * 200 + "last</blockquote>"
+    assert body.index("<blockquote>") < notify.MAX_LEN < len(body)   # the cut lands INSIDE it
+    assert notify.send(body) is True
+    assert sent["text"].count("<blockquote>") == sent["text"].count("</blockquote>")
+    assert sent["text"].endswith(notify.TRUNC_MARK)
+
+
 def test_send_html_retries_plain_on_reject(monkeypatch):
     monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "t")
     monkeypatch.setenv("TELEGRAM_CHAT_ID", "c")
@@ -85,8 +100,8 @@ def test_bets_settle_msg_format():
              "benchmark": "XLK", "excess_pct": "+4.20"}]
     msg = B.settle_msg(done, (1, 4.2, 4.2, 100.0))
     assert msg.startswith("📊")           # v3 [MSG 2026-08-18]: 🚨 means failure ONLY
-    assert "SCORED — ACN 63d vs XLK: +4.20%, beat ✓" in msg
-    assert "🧪 now 1 of 30 settled · 1 of 1 beat · median +4.2%" in msg
+    assert "SCORED — ACN 63d vs XLK: 4.2% ahead ✓" in msg
+    assert "now 1 of 30 scored · 1 of 1 beat · median 4.2% ahead" in msg
 
 
 def test_heartbeat_msg_clean_vs_failure():

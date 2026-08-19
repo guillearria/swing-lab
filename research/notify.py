@@ -46,8 +46,11 @@ def send(text: str, html: bool = False) -> bool | None:
     if not configured():
         log.info("notify: skipped (TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID unset)")
         return False
-    if len(text) > MAX_LEN:  # composers keep HTML tags within one line, so a newline cut is safe
-        text = text[:MAX_LEN].rsplit("\n", 1)[0] + TRUNC_MARK
+    if len(text) > MAX_LEN:  # composers keep INLINE tags within one line, so a newline cut is
+        text = text[:MAX_LEN].rsplit("\n", 1)[0]   # safe — except the digest's card
+        if text.count("<blockquote>") > text.count("</blockquote>"):
+            text += "</blockquote>"   # a cut INSIDE a card would reject the whole HTML message
+        text += TRUNC_MARK
     payload = {"chat_id": os.environ["TELEGRAM_CHAT_ID"], "text": text}
     if html:
         payload["parse_mode"] = "HTML"

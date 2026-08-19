@@ -123,14 +123,24 @@ execution") made operational. What this means for the run:
    section REPLACED the real-money 5a/5b on 2026-08-18 (P6) — the old text, with its broker
    instructions and cash gates, is in git history and summarized in FINDINGS].
 
-   **5a. 🟢 NEW BET card (mandatory whenever the run has a take) [MSG v3, 2026-08-18].** For
-   the run's highest-conviction take(s) — at most 2, ranked, or none if the batch was genuinely
-   thin — include in the step-7 push (plain text — the note is HTML-escaped). THREE lines, no
-   ref-price line (nothing to execute; the reference lives in the bet/order rows):
+   **5a. 🟢 NEW BET card (mandatory whenever the run has a take) [MSG v3, 2026-08-18; shape
+   tightened 2026-08-19 after the owner read the first live v3 push].** For the run's
+   highest-conviction take(s) — at most 2, ranked, or none if the batch was genuinely thin —
+   include in the step-7 push (plain text: the digest escapes it, renders each card as its own
+   `<blockquote>` and bolds the row labels). FOUR lines, ONE FIELD PER LINE, no ref-price line
+   (nothing to execute; the reference lives in the bet/order rows):
 
        🟢 NEW BET #<n> — <TICKER> long · <H>d vs <BENCH>
-       WHY: <one line — the catalyst + why it is mispriced>
-       conviction: <high|medium> · risk: <the one thing that kills it>
+       Why: <the catalyst, ≤10 words>
+       Risk: <the one thing that kills it, ≤8 words>
+       Conviction: <high|medium>
+
+   **Every row is ONE clause that fits ONE phone line (≤55 chars).** No semicolons, no second
+   sentence, no "and also", no parenthetical. Write `%`, never `pct`. A row that wraps three
+   times is the wall of text the owner has now asked twice to stop — 2026-08-07 (DVA, five
+   dense sentences) and 2026-08-19 (HAE: a 16-word WHY with a semicolon, two risks on the
+   conviction row, plus a `mix:` line that the contract puts in `movers show`). The full case
+   already lives verbatim in the bet's thesis row: the card is the hook, never the memo.
 
    `#<n>` = the catalogue ordinal `bets add` prints ("LOGGED bet #68 — …") — the owner's
    growing count; copy it from that output, never compute it yourself.
@@ -181,11 +191,18 @@ execution") made operational. What this means for the run:
 7. **TELEGRAM the run report** (decided 2026-07-03: every run pushes, silence = broken) —
    ONE message, fail-soft, never blocks the run. Push the digest with the run note passed in
    (what you did + the 5a 🟢 NEW BET card(s), or the zero-take line):
-   `python3 -m research.digest --notify --slim "📖 READ <Dow> YYYY-MM-DD pre-market: N bets (TICKERS) · X take/Y skip
+   `python3 -m research.digest --notify --slim "📖 READ · <Dow> YYYY-MM-DD
    <5a card(s)>"`.
+   **The headline is a DATELINE and nothing else** [2026-08-19, owner call] — it is the
+   lock-screen preview, and the ticker/count/why all live in the card two lines below it, so a
+   "N new bet(s): TICKERS" summary is the same news printed twice. It also carries no scan
+   denominator: `X take/Y skip` is a movers stat, CLI-only by the v3 contract, and the digest
+   STRIPS it from the headline rather than trusting the note. A zero-take run says so in the
+   BODY (one line, unquoted — it renders as a sentence, not a card), never in the headline.
    **digest v3 [MSG 2026-08-18]: Telegram is a PULSE + ALARM channel.** The digest leads with
-   the plain-English 🧪 scoreboard, shows ⚠️ DO-NOW only when nonempty, places the note BODY
-   (the 🟢 cards) right after those, and closes with the 📈 open-bets line. `--slim` no longer
+   the plain-English scoreboard, shows ⚠️ DO-NOW only when nonempty, places the note BODY
+   (the 🟢 cards) right after those — one `<blockquote>` per card — and closes with the 📈
+   next-scoring line. `--slim` no longer
    changes composition — its one job is stamping this push as the READ leg in the push log; the
    "📖 READ …" headline is the message's identity (settle's banner is "📋 SETTLE <dow> <date>").
    DO-NOW items are never collapsed. The counterfactual order (5b) gets NO line of its own —
@@ -193,14 +210,16 @@ execution") made operational. What this means for the run:
    **Write the summary as the note's FIRST line and the card(s) below it** — `digest` splits
    there: line 1 becomes the message headline (and the Telegram preview). Do not format the
    message yourself; the layout is the digest's job.
-   **The note is a CARD, not a memo [2026-08-07, user call]: ≤6 short lines after the headline.**
+   **The note is a CARD, not a memo [2026-08-07, user call]: at most 2 cards × 4 short lines.**
    The reader is not a sector SME and investigates the chart himself — the note's job is
    *what + how to act*, never the full case. Per take: ticker/direction/horizon/tag, conviction,
    and ONE short WHY clause (the hook); the full case already lives verbatim in the bet's thesis
    row — do not restate it in the push. Skips are NEVER enumerated or justified in the note:
-   their count is in the headline and their reasons live in `movers_ledger.csv`. The violation
-   this rule is named for: the 2026-08-07 DVA note ran five dense sentences plus a five-name
-   skip taxonomy, and the human asked for the wall of text to stop.
+   their reasons live in `movers_ledger.csv` and their count in `movers show` — NOT in the
+   push. Same for the mix mirror (`mix: …`), orders/band state and any stats vocabulary: the
+   digest drops those lines on sight [2026-08-19], so writing them only costs you the words.
+   The violation this rule is named for: the 2026-08-07 DVA note ran five dense sentences plus
+   a five-name skip taxonomy, and the human asked for the wall of text to stop.
    Keep it ONE message — the alert rides IN the digest push, never as a second send (duplicate
    messages are the failure mode we fixed 2026-07-24, not a feature). **NEVER push a ✅
    success/heartbeat/confirmation message: `research/heartbeat.py` exists for FAILURES only,
@@ -225,7 +244,7 @@ execution") made operational. What this means for the run:
    heartbeat is an ALARM on a failed run, and the rule bans a ✅ on a CLEAN one. It is not a
    re-send either — never re-push the digest on UNCONFIRMED; the 🚨 says the brief may be lost
    without risking the 2026-07-24 double-post.
-   The digest itself carries the 🧪 scoreboard (v3 [MSG 2026-08-18]), the ⚠️ DO-NOW list
+   The digest itself carries the scoreboard (v3 [MSG 2026-08-18]), the ⚠️ DO-NOW list
    (only when nonempty), the note body (🟢 cards), and the 📈 line. Done.
 
 ## What to expect (honest)

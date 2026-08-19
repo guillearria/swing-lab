@@ -3,8 +3,8 @@
 WHAT TELEGRAM MEANS in the paper regime (owner rethink, 2026-08-18): the v2 message was a
 broker terminal with the broker deleted — the owner skipped POOL/DO-NOW/BOOK/ORDERS/MOVERS
 and the "full:" footer. v3 gives Telegram three jobs and nothing else:
-  1. a PULSE of a growing experiment — 🧪 (n of 30 settled · c of n beat · median · the bar)
-     leads BOTH legs in plain English, 📈 says what's open and when evidence next lands;
+  1. a PULSE of a growing experiment — the Scored / So far / To pass rows lead BOTH legs in
+     plain English, 📈 says when evidence next lands;
   2. an ALARM channel — ⚠️ DO-NOW appears ONLY when something broke or needs the human
      (an empty list prints NOTHING; 🚨 is reserved for failures: heartbeat + watchdog);
   3. later, the X mirror — at P7b activation every post mirrors here as 📣 (locked req).
@@ -12,14 +12,17 @@ Stats vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band sta
 denominators and the mix mirror are CLI-side ONLY: `python3 -m research`, `bets show`,
 `orders show`, `movers show`. Committed dashboards stay the public page's job.
 
-Shape, in order: headline (read passes its own "📖 READ …" first line; settle gets the
-"📋 SETTLE <dow> <date>" banner) → 🧪 scoreboard (+🏁 milestone / PASS-CANDIDATE when
-crossed) → ⚠️ DO-NOW (only when nonempty, paste-ready commands) → the run note body (the
-read's 🟢 NEW BET cards) → 📈 open-bets line. Composed from the silos FAIL-SOFT per section —
-a broken silo degrades to a loud DO-NOW + an "unavailable" line, never a crashed run.
+Shape, in order, ONE IDEA PER BLOCK with a blank line between blocks: headline (read passes
+its own "📖 READ …" first line; settle gets the "📋 SETTLE <dow> <date>" banner) → scoreboard
+(+🏁 milestone / the ahead-of-bar flag — PASS-CANDIDATE in FINDINGS vocabulary — when
+crossed) → ⚠️ DO-NOW (only when nonempty, paste-ready
+commands) → the read's 🟢 NEW BET card(s), one <blockquote> each → 📈 next-scoring line. Composed
+from the silos FAIL-SOFT per section — a broken silo degrades to a loud DO-NOW + an
+"unavailable" line, never a crashed run.
 
-Sent as Telegram HTML (tags never span lines — notify truncates at a newline); printed
-locally with tags stripped. All dynamic free text is escaped here — notify stays transport-only.
+Sent as Telegram HTML; printed locally with tags stripped. All dynamic free text is escaped
+here — notify stays transport-only. Inline tags never span lines (notify truncates at a
+newline); the card <blockquote> is the ONE element that does, and notify closes it on a cut.
 
 `--slim` marks the READ leg for the push-log calendar (research/data/push_log.csv) and no
 longer changes composition: the headline is the leg's identity. Delivery machinery is
@@ -28,7 +31,7 @@ UNCHANGED from v2 — push_log stamps, delivery verdicts, the UNCONFIRMED re-sen
   python3 -m research.digest                       # print it
   python3 -m research.digest --notify              # print + Telegram push (exit 1 on failed send)
   python3 -m research.digest --notify "📖 READ …"  # + a run note: 1st line = the headline,
-                                                  #   the rest (🟢 cards) rides after the 🧪 block
+                                                  #   the rest (🟢 cards) rides after the rows
 """
 import html
 import logging
@@ -75,6 +78,14 @@ FEED_COVERAGE_MIN = 0.90   # fraction of universe names that must return bars; b
                            # outage (or a rotten universe cache) — either way the denominator is
                            # short and a quiet-looking scan is not to be trusted.
 OVERDUE_D = 3        # business-day slack before a matured-but-unscored bet is called STUCK
+# The note is agent-written, so the CLI-only half of the v3 contract is enforced HERE rather
+# than trusted [2026-08-19]: the very first live v3 read push carried a `mix:` mirror line and
+# a "1 take/39 skip" denominator into the headline, both of which the contract puts in
+# `movers show` / `python3 -m research`. Anchored at line start + a colon so a card's own
+# "Risk: ..." can never match.
+NOTE_FOSSILS = re.compile(r"^(mix|movers|orders|book|pool|skips)\s*:", re.I)
+HEAD_DENOM = re.compile(r"\s*[·|,;]?\s*\d+\s*takes?\s*/\s*\d+\s*skips?\b", re.I)
+CARD_LABEL = re.compile(r"^([A-Za-z][A-Za-z ]{0,13}):\s*(\S.*)$")   # "Why: …" → a bold anchor
                      # (market holidays make the busday count outrun real trading bars)
 _e = html.escape
 
@@ -126,7 +137,7 @@ def _by_id(rows: list[dict]) -> dict:
 
 
 def _pool_scoreboard() -> tuple[list, list]:
-    """🧪 — the plain-English scoreboard that LEADS BOTH legs [MSG v3; headline rule from
+    """The plain-English scoreboard that LEADS BOTH legs [MSG v3; headline rule from
     ARC 5 #12a]. Counts over percentages ("2 of 6 beat"), the bar in words, and NO stats
     vocabulary — Σ/p/α live in `python3 -m research` / `bets show`, where the owner reads
     them at a desk, not on a phone.
@@ -142,36 +153,40 @@ def _pool_scoreboard() -> tuple[list, list]:
     """
     from research import bets
     rows = bets._load()
-    now_n = len(bets.excess_values(bets.verdict_rows(rows)))
+    pool = bets.verdict_rows(rows)           # ONE population — every row below counts the same
+    now_n = len(bets.excess_values(pool))    # bets, so the reader can add them up
     prev_n = len(bets.excess_values(bets.verdict_rows(_committed(bets.CATALOGUE))))
     lines = []
     for mst in (10, 20, 30):
         if prev_n < mst <= now_n:
-            lines.append(f"🏁 <b>MILESTONE</b> n={mst} settled longs — review rides the next "
-                         f"read run [ARC 5 #12a]")
-    bar = f"(bar: +{bets.BAR_MEDIAN:.0f}% median, {bets.BAR_BEAT:.0f}% beat)"
-    s = bets.stats(rows)
+            lines.append(f"🏁 <b>{mst} scored</b> — the review rides the next read run")
+    running = len([r for r in pool if r["status"] == "open"])
+    lines.append(f"<b>Scored:</b> {now_n} of {bets.BAR_N} needed · {running} still running")
+    s = bets.stats(rows)                     # the one verdict surface [bets.stats docstring]
     if s:
         n, _, md, beat = s
         c = round(n * beat / 100)          # beat% round-trips exactly back to its count
-        line = f"🧪 <b>{n} of {bets.BAR_N}</b> settled · {c} of {n} beat · median {md:+.1f}% {bar}"
+        lines.append(f"<b>So far:</b> {c} of {n} beat · median {bets.gap_words(md)}")
         if n >= bets.BAR_N:
-            line += " — AT BAR: verdict time"
-        lines.append(line)
+            lines.append("<b>AT BAR — verdict time</b>")
         # Below-bar shape flag from n≥10 [ARC 5 #12a]: labeled so it can never be quoted as a
         # pass — nothing passes before N≥BAR_N, and the Wilcoxon only counts AT the bar.
         if n >= 10 and md > bets.BAR_MEDIAN and beat > bets.BAR_BEAT:
-            lines.append(f"PASS-CANDIDATE (below-bar, n&lt;{bets.BAR_N}): shape clears "
-                         f"median/beat — nothing passes before N≥{bets.BAR_N}")
-    else:
-        lines.append(f"🧪 <b>0 of {bets.BAR_N}</b> settled {bar}")
+            lines.append(f"<b>Ahead of the bar</b> — but nothing passes before "
+                         f"{bets.BAR_N} have scored")
+    lines.append(f"<b>To pass:</b> {bets.beat_bar_count()} of {bets.BAR_N} beating · "
+                 f"median {bets.BAR_MEDIAN:.0f}%+ ahead")
     return [], lines
 
 
 def _bets_section() -> tuple[list, list]:
-    """📈 — one line: how much is open and when evidence next lands. Under a LOW-edge prior
-    "nothing to do" is the honest message most days; the dated next-settle is what tells the
-    owner waiting IS the plan. The STUCK alarm survives from v2 unchanged."""
+    """📈 — one line: WHEN evidence next lands. Under a LOW-edge prior "nothing to do" is the
+    honest message most days; the dated next-settle is what tells the owner waiting IS the plan.
+
+    The open COUNT moved into the scoreboard [2026-08-19 owner review]: down here it counted a
+    different population than the scoreboard above it (every open bet, vs the verdict's own
+    rows), so the two numbers could not be reconciled by anyone reading the message — the
+    owner's exact report. The STUCK alarm still watches EVERY open bet, verdict pool or not."""
     from research import bets
     rows = bets._load()
     open_ = [r for r in rows if r["status"] == "open"]
@@ -194,17 +209,18 @@ def _bets_section() -> tuple[list, list]:
                 soon.append(r["ticker"])
         except Exception:
             pass
-    line = f"📈 {len(open_)} open"
     nxt = bets.next_maturity(rows)
+    lines = []
     if nxt:
         dow = date.fromisoformat(nxt[0]).strftime("%a")
-        line += f" · next settle {dow} {nxt[0][5:]} ({_e(nxt[1])})"
+        line = f"📈 next scores {dow} {nxt[0][5:]} ({_e(nxt[1])})"
         if len(soon) > 1:
             line += f" · {len(soon) - 1} more ≤5d"
+        lines.append(line)
     actions = ([f"settlement STUCK: {', '.join(stuck)} — matured but not scoring; "
                 f"check the ticker + price feed (<code>python3 -m research.bets settle</code>)"]
                if stuck else [])
-    return actions, [line]
+    return actions, lines
 
 
 def _safe(fn, name: str) -> tuple[list, list]:
@@ -379,7 +395,7 @@ def _pushlog_section() -> tuple[list, list]:
     Silent until the log holds a row of that kind (pre-rollout). A leg that stops stamping
     entirely is the watchdog's 36h commit-staleness domain, not this check's. Known false
     positive: the first weekday after a market holiday (~9/yr), when no read was due — it
-    self-clears on the next delivered brief. No 📋/🧪/📊 glyphs in the alarm text: shape
+    self-clears on the next delivered brief. No 📋/📊 glyphs in the alarm text: shape
     tests key on those.
     """
     import csv
@@ -403,20 +419,69 @@ def _pushlog_section() -> tuple[list, list]:
     return out, []
 
 
+def _cards(body: str) -> list[str]:
+    """The read's 🟢 NEW BET card(s) → one <blockquote> block per take.
+
+    The body is free text from the read agent: escaped per line (it must never inject markup),
+    fossil-filtered, and GROUPED on the 🟢 marker so two takes render as two visually separate
+    cards instead of six lines of prose. <blockquote> is what makes a card read as a card on a
+    phone — indented behind a left bar, so even a wrapped line stays visibly inside it, which
+    is precisely what the flat v3 body lacked [2026-08-19 owner review].
+
+    Anything before the first 🟢 rides as a plain line (the mandated zero-take line).
+    """
+    def _row(line: str) -> str:
+        """A card row's label is a bold anchor — the eye finds Why/Risk/Conviction even when
+        the clause behind it wraps. Capitalized, so the card reads as fields and not as three
+        shouted sentences ("WHY:" was the agent's own habit, harmless but loud)."""
+        m = CARD_LABEL.match(line)
+        return (f"<b>{_e(m.group(1).strip().capitalize())}:</b> {_e(m.group(2))}"
+                if m else _e(line))
+
+    groups: list[list[str]] = []
+    loose: list[str] = []
+    for raw in body.strip().split("\n"):
+        line = raw.strip()
+        if not line or NOTE_FOSSILS.match(line):
+            continue
+        if line.startswith("🟢"):
+            groups.append([line])
+        elif groups:
+            groups[-1].append(line)
+        else:
+            loose.append(line)
+    out = [_e(l) for l in loose]
+    for g in groups:
+        if out:
+            out.append("")                    # each card is its own block
+        block = [f"<blockquote><b>{_e(g[0])}</b>"] + [_row(l) for l in g[1:]]
+        block[-1] += "</blockquote>"
+        out += block
+    return out
+
+
 def compose(note: str = "") -> str:
     """The v3 message, optionally wrapped around a run note.
 
     The note's FIRST line is the run's headline and rides on top — it is what Telegram shows
     in the notification preview, and it is the leg's identity (READ_LOOP step 7 mandates a
     "📖 READ …" headline). No headline → the "📋 SETTLE <dow> <date>" banner, so a message is
-    never anonymous. The note's BODY (the read's 🟢 NEW BET cards) lands right after the 🧪
-    block and any ⚠️ list — the cards are the morning's news, not a footnote [MSG v3; the v2
+    never anonymous. The note's BODY (the read's 🟢 NEW BET cards) lands right after the
+    scoreboard and any ⚠️ list — the cards are the morning's news, not a footnote [MSG v3; the v2
     bottom-of-message RUN NOTE block buried them].
 
-    Contiguous lines by design — the whole point is a message that fits one phone glance.
-    The only blank line precedes the ⚠️ DO-NOW block, and an empty DO-NOW prints NOTHING:
-    the absence of ⚠️ IS the all-clear (the owner skipped "✅ DO NOW: nothing" every day).
-    DO-NOW actions are never dropped or summarized.
+    No block glyph on the scoreboard [2026-08-19, owner call]: 🧪 labelled a block whose three
+    rows already say what they are, and a glyph that decorates rather than distinguishes is
+    noise on a phone. 📖/📋/🟢/📈/⚠️/📊/🚨/🏁 stay — each marks a DIFFERENT kind of message.
+
+    ONE IDEA PER BLOCK, blank line between blocks [2026-08-19 owner review]. v3 shipped
+    "contiguous by design" — an over-correction on the v2 shape that once ended in five blank
+    lines [2026-08-04] — and five blocks with no separator render on a phone as one paragraph:
+    "a long sequence of words rather than a clean well formatted deliverable". Air BETWEEN
+    ideas, never inside one; still no double blanks and no trailing blank.
+
+    An empty DO-NOW prints NOTHING: the absence of ⚠️ IS the all-clear (the owner skipped
+    "✅ DO NOW: nothing" every day). DO-NOW actions are never dropped or summarized.
     """
     head, _, body = note.partition("\n")
     sections = [_safe(_bets_section, "bets"),
@@ -427,27 +492,30 @@ def compose(note: str = "") -> str:
     board = _safe(_pool_scoreboard, "scoreboard")
     actions = board[0] + [a for s in sections for a in s[0]]
     if head.strip():
-        out = [f"<b>{_e(head.strip())}</b>"]
+        out = [f"<b>{_e(HEAD_DENOM.sub('', head.strip()))}</b>"]
     else:
         today = date.today()
         out = [f"📋 <b>SETTLE {today.strftime('%a')} {today.isoformat()}</b>"]
-    out += board[1]
+    if board[1]:
+        out += [""] + board[1]
     if actions:
         out += ["", f"⚠️ <b>DO NOW ({len(actions)})</b>"]
         for i, a in enumerate(actions):
             first, *rest = a.split("\n")
             out.append(f"{i + 1}. {first}")
             out += rest
-    if body.strip():
-        out.append(_e(body.strip()))
-    for s in sections:
-        out += s[1]
+    cards = _cards(body)
+    if cards:
+        out += [""] + cards
+    tail = [l for s in sections for l in s[1]]
+    if tail:
+        out += [""] + tail
     return "\n".join(out)
 
 
 def _plain(text: str) -> str:
     """Terminal view: drop the telegram markup."""
-    return html.unescape(re.sub(r"</?(b|i|code|pre)>", "", text))
+    return html.unescape(re.sub(r"</?(b|i|code|pre|blockquote)>", "", text))
 
 
 def run(argv: list[str]) -> int:
