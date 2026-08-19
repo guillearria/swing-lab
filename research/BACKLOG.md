@@ -4,7 +4,55 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-08-18, post-liquidation — book TERMINAL; cutover to swing-lab COMPLETE)
+## ▶ PICK UP HERE (2026-08-19 — message v3.1 · verdict PROCEDURE locked · case layer wired)
+
+**Today, 9 commits, all pushed, 216 tests green.** Owner read the first live v3 Telegram push and
+could not parse it; that thread ran all the way down into the verdict machinery.
+
+- **[MSG] digest v3.1** — three rounds with the owner. One idea per block; the 🟢 card is a real
+  `<blockquote>`; **every scoreboard row now counts the SAME bets** (the old line mixed a verdict
+  TARGET, scored longs, and every open bet incl. shorts — the owner correctly said it did not add
+  up). Bar is a COUNT ("17 of 30 beating"), median is words ("8.0% behind"); `settle_msg` speaks
+  the same vocabulary. Headline is a dateline only; no scoreboard glyph. `compose` now STRIPS the
+  mix mirror + scan denominator rather than trusting the note. Verified on-device, 3 previews.
+- **[SCOPE] SPCX** — owner holds none. Present-tense holding claims stripped from `cases/`,
+  BACKLOG and one FINDINGS possessive (inline redaction, the file's own convention). Dated
+  closed-book evidence and the grandfathered short row STAND; git history is not scrubbed and the
+  entry says so. The conflict-of-interest exclusion stands with its cause now lapsed — lifting it
+  is an owner call.
+- **[ARC 5 #14 · #14a · #14b]** — #7 said WHAT passes and never WHEN we look. Now: **ONE look** at
+  the first settle run reaching n≥30, a FAIL is FINAL, a PASS is PROVISIONAL until a continuation
+  cohort clears (n≥20, median >0, beat >50%, **plus** a Wilcoxon at α=0.05 — a coin clears the
+  first two 41% of the time). Two BLIND adversarial reviews (Sonnet + Opus, no authorship
+  context) found five errors in that work and killed a second proposal outright; all verified
+  before acceptance. Biggest: `bets show` was serving the verdict statistic (`p=0.906` at n=5)
+  daily — now gated in code. The case layer linked **0 of 69** rows, so `--tag=` must name a tag
+  a case DECLARES or the run writes the stub; `engine` stars unbacked tags (**13 of 14**).
+
+**State:** paper only — no real money before the [ARC 5 #7] pass. 5 settled longs (median 8.0%
+behind, 1 beat), ~10 new long bets/week. **Crossing projects to ~2026-09-29** — three weeks
+earlier than #14 first said, because that estimate assumed a frozen book. Dates in #14/#14a are
+ILLUSTRATIONS; `bets_catalogue.csv` is the authority.
+
+**WATCH — the next two runs:**
+1. **08-20 read** = first live v3.1 📖 (dateline headline, `<blockquote>` card, no glyph) and the
+   first run to meet the case-linkage rule — expect a `NOTE ... has no case file` on a new tag.
+2. **SMCI settles ~08-20** = first 📊 in the new vocabulary: "3.2% behind SPY", not "-3.20%, miss".
+
+**NEXT (queued, NOT started) — the generation-quality pre-registration.** The only outstanding
+piece of the "is the read any good" thread. Pre-register, **before the ~2026-09-29 crossing**, a
+generation-quality report emitted as CODE (a narrative promise is the failure class both reviews
+named): take-vs-skip at 63d carrying its existing [ARC 5 #9] bar AND at 21d marked explicitly
+descriptive (n=216 skips beat n=9 takes today — adverse, under-powered, NOT the pre-registered
+horizon, do not act on it); the denominated share (45 of 57 long-bet tickers came through the
+825-candidate funnel — `engine` already prints the denominator line); and tag concentration.
+
+**Do NOT:** recompute the verdict at a larger n [#14·1] · relax α [#14·5] · backfill an untagged
+row (5 are settled) · build a per-tag bar, a retirement rule, or adaptive weighting [#14b — that
+proposal is dead and recorded as dead so it is not re-proposed] · re-arm shorts without the SKILL
+re-arm protocol.
+
+## Earlier — 2026-08-18, post-liquidation (book TERMINAL; cutover to swing-lab COMPLETE)
 
 **State:** The book is CLOSED — owner liquidated at both brokers 08-17, ledger closed + retired
 08-18; closure FINDINGS **[ARC 5 #13] + the #13a scope correction** (the account number −14.8%
