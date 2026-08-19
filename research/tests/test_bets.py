@@ -324,3 +324,14 @@ def test_catalogue_survives_a_save_crash_and_malformed_rows_are_named(tmp_path, 
     with pytest.raises(ValueError):
         B._save([{None: ["overflow"]}])
     assert p.read_text() == original
+
+
+def test_wilcoxon_p_is_withheld_below_the_bar(capsys, monkeypatch):
+    """ONE look [ARC 5 #14]: the verdict statistic is not served daily. `show` printed p=0.906
+    at n=5 on 2026-08-19 — an independent review caught it on the same surface the entry cites
+    for reproduction. Below N it must not appear; at N it must."""
+    B.show([_closed("T%d" % i, "long", "+2.00") for i in range(5)])
+    assert "p=" not in capsys.readouterr().out
+
+    B.show([_closed("T%d" % i, "long", "+2.00") for i in range(B.BAR_N)])
+    assert "p=" in capsys.readouterr().out

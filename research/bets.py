@@ -388,8 +388,16 @@ def show(rows: list[dict]) -> None:
     s = stats(rows)
     if s:
         n, m, md, beat = s
-        p = wilcoxon_p(excess_values(verdict_rows(rows)))
-        pstr = f"  p={p:.3f}" if p is not None else ""
+        # The Wilcoxon is the VERDICT statistic and the verdict is ONE look [ARC 5 #14]. Printed
+        # at every n it IS the repeated look the rule forbids — served daily, on the very surface
+        # #14 names for reproduction (live on 2026-08-19: p=0.906 at n=5, caught by an
+        # independent review of #14 the day it was written). engine.py already withheld it; this
+        # brings show() into line. A prose rule the code contradicts is not a rule — the same
+        # lesson as the SIZED-SUGGESTION marker no code ever read [SKILL.md].
+        pstr = ""
+        if n >= BAR_N:
+            p = wilcoxon_p(excess_values(verdict_rows(rows)))
+            pstr = f"  p={p:.3f}" if p is not None else ""
         print(f"  pooled LONG-ONLY [ARC 5 #12a]: mean {m:+.2f}%  median {md:+.2f}%  "
               f"beat {beat:.0f}%  n={n}{pstr}  → {bar}")
     else:

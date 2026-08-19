@@ -2237,6 +2237,49 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
 
+**2026-08-19 · [ARC 5 #14a] AMENDMENT, SAME DAY — two blind adversarial reviews (independent
+models, no authorship context, briefed to break it) found #14's confirmation clause materially
+weaker than it claimed, one arithmetic error, and one place where CODE CONTRADICTED THE RULE.
+Every change below moves AGAINST a pass; the trigger was a review of the PROCEDURE, not a
+number — n is still 5 and no bet settled between #14 and #14a.**
+
+- **1 · The code contradicted clause 1 on the surface #14 cites for reproduction.** `bets.show()`
+  printed a live Wilcoxon `p=0.906` at n=5, ungated, every run — the verdict statistic served
+  daily, which IS the repeated look clause 1 exists to stop (`engine.py` correctly withheld it).
+  FIXED IN CODE: `show` computes p only at n≥BAR_N, with a regression test. A prose rule the code
+  contradicts is not a rule — the same lesson as the `SIZED SUGGESTION:` marker no code ever read.
+  **Stated limit:** the rest of clause 1 is prose and cannot be fully code-enforced; a future
+  session can always recompute by hand. The gate removes the daily temptation, not the ability.
+- **2 · Arithmetic correction to #14's own projections — it failed to apply its own tie rule to
+  itself.** Five rows (DHR, ISRG, WAB, TRV, ABT) share one `logged_at` and one 63d horizon, so
+  they mature together on ~2026-10-19: the first crossing projects to **n=31, not 30**; verdict
+  population **21d ×14, 63d ×17**; the post-verdict cohort is **27, not 28**. Projections, not
+  thresholds — but an entry that pre-registers a tie rule and then miscounts on a tie is exactly
+  the drift it was written to prevent.
+- **3 · Clause 3's cohort is NOT a replication set, and calling it one was the biggest error.**
+  Measured: post-earnings-drift is **32% of the verdict population but 74% of the confirmation
+  cohort**; entry windows fully OVERLAP (verdict 2026-06-24→08-19, confirmation 2026-06-25→08-17
+  — not sequential); membership is ~96% determined by horizon alone (26 of 27 are 63d). It is a
+  **horizon-selected, tag-skewed CONTINUATION sample from the same entry window**, and that is
+  what it will be called on every surface. It stays as an AND-gate — it is still evidence the
+  primary look cannot see — but it must never be described as out-of-sample confirmation.
+- **4 · The confirmation bar gets a significance gate, because median>0 & beat>50% at n≥20 is
+  cleared by a COIN 41% of the time** (exact: P(beat ≥11 of 20 | p=0.5) = 0.4119). Added: the
+  cohort must ALSO clear a one-sided Wilcoxon signed-rank at **α = 0.05** on excess_pct. No
+  multiplicity correction is owed for α here — primary and confirmation are sequential ANDs, so
+  the joint false-positive rate MULTIPLIES (≈0.017 × 0.05), it does not add.
+- **5 · The reached-but-FAILED branch, which #14 left undefined** (it specified only the
+  unreachable branch — an open door to later rationalization). If the cohort reaches n≥20 and
+  fails ANY of its three conditions: the provisional PASS is **WITHDRAWN**, [ARC 5 #7]'s
+  necessary condition for re-funding is **NOT** satisfied, and any further claim needs a fresh
+  pre-registration over bets logged after that date. Symmetric with clause 2.
+- **6 · A provisional PASS is not publishable as a pass.** Until the confirmation gate clears, it
+  may not be reported as a pass on `docs/index.html` [P7a], on X [P7b], or in any external
+  summary — internally it is "PROVISIONAL PASS, unconfirmed". The failure mode the reviews named:
+  one signal measured twice on overlapping data, announced as two confirmations.
+  Reproduce: `python3 -m research.bets show` (no p below the bar) · `python3 -m pytest
+  research/tests` (214) · the cohort splits recompute from `bets_catalogue.csv` by maturity rank.
+
 **2026-08-19 · [ARC 5 #14] PROCEDURE PRE-REGISTRATION — the [ARC 5 #7] bar says WHAT passes and
 never said WHEN we look. Locked at n=5, ~2 months before the bar can be reached, so no number in
 this entry could have informed it.** Found by an independent re-read of the verdict machinery
