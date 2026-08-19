@@ -607,7 +607,8 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
    rendered every day by `python3 -m research.book mark` and on the digest's BOOK line — never
    restated here. `book_equity.csv` history was deliberately NOT rewritten — those were the numbers we
    actually reported, so the curve carries a step down. Book = CMPS, NIO, SPY anchor. Nothing was
-   sold; the SPCX share is still held, just tracked in the other realm.
+   sold at the time; SPCX left this repo's scope entirely — and there is no SPCX position
+   anywhere as of 2026-08-19.
 
 **1. [DONE 2026-08-02 — Arc 3 is CLOSED, the silo is DELETED]** The [ARC 3 #1d] audit ran:
    **0–2 entity-stack artifacts of 18** against a locked ≥7 threshold — the candidate stream was

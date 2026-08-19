@@ -348,7 +348,7 @@ experimentation (trade/structure calls delegated to the model; his feedback afte
 - **First case bet (the worked example):** ILLR short 21d vs IWM (fast sleeve) — a
   borrowed-narrative "SpaceX-treasury-asset" pump on a 1:10-reverse-split, negative-equity,
   delist-deadline shell; spike-fade per [ARC 5 #3], XRP spent-catalyst tell per [ARC 5 #4].
-  Paired with SPCX (the REAL SpaceX vehicle we hold) as the `real-vehicle-vs-meme` pattern.
+  Paired with SPCX (the REAL SpaceX vehicle) [redacted: long-realm] as the `real-vehicle-vs-meme` pattern.
   See `cases/ILLR.md` + `cases/SPCX.md`. Reproduce: `python3 -m research.bets show`.
 
 **2026-06-26 · [ARC 5 #7] DECISION + PRE-REGISTRATION (with user, multi-model review) — SHARPEN the
@@ -2236,6 +2236,29 @@ Correction accepted and logged; the numbers do not move, the LABEL does:
   noted on the `orders.csv` row.
   Reproduce: `python3 -m research.bets show` (the live verdict silo) · closed rows of
   `research/book.csv` · [ARC 5 #12] "the book contributes ZERO to it by design".
+
+**2026-08-19 · [SCOPE] SPCX — NO POSITION, ANYWHERE. Present-tense holding language stripped
+from the public tree.** Owner, this session: he no longer holds SPCX (the only upcoming
+long-realm action is an ESPP purchase, which is that repo's business and not restated here).
+Every claim in the working tree that SPCX was currently held is now FALSE as well as off-scope
+for a repo public since 2026-08-16, so it is gone: `cases/SPCX.md` (front matter, the lot
+paragraph, the pattern line, the Prediction, the private-realm Links and the quoted long-realm
+falsifier attribution), `cases/ILLR.md` ("the real SpaceX vehicle we own"), `BACKLOG.md` ("the
+SPCX share is still held"). SPCX is a MARKET SUBJECT in this repo and nothing else.
+- **Left alone, deliberately:** dated evidence of the CLOSED book (the phantom-17-share entries,
+  the 08-02 correction) — that is the audit trail of a terminal, owner-published ledger, and
+  rewriting a dated log to tidy a fact is worse than the fact. FINDINGS' one present-tense
+  possessive ("the REAL SpaceX vehicle we hold") took the file's existing inline
+  `[redacted: long-realm]` treatment rather than a rewrite.
+- **Not fixable here:** the repo has been public since 2026-08-16 and git history keeps every
+  prior revision. This cleans the current page, not the record. Say so rather than imply a scrub.
+- **The standing conflict-of-interest exclusion STANDS** (CLAUDE.md, 2026-08-02): SPCX is never
+  a scored, held or recommended leg here. Its original reason has lapsed with the holding, so
+  the exclusion is now an owner rule with no stated cause in this repo — lifting it is an owner
+  call, not a cleanup consequence. The grandfathered 2026-07-10 `#lockup-supply` SHORT row is
+  untouched and runs to its own settle (~2027-03): dropping a scored pre-registered row is
+  cherry-picking, whatever the reason.
+  Reproduce: `grep -rn SPCX --include=*.md .` · `python3 -m research.bets show` (the row stands).
 
 **2026-08-19 · [MSG] DIGEST v3.1 — THE MESSAGE STOPPED BEING PROSE AND THE NUMBERS STARTED
 ADDING UP (owner review of the FIRST live v3 push; three rounds, same day).** v3 fixed WHAT

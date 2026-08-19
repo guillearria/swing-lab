@@ -14,7 +14,7 @@ vertical spike with no durable base; the round-trip was already underway by 2026
 The trigger was a 2026-06-25 announcement that Triller entered definitive agreements to
 **acquire a significant SpaceX position as a "strategic treasury asset"** — putting SpaceX
 exposure on its balance sheet. This borrows the SAME hot narrative (private-SpaceX valuation)
-lifting genuine SpaceX-exposure vehicles like our **SPCX** (see `cases/SPCX.md`). It is a
+lifting genuine SpaceX-exposure vehicles like **SPCX** (see `cases/SPCX.md`). It is a
 story change, not an earnings change — it moves the narrative, not the cash flows.
 
 ## How
@@ -42,5 +42,5 @@ Scored in `bets.py`: `python3 -m research.bets show` → row `ILLR`.
 
 ## Links
 - Bet: `python3 -m research.bets show` (`ILLR`, short 21d vs IWM, fast sleeve)
-- Contrast case: `cases/SPCX.md` (the real SpaceX vehicle we own)
+- Contrast case: `cases/SPCX.md` (the real SpaceX vehicle — the pattern's long side)
 - Prior art: FINDINGS `[ARC 5 #3]` (spike-fade screen), `[ARC 5 #4]` (XRP spent-catalyst tell)

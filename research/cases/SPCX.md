@@ -1,20 +1,17 @@
 # Case study: SPCX (Space Exploration Technologies) — the real vehicle behind the narrative
 
-> See `cases/_TEMPLATE.md`. Companion/contrast to `cases/ILLR.md`. Single source of truth: the
-> holding lives in the owner's private long-realm repo (LONG-TERM realm) — **not** in this repo's
-> book. Nothing here restates a number.
+> See `cases/_TEMPLATE.md`. Companion/contrast to `cases/ILLR.md`. **SPCX is a MARKET SUBJECT
+> here and nothing else — no position in this repo or anywhere else [2026-08-19].** Nothing here
+> restates a number.
 
-**Status:** PATTERN retained; position moved out of the swing book 2026-08-02 · **Date:** 2026-06-26
+**Status:** PATTERN retained; NO position · **Date:** 2026-06-26
 · **Pattern tag:** `real-vehicle-vs-meme` (the REAL side) + `unlock-relief` (registered 2026-08-07, below)
 
 ## Move
 SPCX ran hard off the 2026-06-12 IPO, then gave it back — first market close $160.95, ~$108 by
-early August. **CORRECTED 2026-08-02:** the "two lots (one locked, one liquid)" this case was
-written around was wrong. There is ONE share, bought at the $135 offer and freely sellable;
-the supposed 17-share locked lot was a cash balance misbooked as shares
-(FINDINGS 2026-08-02). The holding is now tracked in the owner's private long-realm repo, not
-in the book — it is a long-realm holding. **This case survives as a PATTERN
-(real-vehicle-vs-meme), not as a position.**
+early August. **This case survives as a PATTERN (real-vehicle-vs-meme), never as a position.**
+The lot mechanics this file was originally written around were an accounting error (corrected
+2026-08-02) and are moot: there is no SPCX position [2026-08-19].
 
 ## Why
 SPCX is the actual **Space Exploration Technologies Corp** stock — recently public — not a fund
@@ -37,17 +34,14 @@ flows / scarce exposure and let the borrowed-narrative impostors (the "X-treasur
 be the SHORT. The tell that you hold the real one: operating revenue, a re-rating that *holds*,
 and the *impostors quoting your name* (ILLR putting "a SpaceX position" on its balance sheet is
 the confirmation that SPCX is the genuine vehicle). The pattern trade is expressed across silos:
-long the real (SPCX — a long-realm holding, outside this repo) + short the meme (ILLR, in `bets.py`).
-The long leg is no longer a swing position, so only the ILLR leg is scored here.
+long the real (SPCX — never scored here, standing conflict-of-interest exclusion) + short the
+meme (ILLR, in `bets.py`). Only the ILLR leg is scored.
 
 ## Prediction
-No new scored bet. SPCX was an existing HOLDING (and, as of 2026-08-02, a long-realm holding
-outside this repo), never a swing call, so it was never scored in
-`bets.py` and is not scored now. **The pattern's only scored leg is the ILLR short.** The
-forward, falsifiable half of this pattern is the ILLR short.
+No new scored bet. SPCX has never been a swing call and is not scored in `bets.py`.
+**The pattern's only scored leg is the ILLR short** — that is its forward, falsifiable half.
 
 ## Links
-- Money: the owner's private long-realm repo (long-term realm — SPCX is NOT in the swing book)
 - Contrast case: `cases/ILLR.md` (the borrowed-narrative pump we're fading)
 - Pattern trade: `python3 -m research.bets show` (`ILLR` short = the meme side)
 
@@ -57,9 +51,8 @@ forward, falsifiable half of this pattern is the ILLR short.
 ~911M shares newly eligible (~6% of shares out, the most-telegraphed supply event of the
 year): closed **+6.1% on the heaviest volume in the stock's history**. 2026-08-07: **+15.8%
 to $133.11** (~$134 after hours) — a two-day +23%, back to within ~1% of the $135 IPO price.
-The owner's long-realm analysis (2026-08-05) had pre-registered exactly this as its bear-case
-falsifier: *"reclaims $135+ before Dec 8 on absorbed supply → sell-through far below eligible,
-revise all scenarios up."* It fired at the first out-of-sample test.
+A falsifier pre-registered 2026-08-05 — *reclaims $135+ before Dec 8 on absorbed supply ⇒
+sell-through far below eligible* — fired at the first out-of-sample test.
 
 **Why.** Eligible ≠ sold. The selling happened BEFORE the event — the stock fell ~50% from
 its high *into* the unlock (classic sell-the-rumor; the Facebook-2012 template). The
@@ -90,4 +83,3 @@ pre-registration and no P&L.
 
 ## Links (2026-08-07 addendum)
 - FINDINGS entry: 2026-08-07 · [CASE]
-- Money + schedule consequences: the owner's private long-realm repo — its own log
