@@ -363,7 +363,7 @@ def render(bets_rows: list[dict]) -> str:
 <title>Swing Lab — the forward ledger</title>
 <meta name="description" content="A public research ledger of timestamped market predictions.
 Every call is published before its outcome is known and scored mechanically against a
-benchmark — wins and losses, takes and skips — so the record cannot be cherry-picked.
+benchmark — wins and losses alike — so the record cannot be cherry-picked.
 Not investment advice.">
 <link rel="canonical" href="https://guillearria.github.io/swing-lab/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22%231a1a19%22%2F%3E%3Cpolyline%20points%3D%226%2C22%2013%2C12%2019%2C17%2026%2C7%22%20fill%3D%22none%22%20stroke%3D%22%233987e5%22%20stroke-width%3D%223.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E">

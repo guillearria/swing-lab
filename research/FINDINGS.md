@@ -2474,3 +2474,27 @@ population, bars, floors, one pooled verdict) is untouched:
   the delivery-guarantee question answered first, not dropped.
   Reproduce: `python3 -m research.digest` (settle shape) · `python3 -m pytest research/tests`
   (205) · git diff bcd2785..HEAD.
+
+**2026-08-21 · [SCOPE] THE SPCX SWEEP MISSED THE ONE SURFACE THAT WAS ACTUALLY PUBLIC — its
+own reproduce line could not see a `.csv`.** The 2026-08-19 sweep scrubbed present-tense SPCX
+holding language and closed with `grep -rn SPCX --include=*.md .`. That filter is the finding:
+`bets_catalogue.csv` row 10 (ILLR, 2026-06-26) ended `Fade the borrowed-narrative meme; own the
+real SPCX.` and `site.py` renders thesis text VERBATIM, so the public dashboard carried an
+unqualified buy recommendation for the one ticker CLAUDE.md says is never a recommended leg
+here — under the owner's byline, with "Not investment advice." as the only disclaimer, for the
+five days the page has been live. Found by a blind adversarial review pass, not by the sweep.
+- **Fixed as BACKLOG pre-authorised** ("the ROW and its score STAY — dropping a scored row is
+  cherry-picking; redact prose, note the redaction inline"): the clause is replaced by an inline
+  `[REDACTED 2026-08-21: ...]` marker, matching the row-23 `[CORRECTION 2026-08-08]` precedent.
+  Numbers untouched — direction short, 21d, IWM, entry 3.77, excess +69.74, closed.
+- **The number that proves it moved nothing:** pooled verdict identical before and after —
+  6 settled, median -7.08%, beat 33%, `accruing`. The ILLR short is out of the long-only
+  headline anyway [ARC 5 #12a]; only display prose changed.
+- **Caveat, same as the 08-19 entry:** the repo has been public since 2026-08-16 and git history
+  keeps every prior revision. This cleans the current page, not the record.
+- **The transferable lesson:** a completeness check scoped by file extension proves nothing about
+  the surfaces it cannot read. The public page renders CSV, not markdown — the sweep audited the
+  wrong tree. Any future scope sweep greps the RENDERED artifact (`docs/index.html`) as well as
+  the sources.
+  Reproduce: `grep -rn "own the real SPCX" research/ docs/` (0 hits) ·
+  `python3 -m research.engine` (6 settled, median -7.08%, beat 33%).
