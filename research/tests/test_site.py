@@ -69,7 +69,9 @@ def test_curve_points_order_and_cumsum():
 
 def test_charts_render_with_sign_split_bars():
     page = site.render(BETS)
-    assert page.count("<svg") == 2                          # curve + per-prediction bars
+    # role="img" counts the CHARTS only — the masthead brand mark (added 2026-08-21) is a
+    # third <svg> and is deliberately aria-hidden, so a raw "<svg" count no longer works.
+    assert page.count('role="img"') == 2                    # curve + per-prediction bars
     assert 'fill="var(--barneg)"' in page                   # BBB's negative bar
     assert 'fill="var(--series)"' in page
 
@@ -91,4 +93,10 @@ def test_write_creates_the_page(tmp_path, monkeypatch):
     s = site.write()
     out = tmp_path / "docs" / "index.html"
     assert out.exists() and s["bets"] == 0
-    assert "Forward Ledger" in out.read_text()
+    html = out.read_text()
+    # Identity, not just the ledger name: a visitor arriving from the profile README must be
+    # able to tell whose work this is (renamed 2026-08-21 — the page was titled "Forward
+    # Ledger" with no owner, no repo link and no masthead).
+    assert "Swing Lab" in html and "The forward ledger" in html
+    assert "github.com/guillearria/swing-lab" in html
+    assert "Not investment advice." in html

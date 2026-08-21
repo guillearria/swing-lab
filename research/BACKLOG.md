@@ -76,10 +76,24 @@ investigate the feed.
 3. **X activation (P7b)** ("working on it"): developer app Read+Write → 4 keys in local .env +
    settle trigger cloud env → set PULSE_URL to the Pages URL → dry-run `python3 -m research.pulse`
    together before the first autopost.
-4. **P9 README voice pass** (item below) + decide the public page `<title>` — "Forward Ledger"
-   vs "swing-lab" is a site.py display string; rides P9 either way.
-5. **Together-edit of public page wording** (owner offer stands) — thesis text is append-only
-   ledger evidence; any public cleanup is a display rule in site.py, never a ledger rewrite.
+4. ~~**decide the public page `<title>`**~~ **DECIDED 2026-08-21 (owner): "Swing Lab".** The
+   page is now `<title>Swing Lab — the forward ledger</title>` with `<h1>The forward ledger</h1>`
+   under a masthead carrying the project name, a link to this repo and a link to the owner's
+   profile. The trigger was a portfolio review: the profile README sends visitors here calling
+   the project "Swing Lab", and they landed on a page titled *Forward Ledger* with no name, no
+   attribution and no way back — so an employer clicking through could not tell it was the same
+   person's work. Shipped alongside a favicon, description/OpenGraph tags and a footer.
+   **P9 README voice pass is still open** and no longer blocks on this.
+5. ~~**Together-edit of public page wording**~~ **PARTLY DONE 2026-08-21** — one paragraph added
+   under the performance tiles saying plainly what the record is (complete, logged before the
+   outcome, nothing removed or revised, hypothesis stage, no signal shown to make money). It is a
+   display rule in site.py; no ledger text was touched, per the standing constraint. Two review
+   catches worth keeping: the first draft said *"takes and skips"*, which is true of the project
+   but **not of this page** — the take/skip ledger is movers and never reaches `render()`; and the
+   first draft coloured link text `var(--series)`, which measures **4.19:1 in light mode** against
+   an AA bar of 4.5:1 and violated this file's own rule that *text wears text tokens, never the
+   series color*. A `--link` token now carries it at 6.60:1. **Owner offer still stands for the
+   rest of the page wording.**
 
 (The 08-15b handoff this block replaces — P7 hosting detail, the P1b runbook — is preserved in
 the P7/P1 records below and in git history.)
