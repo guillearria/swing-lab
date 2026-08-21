@@ -53,7 +53,7 @@ python3 -m research help       # this command index
 ## Automation (cloud routines — laptop-off-safe, the PRIMARY path)
 Three scheduled cloud `/schedule` routines run the forward engine unattended:
 - **settle** (DAILY): runs `scripts/daily.sh` → scores matured bets + movers (take/skip fwd vs SPY), commits the ledgers (free, deterministic, idempotent); pushes the 📋 digest (+ 📊 per scored settlement — 🚨 has meant FAILURE ONLY since v3); the 🚨 heartbeat fires only if a step or the digest push failed (NEVER a ✅ success ping).
-- **read** (pre-market, Mon–Fri): runs one `research/READ_LOOP.md` iteration → reads live situations, pre-registers a batch (≤~10–15, a ceiling not a quota) of LONG-ONLY forward bets above the liquidity floor; every take-carrying run logs exactly ONE 🟢 COUNTERFACTUAL working order (`orders place` — a LIMIT with an expiry, unsized, nothing to execute [ARC 5 #12a]); commits; pushes the 📖 slim morning brief (`digest --slim`: run-note headline + 🎯 scoreboard + DO-NOW + book + 🟢 system take). A pending order is re-shown daily by **settle** until it fills or expires against real bars.
+- **read** (pre-market, Mon–Fri): runs one `research/READ_LOOP.md` iteration → reads live situations, pre-registers a batch (≤~10–15, a ceiling not a quota) of LONG-ONLY forward bets above the liquidity floor; every take-carrying run logs exactly ONE 🟢 COUNTERFACTUAL working order (`orders place` — a LIMIT with an expiry, unsized, nothing to execute [ARC 5 #12a]); commits; pushes the 📖 slim morning brief (`digest --slim`: the dateline headline + the plain-English scoreboard + ⚠️ DO-NOW only when nonempty + the 🟢 NEW BET card(s) + the 📈 line; `--slim` only stamps the READ leg in the push log). A pending order is re-shown daily by **settle** until it fills or expires against real bars.
 
 **Notification contract (2026-07-03; v2 2026-08-14; v3 2026-08-18 [MSG] — Telegram is a PULSE + ALARM channel): every scheduled run pushes ONE message — SILENCE = BROKEN; a clean weekday = exactly ONE 📋 SETTLE + ONE 📖 READ, plus ONE 📊 SCORED on days bets mature.** 📋/📖 = the scoreboard rows + ⚠️ DO-NOW (only when nonempty) + 🟢 NEW BET card(s) (read) + the 📈 line; 📊 = a scored settlement the moment it lands (`notified`-column delivery guarantee); 🚨 = FAILURE ONLY (a broken step or dead push → check `cron.log`); 📣 = the X mirror once P7b activates (locked requirement). ESCALATION beyond the daily two: only 🚨 failures · verdict events (🏁 milestones, PASS-CANDIDATE flip, pass/kill) · spend-gate proposals · anything genuinely needing a human.
 
@@ -73,7 +73,7 @@ Bets pool into ONE general verdict (`python3 -m research.engine`); horizon (a **
 - **`research/LOOP.md`** — how the autonomous research loop runs.
 - **`CLAUDE.md`** — the operating contract (how the agent works on this repo).
 - **`FINANCES.md`** — private baseline + experimental read (gitignored).
-- **`research/book.csv`** — the live book's positions/cash/P&L (tracked in git — the experiment's evidence ledger, public by owner decision [P8]).
+- **`research/book.csv`** — the CLOSED book's frozen positions/cash/P&L (tracked in git — the experiment's evidence ledger, public by owner decision [P8]; TERMINAL since 2026-08-18 [ARC 5 #12]).
 
 ## The system in one breath
 **Mechanical track (closed):** fixed rules backtested on history *instantly* → the engine
