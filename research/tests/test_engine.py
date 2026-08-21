@@ -14,10 +14,18 @@ def _bet(status, tag="", ticker="AAA", horizon="63", excess=""):
             "pattern_tag": tag, "notified": ""}
 
 
-def _wire(monkeypatch, bet_rows, mover_rows=()):
+def _wire(monkeypatch, bet_rows, mover_rows=(), cases=()):
+    """Every input to forward_track() is a FIXTURE — including which tags have a case file.
+
+    `cases` was ambient repo state until 2026-08-21: tags_with_cases() globs research/cases/*.md,
+    so the read routine adding EL.md/MRK.md on 08-20 (declaring post-earnings-drift and
+    analyst-rerating) un-starred two tags these tests had hardcoded as unbacked, and the suite
+    went red for a LIVE-DATA change with no code change behind it. The star is incidental to
+    what these tests guard — the DISPLAY invariant: both counts, both unit labels, every branch."""
     from research import bets, movers, universe
     monkeypatch.setattr(bets, "_load", lambda: list(bet_rows))
     monkeypatch.setattr(movers, "_load", lambda: list(mover_rows))
+    monkeypatch.setattr(bets, "tags_with_cases", lambda: set(cases))
     monkeypatch.setattr(universe, "sp500_cached", lambda: ["AAA"])
     monkeypatch.setattr(universe, "tail", lambda: ["TTT"])
 
@@ -43,9 +51,8 @@ def test_a_tag_with_a_case_file_is_not_starred(monkeypatch, capsys):
     """[ARC 5 #14b] The star is the accountability: it says this scenario names a phrase, not a
     documented mechanism. A tag the case layer actually declares must come back clean, and the
     legend must not fire when nothing is loose."""
-    from research import bets
-    monkeypatch.setattr(bets, "tags_with_cases", lambda: {"unlock-relief"})
-    _wire(monkeypatch, [_bet("open", tag="unlock-relief") for _ in range(2)])
+    _wire(monkeypatch, [_bet("open", tag="unlock-relief") for _ in range(2)],
+          cases={"unlock-relief"})
     E.forward_track()
     out = capsys.readouterr().out
     assert "unlock-relief 0cl 2op" in out and "unlock-relief*" not in out
