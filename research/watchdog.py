@@ -21,8 +21,15 @@ import sys
 import time
 
 log = logging.getLogger(__name__)
+# push_log.csv, NOT book_equity.csv [2026-08-21]: the equity curve was the only watched file
+# written EVERY day including weekends, and `book retire` (2026-08-18) froze it — snapshot is a
+# no-op on a retired book. The other two are written only when a trading-day window matures, so
+# the watched set went stale across every weekend (~44h vs the 36h bar) and this switch would
+# have cried wolf each Sunday while both routines ran normally. push_log.csv is appended by
+# digest._log_push on EVERY delivered push and committed by daily.sh — the daily heartbeat the
+# retirement removed without replacing.
 WATCHED = ("research/bets_catalogue.csv", "research/movers_ledger.csv",
-           "research/book_equity.csv")
+           "research/data/push_log.csv")
 STALE_H = 36    # settle runs daily; 36h tolerates one missed run + a weekend edge, not two
 
 

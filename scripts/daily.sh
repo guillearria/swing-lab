@@ -63,7 +63,11 @@ LEDGERS="research/bets_catalogue.csv research/movers_ledger.csv research/book_eq
 # never was, and on 2026-07-31 a failed push silently destroyed a whole settle run with the
 # container. push_ledgers.sh verifies the commit actually reached origin/master and, when it
 # did not, parks it on a settle-backup/* ref that outlives this checkout.
-OUT=$(scripts/push_ledgers.sh $LEDGERS 2>>cron.log) || FAILS="$FAILS $OUT"
+# ${OUT:-push} — never let a FAILED push contribute an EMPTY word [2026-08-21]. FAILS then
+# held only a space: `[ -n " " ]` passes, but unquoted $FAILS word-splits to NO argv, and
+# argless heartbeat.py sends "✅ settle ran clean" — a broken run reporting success, the
+# exact contract violation logged on 2026-08-05 (🚨 means FAILURE ONLY).
+OUT=$(scripts/push_ledgers.sh $LEDGERS 2>>cron.log) || FAILS="$FAILS ${OUT:-push}"
 
 # 🚨 fallback proof-of-life — fires ONLY when a step or the digest push failed
 # ($FAILS unquoted on purpose: step names become argv). Clean day = digest is the message.

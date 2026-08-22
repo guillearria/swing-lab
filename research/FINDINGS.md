@@ -2498,3 +2498,33 @@ five days the page has been live. Found by a blind adversarial review pass, not 
   the sources.
   Reproduce: `grep -rn "own the real SPCX" research/ docs/` (0 hits) ·
   `python3 -m research.engine` (6 settled, median -7.08%, beat 33%).
+
+**2026-08-21 · [MSG] THREE WAYS A BROKEN RUN COULD REPORT SUCCESS — found by blind review,
+each reproduced before it was fixed.** The retirement of the live book (08-18) and one
+unguarded line quietly degraded the alarm layer. None of it was visible from the outside,
+which is the point: every one of these makes a FAILURE look like a QUIET DAY.
+- **The watchdog was going blind at weekends.** `WATCHED` still listed `book_equity.csv`, the
+  only member written every day including weekends — and `book retire` made `snapshot` a no-op,
+  freezing it 08-18. The other two are written only when a trading-day window matures. Number:
+  age of the watched set at Sun 19:13Z = **43.5h against STALE_H=36** → a FALSE 🚨 every Sunday,
+  on the ONE alarm that by design cannot be emitted by the run it watches. Fixed by watching
+  `research/data/push_log.csv`, appended by `digest._log_push` on every delivered push. Evidence
+  it is the right file: since the public seed (08-16) it is the only ledger with a commit on
+  EVERY day, Sunday 08-16 included; `book_equity.csv` stops dead at 08-18.
+- **A failed push could send "✅ settle ran clean".** `daily.sh` did `FAILS="$FAILS $OUT"`; when
+  `push_ledgers.sh` exited nonzero without printing its status word, `FAILS` held one SPACE —
+  `[ -n " " ]` passes, but unquoted `$FAILS` word-splits to NO argv, and argless `heartbeat.py`
+  sends `✅ settle ran clean`. Reproduced both branches: old → no argv → ✅; new (`${OUT:-push}`)
+  → argv `[push]` → `🚨 RUN FAILURE … failed: push`. Same contract violation as 2026-08-05.
+- **A missing LEDGERS path discarded the whole run and exited 0.** `git add -A -- $LEDGERS` exits
+  128 on a pathspec that matches nothing; unchecked, control fell through to
+  `git diff --cached --quiet`, which also matched nothing, said "nothing to persist" and
+  `exit 0`. A settle whose real ledger changes were never staged ended CLEAN: no commit, no
+  backup ref, no 🚨 — the 2026-07-31 shape, through the last unguarded step in the script
+  written to prevent it. Now `|| { say add; exit 1; }`, with `add` documented in the contract.
+- **Regression-tested, and the tests were proven to bite:** both new tests FAIL against the
+  pre-fix code and pass after. Suite 216 → 218.
+- **Residual risk, stated:** `heartbeat` still sends on bare invocation (no `--notify` guard,
+  unlike `digest`) while sitting in the live command index — a human running it to "look" fires
+  a real push. Observed this session. NOT fixed here; logged as the next alarm-layer item.
+  Reproduce: `python3 -m pytest research/tests` (218) · `python3 -m research.watchdog`.

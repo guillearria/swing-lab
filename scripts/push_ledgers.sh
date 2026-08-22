@@ -13,6 +13,7 @@
 #
 # Contract: exit 0 == the commit is provably reachable from origin/master. On any other
 # outcome, exit 1 and print ONE word on stdout for daily.sh's $FAILS:
+#   add            staging failed (e.g. a LEDGERS path does not exist) — nothing staged
 #   commit         the commit itself failed — nothing was created
 #   push-stranded  work is SAFE on origin at settle-backup/<date>-<sha>, needs a human merge
 #   push-LOST      the remote is unreachable; the work exists ONLY in this container
@@ -30,7 +31,7 @@ say() { echo "$1" >&3; }
 # Stage BEFORE testing for changes. `git diff --quiet` only sees TRACKED files, so a
 # brand-new ledger (a first-of-its-kind cache/day file) looked like "nothing to do" and was
 # never committed at all. Staging first and diffing --cached counts new files too.
-git add -A -- $LEDGERS
+git add -A -- $LEDGERS || { say add; exit 1; }
 git diff --cached --quiet -- $LEDGERS && exit 0        # genuinely nothing to persist
 
 git commit -m "chore: settle forward bets ($(date -u +%Y-%m-%d))" || { say commit; exit 1; }

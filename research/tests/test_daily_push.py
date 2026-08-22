@@ -130,3 +130,21 @@ def test_unreachable_remote_reports_push_lost(repo):
     (clone / LEDGER).write_text("ticker,status\nAAA,closed\n")
     _git(clone, "remote", "set-url", "origin", str(origin.parent / "gone.git"))
     assert _push(clone) == (1, "push-LOST")
+
+
+def test_missing_ledger_path_says_add_instead_of_reporting_success(repo):
+    """A LEDGERS path that does not exist must ABORT the run, not silently discard it.
+
+    `git add -A -- <paths>` exits 128 when any pathspec matches nothing. Unchecked, control fell
+    straight through to `git diff --cached --quiet` — which also matched nothing, reported "no
+    changes", and `exit 0`. So a run whose real ledger changes were never staged ended as a
+    CLEAN settle: no commit, no backup ref, no 🚨, and daily.sh went on to push a digest whose
+    numbers were not in git. That is the 2026-07-31 failure shape (work destroyed with the
+    container) reached through the one unguarded step left in the script written to prevent it.
+    """
+    _, clone = repo
+    (clone / LEDGER).write_text("ticker,status\nAAA,closed\n")     # a REAL, changed ledger
+    before = _git(clone, "rev-parse", "HEAD")
+    code, out = _push(clone, LEDGER, "research/does_not_exist.csv")
+    assert (code, out) == (1, "add")                    # one word, for $FAILS -> 🚨
+    assert _git(clone, "rev-parse", "HEAD") == before   # nothing was committed

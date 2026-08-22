@@ -45,13 +45,10 @@ execution") made operational. What this means for the run:
    daily scan; a human-driven session that wants a second opinion must add bets only, never
    re-run `movers scan`. Then read `research/SKILL.md` (the rules earned from losses) and the
    Arc 5 #1 bar in `FINDINGS.md`. Skim current open bets (`python3 -m research.bets show`) so
-   you don't re-bet a ticker already live. NEVER re-test a dead end from SKILL.md. Check the book
-   (`python3 -m research.book show`): free cash and open positions. Then read
+   you don't re-bet a ticker already live. NEVER re-test a dead end from SKILL.md. Then read
    `python3 -m research.orders show`: the LEDGER owns expiry now, not this step. A PENDING order
-   is still live and its cash is already committed — leave it alone and do not size a new order
-   against dollars it is holding (`orders place` enforces this, but know it before you plan the
-   run). A FILLED order with no matching book position means the human missed the fill or never
-   placed it — say so in one line in the push. Never carry a stale entry price forward; the
+   is still live — `orders place` refuses a second one on the same ticker. Never carry a stale
+   entry price forward; the
    limit is the only price this loop is allowed to quote.
 2. **GATHER candidates** (free, each logs a DENOMINATOR — the multiple-testing count):
    - **Daily movers (the GENERAL denominator):** `python3 -m research.movers scan` — ONE command,
