@@ -265,7 +265,23 @@ def test_save_backfills_old_schema_rows(tmp_path, monkeypatch):
     assert back[0]["pattern_tag"] == "" and back[0]["ticker"] == "OLD"
 
 
-def test_next_maturity_picks_the_earliest_open_bet():
+@pytest.fixture
+def frozen(monkeypatch):
+    """Freeze bets' clock at 2026-08-21 — next_maturity() SKIPS already-matured rows.
+
+    These fixtures mature 2026-09-02, so from 2026-09-03 the real clock would skip them and
+    next_maturity() would return None: three tests going red on a date, with no code change
+    behind it. Same class as the 2026-08-21 case-file breakage — a test reaching into mutable
+    ambient state instead of declaring it.
+    """
+    class _Aug21(date):
+        @classmethod
+        def today(cls):
+            return cls(2026, 8, 21)
+    monkeypatch.setattr(B, "date", _Aug21)
+
+
+def test_next_maturity_picks_the_earliest_open_bet(frozen):
     """horizon_d counts TRADING days, so the walk is weekday-only: a 21d bet logged Tue 08-04
     lands on 09-02, not 08-25."""
     rows = [{"logged_at": "2026-08-04T12:00:00+00:00", "ticker": "SMCI", "horizon_d": "21",
@@ -283,7 +299,7 @@ def test_next_maturity_is_none_with_nothing_open():
                              "status": "closed"}]) is None
 
 
-def test_next_maturity_skips_a_corrupt_row_rather_than_dying():
+def test_next_maturity_skips_a_corrupt_row_rather_than_dying(frozen):
     """A hand-edited row must not take the whole BETS line down with it."""
     rows = [{"logged_at": "not-a-date", "ticker": "BAD", "horizon_d": "21", "status": "open"},
             {"logged_at": "2026-08-04T12:00:00+00:00", "ticker": "OK", "horizon_d": "21",

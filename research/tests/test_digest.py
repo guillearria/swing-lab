@@ -327,7 +327,17 @@ def test_bets_line_dates_the_next_scoring(monkeypatch):
     with the day evidence next lands, weekday first (the owner reads days, not ISO dates).
     The open COUNT lives in the scoreboard now [2026-08-19]: down here it counted a different
     population than the scoreboard and the two could not be reconciled."""
+    from datetime import date
+
     from research import bets
+
+    class _Aug21(date):                 # this row matures 09-02 and next_maturity() skips
+        @classmethod                    # matured rows — on the real clock this test dies 09-03
+        def today(cls):
+            return cls(2026, 8, 21)
+
+    monkeypatch.setattr(D, "date", _Aug21)      # _bets_section reads digest's date...
+    monkeypatch.setattr(bets, "date", _Aug21)   # ...next_maturity reads bets' own
     monkeypatch.setattr(bets, "_load", lambda: [
         {"logged_at": "2026-08-04T00:00:00+00:00", "ticker": "SMCI", "horizon_d": "21",
          "status": "open", "excess_pct": "", "benchmark": "SPY", "direction": "long",

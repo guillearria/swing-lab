@@ -23,7 +23,7 @@ LIVE commands:
   python3 -m research.site              regenerate docs/index.html — the public dashboard page [P7a]
   python3 -m research.pulse             X pulse dry-run print (--post = the routine's autopost path [P7b])
   python3 -m research.watchdog          external dead-man's switch (own cloud routine; --notify)
-  python3 -m research.heartbeat         🚨/✅ fallback, fires only when a daily step failed
+  python3 -m research.heartbeat         🚨 fallback (failure only); bare = DRY RUN, ✅ needs --notify
   python3 -m research.notify "text"     Telegram transport (no args = config status only)
   /loop run one iteration of research/READ_LOOP.md   GENERATE a batch of forward bets (frontier)
   /loop run one iteration of research/LOOP.md    run the autonomous research loop

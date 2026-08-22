@@ -111,3 +111,43 @@ def test_heartbeat_msg_clean_vs_failure():
     assert "insider" not in ok            # Arc 3 retired 2026-08-02 — ONE silo, not two
     bad = HB.msg("2026-07-03", bet_rows, ["bets", "push"])
     assert bad.startswith("🚨") and "failed: bets, push" in bad and "cron.log" in bad
+
+
+def _hb_run(monkeypatch, argv):
+    """Run heartbeat.run() with the transport captured; returns what (if anything) was sent."""
+    sent = []
+    monkeypatch.setattr(notify, "send", lambda t: sent.append(t) or True)
+    monkeypatch.setattr(HB.bets, "_load", lambda: [{"status": "open"}, {"status": "closed"}])
+    HB.run(argv)
+    return sent
+
+
+def test_heartbeat_alarm_always_sends_without_a_flag(monkeypatch):
+    """The 🚨 path must NEVER need a flag — an alarm gated behind one is an alarm forgotten.
+
+    Both automated callers land here: daily.sh runs this only when $FAILS is non-empty, and
+    READ_LOOP step 7 passes `digest-read` on a non-DELIVERED verdict. Gating these would have
+    silenced the settle leg AND the read-leg parity added after the 2026-08-10 silent death.
+    """
+    assert _hb_run(monkeypatch, ["push"])[0].startswith("🚨")
+    assert _hb_run(monkeypatch, ["digest-read"])[0].startswith("🚨")     # READ_LOOP step 7
+    assert _hb_run(monkeypatch, ["bets", "push"])[0].startswith("🚨")    # daily.sh $FAILS shape
+
+
+def test_heartbeat_success_ping_needs_notify(monkeypatch):
+    """A ✅ is the one message this system's contract says must never arrive unbidden.
+
+    It was a bare send while this module sat in the live command index beside `digest`, which
+    needs --notify — same index, opposite behaviour. On 2026-08-21 a session ran the bare
+    command to LOOK at it and pushed "✅ settle ran clean" to the owner's phone; 2026-08-05 was
+    the first. Dry by default makes the violation impossible to reach by accident.
+    """
+    assert _hb_run(monkeypatch, []) == []                               # printed, NOT sent
+    assert _hb_run(monkeypatch, ["--notify"])[0].startswith("✅")        # explicit == allowed
+
+
+def test_heartbeat_flags_never_become_failed_step_names(monkeypatch):
+    """$FAILS arrives unquoted as argv, so an unfiltered flag renders INSIDE the alarm as a
+    failed step — sending the human to look for a step called '--notify'."""
+    out = _hb_run(monkeypatch, ["--notify", "push"])[0]
+    assert out.startswith("🚨") and "failed: push" in out and "--notify" not in out

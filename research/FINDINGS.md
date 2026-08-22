@@ -2528,3 +2528,33 @@ which is the point: every one of these makes a FAILURE look like a QUIET DAY.
   unlike `digest`) while sitting in the live command index — a human running it to "look" fires
   a real push. Observed this session. NOT fixed here; logged as the next alarm-layer item.
   Reproduce: `python3 -m pytest research/tests` (218) · `python3 -m research.watchdog`.
+
+**2026-08-21 · [MSG] THE ✅ IS NOW UNREACHABLE BY ACCIDENT — closes the residual risk logged
+one entry above.** `heartbeat` sent on bare invocation while sitting in the live command index
+beside `digest`, which needs `--notify`: same index, opposite behaviour. A session ran the bare
+command to LOOK at it and pushed "✅ settle ran clean" to the owner's phone (2026-08-05 was the
+first arrival of the same message). The contract has said "🚨 = FAILURE ONLY, NEVER a ✅ success
+ping" since v3; it lived in prose, and prose does not stop a keystroke.
+- **Gated the ✅, not every path — deliberately.** An alarm that needs a flag is an alarm someone
+  forgets to pass, and EVERY automated caller is the 🚨 path: `daily.sh` runs this only when
+  `$FAILS` is non-empty, READ_LOOP step 7 passes `digest-read`. Verified by reading both call
+  sites before changing anything; requiring `--notify` outright would have silenced the read
+  leg's parity alarm — the one added after the 08-10 brief died in total silence — and the cloud
+  routine prompts are not in this repo to check.
+- **Flags can no longer masquerade as failed steps.** `$FAILS` arrives unquoted as argv, so an
+  unfiltered `--notify` rendered INSIDE the 🚨 as a failed step named `--notify`. Same filter
+  idiom as `digest.run`.
+- **Tested and the tests were proven to bite:** 🚨 sends with no flag on all three real call
+  shapes; ✅ is dry without `--notify`. Both mutations (un-gate, un-filter) fail the new tests.
+- **Three tests were going red on 2026-09-03 with no code change behind them.** `next_maturity`
+  SKIPS already-matured rows, and three fixtures mature 09-02. Number, from the fixture itself:
+  clock 09-02 → `('2026-09-02','SMCI')` PASS; clock 09-03 → `('2026-10-30','SLOW')` FAIL. Pinned
+  to 2026-08-21 with the `_Sunday` idiom test_digest.py already used. Third instance of one class
+  this week — a test reaching into ambient state instead of declaring it as a fixture.
+- **Swept the rest of the suite rather than fixing instance-by-instance:** every other test
+  asserting a fixed date either injects the clock (`today=` parameter — the codebase's normal
+  idiom, used by `_score`, `median_dollar_vol`, `scan`, `_complete`, `posted_today`) or
+  monkeypatches `_utcnow`. `next_maturity` is the one clock-reader with NO injectable `today=`,
+  which is exactly why its tests reached for the ambient one. Left as an observation, not a
+  signature change — the fixtures now pin it and nothing else is exposed.
+  Reproduce: `python3 -m pytest research/tests` (221) · `python3 -m research.heartbeat` (DRY RUN).
