@@ -73,12 +73,16 @@ execution") made operational. What this means for the run:
    - Mover candidates → `python3 -m research.movers decide TICKER take|skip "why"` — clear the
      QUEUE: decide on EVERY unread SEEN mover (dashboard "unread" count). A TAKE then graduates to
      a scored `bets add ... --tag=` below; a SKIP stays logged (that's the denominator working).
-   - General theses → `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario-type>`
+   - General theses → `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario-type> --conviction=<high|medium>`
      **LONG only** — `add` refuses a short and a name under the liquidity floor, fail-closed
      [ARC 5 #12a]; a REFUSED add is the rule working, not a bug to route around. Shorts return
      only through the SKILL re-arm protocol (a fresh pre-registration that changes the guard).
      Pick the benchmark the bet is measured against (its sector ETF, or QQQ/IWM/SPY). State
-     conviction + event risk (e.g. earnings inside the window) in the thesis. **Tag the SCENARIO
+     event risk (e.g. earnings inside the window) in the thesis; conviction goes in the
+     `--conviction=` flag — **the COLUMN is the single source [ARC 5 #15]**, the 5a card's
+     `Conviction:` line MIRRORS it and must match. `high|medium` only (a thin read is a
+     SKIP, and the skip ledger scores those); an invalid tier is stored unstated, never
+     refused. **Tag the SCENARIO
      TYPE** (`--tag=`, kebab-case) so the engine can decompose the verdict per scenario
      [Arc 5 #8] — diagnostic only, NEVER a per-tag goalpost.
      **The tag must be one a case file DECLARES, or this run writes `cases/<TICKER>.md` for it
@@ -140,7 +144,8 @@ execution") made operational. What this means for the run:
        🟢 NEW BET #<n> — <TICKER> long · <H>d vs <BENCH>
        Why: <the catalyst, ≤10 words>
        Risk: <the one thing that kills it, ≤8 words>
-       Conviction: <high|medium>
+       Conviction: <high|medium>   ← MUST equal the row's --conviction= value (copy it
+                                     from the LOGGED line, same rule as the #<n> ordinal)
 
    **Every row is ONE clause that fits ONE phone line (≤55 chars).** No semicolons, no second
    sentence, no "and also", no parenthetical. Write `%`, never `pct`. A row that wraps three
@@ -159,7 +164,7 @@ execution") made operational. What this means for the run:
    **5b. ONE counterfactual order per take-carrying run [#12a cadence].** If this run logged
    ≥1 take, log exactly ONE counterfactual working order for its highest-conviction take —
    bet first (the scored twin), then the order:
-     `python3 -m research.bets add TICKER long H BENCH "thesis" --tag=<scenario>`
+     `python3 -m research.bets add TICKER long H BENCH "thesis" --tag=<scenario> --conviction=<high|medium>`
      `python3 -m research.orders place TICKER long STOP H BENCH`
    `orders place` does ALL the arithmetic — it reads the last COMPLETE bar as the reference and
    computes the limit + expiry (band and session count live in `config.py`, never restated

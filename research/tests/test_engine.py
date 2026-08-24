@@ -7,11 +7,11 @@ built to make concentration visible understated exactly the biggest tag.
 from research import engine as E
 
 
-def _bet(status, tag="", ticker="AAA", horizon="63", excess=""):
+def _bet(status, tag="", ticker="AAA", horizon="63", excess="", conviction=""):
     return {"logged_at": "2026-07-01T00:00:00+00:00", "ticker": ticker, "direction": "long",
             "horizon_d": horizon, "benchmark": "SPY", "thesis": "t", "status": status,
             "entry_date": "2026-07-02", "entry": "100", "excess_pct": excess,
-            "pattern_tag": tag, "notified": ""}
+            "pattern_tag": tag, "notified": "", "conviction": conviction}
 
 
 def _wire(monkeypatch, bet_rows, mover_rows=(), cases=()):
@@ -102,3 +102,19 @@ def test_denominator_line_decomposes_by_universe(monkeypatch, capsys):
     out = capsys.readouterr().out
     assert "sp500 2 / tail 1" in out
     assert "1 taken / 2 skipped / 0 unread" in out
+
+
+def test_conviction_split_is_diagnostic_and_groups_unstated(monkeypatch, capsys):
+    """[ARC 5 #15] The by-conviction lens rides _grp: both counts, both unit labels, tiers
+    PRESENT only — and a row with no conviction KEY at all (any pre-#15 row surviving in a
+    fixture or an old CSV read) groups as `unstated`, never a KeyError."""
+    legacy = _bet("open")
+    del legacy["conviction"]                       # pre-#15 row shape: key absent entirely
+    _wire(monkeypatch, [_bet("closed", excess="+2.00", conviction="high"),
+                        _bet("open", conviction="high"), legacy])
+    E.forward_track()
+    out = capsys.readouterr().out
+    assert "by conviction (diagnostic, not a goalpost) [ARC 5 #15]" in out
+    assert "high 1cl med +2.0% 1op" in out         # both counts, both labels
+    assert "unstated 0cl 1op" in out
+    assert "medium" not in out                     # absent tier renders nothing

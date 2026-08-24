@@ -9,7 +9,7 @@ unless its entry bar is strictly AFTER it was logged.
 Mechanical/backtestable ideas do NOT belong here — those are fixed rules; test them on
 history instantly (research/<probe>.py + the engine scoreboard).
 
-  python3 -m research.bets add TICKER long|short HORIZON_d BENCH "thesis..."
+  python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis..." [--tag=scenario] [--conviction=high|medium]
   python3 -m research.bets settle      # score matured bets vs benchmark
   python3 -m research.bets show
 """
@@ -28,7 +28,8 @@ from research import prices
 log = logging.getLogger(__name__)
 CATALOGUE = "research/bets_catalogue.csv"
 FIELDS = ["logged_at", "ticker", "direction", "horizon_d", "benchmark",
-          "thesis", "status", "entry_date", "entry", "excess_pct", "pattern_tag", "notified"]
+          "thesis", "status", "entry_date", "entry", "excess_pct", "pattern_tag", "notified",
+          "conviction"]
 # notified = UTC stamp of the 📊 that ANNOUNCED this settlement, written only after telegram
 # confirms the send. Blank on a closed row = the announcement never landed → the next run
 # re-sends it. Before this column the retry set was "rows that were open when settle started",
@@ -36,6 +37,11 @@ FIELDS = ["logged_at", "ticker", "direction", "horizon_d", "benchmark",
 # catalogue's first settled bet, was announced by nothing) [FINDINGS 2026-07-27].
 # pattern_tag = the SCENARIO TYPE (cases/*.md `Pattern tag`). DIAGNOSTIC decomposition of the
 # pooled verdict only — never a per-tag goalpost (N per-type bars = N× false positives) [Arc 5 #8].
+# conviction = the reader's stated tier AT REGISTRATION ("" = unstated, else high|medium —
+# the 5a card vocabulary, locked by owner 2026-08-24). The COLUMN is the single source; the
+# card's Conviction: line mirrors it. DIAGNOSTIC decomposition of the one pooled verdict, read
+# only at the [ARC 5 #14] look points — never a per-tier bar [ARC 5 #15]. Pre-#15 rows stay ""
+# forever (7 are settled; backfilling would be retroactive labelling, same rule as tags #14b).
 # horizon ≤ FAST_MAX_D = the fast sleeve (21d). Pooled into ONE general verdict [FINDINGS Arc 5
 # #7]; is_fast is a DIAGNOSTIC label (faster feedback in ~weeks), NOT a separately-scored bar.
 FAST_MAX_D = 30
@@ -136,7 +142,7 @@ def median_dollar_vol(ticker: str, today: str | None = None) -> float | None:
 
 
 def add(rows: list[dict], ticker: str, direction: str, horizon_d: int,
-        bench: str, thesis: str, tag: str = "") -> bool:
+        bench: str, thesis: str, tag: str = "", conviction: str = "") -> bool:
     """Admit a bet into the catalogue. Returns True only if the row was appended.
 
     Admission rule [ARC 5 #12a], code-enforced so a groove or a hurried run can't drift past it:
@@ -161,14 +167,22 @@ def add(rows: list[dict], ticker: str, direction: str, horizon_d: int,
         print(f"REFUSED {ticker.upper()}: median ${dv:,.0f}/day over {config.LIQ_WINDOW_D} "
               f"sessions < ${config.LIQ_FLOOR_USD:,.0f} floor [ARC 5 #12a]")
         return False
+    # Same shape as the tag NOTE below: an invalid tier is a labelling gap, not a validity
+    # one — the bet is logged, the tier is dropped, and the mix stays clean [ARC 5 #15].
+    conviction = conviction.lower()
+    if conviction and conviction not in ("high", "medium"):
+        print(f"  NOTE conviction '{conviction}' is not high|medium — stored as unstated; "
+              f"the bet stands [ARC 5 #15]")
+        conviction = ""
     rows.append({"logged_at": _now(), "ticker": ticker.upper(), "direction": direction,
                  "horizon_d": str(horizon_d), "benchmark": bench.upper(), "thesis": thesis,
                  "status": "open", "entry_date": "", "entry": "", "excess_pct": "",
-                 "pattern_tag": tag, "notified": ""})
+                 "pattern_tag": tag, "notified": "", "conviction": conviction})
     # "bet #N" = the row's catalogue ordinal (append-only, so it never shifts) — the number
     # the read leg's 🟢 NEW BET card carries [MSG v3], giving the owner a growing count.
     print(f"LOGGED bet #{len(rows)} — {direction} {ticker.upper()} {horizon_d}d vs "
-          f"{bench.upper()}{' #' + tag if tag else ''} @ {rows[-1]['logged_at']} "
+          f"{bench.upper()}{' #' + tag if tag else ''}"
+          f"{' · conviction ' + conviction if conviction else ''} @ {rows[-1]['logged_at']} "
           f"(median ${dv / 1e6:,.1f}M/day)")
     # Not a refusal — a missing case is a documentation gap, not a validity one, and blocking a
     # 07:39 pre-market bet over prose would cost evidence to buy tidiness [ARC 5 #14b].
@@ -440,10 +454,16 @@ def show(rows: list[dict]) -> None:
     # _agg (RAW) so shorts stay visible here. Direction: the [ARC 5 #10] n≥12 short bar is
     # UNREACHABLE-BY-DESIGN under long-only admission (declared, [ARC 5 #12a]) — the short line
     # is descriptive contrast only.
+    # by conviction rides the same renderer — tiers PRESENT only, so the split stays one
+    # `unstated` line until [ARC 5 #15] rows accrue (diagnostic, never a per-tier bar).
+    conv: dict[str, list] = {}
+    for r in rows:
+        conv.setdefault(r.get("conviction") or "unstated", []).append(r)
     for label, grp in (("core 63/126d", [r for r in rows if not is_fast(r)]),
                        ("fast ≤30d", [r for r in rows if is_fast(r)]),
                        ("long (=pooled)", [r for r in rows if r.get("direction") == "long"]),
-                       ("short", [r for r in rows if r.get("direction") == "short"])):
+                       ("short", [r for r in rows if r.get("direction") == "short"]),
+                       *((f"conviction {c}", g) for c, g in sorted(conv.items()))):
         ds = _agg(grp)
         if ds:
             print(f"    · {label} (diagnostic): median {ds[2]:+.2f}% beat {ds[3]:.0f}% n={ds[0]}")
@@ -463,10 +483,13 @@ def run(argv: list[str]) -> int:
     rows = _load()
     cmd = argv[0] if argv else "show"
     if cmd == "add":
-        # optional --tag=<scenario-type>; everything else is the thesis (back-compatible)
+        # optional --tag=<scenario-type> --conviction=<high|medium>; everything else is the
+        # thesis (back-compatible — an un-updated caller logs a valid row with "" = unstated)
         tag = next((a[6:] for a in argv[5:] if a.startswith("--tag=")), "")
-        thesis = " ".join(a for a in argv[5:] if not a.startswith("--tag="))
-        if not add(rows, argv[1], argv[2], int(argv[3]), argv[4], thesis, tag):
+        conv = next((a[13:] for a in argv[5:] if a.startswith("--conviction=")), "")
+        thesis = " ".join(a for a in argv[5:]
+                          if not a.startswith(("--tag=", "--conviction=")))
+        if not add(rows, argv[1], argv[2], int(argv[3]), argv[4], thesis, tag, conv):
             return 1                       # refused (admission rule) — nothing was written
         _save(rows)
     elif cmd == "settle":

@@ -112,6 +112,64 @@ def test_median_dollar_vol_uses_completed_bars_only(monkeypatch):
     assert B.median_dollar_vol("X", today="2026-08-15") is None   # fetch raises → None
 
 
+def test_add_sets_conviction(monkeypatch):
+    monkeypatch.setattr(B, "median_dollar_vol", lambda t, today=None: 10_000_000.0)
+    rows = []
+    assert B.add(rows, "abc", "long", 63, "spy", "t", conviction="high")
+    assert rows[0]["conviction"] == "high"
+    assert set(rows[0]) == set(B.FIELDS)          # schema stays exact with the new column
+    assert B.add(rows, "xyz", "long", 21, "iwm", "t")   # flag omitted
+    assert rows[1]["conviction"] == ""            # "" = unstated, the pre-#15 default
+
+
+def test_add_invalid_conviction_warns_but_never_refuses(monkeypatch, capsys):
+    """[ARC 5 #15] mirrors the #14b never-block-evidence rule: an invalid tier is a labelling
+    gap, not a validity one — the bet is LOGGED, the tier is dropped, the NOTE says so."""
+    monkeypatch.setattr(B, "median_dollar_vol", lambda t, today=None: 10_000_000.0)
+    rows = []
+    assert B.add(rows, "abc", "long", 63, "spy", "t", conviction="extreme")
+    assert rows and rows[0]["conviction"] == ""
+    assert "NOTE conviction 'extreme'" in capsys.readouterr().out
+
+
+def test_add_normalizes_conviction_case(monkeypatch, capsys):
+    monkeypatch.setattr(B, "median_dollar_vol", lambda t, today=None: 10_000_000.0)
+    rows = []
+    assert B.add(rows, "abc", "long", 63, "spy", "t", conviction="High")
+    assert rows[0]["conviction"] == "high"
+    assert "NOTE conviction" not in capsys.readouterr().out   # capitalization is not a warning
+
+
+def test_run_parses_conviction_flag_out_of_the_thesis(tmp_path, monkeypatch):
+    """Both flags may land anywhere in argv[5:] interleaved with thesis words; neither may
+    leak into the thesis prose (a flag in the thesis = unparseable data, the drift #15 closes)."""
+    monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
+    monkeypatch.setattr(B, "median_dollar_vol", lambda t, today=None: 10_000_000.0)
+    assert B.run(["add", "X", "long", "21", "SPY", "solid", "--conviction=medium",
+                  "setup", "--tag=post-earnings-drift"]) != 1     # not refused
+    row = B._load()[0]
+    assert row["thesis"] == "solid setup"
+    assert row["conviction"] == "medium" and row["pattern_tag"] == "post-earnings-drift"
+
+
+def test_show_splits_by_conviction_present_tiers_only(monkeypatch, capsys):
+    """The split is dynamic: tiers PRESENT only, so today's all-unstated catalogue renders one
+    `conviction unstated` line and never a wall of empty tiers [ARC 5 #15]."""
+    rows = [{"logged_at": "2026-07-01T00:00:00+00:00", "ticker": "A", "direction": "long",
+             "horizon_d": "21", "benchmark": "SPY", "thesis": "t", "status": "open",
+             "entry_date": "", "entry": "", "excess_pct": "", "pattern_tag": "",
+             "notified": "", "conviction": "high"},
+            {"logged_at": "2026-07-01T00:00:00+00:00", "ticker": "B", "direction": "long",
+             "horizon_d": "21", "benchmark": "SPY", "thesis": "t", "status": "open",
+             "entry_date": "", "entry": "", "excess_pct": "", "pattern_tag": "",
+             "notified": ""}]                     # no conviction KEY at all → "unstated"
+    B.show(rows)
+    out = capsys.readouterr().out
+    assert "conviction high (diagnostic): 0 settled (+1 open)" in out
+    assert "conviction unstated (diagnostic): 0 settled (+1 open)" in out
+    assert "conviction medium" not in out         # absent tier renders nothing
+
+
 def test_run_add_saves_nothing_on_refusal(tmp_path, monkeypatch):
     monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
     monkeypatch.setattr(B, "median_dollar_vol", lambda t, today=None: None)
@@ -257,12 +315,13 @@ def test_save_backfills_old_schema_rows(tmp_path, monkeypatch):
     # [Arc 5 #8] backward-compat proof: a PRE-pattern_tag row must round-trip through _save/_load
     # as "" with no error — so an in-flight nightly settle on an old-schema CSV is safe.
     monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
-    old = {k: "" for k in B.FIELDS if k != "pattern_tag"}   # row WITHOUT the new column
+    old = {k: "" for k in B.FIELDS if k not in ("pattern_tag", "conviction")}  # pre-new-era row
     old.update(logged_at="2025-01-01T00:00:00+00:00", ticker="OLD", direction="long",
                horizon_d="63", benchmark="SPY", thesis="legacy", status="open")
     B._save([old])
     back = B._load()
     assert back[0]["pattern_tag"] == "" and back[0]["ticker"] == "OLD"
+    assert back[0]["conviction"] == ""            # [ARC 5 #15] column round-trips the same way
 
 
 @pytest.fixture

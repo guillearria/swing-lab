@@ -2558,3 +2558,31 @@ ping" since v3; it lived in prose, and prose does not stop a keystroke.
   which is exactly why its tests reached for the ambient one. Left as an observation, not a
   signature change — the fixtures now pin it and nothing else is exposed.
   Reproduce: `python3 -m pytest research/tests` (221) · `python3 -m research.heartbeat` (DRY RUN).
+
+**2026-08-24 · [ARC 5 #15] PRE-REGISTRATION (written before any row carries the column) — does
+stated conviction decompose the read's skill?** The deeper question behind the pooled verdict
+is not just "can the reader pick" but "does it know WHEN it knows" — the input position sizing
+needs if [Arc 5 #7] ever passes. Nothing captured that: conviction lived in card prose
+(transient) and thesis prose (unparseable). Capture-first, judge later.
+- **Instrument:** optional `conviction` column in `bets_catalogue.csv`, set at registration
+  via `bets add --conviction=` — `high|medium` only (owner-locked 2026-08-24, matching the 5a
+  card vocabulary; a thin read is a SKIP and the skip ledger scores those). `""` = unstated.
+  Invalid tier → NOTE + stored unstated; the bet is NEVER refused (the #14b
+  never-block-evidence rule). The COLUMN is the single source; the card's `Conviction:` line
+  mirrors it.
+- **Scope, stated so it cannot drift:** a DIAGNOSTIC decomposition lens on the ONE pooled
+  verdict, read at exactly the [ARC 5 #14] look points — the n≥30 one look and the
+  confirmation-cohort close — alongside the horizon/tag/universe lenses. It cannot pass or
+  fail the project.
+- **Explicitly forbidden:** a per-tier bar, threshold, or Wilcoxon; any generation or sizing
+  rule keyed on the tier before a pooled PASS plus its own fresh pre-registration; backfilling
+  the pre-#15 rows (7 are settled — labelling them now is retroactive tagging with the outcome
+  in hand, the same rule as tags [#14b]).
+- **Red-team, the counter-argument answered:** bets.py's own [#14b] ruling says "scanning
+  beats adding a column" — that held for `pattern_tag` because the tag already had an
+  authoritative home (`cases/*.md`) and a CSV copy would drift. Conviction has NO other home,
+  so the column IS the single source, not a duplicate. Residual risk, stated: tier counts at
+  the look will be small (a two-way split of ~30), so the lens will be directional at best —
+  that is why it is a lens and not a bar.
+  Reproduce: `python3 -m research.bets show` (the conviction split) · `python3 -m
+  research.engine` (by-conviction line) · `python3 -m pytest research/tests` (227).

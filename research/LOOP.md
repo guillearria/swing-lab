@@ -23,7 +23,7 @@ trust it. The stop conditions are numbers, never "the agent says it's done."
      while rule 1 above said NEVER re-test a dead end. Check `PROBES` before proposing, always.
    - **FORWARD** (Claude's judgment/reading): CANNOT be backtested — Claude already knows
      how the past turned out, so the only clean test is the FUTURE. Log it as a bet in the
-     catalogue: `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis"`
+     catalogue: `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario> --conviction=<high|medium>`
      (LONG only + liquidity floor, code-enforced [ARC 5 #12a] — shorts need the re-arm protocol).
 3. **PRE-REGISTER** — write hypothesis + bar to `FINDINGS.md`, knobs fixed. Commit (the
    timestamp is the anchor: no moving goalposts).

@@ -155,6 +155,13 @@ def forward_track():
         usplit.setdefault(u, []).append(r)
     print(f"      by universe (diagnostic, not a goalpost) [ARC 5 #11]: "
           f"{' · '.join(_grp(u, grp) for u, grp in sorted(usplit.items()))}")
+    # by stated conviction [ARC 5 #15] — tiers PRESENT only ("unstated" = pre-#15 rows and
+    # flag-less adds); read at the #14 look points as a lens, never a per-tier bar.
+    csplit2: dict[str, list] = {}
+    for r in b:
+        csplit2.setdefault(r.get("conviction") or "unstated", []).append(r)
+    print(f"      by conviction (diagnostic, not a goalpost) [ARC 5 #15]: "
+          f"{' · '.join(_grp(c, grp) for c, grp in sorted(csplit2.items()))}")
     # candidate DENOMINATOR [Arc 5 #8]: the mover-scan logs every big mover take/skip → bounds the
     # selection the [Arc 5 #7] caveat warned about (reduced, NOT eliminated — universe ≠ all reads).
     m = movers._load()

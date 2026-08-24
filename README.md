@@ -34,7 +34,7 @@ python3 -m research help       # this command index
 | `python3 -m research` | Live status panel (the dashboard) |
 | `python3 -m research.engine` | Falsification **scoreboard** — every probe + verdict + multiple-testing check |
 | `python3 -m research.bets show` | Forward-bet **catalogue** (Claude's pre-registered future calls) |
-| `python3 -m research.bets add TICKER long 63 SPY "thesis" --tag=scenario` | Log a forward bet (tag = scenario type). **Admission is LONG-ONLY above a $5M median-dollar-volume floor, fail-closed, code-enforced [ARC 5 #12a]** — a REFUSED add is the rule working; shorts return only via the SKILL re-arm protocol |
+| `python3 -m research.bets add TICKER long 63 SPY "thesis" --tag=scenario --conviction=high|medium` | Log a forward bet (tag = scenario type). **Admission is LONG-ONLY above a $5M median-dollar-volume floor, fail-closed, code-enforced [ARC 5 #12a]** — a REFUSED add is the rule working; shorts return only via the SKILL re-arm protocol |
 | `python3 -m research.bets settle` | Score matured bets vs their benchmark |
 | `python3 -m research.movers` | Daily mover scan, TWO cohorts (S&P 500 + the 400/600 **tail** [ARC 5 #11]) = the general candidate **denominator** (`scan` / `decide` / `settle` / `show`); `settle` scores take+skip fwd vs SPY = the "too conservative?" diagnostic [ARC 5 #9] |
 | `python3 -m research.dualmom current` | Dual-momentum core — what to hold this month |
