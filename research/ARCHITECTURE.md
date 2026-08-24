@@ -12,6 +12,7 @@ it by command/link. This doc is the map; it holds NO live numbers.
 | Reasoning | `cases/*.md` | document WHY/HOW a live move happened → a reusable pattern |
 | Track record | `bets.py` (+ `bets_catalogue.csv`) | scored % predictions vs a benchmark; `pattern_tag` = scenario type [Arc 5 #8] |
 | Candidate denominator | `movers.py` (+ `movers_ledger.csv`) | daily mover scan, 2 cohorts (S&P 500 + 400/600 tail [ARC 5 #11]) → SEEN take/skip; the general track's denominator [Arc 5 #8] |
+| Path diagnostic | `paths.py` | read-only walk of each SETTLED bet's daily excess path — peak/MFE/give-back + a driftless-noise reference; DESCRIPTIVE [PATHS #1], never a verdict, never in daily.sh |
 | Money (CLOSED 2026-08-18) | `book.py` (+ `book.csv`, tracked in git) | the FORMER real-money portfolio — TERMINAL, frozen evidence [ARC 5 #12; closure #13/#13a]; every command prints one BOOK CLOSED line |
 | Public surface | `site.py` (+ `docs/index.html`) · `pulse.py` | the Pages dashboard (predictions + performance only [P7a]) · the X autopost path (inert until keys [P7b]) |
 | Banked signal | `dualmom.py` | the one usable result (risk shape, not alpha) |

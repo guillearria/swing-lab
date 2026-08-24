@@ -2586,3 +2586,33 @@ needs if [Arc 5 #7] ever passes. Nothing captured that: conviction lived in card
   that is why it is a lens and not a bar.
   Reproduce: `python3 -m research.bets show` (the conviction split) · `python3 -m
   research.engine` (by-conviction line) · `python3 -m pytest research/tests` (227).
+
+**2026-08-24 · [PATHS #1] PRE-REGISTRATION (descriptive — no bar can be attached to this,
+now or later, without a fresh entry) — what does the calendar exit cost?** The fixed horizon
+is the zero-parameter exit: it makes the score unfakeable but convolves direction skill with
+duration skill, and the owner's question — "what if the thesis plays out by day 10 and fades
+by day 21?" — deserves a number, not a philosophy. The path is fully reconstructible from
+bars (nothing was ever lost by not storing it), so the diagnostic recomputes on demand and
+stores no derived data.
+- **Instrument:** `python3 -m research.paths` — for every SETTLED row, the daily excess path
+  ex_t = sgn·((S_t/S_0−1) − (B_t/B_0−1)), POSITION-indexed exactly like `bets._score` (which
+  never date-aligns its legs) so ex[h−1] reproduces the ledger's `excess_pct`; per-row
+  self-checks print named caveats on entry-date offset or ledger drift (re-fetched adjusted
+  closes can differ from at-settle bars). Reports peak day, MFE, final, give-back, and a
+  driftless-noise reference E[max] ≈ σ·√(2T/π).
+- **The honesty device, stated up front:** maxima of noise are POSITIVE — a raw MFE always
+  whispers "money left on the table", including on a random walk. The noise column is what
+  chance alone would peak at. It is a MAGNITUDE reference, deliberately NOT a test statistic:
+  a daily p-value here would be the repeated look [ARC 5 #14] forbids.
+- **Scope:** SETTLED rows only — walking open bets is watching positions mid-flight, the itch
+  the fixed-horizon design exists to remove. Long AND short (the path is a property of the
+  bet, not the verdict population).
+- **Explicitly forbidden:** any bar, threshold, or action; wiring into `daily.sh` or the
+  digest; any exit-rule or horizon-rule change without its OWN fresh pre-registration citing
+  these numbers over a stated window.
+- **First run (2026-08-24, n=7, descriptive — recorded, not acted on):** median give-back sat
+  BELOW the median noise reference — at this n the calendar exit shows no measured cost
+  beyond volatility. Exactly one row's give-back exceeded its own noise reference. No
+  interpretation until the pool is at verdict n; the entry exists so the first look cannot be
+  retro-fitted.
+  Reproduce: `python3 -m research.paths` · `python3 -m pytest research/tests` (234).

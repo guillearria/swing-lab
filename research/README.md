@@ -12,7 +12,7 @@ python3 -m research help     # command index
 - **Method / rules:** [`SKILL.md`](SKILL.md) — how a probe is run + lessons from losses.
 - **Autonomous loop:** [`LOOP.md`](LOOP.md).
 
-Live modules: `engine.py`, `bets.py`, `movers.py`, `book.py`, `dualmom.py`, `digest.py`,
+Live modules: `engine.py`, `bets.py`, `movers.py`, `paths.py`, `book.py`, `dualmom.py`, `digest.py`,
 `notify.py`, `heartbeat.py`, `watchdog.py`, `feedstatus.py`
 (shared: `config.py`, `prices.py`, `universe.py`, `momentum.py`).
 DORMANT — do not run as live: `voltarget.py`, `volrp.py`, `outcome.py`, and the Arc-1/2 probes.
