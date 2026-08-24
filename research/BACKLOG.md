@@ -4,7 +4,39 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-08-19 — message v3.1 · verdict PROCEDURE locked · case layer wired)
+## ▶ PICK UP HERE (2026-08-24 — conviction column · paths diagnostic · 4 case files)
+
+**Depth upgrade, owner-approved plan, single push, 234 tests green.** The verdict's speed is
+fixed (~mid-Oct at n≥30); this lands more learning-per-bet without touching the bar.
+
+- **[ARC 5 #15] conviction column** — optional `--conviction=high|medium` on `bets add`
+  (vocabulary owner-locked 2026-08-24, matching the 5a card; the COLUMN is the single source,
+  the card mirrors it). "" = unstated; invalid tier → NOTE + unstated, bet never refused. New
+  by-conviction diagnostic split in `engine` + `bets show`, read ONLY at the #14 look points.
+  Pre-#15 rows stay unstated forever (7 settled — backfilling = retroactive labelling).
+- **[PATHS #1] path diagnostic** — `python3 -m research.paths` (read-only, SETTLED rows only):
+  peak vs final excess per bet + a driftless-noise reference so a raw MFE can't flatter
+  dynamic exits. DESCRIPTIVE; first n=7 numbers recorded in the pre-reg so the first look can
+  never be retro-fitted. Never in daily.sh/digest.
+- **[ARC 5 #14b] 4 case files** — MSCI (guidance-cut-overreaction ×9), AKAM
+  (narrative-stage-transition ×3), IRM (valuation-deflation-short ×2, grandfathered-shorts
+  caveat), CNXC (both guidance-cut-continuation twins via one multi-tag line). Star legend
+  11 → 6 loose; the 6 singletons stay starred DELIBERATELY (a case from one thesis line would
+  document a guess). Cross-links MSCI↔IRM↔CNXC make the discriminators explicit.
+
+**WATCH — the next two runs:**
+1. **Tomorrow's ~22:30Z settle** = the CSV header migration under watch: `_save` rewrites the
+   catalogue with the `conviction` column (restval="" — round-trip pinned in
+   test_save_backfills_old_schema_rows). Expect a whole-file diff like the 08-22 quoting
+   normalization; `docs/index.html` must NO-OP (site never renders the column).
+2. **Tomorrow's ~11:45Z read** = first `--conviction=` exercise. The flag is OPTIONAL — an
+   un-updated cloud prompt logs valid rows as unstated, degraded never broken. Verify via
+   /schedule whether the read prompt restates the add signature; queue a touch-up if so.
+
+**Do NOT:** per-tier conviction bar · paths into daily.sh/digest · backfill conviction on old
+rows · exit-rule or horizon changes off [PATHS #1] numbers without a fresh pre-registration.
+
+## Earlier — 2026-08-19, message v3.1 · verdict PROCEDURE locked · case layer wired
 
 **Today, 9 commits, all pushed, 216 tests green.** Owner read the first live v3 Telegram push and
 could not parse it; that thread ran all the way down into the verdict machinery.
