@@ -384,7 +384,7 @@ def _catalogue_table(bets_rows: list[dict]) -> str:
             f'<td class="{exc}" data-v="{_e(ex)}"{extip}>'
             f'{_e(ex) + "%" if ex else "—"}</td></tr>'
             f'<tr class="det" data-for="{i}" hidden>'
-            f'<td colspan="9">{prefix}{_e(r.get("thesis", ""))}</td></tr>')
+            f'<td colspan="9"><div>{prefix}{_e(r.get("thesis", ""))}</div></td></tr>')
     chips = ('<div id="chips"><button data-f="all" class="on">All</button>'
              '<button data-f="open">Open</button><button data-f="closed">Closed</button>'
              '</div>')
@@ -473,7 +473,6 @@ svg {{ width: 100%; height: auto; display: block; }}
 table {{ border-collapse: collapse; width: 100%; font-size: 14px; }}
 th {{ text-align: left; color: var(--ink-2); font-weight: 600; cursor: pointer;
       border-bottom: 1px solid var(--axis); white-space: nowrap; }}
-th[data-type]::after {{ content: " ↕"; color: var(--muted); font-weight: 400; }}
 th[aria-sort="ascending"]::after {{ content: " ▲"; }}
 th[aria-sort="descending"]::after {{ content: " ▼"; }}
 th, td {{ padding: 5px 8px; vertical-align: top; }}
@@ -485,6 +484,9 @@ tr.main {{ cursor: pointer; }}
 tr.main:hover td {{ background: var(--page); }}
 td.chev {{ color: var(--muted); width: 18px; padding-right: 0; }}
 tr.det td {{ color: var(--ink-2); font-size: 13.5px; padding: 2px 8px 10px 32px; }}
+/* width:0 + min-width:100% keeps the thesis prose out of the table's column sizing —
+   without it, expanding one row re-measures every column and the other rows re-wrap. */
+tr.det td > div {{ width: 0; min-width: 100%; }}
 footer {{ color: var(--muted); font-size: 13px; text-align: center; }}
 @media (max-width: 600px) {{
   body {{ padding: 16px 10px 40px; }}

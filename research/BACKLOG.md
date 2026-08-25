@@ -30,7 +30,10 @@ plain. Table: closed shorts render muted "unscored" (the 7-closed-vs-6-settled c
 blank pre-tag rows label "early" (NEVER backfilled, [ARC 5 #14b]), tags humanize in display
 only (raw values stay the filter/sort keys — `…-continuation` vs `…-continuation-short` must
 not merge), sort arrows via `aria-sort` CSS. **Do NOT:** put method prose on the page ·
-backfill tags · score shorts into the summary.
+backfill tags · score shorts into the summary. **v2.1 (same day, owner feedback):** the idle
+↕ sort glyph read as stray colons — removed (▲/▼ on an active sort stay); det-row prose sits
+in a `width:0; min-width:100%` div so expanding a thesis can't re-measure the table's columns
+and re-wrap other rows.
 
 ## Earlier — 2026-08-24, conviction column · paths diagnostic · 4 case files
 
