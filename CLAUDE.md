@@ -205,7 +205,9 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   `research/digest.py` (HTML, fail-soft per silo) and NARRATE what the run did: a noteless,
   scoreless settle is ONE sentence ("Nothing matured today — N bets running", verdict-pool
   count); a read's note body opens with 1–2 plain sentences of what its run did (READ_LOOP
-  step 7) above its 🟢 NEW BET card(s) (step 5a, 4 lines, one field per line, `<blockquote>`;
+  step 7 — natural speech, NO acronym/shorthand packing, ONE paragraph at most [owner rule
+  2026-08-25]; the digest merges the lines into one paragraph by construction) above its
+  🟢 NEW BET card(s) (step 5a, 4 lines, one field per line, `<blockquote>`;
   bet # from `bets add`); a scoring settle folds each settlement in as a 📊 SCORED
   `<blockquote>` card (Result in gap-words + a Read line with tag · conviction) followed by
   ONE pool-tally sentence — the pool numbers appear exactly when they CHANGED, never as daily

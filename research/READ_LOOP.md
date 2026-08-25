@@ -262,9 +262,15 @@ execution") made operational. What this means for the run:
    📊 SCORED card a lost settle push left unannounced, and the 📈 line [MSG v4]. **The note
    BODY opens with 1–2 plain sentences of what THIS run did** — candidates seen, takes,
    the character of the skips ("Read 42 movers; took FN, skipped 41 — the selloff was
-   market-wide") — BEFORE the 🟢 card(s); the digest renders those sentences as plain lines
-   above the cards. That narrative replaced the static scoreboard rows (owner, 2026-08-25:
-   they repeated daily); pool numbers now appear only when they change. Done.
+   market-wide") — BEFORE the 🟢 card(s). **STYLE IS A HARD RULE [owner, 2026-08-25]: natural
+   speech, plain English, ONE paragraph at most.** No acronym or shorthand packing, no ticker
+   chains, no semicolon-stacked taxonomies, no sector jargon — the reader is on a phone and is
+   not a sector specialist; spell it out or leave it out. The digest MERGES your narrative
+   lines into one paragraph, so structure cannot save an overpacked note — only plain writing
+   can. The tombstones this rule stands on: the 2026-08-07 DVA note (five dense sentences plus
+   a five-name skip taxonomy — "the wall of text" the owner asked to stop) and the 2026-08-19
+   HAE card. That narrative replaced the static scoreboard rows (owner, 2026-08-25: they
+   repeated daily); pool numbers now appear only when they change. Done.
 
 ## What to expect (honest)
 Most bets will lose to their benchmark — that's fine; the scoreboard decides the VERDICT at

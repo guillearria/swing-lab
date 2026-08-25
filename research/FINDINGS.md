@@ -2651,3 +2651,21 @@ delivery-guarantee question answered first, not dropped." Both landed together:
   in a duplicate card rather than a duplicate message.
   Reproduce: `python3 -m research.digest` (quiet shape) · `python3 -m pytest research/tests`
   (238) · FINDINGS [MSG 2026-08-19] residual note (the pre-authorization).
+
+**2026-08-25 · [MSG] v4.1 — THE NARRATIVE MUST READ AS SPEECH, AND THE PARAGRAPH IS ENFORCED
+IN CODE (owner, same day as v4: no "difficult-to-read shorthands, acronyms" — "natural speech
+in one single paragraph at most").** Two halves, split by what can actually enforce them:
+- **Structure is code's job:** the digest now MERGES every narrative line before the first 🟢
+  into ONE paragraph, so a listy note can never render as a stack of bullets — the paragraph
+  limit holds by construction, whatever the author writes. Fossil filtering and per-line
+  escaping unchanged through the join.
+- **Plainness is the author's contract:** READ_LOOP step 7 hard rule — natural speech, no
+  acronym/shorthand packing, no ticker chains, no semicolon-stacked taxonomies; the reader is
+  on a phone and not a sector specialist. Same enforcement route that held for the 2026-08-07
+  DVA wall-of-text and the 2026-08-19 HAE card: the contract names its tombstones.
+- **Deterministic strings audited against the rule:** the quiet sentence, the tally, the card
+  grammar and the 📈 line are the owner-approved mockup shapes — already plain. Residual risk,
+  stated: plainness of LLM-authored prose cannot be machine-verified; if a dense note ships
+  anyway, the fix is another tombstone in the contract, not a prose classifier.
+  Reproduce: `python3 -m pytest research/tests` (239) · the merge: `python3 -m research.digest`
+  with a multi-line note.

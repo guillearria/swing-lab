@@ -126,6 +126,22 @@ def test_run_note_headline_tops_and_cards_ride_above_the_bets_line(monkeypatch):
     assert lines.index("<b>AT BAR — verdict time</b>") < i_do < i_card < i_bets
 
 
+def test_narrative_lines_merge_into_one_paragraph():
+    """[MSG v4.1, owner 2026-08-25]: the run's results read "in natural speech in one single
+    paragraph at most" — the digest enforces the PARAGRAPH structurally by merging every
+    loose line before the first 🟢 into one block, so a listy note can never render as a
+    stack of bullets. Fossil lines still drop first; escaping still holds through the join."""
+    out = D.compose("📖 READ\nRead 42 movers; took FN.\nSkips were macro noise.\n"
+                    "movers: 42 seen\n"
+                    "🟢 NEW BET #1 — FN long\nWhy: beat flushed")
+    lines = out.split("\n")
+    assert "Read 42 movers; took FN. Skips were macro noise." in lines   # ONE line, merged
+    assert not any(l == "Skips were macro noise." for l in lines)        # never its own bullet
+    assert "movers: 42 seen" not in out                                  # fossil still dropped
+    merged = D.compose("📖 READ\na & b\nc <i>d</i>")
+    assert "a &amp; b c &lt;i&gt;d&lt;/i&gt;" in merged                  # escape survives join
+
+
 def test_run_note_body_is_escaped_and_never_splits_a_tag():
     """The note is free text from the read agent — it must not be able to inject markup or
     hand notify a half-tag to truncate on."""

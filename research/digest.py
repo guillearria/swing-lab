@@ -485,7 +485,12 @@ def _cards(body: str) -> list[str]:
     phone — indented behind a left bar, so even a wrapped line stays visibly inside it, which
     is precisely what the flat v3 body lacked [2026-08-19 owner review].
 
-    Anything before the first 🟢 rides as a plain line (the mandated zero-take line).
+    Anything before the first 🟢 is the run's NARRATIVE (or the mandated zero-take line) and
+    is MERGED into ONE paragraph [owner rule 2026-08-25: results read in natural speech, "one
+    single paragraph at most" — merging enforces the paragraph structurally, so a listy note
+    can never render as a stack of bullets; plainness itself is the author's contract,
+    READ_LOOP step 7, where the DVA taxonomy (2026-08-07) and the HAE card (2026-08-19)
+    density violations were fixed the same way].
     """
     def _row(line: str) -> str:
         """A card row's label is a bold anchor — the eye finds Why/Risk/Conviction even when
@@ -507,7 +512,7 @@ def _cards(body: str) -> list[str]:
             groups[-1].append(line)
         else:
             loose.append(line)
-    out = [_e(l) for l in loose]
+    out = [" ".join(_e(l) for l in loose)] if loose else []
     for g in groups:
         if out:
             out.append("")                    # each card is its own block

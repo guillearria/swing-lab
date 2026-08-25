@@ -12,6 +12,9 @@ numbers only when they change), and the separate 📊 message is RETIRED — set
 as 📊 blockquote cards inside the digest, `bets.mark_notified()` stamps only after PUSH
 DELIVERED (the v3.1 residual note's fold, delivery guarantee transferred). `bets settle` no
 longer sends anything. One message per leg, period. Cloud prompts re-echoed same day.
+**v4.1 (same day):** the narrative reads as natural speech — the digest MERGES note lines into
+ONE paragraph (structure enforced in code), plainness (no shorthand/acronym packing) is a hard
+READ_LOOP step-7 rule with the DVA/HAE tombstones named.
 **WATCH:** next scoring day (~09-01 DXCM) = first live 📊-card digest; a quiet weekday should
 read banner · sentence · 📈 and nothing else. **Do NOT:** re-add static pool rows to
 Telegram · re-send on UNCONFIRMED (unchanged) · let settle touch the transport again.
