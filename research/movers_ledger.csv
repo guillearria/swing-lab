@@ -274,31 +274,31 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-07-22T22:11:28+00:00,2026-07-22,PTC,-8.5,1.1,short,skip,2026-07-22T22:16:57+00:00,"broad software selloff, no clean company-specific catalyst identified.",skip,,-32.49,,sp500
 2026-07-22T22:11:28+00:00,2026-07-22,WDC,+8.3,0.5,long,skip,2026-07-22T22:16:56+00:00,"same as STX: analyst-initiation/PT-hike driven, already ran $400->$589; extended, chasing.",skip,,-19.29,,sp500
 2026-07-22T22:11:28+00:00,2026-07-22,SJM,+8.3,1.5,long,skip,2026-07-22T22:16:55+00:00,"pop on a single Hedgeye long note + dividend hike; no earnings confirmation, move already ran +13% on soft catalysts.",skip,,+4.03,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,SMCI,+24.5,1.0,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 21d post-earnings-drift),skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,TSLA,-17.8,1.5,short,skip,2026-07-24T22:14:44+00:00,"most-arbitraged name; EPS miss vs rev beat, binary robotaxi/capex narrative fully priced, no differentiated read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,WAB,+15.4,1.3,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 63d post-earnings-drift),skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,ROL,-14.5,2.0,short,take,2026-07-24T22:14:43+00:00,"valuation-deflation short: Q2 EPS/rev miss, residential pest demand slowing, margin -1.2pt, analysts cutting PTs, ~40x perfection multiple, -34% YTD",taken,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,LMT,+14.5,1.2,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift long: beat-and-raise, record backlog, +10% pop, durable rearmament tailwind",taken,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,DLR,+14.5,2.7,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift/analyst-rerating long: FFO crushed est, raised FY guide, TD Cowen/Guggenheim upgrades, AI-datacenter demand",taken,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,MRNA,-12.5,0.5,short,skip,2026-07-24T22:14:43+00:00,already live bet (short 63d analyst-rerating),skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,MSCI,-12.4,1.6,short,skip,2026-07-24T22:14:44+00:00,"mixed: beat but expense-guide up + retention scare; retention still 95%+, no crisp directional read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,IP,+12.2,2.2,long,skip,2026-07-24T22:14:44+00:00,"earnings not until 7/30; +12% is sector sympathy, no company catalyst yet",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,ALLE,+11.7,1.1,long,skip,2026-07-24T22:14:44+00:00,"thin read, no crisp differentiated catalyst",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,SLB,+11.6,1.7,long,skip,2026-07-24T22:14:44+00:00,"oilfield beat, no durable differentiated read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,T,+10.6,1.0,long,skip,2026-07-24T22:14:44+00:00,"telecom earnings pop, low vol 1.0x, thin read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,DELL,+10.6,0.5,long,skip,2026-07-24T22:14:44+00:00,"low vol 0.5x AI-server momentum, no fresh catalyst",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,CHRW,-10.5,2.1,short,skip,2026-07-24T22:14:54+00:00,"freight broker weakness, covered, no differentiated read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,CVNA,-10.2,0.6,short,skip,2026-07-24T22:14:54+00:00,"low vol 0.6x high-beta drop, no clear catalyst",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,RTX,+10.0,1.3,long,skip,2026-07-24T22:14:54+00:00,"same defense beat-and-raise as LMT; correlated, taking LMT as the sector rep",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,DECK,-9.8,2.0,short,skip,2026-07-24T22:14:54+00:00,"consumer-disc drop, need earnings detail, no crisp read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,CRWD,-9.7,0.4,short,skip,2026-07-24T22:14:54+00:00,"AI-displacement cyber scare, both sides loudly priced (Cramer/Wedbush bull vs AI-scare bear), no differentiated edge",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,PANW,-9.7,0.7,short,skip,2026-07-24T22:14:54+00:00,"same cyber AI-scare, covered/crowded, no edge",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,SW,+9.6,1.5,long,skip,2026-07-24T22:14:54+00:00,"packaging sector sympathy, thin",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,NRG,+9.2,0.5,long,skip,2026-07-24T22:14:54+00:00,"low vol 0.5x power/AI narrative, thin",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,URI,+9.2,1.1,long,skip,2026-07-24T22:14:55+00:00,"equipment rental pop, thin read",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,PKG,+9.1,2.1,long,skip,2026-07-24T22:14:55+00:00,"mixed Q2 (rev beat, EPS miss, margin down), no directional edge",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,ORCL,-9.0,1.2,short,skip,2026-07-24T22:14:55+00:00,"software-selloff sympathy, no fresh catalyst",skip,,,,sp500
-2026-07-24T22:11:13+00:00,2026-07-24,UBER,-9.0,1.3,short,skip,2026-07-24T22:14:55+00:00,"robotaxi-threat narrative, binary/covered, both sides priced",skip,,,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SMCI,+24.5,1.0,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 21d post-earnings-drift),skip,,+14.68,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,TSLA,-17.8,1.5,short,skip,2026-07-24T22:14:44+00:00,"most-arbitraged name; EPS miss vs rev beat, binary robotaxi/capex narrative fully priced, no differentiated read",skip,,-9.55,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,WAB,+15.4,1.3,long,skip,2026-07-24T22:14:43+00:00,already live bet (long 63d post-earnings-drift),skip,,-4.29,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ROL,-14.5,2.0,short,take,2026-07-24T22:14:43+00:00,"valuation-deflation short: Q2 EPS/rev miss, residential pest demand slowing, margin -1.2pt, analysts cutting PTs, ~40x perfection multiple, -34% YTD",taken,,+7.47,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,LMT,+14.5,1.2,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift long: beat-and-raise, record backlog, +10% pop, durable rearmament tailwind",taken,,-6.03,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DLR,+14.5,2.7,long,take,2026-07-24T22:14:43+00:00,"post-earnings-drift/analyst-rerating long: FFO crushed est, raised FY guide, TD Cowen/Guggenheim upgrades, AI-datacenter demand",taken,,-6.98,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,MRNA,-12.5,0.5,short,skip,2026-07-24T22:14:43+00:00,already live bet (short 63d analyst-rerating),skip,,-146.37,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,MSCI,-12.4,1.6,short,skip,2026-07-24T22:14:44+00:00,"mixed: beat but expense-guide up + retention scare; retention still 95%+, no crisp directional read",skip,,+2.88,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,IP,+12.2,2.2,long,skip,2026-07-24T22:14:44+00:00,"earnings not until 7/30; +12% is sector sympathy, no company catalyst yet",skip,,-5.43,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ALLE,+11.7,1.1,long,skip,2026-07-24T22:14:44+00:00,"thin read, no crisp differentiated catalyst",skip,,-0.46,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SLB,+11.6,1.7,long,skip,2026-07-24T22:14:44+00:00,"oilfield beat, no durable differentiated read",skip,,+1.49,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,T,+10.6,1.0,long,skip,2026-07-24T22:14:44+00:00,"telecom earnings pop, low vol 1.0x, thin read",skip,,+1.90,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DELL,+10.6,0.5,long,skip,2026-07-24T22:14:44+00:00,"low vol 0.5x AI-server momentum, no fresh catalyst",skip,,-1.83,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CHRW,-10.5,2.1,short,skip,2026-07-24T22:14:54+00:00,"freight broker weakness, covered, no differentiated read",skip,,+21.41,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CVNA,-10.2,0.6,short,skip,2026-07-24T22:14:54+00:00,"low vol 0.6x high-beta drop, no clear catalyst",skip,,-9.65,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,RTX,+10.0,1.3,long,skip,2026-07-24T22:14:54+00:00,"same defense beat-and-raise as LMT; correlated, taking LMT as the sector rep",skip,,-7.19,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,DECK,-9.8,2.0,short,skip,2026-07-24T22:14:54+00:00,"consumer-disc drop, need earnings detail, no crisp read",skip,,+9.08,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,CRWD,-9.7,0.4,short,skip,2026-07-24T22:14:54+00:00,"AI-displacement cyber scare, both sides loudly priced (Cramer/Wedbush bull vs AI-scare bear), no differentiated edge",skip,,-2.57,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,PANW,-9.7,0.7,short,skip,2026-07-24T22:14:54+00:00,"same cyber AI-scare, covered/crowded, no edge",skip,,-7.28,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,SW,+9.6,1.5,long,skip,2026-07-24T22:14:54+00:00,"packaging sector sympathy, thin",skip,,-5.21,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,NRG,+9.2,0.5,long,skip,2026-07-24T22:14:54+00:00,"low vol 0.5x power/AI narrative, thin",skip,,-21.12,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,URI,+9.2,1.1,long,skip,2026-07-24T22:14:55+00:00,"equipment rental pop, thin read",skip,,-7.06,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,PKG,+9.1,2.1,long,skip,2026-07-24T22:14:55+00:00,"mixed Q2 (rev beat, EPS miss, margin down), no directional edge",skip,,-4.68,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,ORCL,-9.0,1.2,short,skip,2026-07-24T22:14:55+00:00,"software-selloff sympathy, no fresh catalyst",skip,,-15.51,,sp500
+2026-07-24T22:11:13+00:00,2026-07-24,UBER,-9.0,1.3,short,skip,2026-07-24T22:14:55+00:00,"robotaxi-threat narrative, binary/covered, both sides priced",skip,,-13.00,,sp500
 2026-07-28T11:34:33+00:00,2026-07-27,SMCI,+25.1,0.8,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/22 long 21d) — not re-betting,skip,,,,sp500
 2026-07-28T11:34:33+00:00,2026-07-27,IP,+17.0,1.4,long,take,2026-07-28T11:37:40+00:00,"Containerboard 40/ton hike (PCA, Sep 1) + RBC PT->48 Outperform; laggard vs PKG record high. Real industry pricing catalyst, name re-rating.",taken,,,,sp500
 2026-07-28T11:34:33+00:00,2026-07-27,WAB,+16.7,1.3,long,skip,2026-07-28T11:37:40+00:00,already live in bets (7/22 long 63d) — not re-betting,skip,,,,sp500
