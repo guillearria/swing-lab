@@ -1260,10 +1260,13 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   Owner stance today: repo deprioritized ("disproved until real alpha and real capital") but
   the read+settle loop STAYS ON as the background evidence engine — pushes are log lines, not
   trade prompts, until the pooled verdict shows edge.
-  **(1) DONE 2026-08-06 — live config VERIFIED via the triggers API and recorded here:**
-  read `trig_01EsetvEZmVLb56fEmc7YvSi` = `30 11 * * 1-5` (Opus 4.8) · settle
-  `trig_01Uz2fQRMh5UwjnSvFkaSNBY` = `0 5 * * *` (Sonnet 4.6) · watchdog
-  `trig_01Jk65Rg2VQ9WjzjvCdD5SHP` = `13 19 * * *` (Haiku 4.5, read-only) — all three in the
+  **(1) DONE 2026-08-06 — live config VERIFIED via the triggers API and recorded here.
+  RE-VERIFIED + MODELS CHANGED 2026-08-24 in the routines UI (owner-approved):**
+  read `trig_01EsetvEZmVLb56fEmc7YvSi` = `30 11 * * 1-5` (**Opus 5**, was Opus 4.8) · settle
+  `trig_01Uz2fQRMh5UwjnSvFkaSNBY` = `30 22 * * *` since 2026-08-07 (**Haiku 4.5**, was
+  Sonnet 4.6 — the run only executes `scripts/daily.sh` and confirms the push; the model was
+  over-provisioned for a shell wrapper) · watchdog
+  `trig_01Jk65Rg2VQ9WjzjvCdD5SHP` = `13 19 * * *` (Haiku 4.5, read-only, unchanged) — all three in the
   SAME environment (`env_01Cd6kqjVXv6m1DVCmYm9emL`), all repo-bound. Docs were right, the hq
   board was stale (synced same day). **Prompt edits via `RemoteTrigger update` WORK** (the old
   "unproven" note is settled): both read + settle prompts were REWRITTEN COMPACT 2026-08-06 —
