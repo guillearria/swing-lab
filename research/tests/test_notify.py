@@ -95,13 +95,22 @@ def test_send_definitive_reject_is_false_one_post(monkeypatch):
     assert len(calls) == 1
 
 
-def test_bets_settle_msg_format():
-    done = [{"direction": "long", "ticker": "ACN", "horizon_d": "63",
-             "benchmark": "XLK", "excess_pct": "+4.20"}]
-    msg = B.settle_msg(done, (1, 4.2, 4.2, 100.0))
-    assert msg.startswith("📊")           # v3 [MSG 2026-08-18]: 🚨 means failure ONLY
-    assert "SCORED — ACN 63d vs XLK: 4.2% ahead ✓" in msg
-    assert "now 1 of 30 scored · 1 of 1 beat · median 4.2% ahead" in msg
+def test_mark_notified_stamps_only_unannounced_rows(tmp_path, monkeypatch):
+    """[MSG v4] settle no longer sends — the 📊 announcement moved into the digest (its card
+    render is tested in test_digest). What bets.py still owns is the stamp: mark_notified
+    stamps every unannounced settlement from a FRESH load and leaves announced rows alone,
+    so a REJECTED/UNCONFIRMED digest push (which never calls it) re-renders the cards."""
+    monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
+    row = {k: "" for k in B.FIELDS}
+    done = dict(row, ticker="ACN", direction="long", horizon_d="63", benchmark="XLK",
+                status="closed", excess_pct="+4.20", logged_at="2026-06-01T00:00:00+00:00")
+    old = dict(done, ticker="MU", notified="2026-07-01T00:00:00+00:00")
+    B._save([done, old])
+    assert B.mark_notified() == 1                 # only the unannounced row
+    back = B._load()
+    assert all(r["notified"] for r in back)
+    assert back[1]["notified"] == "2026-07-01T00:00:00+00:00"   # the old stamp untouched
+    assert B.mark_notified() == 0                 # idempotent — nothing left to stamp
 
 
 def test_heartbeat_msg_clean_vs_failure():

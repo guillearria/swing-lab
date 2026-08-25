@@ -2616,3 +2616,38 @@ stores no derived data.
   interpretation until the pool is at verdict n; the entry exists so the first look cannot be
   retro-fitted.
   Reproduce: `python3 -m research.paths` · `python3 -m pytest research/tests` (234).
+
+**2026-08-25 · [MSG] DIGEST v4 — THE PULSE STOPPED REPEATING ITSELF (owner: the daily rows
+"repeat themselves almost daily and that's not really what I need").** v3.1 fixed whether the
+message could be READ; v4 fixes whether it says anything NEW. The always-on Scored/So-far/
+To-pass rows printed identically on every quiet day — repetition wearing the costume of a
+pulse. The v3.1 entry's own residual note pre-authorized the other half of this change: "if
+the owner finds 📊 redundant beside 📋 at higher settle frequency, fold it then — with the
+delivery-guarantee question answered first, not dropped." Both landed together:
+- **The message narrates the RUN, not the state.** A noteless, scoreless settle is ONE
+  sentence ("Nothing matured today — N bets running", verdict-pool count — the one-population
+  rule from v3.1 kept). The read's note body opens with 1–2 plain sentences of what its
+  morning did, above its 🟢 cards (READ_LOOP step 7; the loose-line render already existed).
+  Pool numbers appear exactly when they CHANGE: the tally sentence rides the 📊 cards; 🏁
+  milestones and the at-bar/ahead-of-bar flags fire only on a crossing. The static rows stay
+  CLI-side (`python3 -m research` · `bets show`).
+- **📊 folded into the digest — the delivery-guarantee question, answered:** the separate 📊
+  message is retired; each unannounced settlement renders as a 📊 SCORED `<blockquote>` card
+  (Result in gap-words, a Read line with tag · conviction — the [ARC 5 #15] column's first
+  consumer) sourced from `bets.unannounced()` (the LEDGER, never what this process settled),
+  and `bets.mark_notified()` stamps `notified` ONLY after the digest's PUSH DELIVERED verdict.
+  A REJECTED/UNCONFIRMED push leaves the rows unstamped and their cards re-render in the NEXT
+  delivered digest, whichever leg — a repeated card inside a new message, never a re-sent
+  message, so the 2026-07-24 double-post class stays closed. `bets settle` no longer touches
+  the transport at all; a failed digest push already exits 1 into daily.sh's FAILS, so the
+  lost-announcement alarm moved legs without weakening. A clean weekday is now exactly ONE
+  📋 + ONE 📖, period.
+- **Delivery machinery otherwise UNCHANGED:** push_log stamps, verdict lines, UNCONFIRMED
+  re-send rules, heartbeat parity, watchdog, `--slim` semantics.
+- **Residual risk, stated:** the settle leg's narrative is synthesized from the ledgers and
+  can only say what they record (matured/nothing); a richer settle story (order fills, feed
+  notes) would need new plumbing and waits for a felt need. And an UNCONFIRMED push that WAS
+  delivered shows its 📊 card twice across two messages — the price of never re-sending, paid
+  in a duplicate card rather than a duplicate message.
+  Reproduce: `python3 -m research.digest` (quiet shape) · `python3 -m pytest research/tests`
+  (238) · FINDINGS [MSG 2026-08-19] residual note (the pre-authorization).

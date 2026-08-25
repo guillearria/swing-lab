@@ -1,22 +1,30 @@
-"""ONE glanceable daily pulse + a strict alarm channel — digest v3 [MSG 2026-08-18].
+"""ONE glanceable daily pulse + a strict alarm channel — digest v4 [MSG 2026-08-25].
 
-WHAT TELEGRAM MEANS in the paper regime (owner rethink, 2026-08-18): the v2 message was a
-broker terminal with the broker deleted — the owner skipped POOL/DO-NOW/BOOK/ORDERS/MOVERS
-and the "full:" footer. v3 gives Telegram three jobs and nothing else:
-  1. a PULSE of a growing experiment — the Scored / So far / To pass rows lead BOTH legs in
-     plain English, 📈 says when evidence next lands;
+WHAT TELEGRAM MEANS in the paper regime (owner rethink 2026-08-18; narrated 2026-08-25): the
+v2 message was a broker terminal with the broker deleted; v3's fix grew its own fossil — the
+always-on Scored/So-far/To-pass rows "repeat themselves almost daily and that's not really
+what I need" (owner). v4 keeps the three jobs and makes the pulse EVENT-DRIVEN:
+  1. a PULSE of what THIS run did — a noteless, scoreless settle is ONE sentence ("Nothing
+     matured today — N bets running"); a scoring settle folds each settlement in as a
+     📊 SCORED <blockquote> card + ONE pool-tally sentence (the separate 📊 message is
+     RETIRED; bets.mark_notified() stamps `notified` only after the PUSH DELIVERED verdict,
+     so a lost push re-renders the cards in the next delivered digest, whichever leg); the
+     read's note opens with 1–2 sentences of its own morning above its 🟢 cards. Pool numbers
+     appear exactly when they CHANGE — 🏁 milestones and the at-bar/ahead-of-bar flags fire
+     only on a crossing; 📈 says when evidence next lands;
   2. an ALARM channel — ⚠️ DO-NOW appears ONLY when something broke or needs the human
      (an empty list prints NOTHING; 🚨 is reserved for failures: heartbeat + watchdog);
   3. later, the X mirror — at P7b activation every post mirrors here as 📣 (locked req).
 Stats vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
-denominators and the mix mirror are CLI-side ONLY: `python3 -m research`, `bets show`,
-`orders show`, `movers show`. Committed dashboards stay the public page's job.
+denominators, the mix mirror AND the static scoreboard rows are CLI-side ONLY:
+`python3 -m research`, `bets show`, `orders show`, `movers show`.
 
 Shape, in order, ONE IDEA PER BLOCK with a blank line between blocks: headline (read passes
-its own "📖 READ …" first line; settle gets the "📋 SETTLE <dow> <date>" banner) → scoreboard
-(+🏁 milestone / the ahead-of-bar flag — PASS-CANDIDATE in FINDINGS vocabulary — when
-crossed) → ⚠️ DO-NOW (only when nonempty, paste-ready
-commands) → the read's 🟢 NEW BET card(s), one <blockquote> each → 📈 next-scoring line. Composed
+its own "📖 READ …" first line; settle gets the "📋 SETTLE <dow> <date>" banner) → the quiet
+sentence (noteless, scoreless runs only — a note owns its narrative, and 📊 cards ARE the
+news) → 🏁/at-bar flags (when crossed) → ⚠️ DO-NOW (only when nonempty, paste-ready
+commands) → the note's sentences + 🟢 card(s), one <blockquote> each → 📊 SCORED card(s) +
+the tally sentence → 📈 next-scoring line. Composed
 from the silos FAIL-SOFT per section — a broken silo degrades to a loud DO-NOW + an
 "unavailable" line, never a crashed run.
 
@@ -136,46 +144,86 @@ def _by_id(rows: list[dict]) -> dict:
     return {_row_id(r): r for r in rows}
 
 
-def _pool_scoreboard() -> tuple[list, list]:
-    """The plain-English scoreboard that LEADS BOTH legs [MSG v3; headline rule from
-    ARC 5 #12a]. Counts over percentages ("2 of 6 beat"), the bar in words, and NO stats
-    vocabulary — Σ/p/α live in `python3 -m research` / `bets show`, where the owner reads
-    them at a desk, not on a phone.
+def _pool_events() -> tuple[list, list]:
+    """EVENT flags only [MSG v4, 2026-08-25 — owner: the always-on Scored/So-far/To-pass rows
+    "repeat themselves almost daily and that's not really what I need"]. The static pool rows
+    are gone from Telegram (CLI keeps them: `python3 -m research` / `bets show`); what remains
+    here fires only when something CROSSED — which is exactly when it stops being repetition.
 
     🏁 milestone: a STATELESS crossing check vs the HEAD copy of the catalogue. Works because
     daily.sh runs the digest BEFORE push_ledgers commits (REORDER daily.sh AND MILESTONES
     SILENTLY STOP FIRING — this comment is the guard); the read leg commits first
     (READ_LOOP step 6), so its diff is empty and it can never false-banner. No internal
-    try/except: dead git kills the WHOLE scoreboard loudly via _safe instead of half-degrading
+    try/except: dead git kills the WHOLE section loudly via _safe instead of half-degrading
     into a message that looks normal.
 
-    Display only — the scoreboard never asks for anything.
+    Display only — this section never asks for anything.
     """
     from research import bets
     rows = bets._load()
-    pool = bets.verdict_rows(rows)           # ONE population — every row below counts the same
-    now_n = len(bets.excess_values(pool))    # bets, so the reader can add them up
+    pool = bets.verdict_rows(rows)           # ONE population, same as every other pool number
+    now_n = len(bets.excess_values(pool))
     prev_n = len(bets.excess_values(bets.verdict_rows(_committed(bets.CATALOGUE))))
     lines = []
     for mst in (10, 20, 30):
         if prev_n < mst <= now_n:
             lines.append(f"🏁 <b>{mst} scored</b> — the review rides the next read run")
-    running = len([r for r in pool if r["status"] == "open"])
-    lines.append(f"<b>Scored:</b> {now_n} of {bets.BAR_N} needed · {running} still running")
     s = bets.stats(rows)                     # the one verdict surface [bets.stats docstring]
     if s:
         n, _, md, beat = s
-        c = round(n * beat / 100)          # beat% round-trips exactly back to its count
-        lines.append(f"<b>So far:</b> {c} of {n} beat · median {bets.gap_words(md)}")
         if n >= bets.BAR_N:
             lines.append("<b>AT BAR — verdict time</b>")
         # Below-bar shape flag from n≥10 [ARC 5 #12a]: labeled so it can never be quoted as a
         # pass — nothing passes before N≥BAR_N, and the Wilcoxon only counts AT the bar.
-        if n >= 10 and md > bets.BAR_MEDIAN and beat > bets.BAR_BEAT:
+        elif n >= 10 and md > bets.BAR_MEDIAN and beat > bets.BAR_BEAT:
             lines.append(f"<b>Ahead of the bar</b> — but nothing passes before "
                          f"{bets.BAR_N} have scored")
-    lines.append(f"<b>To pass:</b> {bets.beat_bar_count()} of {bets.BAR_N} beating · "
-                 f"median {bets.BAR_MEDIAN:.0f}%+ ahead")
+    return [], lines
+
+
+def _scored_section() -> tuple[list, list]:
+    """Settled-but-unannounced bets as 📊 blockquote cards + ONE tally sentence [MSG v4].
+
+    Folds the separate 📊 SCORED message into the digest — the evolution v3.1's residual note
+    pre-authorized ("if the owner finds 📊 redundant beside 📋, fold it then — with the
+    delivery-guarantee question answered first"). Answered: cards render from the LEDGER
+    (bets.unannounced — never from what this process settled), and bets.mark_notified() stamps
+    them only after run()'s PUSH DELIVERED verdict, so a lost message re-renders in the next
+    delivered digest whichever leg that is. The pool tally rides ONLY here — it appears
+    exactly when it changed, never as daily repetition.
+    """
+    from research import bets
+    rows = bets._load()
+    todo = bets.unannounced(rows)
+    if not todo:
+        return [], []
+    lines = []
+    for r in todo:
+        excess = float(r["excess_pct"])
+        head = (f"📊 SCORED — {_e(r['ticker'])} {_e(r.get('direction') or 'long')} "
+                f"{_e(r['horizon_d'])}d vs {_e(r['benchmark'])}")
+        result = (f"<b>Result:</b> {_e(bets.gap_words(excess))}"
+                  f"{' ✓' if excess > 0 else ''}")
+        if r.get("direction") == "short":
+            result += " (short — diagnostic, outside the pool)"
+        block = [f"<blockquote><b>{head}</b>", result]
+        read = " · ".join(x for x in (_e(r.get("pattern_tag") or ""),
+                                      (f"conviction {_e(r['conviction'])}"
+                                       if r.get("conviction") else "")) if x)
+        if read:
+            block.append(f"<b>Read:</b> {read}")
+        block[-1] += "</blockquote>"
+        if lines:
+            lines.append("")                  # each card is its own block
+        lines += block
+    s = bets.stats(rows)
+    if s:
+        n, _, md, beat = s
+        c = round(n * beat / 100)          # beat% round-trips exactly back to its count
+        lines += ["", f"Now {n} of {bets.BAR_N} scored · {c} of {n} beat · "
+                      f"median {bets.gap_words(md)}."]
+    else:
+        lines += ["", f"0 of {bets.BAR_N} scored."]
     return [], lines
 
 
@@ -221,6 +269,15 @@ def _bets_section() -> tuple[list, list]:
                 f"check the ticker + price feed (<code>python3 -m research.bets settle</code>)"]
                if stuck else [])
     return actions, lines
+
+
+def _quiet_line() -> tuple[list, list]:
+    """The noteless, scoreless settle sentence [MSG v4]: what occurred is that nothing did —
+    said once, plainly, with the one count that drifts (open verdict-pool bets; the SAME
+    population as the tally and the flags, so the numbers always reconcile)."""
+    from research import bets
+    running = len([r for r in bets.verdict_rows(bets._load()) if r["status"] == "open"])
+    return [], [f"Nothing matured today — {running} bets running."]
 
 
 def _safe(fn, name: str) -> tuple[list, list]:
@@ -487,17 +544,24 @@ def compose(note: str = "") -> str:
     sections = [_safe(_bets_section, "bets"),
                 _safe(_git_section, "git"), _safe(_stranded_section, "stranded"),
                 _safe(_feed_section, "feed"), _safe(_pushlog_section, "push-log")]
-    # The scoreboard is composed separately because it leads the message — but it still goes
-    # through _safe, so a broken scoreboard is a loud DO-NOW, never a silent shape-revert.
-    board = _safe(_pool_scoreboard, "scoreboard")
-    actions = board[0] + [a for s in sections for a in s[0]]
+    # Event flags + scored cards are composed separately because they lead the message — but
+    # both still go through _safe, so a broken silo is a loud DO-NOW, never a silent revert.
+    events = _safe(_pool_events, "pool-events")
+    scored = _safe(_scored_section, "scored")
+    quiet = _safe(_quiet_line, "quiet")
+    actions = events[0] + scored[0] + quiet[0] + [a for s in sections for a in s[0]]
     if head.strip():
         out = [f"<b>{_e(HEAD_DENOM.sub('', head.strip()))}</b>"]
     else:
         today = date.today()
         out = [f"📋 <b>SETTLE {today.strftime('%a')} {today.isoformat()}</b>"]
-    if board[1]:
-        out += [""] + board[1]
+    # The narrative sentence [MSG v4]: a note carries its OWN sentences (READ_LOOP step 7 —
+    # the read agent writes what its run did), and 📊 cards ARE the settle leg's news; only a
+    # noteless, scoreless run needs a synthesized line so the message is never just a banner.
+    if not head.strip() and not scored[1] and quiet[1]:
+        out += ["", quiet[1][0]]
+    if events[1]:
+        out += [""] + events[1]
     if actions:
         out += ["", f"⚠️ <b>DO NOW ({len(actions)})</b>"]
         for i, a in enumerate(actions):
@@ -507,6 +571,8 @@ def compose(note: str = "") -> str:
     cards = _cards(body)
     if cards:
         out += [""] + cards
+    if scored[1]:
+        out += [""] + scored[1]
     tail = [l for s in sections for l in s[1]]
     if tail:
         out += [""] + tail
@@ -550,6 +616,14 @@ def run(argv: list[str]) -> int:
         except Exception as e:   # the stamp must never cost the push path
             log.warning("push-log stamp failed (%s) — delivery verdict unrecorded", e)
         if ok:
+            # The 📊 delivery guarantee, transferred [MSG v4]: stamp settled rows as announced
+            # ONLY on a confirmed send. A stamp failure must never cost the verdict — the rows
+            # just re-render next digest, which is the guarantee working, not breaking.
+            try:
+                from research import bets
+                bets.mark_notified()
+            except Exception as e:
+                log.warning("notified stamp failed (%s) — 📊 cards will re-render", e)
             print("PUSH DELIVERED")
         elif ok is None:
             print("PUSH UNCONFIRMED — may be delivered; do NOT re-send")

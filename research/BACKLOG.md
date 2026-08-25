@@ -4,7 +4,19 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-08-24 — conviction column · paths diagnostic · 4 case files)
+## ▶ PICK UP HERE (2026-08-25 — digest v4: the pulse narrates, 📊 folded in)
+
+**[MSG v4]** — owner: the daily scoreboard rows "repeat themselves almost daily". The digest
+now NARRATES the run (quiet settle = one sentence; read opens with its own sentences; pool
+numbers only when they change), and the separate 📊 message is RETIRED — settlements render
+as 📊 blockquote cards inside the digest, `bets.mark_notified()` stamps only after PUSH
+DELIVERED (the v3.1 residual note's fold, delivery guarantee transferred). `bets settle` no
+longer sends anything. One message per leg, period. Cloud prompts re-echoed same day.
+**WATCH:** next scoring day (~09-01 DXCM) = first live 📊-card digest; a quiet weekday should
+read banner · sentence · 📈 and nothing else. **Do NOT:** re-add static pool rows to
+Telegram · re-send on UNCONFIRMED (unchanged) · let settle touch the transport again.
+
+## Earlier — 2026-08-24, conviction column · paths diagnostic · 4 case files
 
 **Depth upgrade, owner-approved plan, single push, 234 tests green.** The verdict's speed is
 fixed (~mid-Oct at n≥30); this lands more learning-per-bet without touching the bar.

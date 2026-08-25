@@ -194,23 +194,9 @@ def test_stats_is_long_only_while_agg_keeps_shorts():
     assert an == 2 and amd == pytest.approx(32.37)
 
 
-def test_settle_msg_speaks_scored_results_and_the_plain_tally():
-    """[MSG v3, 2026-08-18]: 📊 SCORED per result (beat ✓ / miss stated plainly), plain counts
-    for the tally — never the 🚨 glyph, which now means failure only. A settling short is
-    announced as diagnostic and the tally stays the long-only verdict population [#12a]."""
-    done = [_closed("S1", "short", "+69.74")]
-    msg = B.settle_msg(done, B.stats(done))       # a settling short with 0 settled longs
-    assert "📊 SCORED — S1" in msg and "short — diagnostic" in msg
-    assert "0 of 30 scored" in msg
-    assert "🚨" not in msg
-    # The gap is spelled out [2026-08-19 owner review]: "+2.00%" left the reader to know that
-    # % was an excess over the benchmark, not the trade's return.
-    win = [_closed("L1", "long", "+2.00")]
-    msg2 = B.settle_msg(win, B.stats(win))
-    assert "📊 SCORED — L1 21d vs SPY: 2.0% ahead ✓" in msg2
-    assert "now 1 of 30 scored · 1 of 1 beat · median 2.0% ahead" in msg2
-    loss = [_closed("L2", "long", "-3.10")]
-    assert "3.1% behind" in B.settle_msg(loss, B.stats(loss))
+# The 📊 announcement moved into the digest [MSG v4, 2026-08-25]: the card render + tally
+# live in test_digest (_scored_section), the delivered-only stamp in test_notify
+# (mark_notified) and test_digest (run). What THIS file pins is that settle stopped sending.
 
 
 # ── wilcoxon_p [ARC 5 #12a]: the bar's significance test, computed at last ──────────────────
@@ -280,35 +266,26 @@ def _settled_row(ticker="MU"):
             "pattern_tag": "", "notified": ""}
 
 
-def test_failed_push_keeps_settlement_unannounced_and_exits_nonzero(tmp_path, monkeypatch):
-    """The MU regression: a settlement whose 🚨 is lost must stay retryable AND be
-    reported as a failed step — it used to exit 0 with the message gone forever."""
+def test_settle_never_sends_and_leaves_the_announcement_to_the_digest(tmp_path, monkeypatch):
+    """[MSG v4] settle persists the score and STOPS — no notify call, exit 0, the row left
+    unannounced for the digest's 📊 card. The MU regression's guarantee (a lost announcement
+    is never dropped) now lives in the ledger + the digest: unannounced() keeps offering the
+    row until mark_notified stamps it after a PUSH DELIVERED verdict, and a failed digest
+    push already exits 1 into daily.sh's FAILS — the alarm moved legs, it did not weaken."""
     monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
     B._save([_settled_row()])
     monkeypatch.setattr(B.prices, "bars_after", lambda *a: [])
     import research.notify as N
-    monkeypatch.setattr(N, "send", lambda *a, **k: False)       # telegram down
+    def boom(*a, **k):
+        raise AssertionError("settle must never touch the transport [MSG v4]")
+    monkeypatch.setattr(N, "send", boom)
 
-    assert B.run(["settle"]) == 1                               # daily.sh now counts it
-    assert B._load()[0]["notified"] == ""                       # still owed an announcement
-
-
-def test_next_run_resends_then_stamps_and_stops(tmp_path, monkeypatch):
-    """Recovery: the retry set comes from the LEDGER, so the next run re-sends the lost
-    message, stamps it on confirmed delivery, and never sends it twice."""
-    monkeypatch.setattr(B, "CATALOGUE", str(tmp_path / "bets.csv"))
-    B._save([_settled_row()])
-    monkeypatch.setattr(B.prices, "bars_after", lambda *a: [])
-    sent = []
-    import research.notify as N
-    monkeypatch.setattr(N, "send", lambda text, **k: sent.append(text) or True)
-
+    assert B.run(["settle"]) == 0                    # two runs: still silent, still owed
     assert B.run(["settle"]) == 0
-    assert len(sent) == 1 and "MU" in sent[0]
-    assert B._load()[0]["notified"]                             # stamped only after delivery
-
-    assert B.run(["settle"]) == 0
-    assert len(sent) == 1                                       # not re-announced
+    assert B._load()[0]["notified"] == ""
+    assert B.unannounced(B._load())                  # the digest's card source, intact
+    assert B.mark_notified() == 1                    # ...until the delivered digest stamps it
+    assert B.unannounced(B._load()) == []
 
 
 def test_save_backfills_old_schema_rows(tmp_path, monkeypatch):

@@ -20,7 +20,7 @@ LIVE commands:
   python3 -m research.paths             settled-bet path diagnostic (peak vs final + noise ref) — DESCRIPTIVE [PATHS #1], read-only
   python3 -m research.book              TERMINAL evidence ledger [ARC 5 #12] — prints the one BOOK CLOSED line
   python3 -m research.orders            COUNTERFACTUAL orders [ARC 5 #12a]: a LIMIT + an expiry, band diagnostic (place/check/cancel/show)
-  python3 -m research.digest            THE Telegram push (v3.1): scoreboard + ⚠️ DO-NOW (when nonempty) + 🟢 cards + 📈
+  python3 -m research.digest            THE Telegram push (v4): what the run DID + 📊/🟢 cards + ⚠️ (when nonempty) + 📈
   python3 -m research.site              regenerate docs/index.html — the public dashboard page [P7a]
   python3 -m research.pulse             X pulse dry-run print (--post = the routine's autopost path [P7b])
   python3 -m research.watchdog          external dead-man's switch (own cloud routine; --notify)

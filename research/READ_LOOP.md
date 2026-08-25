@@ -244,9 +244,11 @@ execution") made operational. What this means for the run:
    bare "Probe" arrived 2026-08-06 exactly this way). NEVER send a probe/test/verification
    message; `python3 -m research.notify` is a HUMAN-only tool — a routine never invokes it.**
    AFTER the push, commit the delivery stamp the digest just wrote, so the next run can see a
-   stranded message (`git add research/data/push_log.csv && git commit -m "chore: push-log
-   stamp (read)" && git push`) — best-effort, skip if unchanged; never re-push the digest over
-   a failed stamp commit.
+   stranded message (`git add research/data/push_log.csv research/bets_catalogue.csv && git commit -m
+   "chore: push-log stamp (read)" && git push`) — best-effort, skip if unchanged; never
+   re-push the digest over a failed stamp commit. The catalogue rides along because a
+   DELIVERED digest may have stamped `notified` on 📊 cards it carried [MSG v4]; losing the
+   stamp only re-renders the cards, but committing it saves the next reader the duplicate.
    **If the verdict was NOT `PUSH DELIVERED`, fire the 🚨 fallback once — `python3 -m
    research.heartbeat digest-read` — after the stamp commit [2026-08-11].** This is PARITY with
    the settle leg, not a new policy: `daily.sh` has routed a failed digest push into
@@ -256,8 +258,13 @@ execution") made operational. What this means for the run:
    heartbeat is an ALARM on a failed run, and the rule bans a ✅ on a CLEAN one. It is not a
    re-send either — never re-push the digest on UNCONFIRMED; the 🚨 says the brief may be lost
    without risking the 2026-07-24 double-post.
-   The digest itself carries the scoreboard (v3 [MSG 2026-08-18]), the ⚠️ DO-NOW list
-   (only when nonempty), the note body (🟢 cards), and the 📈 line. Done.
+   The digest itself carries the ⚠️ DO-NOW list (only when nonempty), the note body, any
+   📊 SCORED card a lost settle push left unannounced, and the 📈 line [MSG v4]. **The note
+   BODY opens with 1–2 plain sentences of what THIS run did** — candidates seen, takes,
+   the character of the skips ("Read 42 movers; took FN, skipped 41 — the selloff was
+   market-wide") — BEFORE the 🟢 card(s); the digest renders those sentences as plain lines
+   above the cards. That narrative replaced the static scoreboard rows (owner, 2026-08-25:
+   they repeated daily); pool numbers now appear only when they change. Done.
 
 ## What to expect (honest)
 Most bets will lose to their benchmark — that's fine; the scoreboard decides the VERDICT at

@@ -199,22 +199,27 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   locally. Generation runs in the separate cloud **read** routine (`READ_LOOP.md`, PRE-MARKET
   weekdays — alerts must land before the open, never after the close).
   **Telegram contract: every scheduled run pushes ONE message — SILENCE = BROKEN; a clean weekday =
-  exactly ONE 📋 SETTLE + ONE 📖 READ, plus ONE 📊 SCORED on days bets mature
-  [digest v3, 2026-08-18 — FINDINGS [MSG]: Telegram is a PULSE + ALARM channel, never a broker
-  terminal].** Both legs come from `research/digest.py` (HTML, fail-soft per silo) and LEAD with
-  the plain-English scoreboard (**Scored / So far / To pass rows — every row counts the
-  SAME bets, so they add up [v3.1 2026-08-19]; the bar is a COUNT ("17 of 30 beating"), the
-  median is words ("8.0% behind")**), then ⚠️ DO-NOW **only when nonempty** (an empty list
-  prints NOTHING — the absence of ⚠️ is the all-clear), the read's 🟢 NEW BET card(s) (the note
-  body; READ_LOOP step 5a, 4 lines, one field per line, rendered as a `<blockquote>`; bet #
-  from `bets add`), and the 📈 line (when evidence next lands). 🏁 milestones at
-  n=10/20/30 (stateless vs git HEAD) + the ahead-of-bar flag ride the scoreboard. Stats
-  vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
+  exactly ONE 📋 SETTLE + ONE 📖 READ, period [digest v4, 2026-08-25 — FINDINGS [MSG]: Telegram
+  is a PULSE + ALARM channel, never a broker terminal; the always-on scoreboard rows repeated
+  themselves daily and are OFF Telegram — CLI keeps them].** Both legs come from
+  `research/digest.py` (HTML, fail-soft per silo) and NARRATE what the run did: a noteless,
+  scoreless settle is ONE sentence ("Nothing matured today — N bets running", verdict-pool
+  count); a read's note body opens with 1–2 plain sentences of what its run did (READ_LOOP
+  step 7) above its 🟢 NEW BET card(s) (step 5a, 4 lines, one field per line, `<blockquote>`;
+  bet # from `bets add`); a scoring settle folds each settlement in as a 📊 SCORED
+  `<blockquote>` card (Result in gap-words + a Read line with tag · conviction) followed by
+  ONE pool-tally sentence — the pool numbers appear exactly when they CHANGED, never as daily
+  repetition, and the separate 📊 message is RETIRED (its `notified` delivery guarantee
+  transferred: `bets.mark_notified()` stamps only after the digest's PUSH DELIVERED verdict,
+  so a lost push re-renders the cards in the next delivered digest, whichever leg). Then
+  ⚠️ DO-NOW **only when nonempty** (an empty list prints NOTHING — the absence of ⚠️ is the
+  all-clear) and the 📈 line (when evidence next lands). 🏁 milestones at n=10/20/30
+  (stateless vs git HEAD) + the at-bar/ahead-of-bar flags fire only when actually crossed.
+  Stats vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
   denominators and the mix mirror are CLI-side ONLY (`python3 -m research` · `bets show` ·
   `orders show` · `movers show`) — never on Telegram. `--slim` = the read leg's push-log stamp;
-  it no longer changes composition (the headline is the leg's identity). 📊 SCORED
-  (`bets.settle_msg`, `notified`-column delivery guarantee) announces each scored settlement
-  the moment it lands; **the 🚨 glyph means FAILURE ONLY** — the heartbeat
+  it no longer changes composition (the headline is the leg's identity).
+  **The 🚨 glyph means FAILURE ONLY** — the heartbeat
   (`research/heartbeat.py`) fires when a step or the digest push failed, NEVER as a ✅ success
   ping (one arrived 2026-08-05; it is a contract violation). **Locked requirement [2026-08-18]:
   when P7b activates, every X post mirrors to Telegram as 📣 with the posted text (the

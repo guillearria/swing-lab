@@ -12,7 +12,8 @@ from research import digest as D
 # Captured before the autouse fixture below can stub them out, so the sections that read the
 # real repo/filesystem can still be tested directly.
 _REAL_GIT, _REAL_FEED = D._git_section, D._feed_section
-_REAL_STRANDED, _REAL_BOARD = D._stranded_section, D._pool_scoreboard
+_REAL_STRANDED, _REAL_EVENTS = D._stranded_section, D._pool_events
+_REAL_SCORED, _REAL_QUIET = D._scored_section, D._quiet_line
 _REAL_PUSHLOG, _REAL_BETS = D._pushlog_section, D._bets_section
 
 
@@ -22,7 +23,8 @@ def _neutralize_environment_sections(monkeypatch):
     make each compose test depend on this checkout's live state (and _stranded_section would
     hit the NETWORK). Stub them all by default; each has its own dedicated test."""
     for name in ("_bets_section", "_git_section", "_stranded_section",
-                 "_feed_section", "_pushlog_section", "_pool_scoreboard"):
+                 "_feed_section", "_pushlog_section", "_pool_events",
+                 "_scored_section", "_quiet_line"):
         monkeypatch.setattr(D, name, lambda: ([], []))
 
 
@@ -70,7 +72,7 @@ def test_multiline_action_keeps_code_line_whole(monkeypatch):
 def test_tags_never_span_lines(monkeypatch):
     """The notify truncation cuts at a newline — every tag must open+close on one line."""
     monkeypatch.setattr(D, "_bets_section", lambda: (["a:\n<code>cmd</code>"], ["📈 1 open"]))
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
+    monkeypatch.setattr(D, "_pool_events", lambda: ([], ["<b>AT BAR — verdict time</b>"]))
     for line in D.compose().split("\n"):
         assert line.count("<b>") == line.count("</b>")
         assert line.count("<code>") == line.count("</code>")
@@ -91,37 +93,37 @@ def test_blocks_are_separated_by_exactly_one_blank(monkeypatch):
     design" and five unseparated blocks read on a phone as one paragraph of prose; the v2 shape
     before it ended in five blank lines [2026-08-04]. Neither, now: no double blank, no leading
     or trailing blank, exactly one between blocks."""
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
+    monkeypatch.setattr(D, "_quiet_line", lambda: ([], ["Nothing matured today — 62 bets running."]))
     monkeypatch.setattr(D, "_bets_section", lambda: ([], ["📈 62 open"]))
     out = D.compose()
     assert "\n\n\n" not in out
     assert out.rstrip("\n") == out and not out.startswith("\n")
-    # the quiet settle day is banner · scoreboard · 📈 — three blocks, two blank lines
-    assert out.split("\n")[1:] == ["", "<b>Scored:</b> 5 of 30 needed", "", "📈 62 open"]
+    # the quiet settle day [v4] is banner · one sentence · 📈 — three blocks, two blank lines
+    assert out.split("\n")[1:] == ["", "Nothing matured today — 62 bets running.", "", "📈 62 open"]
 
 
 def test_an_empty_section_adds_no_blank_line(monkeypatch):
     """A silo that returns nothing must not leave its separator behind — that is how a message
     grows a blank wall one dead section at a time."""
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], []))
     monkeypatch.setattr(D, "_bets_section", lambda: ([], []))
-    assert "\n" not in D.compose()
+    assert "\n" not in D.compose()            # every silo empty → the banner alone [v4]
 
 
 def test_run_note_headline_tops_and_cards_ride_above_the_bets_line(monkeypatch):
     """The note's first line is the leg's identity (Telegram preview); its body — the 🟢 NEW
     BET cards — is the morning's news and lands after the scoreboard and any ⚠️ list, ABOVE the
     📈 line. v2 demoted the cards to a bottom RUN NOTE block; v3 does not."""
-    monkeypatch.setattr(D, "_pool_scoreboard", lambda: ([], ["<b>Scored:</b> 5 of 30 needed"]))
+    monkeypatch.setattr(D, "_pool_events", lambda: ([], ["<b>AT BAR — verdict time</b>"]))
     monkeypatch.setattr(D, "_bets_section", lambda: (["X STUCK"], ["📈 63 open"]))
     lines = D.compose("📖 READ Wed 2026-08-19 pre-market: 1 bet\n"
                       "🟢 NEW BET #69 — CAVA long · 21d vs XLY\nWHY: capitulation").split("\n")
     assert lines[0] == "<b>📖 READ Wed 2026-08-19 pre-market: 1 bet</b>"
     assert "📋" not in "\n".join(lines)                     # headline replaces the banner
+    assert "Nothing matured" not in "\n".join(lines)        # a note owns its narrative [v4]
     i_do = lines.index("⚠️ <b>DO NOW (1)</b>")
     i_card = lines.index("<blockquote><b>🟢 NEW BET #69 — CAVA long · 21d vs XLY</b>")
     i_bets = lines.index("📈 63 open")
-    assert lines.index("<b>Scored:</b> 5 of 30 needed") < i_do < i_card < i_bets
+    assert lines.index("<b>AT BAR — verdict time</b>") < i_do < i_card < i_bets
 
 
 def test_run_note_body_is_escaped_and_never_splits_a_tag():
@@ -144,7 +146,9 @@ def test_no_broker_terminal_blocks_survive(monkeypatch):
     """The v3 contract in one test: the fossils the owner skipped are gone from Telegram —
     BOOK tombstone, ORDERS band, MOVERS denominators, the mix mirror, Δ-since-HEAD, the
     'full:' footer — and the stats vocabulary stays CLI-side."""
-    monkeypatch.setattr(D, "_pool_scoreboard", _REAL_BOARD)
+    monkeypatch.setattr(D, "_pool_events", _REAL_EVENTS)
+    monkeypatch.setattr(D, "_scored_section", _REAL_SCORED)
+    monkeypatch.setattr(D, "_quiet_line", _REAL_QUIET)
     from research import bets
     monkeypatch.setattr(bets, "_load", lambda: list(_LIVE_POOL))
     monkeypatch.setattr(D, "_committed", lambda p: list(_LIVE_POOL))
@@ -199,16 +203,16 @@ def test_a_card_row_cannot_inject_markup():
     assert out.count("<b>") == out.count("</b>")
 
 
-# ------------------------------------------------------------------- the scoreboard (v3)
+# ------------------------------------- event flags · scored cards · the quiet line (v4)
 
 _L = {"logged_at": "2026-06-01T00:00:00+00:00", "direction": "long", "horizon_d": "21",
       "benchmark": "SPY", "thesis": "t", "pattern_tag": "", "notified": "x",
-      "entry_date": "2026-06-02", "entry": "10.00"}
+      "entry_date": "2026-06-02", "entry": "10.00", "conviction": ""}
 
 
-def _closed_bet(ticker, excess, direction="long"):
+def _closed_bet(ticker, excess, direction="long", **kw):
     return {**_L, "ticker": ticker, "direction": direction, "status": "closed",
-            "excess_pct": excess}
+            "excess_pct": excess, **kw}
 
 
 def _open_bet(ticker, direction="long"):
@@ -223,61 +227,47 @@ _LIVE_POOL = [_closed_bet("MU", "-7.99"), _closed_bet("ON", "+15.28"),
               _closed_bet("CIEN", "-19.09"), _closed_bet("ILLR", "+69.74", "short")]
 
 
-def _board(monkeypatch, rows, head_rows=None):
-    """Drive the real _pool_scoreboard with a faked catalogue + faked HEAD copy."""
+def _events(monkeypatch, rows, head_rows=None):
+    """Drive the real _pool_events with a faked catalogue + faked HEAD copy."""
     from research import bets
     monkeypatch.setattr(bets, "_load", lambda: list(rows))
     monkeypatch.setattr(D, "_committed",
                         lambda p: list(head_rows if head_rows is not None else rows))
-    return _REAL_BOARD()
+    return _REAL_EVENTS()
 
 
-def test_every_scoreboard_row_counts_the_same_bets(monkeypatch):
-    """The 2026-08-19 owner report: "5 of 30 settled · 1 of 5 beat · 63 open — these all seem
-    related, but they don't add up." They could not: 30 was a TARGET, 5 was the scored verdict
-    pool, and 63 counted every open bet including the shorts the verdict rule strips. Every row
-    now counts the SAME population — 5 scored + 53 running IS the pool, and 30 is visibly the
-    finish line — and the bar is a count, so "beat" never means a rate on one row and a tally
-    on the next."""
-    pool = _LIVE_POOL + [_open_bet(f"O{i}") for i in range(53)] + [_open_bet("S", "short")]
-    actions, lines = _board(monkeypatch, pool)
-    assert actions == []                        # the scoreboard never asks for anything
-    assert lines == [
-        "<b>Scored:</b> 5 of 30 needed · 53 still running",
-        "<b>So far:</b> 1 of 5 beat · median 8.0% behind",
-        "<b>To pass:</b> 17 of 30 beating · median 1%+ ahead"]
-    assert all(len(D._plain(l)) <= 50 for l in lines)   # each fits one phone line, unwrapped
-    # No header, no gloss [2026-08-19, owner call]: "Scoreboard — each bet vs its benchmark"
-    # explained what the rows already show. The glyph marks the block; the rows carry the news.
-    assert len(lines) == 3 and not any("Scoreboard" in l or "benchmark" in l for l in lines)
+def _scored(monkeypatch, rows):
+    from research import bets
+    monkeypatch.setattr(bets, "_load", lambda: list(rows))
+    return _REAL_SCORED()
+
+
+def test_the_static_pool_rows_are_gone(monkeypatch):
+    """[MSG v4, owner 2026-08-25]: the Scored/So-far/To-pass rows "repeat themselves almost
+    daily" — they are OFF Telegram (CLI keeps them). On an ordinary day between crossings the
+    events section is EMPTY, which is the whole point."""
+    pool = _LIVE_POOL + [_open_bet(f"O{i}") for i in range(53)]
+    actions, lines = _events(monkeypatch, pool)
+    assert actions == [] and lines == []
     joined = " ".join(lines)
-    for jargon in ("Σ", "p=", "α", "long-only", "shorts", "POOL", "n=", "-8.0%", "55%"):
-        assert jargon not in joined, jargon
+    for fossil in ("Scored:", "So far:", "To pass:"):
+        assert fossil not in joined
 
 
-def test_scoreboard_zero_scored_still_shows_the_target(monkeypatch):
-    """Nothing scored yet → no "So far" row to invent, but the target and the bar still stand."""
-    _, lines = _board(monkeypatch, [_open_bet("NOW")])
-    assert lines == ["<b>Scored:</b> 0 of 30 needed · 1 still running",
-                     "<b>To pass:</b> 17 of 30 beating · median 1%+ ahead"]
-
-
-def test_scoreboard_at_bar_says_verdict_time(monkeypatch):
+def test_at_bar_flag_fires_only_at_the_bar(monkeypatch):
     full = [_closed_bet(f"T{i}", "+3.00") for i in range(30)]
-    _, lines = _board(monkeypatch, full)        # head == tree → no milestone banner
-    assert "<b>Scored:</b> 30 of 30 needed · 0 still running" in lines
-    assert "<b>So far:</b> 30 of 30 beat · median 3.0% ahead" in lines
-    assert "<b>AT BAR — verdict time</b>" in lines   # its own line: a state change, not a suffix
+    _, lines = _events(monkeypatch, full)        # head == tree → no milestone banner
+    assert lines == ["<b>AT BAR — verdict time</b>"]
 
 
 def test_pass_candidate_appears_from_n10_and_is_labeled_below_bar(monkeypatch):
     """The early-shape flag can never be quoted as a pass — the label travels with it."""
     ten = [_closed_bet(f"T{i}", "+3.00") for i in range(10)]
-    _, lines = _board(monkeypatch, ten)
+    _, lines = _events(monkeypatch, ten)
     pc = next(l for l in lines if "Ahead of the bar" in l)
     assert "nothing passes before 30 have scored" in pc     # the caveat travels with the flag
 
-    _, lines2 = _board(monkeypatch, ten[:9])
+    _, lines2 = _events(monkeypatch, ten[:9])
     assert not any("Ahead of the bar" in l for l in lines2)  # n=9: no flag, however pretty
 
 
@@ -285,39 +275,114 @@ def test_milestone_fires_only_on_a_crossing(monkeypatch):
     """Stateless: HEAD had 9 settled longs, the tree has 10 → banner. HEAD already at 10 →
     quiet. Depends on daily.sh running the digest BEFORE push_ledgers commits."""
     ten = [_closed_bet(f"T{i}", "+1.00") for i in range(10)]
-    _, lines = _board(monkeypatch, ten, head_rows=ten[:9])
+    _, lines = _events(monkeypatch, ten, head_rows=ten[:9])
     assert any("🏁" in l and "10 scored" in l for l in lines)
 
-    _, lines2 = _board(monkeypatch, ten + [_closed_bet("T11", "+1.00")], head_rows=ten)
+    _, lines2 = _events(monkeypatch, ten + [_closed_bet("T11", "+1.00")], head_rows=ten)
     assert not any("🏁" in l for l in lines2)                 # 10→11 is not a crossing
 
 
-def test_scoreboard_never_reads_the_book(monkeypatch):
-    """v3 has no book coupling anywhere in the digest — a retired OR live book changes
-    nothing. The module does not even import research.book."""
+def test_scored_card_renders_result_and_read_lines(monkeypatch):
+    """[MSG v4] A settled bet arrives as a 📊 blockquote card — the same card grammar as 🟢 —
+    with the Read line carrying the tag · conviction the row was registered under, and ONE
+    tally sentence after the card(s): the pool numbers appear exactly when they changed."""
+    rows = list(_LIVE_POOL) + [_closed_bet("HAE", "+3.20", notified="",
+                                           pattern_tag="post-earnings-drift",
+                                           conviction="high")]
+    actions, lines = _scored(monkeypatch, rows)
+    assert actions == []
+    out = "\n".join(lines)
+    assert "<blockquote><b>📊 SCORED — HAE long 21d vs SPY</b>" in out
+    assert "<b>Result:</b> 3.2% ahead ✓" in out
+    assert "<b>Read:</b> post-earnings-drift · conviction high</blockquote>" in out
+    assert "Now 6 of 30 scored · 2 of 6 beat" in out          # the tally rides the card block
+    for line in lines:                                        # tags never span lines except
+        assert line.count("<b>") == line.count("</b>")        # the blockquote (compose rule)
+
+
+def test_scored_card_without_tag_or_conviction_omits_the_read_line(monkeypatch):
+    rows = [_closed_bet("MU", "-7.99", notified="")]
+    _, lines = _scored(monkeypatch, rows)
+    out = "\n".join(lines)
+    assert "<b>Read:</b>" not in out
+    assert "<b>Result:</b> 8.0% behind</blockquote>" in out   # no ✓ on a loss
+
+
+def test_scored_short_is_labeled_diagnostic_and_tally_stays_long_only(monkeypatch):
+    """A settling SHORT is announced (diagnostic row) but the tally is always the long-only
+    verdict population [ARC 5 #12a] — s=None (no longs settled yet) must not kill the card."""
+    _, lines = _scored(monkeypatch, [_closed_bet("ILLR", "+69.74", "short", notified="")])
+    out = "\n".join(lines)
+    assert "📊 SCORED — ILLR short 21d vs SPY" in out
+    assert "(short — diagnostic, outside the pool)" in out
+    assert "0 of 30 scored." in out
+
+
+def test_no_unannounced_settlements_means_no_scored_block(monkeypatch):
+    assert _scored(monkeypatch, list(_LIVE_POOL)) == ([], [])
+
+
+def test_quiet_line_counts_the_verdict_pool(monkeypatch):
+    """One population everywhere [2026-08-19 owner report, carried into v4]: the quiet
+    sentence's running count is the verdict pool's open longs — the same rows the tally and
+    the flags count — never every open row including shorts."""
+    from research import bets
+    rows = list(_LIVE_POOL) + [_open_bet(f"O{i}") for i in range(53)] + [_open_bet("S", "short")]
+    monkeypatch.setattr(bets, "_load", lambda: list(rows))
+    assert _REAL_QUIET() == ([], ["Nothing matured today — 53 bets running."])
+
+
+def test_quiet_sentence_yields_to_scored_cards_and_to_a_note(monkeypatch):
+    """[MSG v4] the narrative slot has one occupant: a note's own sentences, else the 📊
+    cards, else the synthesized quiet line — never two of them."""
+    monkeypatch.setattr(D, "_quiet_line", lambda: ([], ["Nothing matured today — 5 bets running."]))
+    assert "Nothing matured" in D.compose()                   # noteless, scoreless → sentence
+    monkeypatch.setattr(D, "_scored_section",
+                        lambda: ([], ["<blockquote><b>📊 SCORED — X long 21d vs SPY</b></blockquote>"]))
+    out = D.compose()
+    assert "Nothing matured" not in out and "📊 SCORED" in out  # cards ARE the news
+    assert "Nothing matured" not in D.compose("📖 READ\nRead 40 movers; took none.")
+
+
+def test_events_never_read_the_book(monkeypatch):
+    """v3's no-book-coupling rule survives v4 — the module does not even import research.book."""
     from research import book
     def boom(*a, **k):
         raise AssertionError("the digest must not touch the book")
     monkeypatch.setattr(book, "_load", boom)
     monkeypatch.setattr(book, "equity_marks", boom)
-    _, lines = _board(monkeypatch, _LIVE_POOL)
-    assert any("Scored:" in l for l in lines)
+    _events(monkeypatch, _LIVE_POOL)
     import inspect
     imports = [l for l in inspect.getsource(D).splitlines()
                if "import" in l and not l.strip().startswith("#")]
     assert not any("book" in l for l in imports), imports
 
 
-def test_scoreboard_degrades_loud_not_silent_without_git(monkeypatch):
+def test_events_degrade_loud_not_silent_without_git(monkeypatch):
     """No git / no HEAD copy must not quietly revert the message to a shape that looks normal —
-    the whole scoreboard goes DOWN through _safe (a half-degraded scoreboard that silently
-    drops milestones would look completely healthy)."""
+    the whole section goes DOWN through _safe (a half-degraded section that silently drops
+    milestones would look completely healthy)."""
     def boom(*a, **k):
         raise RuntimeError("not a git repository")
     monkeypatch.setattr(D, "_committed", boom)
-    monkeypatch.setattr(D, "_pool_scoreboard", _REAL_BOARD)
+    monkeypatch.setattr(D, "_pool_events", _REAL_EVENTS)
     out = D.compose()
-    assert "scoreboard silo DOWN" in out and "DO NOW (1)" in out
+    assert "pool-events silo DOWN" in out and "DO NOW" in out
+
+
+def test_delivered_push_stamps_the_scored_rows(monkeypatch, tmp_path, capsys):
+    """[MSG v4] the 📊 delivery guarantee, transferred: mark_notified fires ONLY on the
+    DELIVERED verdict — a REJECTED or UNCONFIRMED push leaves the rows unstamped so their
+    cards re-render in the next delivered digest."""
+    from research import bets, notify
+    calls = []
+    monkeypatch.setattr(bets, "mark_notified", lambda: calls.append(1) or 1)
+    monkeypatch.setattr(D, "PUSH_LOG", str(tmp_path / "push_log.csv"))
+    for verdict, expect in ((True, 1), (False, 1), (None, 1)):
+        calls.clear()
+        monkeypatch.setattr(notify, "send", lambda t, html=False, _v=verdict: _v)
+        D.run(["--notify"])
+        assert len(calls) == (1 if verdict is True else 0), verdict
 
 
 # ------------------------------------------------------------------------ the 📈 bets line

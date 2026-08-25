@@ -263,31 +263,22 @@ def unannounced(rows: list[dict]) -> list[dict]:
     return [r for r in rows if r["status"] == "closed" and not r.get("notified")]
 
 
-def settle_msg(done: list[dict], s: tuple | None) -> str:
-    """Telegram text for newly settled bets — 📊 SCORED, the moment-of-result pulse. PURE.
+def mark_notified() -> int:
+    """Stamp every unannounced settlement as delivered; returns how many. Called by the digest
+    AFTER its PUSH DELIVERED verdict [MSG v4] — the 📊 delivery guarantee, transferred: the
+    stamp rides the digest's confirmed send, so a REJECTED/UNCONFIRMED push leaves the rows
+    unstamped and their cards re-render in the NEXT delivered digest (a repeated card inside a
+    new message, never a re-sent message — the 2026-07-24 double-post class stays closed).
 
-    v3 [MSG 2026-08-18]: 🚨 now means FAILURE ONLY (heartbeat/watchdog); a routine result is
-    the experiment visibly working and dresses like it. Plain counts, no stats vocabulary —
-    Σ/p/α stay CLI-side. A settling SHORT is announced (diagnostic row) but the tally line is
-    always the long-only verdict population [ARC 5 #12a] — s=None (no longs settled yet) must
-    not kill the announce."""
-    lines = []
-    for r in done:
-        excess = float(r["excess_pct"])
-        short = (" (short — diagnostic, outside the pool)"
-                 if r.get("direction") == "short" else "")
-        # "vs SPY: 3.2% behind" — the benchmark first, then the gap in words. The old
-        # "{excess}%, miss" form left the reader to know that % was an excess [2026-08-19].
-        lines.append(f"📊 SCORED — {r['ticker']} {r['horizon_d']}d vs {r['benchmark']}: "
-                     f"{gap_words(excess)}{' ✓' if excess > 0 else ''}{short}")
-    if s:
-        n, _, md, beat = s
-        c = round(n * beat / 100)          # beat% round-trips exactly back to its count
-        lines.append(f"now {n} of {BAR_N} scored · {c} of {n} beat · "
-                     f"median {gap_words(md)}")
-    else:
-        lines.append(f"0 of {BAR_N} scored")
-    return "\n".join(lines)
+    Fresh load + save rather than a passed row list: the digest composes from its own load,
+    and stamping from the ledger keeps this idempotent whoever calls it."""
+    rows = _load()
+    todo = unannounced(rows)
+    for r in todo:
+        r["notified"] = _now()
+    if todo:
+        _save(rows)
+    return len(todo)
 
 
 def next_maturity(rows: list[dict]) -> tuple[str, str] | None:
@@ -495,19 +486,11 @@ def run(argv: list[str]) -> int:
     elif cmd == "settle":
         n, failed = settle(rows)
         log.info("settled %d", n); _save(rows); show(rows)
-        # Persist FIRST (the score is the evidence), then announce. The announcement is
-        # retried from the ledger, so the two no longer have to succeed together.
-        todo = unannounced(rows)
-        if todo:
-            from research import notify
-            if notify.send(settle_msg(todo, stats(rows))):
-                for r in todo:
-                    r["notified"] = _now()
-                _save(rows)
-            else:
-                log.warning("settle: %d settlement(s) UNANNOUNCED — will retry next run",
-                            len(todo))
-                return 1
+        # Persist only — the ANNOUNCEMENT moved into the digest [MSG v4, 2026-08-25]: settled
+        # rows render as 📊 cards in the next delivered digest, and mark_notified() stamps them
+        # AFTER its PUSH DELIVERED verdict. Same ledger-derived retry guarantee (unannounced()),
+        # one message per leg instead of a separate 📊 send. daily.sh's FAILS accounting is
+        # unchanged: a failed digest push already exits 1 there.
         if failed:
             log.warning("settle: could not score %s", ", ".join(failed))
             return 1

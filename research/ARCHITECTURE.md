@@ -84,14 +84,15 @@ by the whole-pool stop (`book.POOL_STOP`).
   outside `daily.sh`, since a check that runs inside the thing it watches cannot report that
   thing dying). They never overlap.
 - Telegram contract (2026-07-03; v1.1 2026-07-10; reshaped 2026-08-05/06; v2 2026-08-14;
-  **v3 2026-08-18 [MSG] — PULSE + ALARM, never a broker terminal**): EVERY scheduled run
-  pushes exactly ONE message — silence = broken; a clean weekday = settle's 📋 + read's 📖,
-  BOTH led by the plain-English scoreboard — Scored / So far / To pass rows, every row
-  counting the SAME bets so the reader can add them up [v3.1 2026-08-19]; 🏁 milestones at
-  n=10/20/30 + the ahead-of-bar flag ride it. Then ⚠️ DO-NOW only when nonempty (empty prints
-  NOTHING), the read's 🟢 NEW BET card(s) — one <blockquote> each — and the 📈 next-scoring
-  line. 📊 SCORED (from `bets.settle_msg`, `notified`-column guarantee) announces each scored
-  settlement; 🚨 = failure only. Stats vocabulary (Σ/p/α), shorts, orders/band, movers
+  **v4 2026-08-25 [MSG] — PULSE + ALARM, never a broker terminal, never daily repetition**):
+  EVERY scheduled run pushes exactly ONE message — silence = broken; a clean weekday =
+  settle's 📋 + read's 📖, period. Each NARRATES its run: a quiet settle is one sentence, a
+  scoring settle folds each settlement in as a 📊 SCORED <blockquote> card + ONE pool-tally
+  sentence (`bets.mark_notified()` stamps `notified` only after PUSH DELIVERED — a lost push
+  re-renders the cards next digest), the read opens with 1–2 sentences of its own morning
+  above its 🟢 card(s). 🏁 milestones at n=10/20/30 + the at-bar/ahead-of-bar flags fire only
+  on a crossing. Then ⚠️ DO-NOW only when nonempty (empty prints NOTHING) and the 📈
+  next-scoring line. 🚨 = failure only. Stats vocabulary (Σ/p/α), shorts, orders/band, movers
   denominators, mix mirror: CLI-side only. `--slim` = the read leg's push-log stamp
   (composition no longer branches on it). Milestone crossings diff the catalogue against
   **git HEAD** — no state file, no `settled_at` column [2026-08-04]. Pending counterfactual
