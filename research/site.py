@@ -34,7 +34,7 @@ _CSS_TOKENS = """
 :root {
   color-scheme: light;
   --page: #f9f9f7; --surface: #fcfcfb; --ink: #0b0b0b; --ink-2: #52514e;
-  --muted: #898781; --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
+  --muted: #6e6c66; --grid: #e1e0d9; --axis: #c3c2b7; --border: rgba(11,11,11,0.10);
   --series: #2a78d6; --barneg: #e34948; --pos: #006300; --neg: #d03b3b;
   --link: #1c5aa0;   /* link TEXT is a text token, not the series color: --series is only
                         4.19:1 on --page and AA small text needs 4.5:1. This is 6.60:1. */
@@ -43,7 +43,7 @@ _CSS_TOKENS = """
   :root {
     color-scheme: dark;
     --page: #0d0d0d; --surface: #1a1a19; --ink: #ffffff; --ink-2: #c3c2b7;
-    --muted: #898781; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
+    --muted: #a3a19a; --grid: #2c2c2a; --axis: #383835; --border: rgba(255,255,255,0.10);
     --series: #3987e5; --barneg: #e66767; --pos: #0ca30c; --neg: #e66767;
     --link: #3987e5;   /* dark already clears AA at 5.34:1 on --page */
   }
@@ -112,6 +112,19 @@ _JS = """
       th.setAttribute("aria-sort", dir === 1 ? "ascending" : "descending");
     });
   });
+  // Tabs: both panels render visible so the page reads whole without JS; scripting only
+  // narrows the view to the selected panel (predictions first, matching the tab order).
+  var tabs = document.querySelectorAll("#tabs button");
+  function show(name) {
+    tabs.forEach(function (b) {
+      b.classList.toggle("on", b.dataset.tab === name);
+      document.getElementById(b.dataset.tab).hidden = b.dataset.tab !== name;
+    });
+  }
+  tabs.forEach(function (b) {
+    b.addEventListener("click", function () { show(b.dataset.tab); });
+  });
+  if (tabs.length) show(tabs[0].dataset.tab);
 })();
 """
 
@@ -142,15 +155,16 @@ def curve_points(bets_rows: list[dict]) -> list[dict]:
     from research import bets
     closed = [r for r in bets.verdict_rows(bets_rows)
               if r["status"] == "closed" and r["excess_pct"]]
-    closed.sort(key=lambda r: (_add_busdays(r["entry_date"][:10], int(r["horizon_d"]) - 1),
-                               r["logged_at"]))
+    matured = {id(r): _add_busdays(r["entry_date"][:10], int(r["horizon_d"]) - 1)
+               for r in closed}
+    closed.sort(key=lambda r: (matured[id(r)], r["logged_at"]))
     out, cum = [], 0.0
     for r in closed:
         ex = _fnum(r["excess_pct"])
         cum += ex
         out.append({"ticker": r["ticker"], "entry_date": r["entry_date"][:10],
                     "horizon_d": r["horizon_d"], "benchmark": r["benchmark"],
-                    "excess": ex, "cum": cum})
+                    "matured": matured[id(r)], "excess": ex, "cum": cum})
     return out
 
 
@@ -192,12 +206,22 @@ def _grid(lo: float, hi: float, step: float, ML: int, MT: int, W: int, MR: int,
     return parts, Y
 
 
+_MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
+
+def _datelab(iso: str) -> str:
+    """'2026-07-22' → 'Jul 22' (static map — strftime %b is locale-dependent and the
+    render must stay deterministic)."""
+    return f"{_MONTHS[int(iso[5:7]) - 1]} {int(iso[8:10])}"
+
+
 def _svg_curve(pts: list[dict]) -> str:
     """Running total as a single-series line (2px, ≥8px markers with a 2px surface ring,
     native <title> tooltips as the zero-JS hover layer; one series → no legend)."""
     if not pts:
         return '<p class="muted">No settled predictions yet.</p>'
-    W, H, ML, MR, MT, MB = 760, 280, 56, 18, 18, 30
+    W, H, ML, MR, MT, MB = 760, 280, 56, 18, 18, 44
     lo, hi, step = _scale([p["cum"] for p in pts])
     parts, Y = _grid(lo, hi, step, ML, MT, W, MR, H, MB)
     parts.insert(0, f'<svg viewBox="0 0 {W} {H}" role="img" '
@@ -221,6 +245,12 @@ def _svg_curve(pts: list[dict]) -> str:
     ey = min(max(ey - 10, MT + 10), H - MB - 6)
     parts.append(f'<text x="{ex + (-10 if anchor == "end" else 10):.1f}" y="{ey:.1f}" '
                  f'text-anchor="{anchor}" class="endlab">{pts[-1]["cum"]:+.1f}pp</text>')
+    ticks = {0: "start", len(pts) - 1: "end"} if len(pts) > 1 else {0: "middle"}
+    if len(pts) >= 5:
+        ticks[(len(pts) - 1) // 2] = "middle"
+    for i, anc in ticks.items():
+        parts.append(f'<text x="{X(i):.1f}" y="{H - 12}" text-anchor="{anc}" '
+                     f'class="tick">{_e(_datelab(pts[i]["matured"]))}</text>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -271,7 +301,7 @@ def _svg_bars(pts: list[dict]) -> str:
             parts.append(f'<text x="{cx:.1f}" y="{H - 10}" text-anchor="middle" class="tick">'
                          f'{_e(p["ticker"])}</text>')
     parts.append("</svg>")
-    return ('<h2>Result of each settled prediction</h2>'
+    return ('<h3>Each settled prediction</h3>'
             '<p class="muted">Excess return vs that prediction’s benchmark, %.</p>' +
             "".join(parts))
 
@@ -288,26 +318,35 @@ def _tiles(bets_rows: list[dict]) -> str:
     from research import bets
     s = bets.stats(bets_rows)
     n_open = sum(1 for r in bets_rows if r["status"] == "open")
-    def tile(label, value, sub):
+    def tile(label, value, sub, cls=""):
         return (f'<div class="tile"><div class="tlabel">{label}</div>'
-                f'<div class="tvalue">{value}</div><div class="tbar">{sub}</div></div>')
+                f'<div class="tvalue{" " + cls if cls else ""}">{value}</div>'
+                f'<div class="tbar">{sub}</div></div>')
     if s:
         n, _, md, beat = s
         sig = bets.cum_excess(bets_rows)
         perf = [tile("settled", f"{n}", "scored vs benchmark"),
-                tile("median excess", f"{md:+.2f}%", "per settled prediction"),
+                tile("median excess", f"{md:+.2f}%", "per settled prediction",
+                     _sign_cls(md)),
                 tile("beat rate", f"{beat:.0f}%", "finished ahead of benchmark"),
                 tile("total excess", f"{sig:+.1f}pp" if sig is not None else "—",
-                     "sum across settled")]
+                     "sum across settled", _sign_cls(sig) if sig is not None else "")]
     else:
         perf = [tile("settled", "0", "scored vs benchmark")]
     note = ""
     if any(r.get("direction") == "short" for r in bets_rows):
         note = ('<p class="muted">The summary counts long predictions; short entries appear '
                 'in the table but are not scored into it.</p>')
-    return ('<div class="tiles">'
-            + tile("open predictions", f"{n_open}", "awaiting outcome")
-            + "".join(perf) + "</div>" + note)
+    return ('<div class="tiles">' + "".join(perf)
+            + tile("open", f"{n_open}", "awaiting outcome") + "</div>" + note)
+
+
+def _taglabel(tag: str) -> str:
+    """Display label for a pattern tag — the raw tag stays in every data attribute (it is
+    the filter/sort value); only the rendered text is humanized."""
+    if tag == "untagged":
+        return "early (untagged)"
+    return (tag[:1].upper() + tag[1:]).replace("-", " ")
 
 
 def _catalogue_table(bets_rows: list[dict]) -> str:
@@ -320,7 +359,17 @@ def _catalogue_table(bets_rows: list[dict]) -> str:
                                  reverse=True)):
         ex = r.get("excess_pct") or ""
         tag = r.get("pattern_tag") or "untagged"
-        exc = f"num {_sign_cls(_fnum(ex))}" if ex else "num"
+        short = r.get("direction") == "short"
+        if ex and short:   # rendered, never summed — the muted cell says so at a glance
+            exc, extip = "num unscored", ' title="Shown, not scored into the summary"'
+        else:
+            exc, extip = (f"num {_sign_cls(_fnum(ex))}" if ex else "num"), ""
+        if r.get("pattern_tag"):
+            tagcell = f'<td data-v="{_e(tag)}">{_e(_taglabel(tag))}</td>'
+        else:              # pre-tag-era rows stay blank in the ledger, by rule — label,
+            tagcell = ('<td class="early" data-v="untagged" '   # never backfill
+                       'title="Logged before type labels were introduced">early</td>')
+        prefix = "(short — shown, not scored into the summary) " if short else ""
         rows_html.append(
             f'<tr class="main" data-status="{_e(r["status"])}" data-tag="{_e(tag)}" '
             f'data-i="{i}">'
@@ -330,26 +379,28 @@ def _catalogue_table(bets_rows: list[dict]) -> str:
             f'<td data-v="{_e(r["direction"])}">{_e(r["direction"])}</td>'
             f'<td class="num" data-v="{_e(r["horizon_d"])}">{_e(r["horizon_d"])}d</td>'
             f'<td data-v="{_e(r["benchmark"])}">{_e(r["benchmark"])}</td>'
-            f'<td data-v="{_e(tag)}">{_e(r.get("pattern_tag") or "—")}</td>'
+            f'{tagcell}'
             f'<td data-v="{_e(r["status"])}">{_e(r["status"])}</td>'
-            f'<td class="{exc}" data-v="{_e(ex)}">{_e(ex) + "%" if ex else "—"}</td></tr>'
+            f'<td class="{exc}" data-v="{_e(ex)}"{extip}>'
+            f'{_e(ex) + "%" if ex else "—"}</td></tr>'
             f'<tr class="det" data-for="{i}" hidden>'
-            f'<td colspan="9">{_e(r.get("thesis", ""))}</td></tr>')
+            f'<td colspan="9">{prefix}{_e(r.get("thesis", ""))}</td></tr>')
     chips = ('<div id="chips"><button data-f="all" class="on">All</button>'
              '<button data-f="open">Open</button><button data-f="closed">Closed</button>'
              '</div>')
     sel = ('<select id="tagsel"><option value="all">all types</option>'
-           + "".join(f'<option value="{_e(t)}">{_e(t)}</option>' for t in tags) + "</select>")
+           + "".join(f'<option value="{_e(t)}">{_e(_taglabel(t))}</option>' for t in tags)
+           + "</select>")
     return (f'<div class="controls">{chips}{sel}</div>'
+            '<p class="muted">Click a prediction for its thesis; click a column heading '
+            'to sort. Every prediction ever logged is listed — filters change the view, '
+            'never the record.</p>'
             '<div class="scroll"><table id="cat"><thead><tr><th></th>'
             '<th data-type="s">logged</th><th data-type="s">ticker</th>'
             '<th data-type="s">side</th><th data-type="n">horizon</th>'
             '<th data-type="s">benchmark</th><th data-type="s">type</th>'
             '<th data-type="s">status</th><th data-type="n">excess</th>'
-            '</tr></thead><tbody>' + "".join(rows_html) + "</tbody></table></div>"
-            '<p class="muted">Click a prediction for its thesis; click a column to sort. '
-            'Every prediction ever logged is listed; filters change the view, never the '
-            'record.</p>')
+            '</tr></thead><tbody>' + "".join(rows_html) + "</tbody></table></div>")
 
 
 def render(bets_rows: list[dict]) -> str:
@@ -377,58 +428,77 @@ outcome is known and scored mechanically. Wins and losses both count. Not invest
 <style>
 {_CSS_TOKENS}
 * {{ box-sizing: border-box; margin: 0; }}
-body {{ background: var(--page); color: var(--ink); line-height: 1.45; padding: 24px 16px 48px;
+body {{ background: var(--page); color: var(--ink); line-height: 1.5; padding: 24px 16px 48px;
        font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }}
-main {{ max-width: 860px; margin: 0 auto; display: grid; gap: 18px; }}
+main {{ max-width: 860px; margin: 0 auto; display: grid; gap: 16px; }}
 /* The page carried no links until 2026-08-21, so it had no link rule either — without one
    the UA default (#0000EE) is near-invisible on the dark surface. */
 a {{ color: var(--link); text-decoration: underline; text-underline-offset: 3px; }}
 a:hover {{ text-decoration-thickness: 2px; }}
 a:focus-visible {{ outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }}
-.masthead {{ max-width: 860px; margin: 0 auto 2px; display: flex; align-items: center;
+.masthead {{ max-width: 860px; margin: 0 auto 14px; display: flex; align-items: flex-start;
              justify-content: space-between; gap: 12px; flex-wrap: wrap; }}
-.brand {{ display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px;
-          letter-spacing: -0.01em; }}
-.brand svg {{ width: 20px; height: 20px; display: block; }}
-.masthead nav {{ display: flex; gap: 14px; font-size: 13px; }}
-.frame {{ color: var(--ink-2); font-size: 13.5px; margin: 10px 0 2px;
+h1.brand {{ display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 26px;
+            letter-spacing: -0.01em; }}
+.brand svg {{ width: 28px; height: 28px; display: block; }}
+.masthead nav {{ display: flex; gap: 14px; font-size: 13.5px; padding-top: 8px; }}
+.tagline {{ color: var(--ink-2); font-size: 14.5px; margin: 6px 0 2px; max-width: 62ch; }}
+.frame {{ color: var(--ink-2); font-size: 14px; margin: 10px 0 2px;
           border-left: 2px solid var(--border); padding-left: 12px; }}
 section {{ background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
            padding: 18px 20px; }}
-h1 {{ font-size: 26px; }} h2 {{ font-size: 17px; margin-bottom: 8px; }}
-p {{ margin: 6px 0; }} .muted {{ color: var(--ink-2); font-size: 13px; }}
+h2 {{ font-size: 17px; margin-bottom: 8px; }}
+h3 {{ font-size: 15px; margin: 16px 0 0; }}
+p {{ margin: 6px 0; }} .muted {{ color: var(--ink-2); font-size: 13.5px; }}
 .tiles {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
           gap: 10px; margin: 8px 0; }}
 .tile {{ border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }}
-.tlabel {{ color: var(--ink-2); font-size: 12.5px; }}
+.tlabel {{ color: var(--ink-2); font-size: 13px; }}
 .tvalue {{ font-size: 26px; font-weight: 600; margin: 2px 0; }}
-.tbar {{ color: var(--muted); font-size: 12px; }}
+.tbar {{ color: var(--muted); font-size: 12.5px; }}
 svg {{ width: 100%; height: auto; display: block; }}
 .tick {{ fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }}
 .endlab {{ fill: var(--ink-2); font-size: 12.5px; font-weight: 600; }}
-.controls {{ display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 8px 0 12px; }}
-#chips button {{ background: none; border: 1px solid var(--border); border-radius: 999px;
-                 color: var(--ink-2); padding: 4px 12px; cursor: pointer; font-size: 13px; }}
-#chips button.on {{ border-color: var(--series); color: var(--ink); font-weight: 600; }}
+#tabs {{ display: flex; gap: 8px; }}
+.controls {{ display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin: 8px 0 4px; }}
+#chips button, #tabs button {{ background: none; border: 1px solid var(--border);
+                 border-radius: 999px; color: var(--ink-2); padding: 4px 12px;
+                 cursor: pointer; font-size: 13.5px; }}
+#tabs button {{ padding: 6px 16px; font-size: 14px; }}
+#chips button.on, #tabs button.on {{ border-color: var(--series); color: var(--ink);
+                                     font-weight: 600; }}
 #tagsel {{ background: var(--surface); color: var(--ink); border: 1px solid var(--border);
-           border-radius: 6px; padding: 4px 8px; font-size: 13px; }}
+           border-radius: 6px; padding: 4px 8px; font-size: 13.5px; }}
 .scroll {{ overflow-x: auto; }}
-table {{ border-collapse: collapse; width: 100%; font-size: 13px; }}
+table {{ border-collapse: collapse; width: 100%; font-size: 14px; }}
 th {{ text-align: left; color: var(--ink-2); font-weight: 600; cursor: pointer;
       border-bottom: 1px solid var(--axis); white-space: nowrap; }}
+th[data-type]::after {{ content: " ↕"; color: var(--muted); font-weight: 400; }}
+th[aria-sort="ascending"]::after {{ content: " ▲"; }}
+th[aria-sort="descending"]::after {{ content: " ▼"; }}
 th, td {{ padding: 5px 8px; vertical-align: top; }}
 td {{ border-bottom: 1px solid var(--grid); }}
 td.num {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
-td.pos {{ color: var(--pos); }} td.neg {{ color: var(--neg); }}
+.pos {{ color: var(--pos); }} .neg {{ color: var(--neg); }}
+td.unscored, td.early {{ color: var(--muted); }}
 tr.main {{ cursor: pointer; }}
 tr.main:hover td {{ background: var(--page); }}
 td.chev {{ color: var(--muted); width: 18px; padding-right: 0; }}
-tr.det td {{ color: var(--ink-2); font-size: 12.5px; padding: 2px 8px 10px 32px; }}
-footer {{ color: var(--muted); font-size: 12.5px; text-align: center; }}
+tr.det td {{ color: var(--ink-2); font-size: 13.5px; padding: 2px 8px 10px 32px; }}
+footer {{ color: var(--muted); font-size: 13px; text-align: center; }}
+@media (max-width: 600px) {{
+  body {{ padding: 16px 10px 40px; }}
+  section {{ padding: 14px 12px; }}
+}}
 </style></head><body>
 
 <header class="masthead">
-  <span class="brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="7" fill="#1a1a19"/><polyline points="6,22 13,12 19,17 26,7" fill="none" stroke="#3987e5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Swing Lab</span>
+  <div>
+    <h1 class="brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="7" fill="#1a1a19"/><polyline points="6,22 13,12 19,17 26,7" fill="none" stroke="#3987e5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Swing Lab</h1>
+    <p class="tagline">The forward ledger — timestamped market predictions, logged before
+the outcome and scored mechanically against a benchmark. None are removed.</p>
+    <p class="muted">Data through {_e(through) or "—"} · Not investment advice.</p>
+  </div>
   <nav><a href="https://github.com/guillearria/swing-lab">Code</a><a
     href="https://github.com/guillearria">Guillermo Arria-Devoe</a></nav>
 </header>
@@ -436,33 +506,31 @@ footer {{ color: var(--muted); font-size: 12.5px; text-align: center; }}
 <main>
 
 <section>
-<h1>The forward ledger</h1>
-<p>Timestamped market predictions, scored mechanically against a benchmark after a fixed
-horizon. Every prediction is logged before the outcome and none are removed.</p>
-<p class="muted">Data through {_e(through) or "—"} · Not investment advice.</p>
-</section>
-
-<section>
-<h2>Performance so far</h2>
 {_tiles(bets_rows)}
-<p class="frame">This is the complete record of these predictions, not a highlight reel: each
-one is logged before its outcome and scored mechanically against a benchmark, wins and losses
-alike, and none are removed or revised after the fact. The project is at the hypothesis stage;
-no signal here has been shown to make money.</p>
-<p class="muted">Running total of excess return across settled predictions, percentage
-points.</p>
-{_svg_curve(pts)}
-{_svg_bars(pts)}
 </section>
 
-<section>
+<div id="tabs"><button data-tab="predictions" class="on">Predictions</button><button
+  data-tab="performance">Performance</button></div>
+
+<section id="predictions">
 <h2>Predictions</h2>
 {_catalogue_table(bets_rows)}
 </section>
 
-<footer>Generated from the committed ledgers by
-<a href="https://github.com/guillearria/swing-lab">Swing Lab</a> ·
-built by <a href="https://github.com/guillearria">Guillermo Arria-Devoe</a> ·
+<section id="performance">
+<h2>Performance so far</h2>
+<p class="frame">This is the complete record of these predictions, not a highlight reel: each
+one is logged before its outcome and scored mechanically against a benchmark, wins and losses
+alike, and none are removed or revised after the fact. The project is at the hypothesis stage;
+no signal here has been shown to make money.</p>
+<h3>Running total of excess return</h3>
+<p class="muted">Across settled predictions, percentage points.</p>
+{_svg_curve(pts)}
+{_svg_bars(pts)}
+</section>
+
+<footer>Project code on <a href="https://github.com/guillearria/swing-lab">GitHub</a> ·
+Built by <a href="https://github.com/guillearria">Guillermo Arria-Devoe</a> ·
 Not investment advice.</footer>
 </main>
 <script>

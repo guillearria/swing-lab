@@ -54,6 +54,22 @@ def test_no_internal_method_language_leaks_to_the_end_user():
         assert jargon not in page, jargon
 
 
+def test_tabs_and_table_annotations():
+    """The 2026-08-24 redesign: predictions/performance tabs; a closed short's excess is
+    muted 'unscored', never sign-colored (the table must not contradict the long-only
+    summary count); pre-tag-era rows label as 'early' (never backfilled); tag labels
+    humanize in display while the raw tag stays the filter/sort value."""
+    rows = BETS + [dict(_long("EEE", "+2.00"), pattern_tag="")]
+    page = site.render(rows)
+    assert 'id="tabs"' in page and 'data-tab="predictions"' in page
+    assert 'class="num unscored"' in page                    # CCC, the closed short
+    assert 'title="Shown, not scored into the summary"' in page
+    assert '(short — shown, not scored into the summary)' in page
+    assert '>early</td>' in page                             # EEE, blank tag
+    assert '<option value="test-tag">Test tag</option>' in page
+    assert 'data-tag="test-tag"' in page
+
+
 def test_ledger_prose_is_escaped():
     rows = [dict(_long("GGG", "+1.00"), thesis='<script>alert("x")</script>')]
     page = site.render(rows)

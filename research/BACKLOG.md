@@ -19,6 +19,19 @@ READ_LOOP step-7 rule with the DVA/HAE tombstones named.
 read banner · sentence · 📈 and nothing else. **Do NOT:** re-add static pool rows to
 Telegram · re-send on UNCONFIRMED (unchanged) · let settle touch the transport again.
 
+## Earlier — 2026-08-24, dashboard v2 [P7a]: identity · tabs · table clarity
+
+**Owner-led UI/UX review (his notes + a session pass, merged), approved plan, 240 tests
+green.** `site.py` only; audience contract unchanged. Swing Lab is now the h1 (tagline keeps
+"The forward ledger"); tiles always visible, verdict-bearing numbers first; two tabs
+(Predictions default / Performance) that degrade to stacked sections without JS; type sizes
+up a notch and `--muted` fixed to clear AA in light mode; curve gained date ticks; footer
+plain. Table: closed shorts render muted "unscored" (the 7-closed-vs-6-settled contradiction),
+blank pre-tag rows label "early" (NEVER backfilled, [ARC 5 #14b]), tags humanize in display
+only (raw values stay the filter/sort keys — `…-continuation` vs `…-continuation-short` must
+not merge), sort arrows via `aria-sort` CSS. **Do NOT:** put method prose on the page ·
+backfill tags · score shorts into the summary.
+
 ## Earlier — 2026-08-24, conviction column · paths diagnostic · 4 case files
 
 **Depth upgrade, owner-approved plan, single push, 234 tests green.** The verdict's speed is
