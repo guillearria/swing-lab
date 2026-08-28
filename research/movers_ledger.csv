@@ -324,31 +324,31 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-07-28T11:34:33+00:00,2026-07-27,TMUS,-9.4,1.0,short,skip,2026-07-28T11:37:42+00:00,"T-Mobile -9% telco, defensive/low-beta, no context differentiating the read; thin.",skip,,+6.07,,sp500
 2026-07-28T11:34:33+00:00,2026-07-27,EMR,+9.3,1.1,long,skip,2026-07-28T11:37:43+00:00,"Emerson Q2 industrial pop, no differentiated read; tag over-sampled.",skip,,+3.97,,sp500
 2026-07-28T11:34:33+00:00,2026-07-27,CRWD,-9.3,0.6,short,skip,2026-07-28T11:37:41+00:00,"Just profit-taking on premium multiple (8 down days); analysts RAISING PTs (UBS/Benchmark), no fundamental catalyst, low vol 0.6x. Fighting the tape to short.",skip,,-0.44,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,SNDK,-31.0,1.9,short,skip,2026-07-29T11:38:45+00:00,Memory selloff on hyperscaler-capex fear + China CXMT IPO overhang; hostage to MSFT/META/AMZN capex prints Wed/Thu — no edge into a 2-day binary in the arbitraged arena,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,COHR,-23.3,1.7,short,skip,2026-07-29T11:38:45+00:00,"Optics rout triggered by Corning Q2; same hyperscaler-capex binary this week, no differentiated edge",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,GLW,-22.4,2.8,short,skip,2026-07-29T11:38:46+00:00,Corning fell -12% on its own Q2 but is the epicenter of AI-capex doubt; binary hyperscaler prints Wed/Thu dominate any short window — thin read,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,LITE,-22.2,1.2,short,skip,2026-07-29T11:38:46+00:00,"Optics sympathy selloff (Corning-triggered); capex binary, no idiosyncratic read",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,IP,+21.3,1.4,long,take,2026-07-29T11:38:46+00:00,"Already live bet (long 7/28, containerboard price hike) — positioned",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,IQV,+20.5,3.9,long,take,2026-07-29T11:38:58+00:00,"Own Q2 double-beat (EPS 3.15 vs 3.04, rev 4.37B vs 4.30B) + FY guide RAISED across the board + record bookings + AI-demand tailwind; fresh idiosyncratic catalyst, sector-distinct from my industrial PEAD cluster → graduates to a scored bet",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,CHRW,-19.1,1.6,short,skip,2026-07-29T11:38:46+00:00,"C.H. Robinson -19%, no differentiated read on the logistics print",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,TSLA,-18.9,1.0,short,skip,2026-07-29T11:38:46+00:00,"Mega-cap, fully arbitraged, no differentiated view on the move",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,INTC,-18.2,1.4,short,skip,2026-07-29T11:38:47+00:00,Intel own troubles + semi selloff; no edge,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,SW,+18.0,1.7,long,skip,2026-07-29T11:38:47+00:00,"Smurfit Westrock reports today 7/29; the +18% was positioning INTO the print — reaction undigested = event risk, thin read",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,ALLE,+17.4,1.4,long,skip,2026-07-29T11:38:47+00:00,Clean beat-and-raise but post-earnings-drift tag already heavily sampled this week (consistent w/ 7/28 skip); a bigger pop is not a new catalyst — no re-take goalpost-move,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,ACN,+16.9,1.0,long,take,2026-07-29T11:38:58+00:00,"Already live bet (long 6/25, -18% overreaction) — positioned, now recovering",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,AMD,-16.5,1.3,short,skip,2026-07-29T11:38:58+00:00,"Semi/AI selloff on hyperscaler-capex fear; 2-day binary, no edge",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,LRCX,-16.3,1.2,short,skip,2026-07-29T11:38:58+00:00,"Semicap selloff, capex binary, no idiosyncratic read",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,STX,-16.2,1.7,short,skip,2026-07-29T11:38:58+00:00,Storage/memory selloff (CXMT overhang + capex fear); no edge,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,MRVL,-16.1,0.9,short,skip,2026-07-29T11:38:59+00:00,Optics/AI-semi selloff (Corning-triggered); capex binary,skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,WAB,+16.0,1.4,long,take,2026-07-29T11:38:59+00:00,"Already live bet (long 7/22, post-earnings-drift) — positioned",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,AMAT,-15.6,0.8,short,skip,2026-07-29T11:38:59+00:00,"Semicap selloff, capex binary, no edge",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,MU,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory selloff, CXMT China-supply overhang + capex binary; arbitraged",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,WDC,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory/storage selloff, same capex binary + supply-glut fear",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,CTSH,+15.3,1.2,long,skip,2026-07-29T11:39:08+00:00,"Cognizant reports today 7/29; the +15% ran INTO the print (name up ~40% YTD off lows), reaction undigested = event risk, thin read",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,FDS,+15.0,1.6,long,take,2026-07-29T11:39:08+00:00,"Already live SHORT bet (6/25); mover is +15% AGAINST the short — positioned, not adding",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,LMT,+14.6,1.1,long,take,2026-07-29T11:39:09+00:00,"Already live bet (long 7/24, post-earnings-drift) — positioned",taken,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,TER,-14.3,1.3,short,skip,2026-07-29T11:39:09+00:00,"Semicap/AI-test selloff; capex binary, no idiosyncratic edge",skip,,,,sp500
-2026-07-29T11:34:37+00:00,2026-07-28,CIEN,-14.2,1.6,short,skip,2026-07-29T11:39:09+00:00,Optical networking selloff (Corning-triggered); capex binary,skip,,,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,SNDK,-31.0,1.9,short,skip,2026-07-29T11:38:45+00:00,Memory selloff on hyperscaler-capex fear + China CXMT IPO overhang; hostage to MSFT/META/AMZN capex prints Wed/Thu — no edge into a 2-day binary in the arbitraged arena,skip,,-12.05,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,COHR,-23.3,1.7,short,skip,2026-07-29T11:38:45+00:00,"Optics rout triggered by Corning Q2; same hyperscaler-capex binary this week, no differentiated edge",skip,,-14.64,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,GLW,-22.4,2.8,short,skip,2026-07-29T11:38:46+00:00,Corning fell -12% on its own Q2 but is the epicenter of AI-capex doubt; binary hyperscaler prints Wed/Thu dominate any short window — thin read,skip,,-9.04,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LITE,-22.2,1.2,short,skip,2026-07-29T11:38:46+00:00,"Optics sympathy selloff (Corning-triggered); capex binary, no idiosyncratic read",skip,,-33.96,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,IP,+21.3,1.4,long,take,2026-07-29T11:38:46+00:00,"Already live bet (long 7/28, containerboard price hike) — positioned",taken,,-10.49,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,IQV,+20.5,3.9,long,take,2026-07-29T11:38:58+00:00,"Own Q2 double-beat (EPS 3.15 vs 3.04, rev 4.37B vs 4.30B) + FY guide RAISED across the board + record bookings + AI-demand tailwind; fresh idiosyncratic catalyst, sector-distinct from my industrial PEAD cluster → graduates to a scored bet",taken,,+6.38,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CHRW,-19.1,1.6,short,skip,2026-07-29T11:38:46+00:00,"C.H. Robinson -19%, no differentiated read on the logistics print",skip,,+1.09,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,TSLA,-18.9,1.0,short,skip,2026-07-29T11:38:46+00:00,"Mega-cap, fully arbitraged, no differentiated view on the move",skip,,-10.92,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,INTC,-18.2,1.4,short,skip,2026-07-29T11:38:47+00:00,Intel own troubles + semi selloff; no edge,skip,,+2.91,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,SW,+18.0,1.7,long,skip,2026-07-29T11:38:47+00:00,"Smurfit Westrock reports today 7/29; the +18% was positioning INTO the print — reaction undigested = event risk, thin read",skip,,-0.70,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,ALLE,+17.4,1.4,long,skip,2026-07-29T11:38:47+00:00,Clean beat-and-raise but post-earnings-drift tag already heavily sampled this week (consistent w/ 7/28 skip); a bigger pop is not a new catalyst — no re-take goalpost-move,skip,,-2.27,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,ACN,+16.9,1.0,long,take,2026-07-29T11:38:58+00:00,"Already live bet (long 6/25, -18% overreaction) — positioned, now recovering",taken,,+10.79,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,AMD,-16.5,1.3,short,skip,2026-07-29T11:38:58+00:00,"Semi/AI selloff on hyperscaler-capex fear; 2-day binary, no edge",skip,,+5.76,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LRCX,-16.3,1.2,short,skip,2026-07-29T11:38:58+00:00,"Semicap selloff, capex binary, no idiosyncratic read",skip,,-3.04,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,STX,-16.2,1.7,short,skip,2026-07-29T11:38:58+00:00,Storage/memory selloff (CXMT overhang + capex fear); no edge,skip,,+4.49,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,MRVL,-16.1,0.9,short,skip,2026-07-29T11:38:59+00:00,Optics/AI-semi selloff (Corning-triggered); capex binary,skip,,-27.76,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,WAB,+16.0,1.4,long,take,2026-07-29T11:38:59+00:00,"Already live bet (long 7/22, post-earnings-drift) — positioned",taken,,-2.21,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,AMAT,-15.6,0.8,short,skip,2026-07-29T11:38:59+00:00,"Semicap selloff, capex binary, no edge",skip,,+7.73,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,MU,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory selloff, CXMT China-supply overhang + capex binary; arbitraged",skip,,-2.98,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,WDC,-15.5,1.1,short,skip,2026-07-29T11:38:59+00:00,"Memory/storage selloff, same capex binary + supply-glut fear",skip,,+17.29,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CTSH,+15.3,1.2,long,skip,2026-07-29T11:39:08+00:00,"Cognizant reports today 7/29; the +15% ran INTO the print (name up ~40% YTD off lows), reaction undigested = event risk, thin read",skip,,+15.02,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,FDS,+15.0,1.6,long,take,2026-07-29T11:39:08+00:00,"Already live SHORT bet (6/25); mover is +15% AGAINST the short — positioned, not adding",taken,,+11.79,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,LMT,+14.6,1.1,long,take,2026-07-29T11:39:09+00:00,"Already live bet (long 7/24, post-earnings-drift) — positioned",taken,,-5.40,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,TER,-14.3,1.3,short,skip,2026-07-29T11:39:09+00:00,"Semicap/AI-test selloff; capex binary, no idiosyncratic edge",skip,,+2.17,,sp500
+2026-07-29T11:34:37+00:00,2026-07-28,CIEN,-14.2,1.6,short,skip,2026-07-29T11:39:09+00:00,Optical networking selloff (Corning-triggered); capex binary,skip,,-3.50,,sp500
 2026-07-30T11:34:38+00:00,2026-07-29,SNDK,-36.5,1.8,short,skip,2026-07-30T11:40:44+00:00,"Memory selloff on capex fear; hyperscaler capex RAISED this week = wrong side to short; arbitraged, no idiosyncratic edge",skip,,,,sp500
 2026-07-30T11:34:38+00:00,2026-07-29,CTSH,+29.6,1.8,long,skip,2026-07-30T11:40:44+00:00,"Reported: rev beat, EPS miss 1.37 vs 1.38, raised FY guide, +11pct on print - but already ran +29pct incl pre-print runup; PEAD tag oversampled; same IT-svcs sleeve as ACN/IQV already long - thin marginal read",skip,,,,sp500
 2026-07-30T11:34:38+00:00,2026-07-29,COHR,-28.9,1.5,short,skip,2026-07-30T11:40:44+00:00,"Optics rout on AI-capex fear; capex raised this week; arbitraged, no differentiated read",skip,,,,sp500
