@@ -1064,3 +1064,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-27T11:35:32+00:00,2026-08-26,OI,+13.1,0.5,long,skip,2026-08-27T11:44:00+00:00,No verifiable fresh catalyst; glass-packaging cyclical beta.,skip,,,,tail
 2026-08-27T11:35:32+00:00,2026-08-26,CNH,+12.9,0.8,long,skip,2026-08-27T11:44:00+00:00,Ag-equipment sympathy with Deere's print; no own catalyst.,skip,,,,tail
 2026-08-27T11:35:32+00:00,2026-08-26,KTOS,-12.6,0.5,short,skip,2026-08-27T11:44:00+00:00,Same drone/defense rotation as AVAV; no name-specific catalyst.,skip,,,,tail
+2026-08-28T11:33:55+00:00,2026-08-27,CRM,+22.7,4.3,long,skip,2026-08-28T11:46:53+00:00,"Beat inflated by a $2.6B mark on the Anthropic stake, not operations; mega-cap most-covered software = the arbitraged arena, no differentiated read.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,CRWD,+19.8,3.1,long,skip,2026-08-28T11:46:53+00:00,"Beat, but it rode a security-sector rally the same week as PANW/FTNT; extreme multiple, market-wide not name-specific.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,SNPS,+16.8,2.6,long,skip,2026-08-28T11:46:53+00:00,"EDA rebound with CDNS in sympathy; sector move, no name-specific mechanism to name.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,HOOD,+15.4,0.7,long,skip,2026-08-28T11:46:53+00:00,"+15% on BELOW-average volume (0.7x) = no catalyst, crypto/retail-flow beta.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,FTNT,+14.6,1.3,long,skip,2026-08-28T11:46:54+00:00,"Security-sector sympathy rally, no name-specific catalyst found; large-cap covered arena.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,VEEV,+12.6,3.6,long,skip,2026-08-28T11:46:54+00:00,Beat-and-raise but a rich vertical-SaaS multiple already at highs; read adds nothing over the bare trigger.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,CDW,+12.1,1.1,long,skip,2026-08-28T11:46:54+00:00,"IT-reseller rebound with the hardware complex; sector beta, no name-specific catalyst.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,HRL,-11.6,5.2,short,skip,2026-08-28T11:46:54+00:00,"Genuine cut: volumes -7pct, FY sales guide lowered. Deterioration, not overreaction; long-only regime.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,CDNS,+10.8,1.2,long,skip,2026-08-28T11:46:54+00:00,"EDA sympathy with SNPS, and a CDNS bet is already live from 2026-07-20 (no re-bet).",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,COIN,+10.7,1.1,long,skip,2026-08-28T11:46:54+00:00,Crypto-price beta on ordinary volume (1.1x); no name-specific catalyst.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,EL,+10.5,1.5,long,skip,2026-08-28T11:46:55+00:00,Already a live bet (logged 2026-08-20); no re-bet.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,FCX,+10.1,1.2,long,skip,2026-08-28T11:46:55+00:00,"Copper-price beta; commodity move, no name-specific mechanism.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,PANW,+9.5,1.3,long,skip,2026-08-28T11:46:55+00:00,"Security-sector sympathy rally; mega-cap covered arena, thin read.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,ANET,+9.4,0.6,long,skip,2026-08-28T11:46:55+00:00,+9.4pct on 0.6x volume = drift without a catalyst; AI-networking beta.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,LITE,+8.7,0.8,long,skip,2026-08-28T11:46:55+00:00,"Optical sympathy on 0.8x volume, and correlated with the live FN bet (same AI-optical draw).",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,DELL,+8.6,0.8,long,skip,2026-08-28T11:46:55+00:00,Pre-earnings drift on 0.8x volume; no completed catalyst to read.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,FFIV,+8.6,0.7,long,skip,2026-08-28T11:46:56+00:00,Networking sympathy on 0.7x volume; no catalyst.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,GEN,+8.2,1.3,long,skip,2026-08-28T11:46:56+00:00,No readable name-specific catalyst; consumer-security drift.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,CASY,-7.8,1.6,short,skip,2026-08-28T11:46:56+00:00,Convenience-retail print with no overreaction case either way; thin read.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,DOW,-7.8,0.7,short,skip,2026-08-28T11:46:56+00:00,"Chemicals-cycle deterioration on 0.7x volume; structural, not an overreaction, and long-only.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,ADSK,+7.8,2.0,long,skip,2026-08-28T11:46:56+00:00,"Beat, but mega-cap design software at a rich multiple inside the same week-long software rally; no edge.",skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,STLD,+7.7,0.7,long,skip,2026-08-28T11:46:56+00:00,Steel-price beta on 0.7x volume; commodity move.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,IBKR,+7.5,1.1,long,skip,2026-08-28T11:46:57+00:00,Brokerage volume/rate beta; no name-specific catalyst.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,SNDK,-7.2,0.5,short,skip,2026-08-28T11:46:57+00:00,Memory-cycle beta on 0.5x volume; long-only and no overreaction case.,skip,,,,sp500
+2026-08-28T11:33:55+00:00,2026-08-27,SJM,+7.1,1.8,long,skip,2026-08-28T11:46:57+00:00,"Packaged-food print, low-growth name; thin read with no mechanism to name.",skip,,,,sp500
+2026-08-28T11:34:36+00:00,2026-08-27,SFBS,+97.9,0.9,long,skip,2026-08-28T11:47:13+00:00,DATA ARTIFACT: 2-for-1 split payable 2026-08-20 mis-adjusted in the feed (price DOUBLED 8/21 on 0.9x volume). Not a real move.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,ANF,+38.8,4.6,long,take,2026-08-28T11:47:13+00:00,"Q2 headline EPS is dominated by a ~$100M one-time IEEPA tariff refund, but EX-refund adj EPS beat consensus by ~22pct and the FY guide rises ~9pct ex-item on execution, not the refund. Gapped ~36pct and HELD (-1.4pct next session on quarter the volume). ~12-13x ex-refund and published PT consensus still BELOW the traded price = the revision wave is ahead. Tail name, but liquidity is deep.",taken,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,OKTA,+28.9,6.6,long,skip,2026-08-28T11:47:13+00:00,"Real beat-and-raise plus eight upgrades, but entry is the day after a +29pct gap at ~44x forward with the price already at the upgraded PT cluster. No margin of safety; read is momentum, not mispricing.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,DKS,-26.5,4.4,short,skip,2026-08-28T11:47:13+00:00,"Genuine EPS/revenue miss plus an FY sales and operating-profit cut, Foot Locker comps -3.6pct. Deterioration, not overreaction; long-only.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,DY,-23.0,2.2,short,skip,2026-08-28T11:47:13+00:00,Already taken and bet on 2026-08-27; no re-bet on a second SEEN row.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,VIR,+22.8,1.2,long,skip,2026-08-28T11:47:14+00:00,"Steady biotech drift on ordinary volume, no readable catalyst; binary clinical risk with no event to anchor a window.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,VYX,+20.0,1.6,long,skip,2026-08-28T11:47:14+00:00,The 8/5 beat is three weeks stale (outside the drift window); the move is options-flow driven with no fresh catalyst.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,EZPW,+19.6,0.6,long,skip,2026-08-28T11:47:14+00:00,Move is five sessions old and already fading on 0.6x volume; no fresh catalyst to enter against.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,AMR,+17.0,1.0,long,skip,2026-08-28T11:47:14+00:00,Met-coal price beta — a steady seven-session climb on ordinary volume with no single catalyst to read.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,NABL,+15.2,0.8,long,skip,2026-08-28T11:47:14+00:00,0.8x volume and no readable name-specific catalyst; tail name fails the higher tail bar.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,PATH,+15.1,1.1,long,skip,2026-08-28T11:47:14+00:00,AI-agent narrative beta on 1.1x volume; no name-specific catalyst or forced flow.,skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,LEG,-15.0,0.0,short,skip,2026-08-28T11:47:14+00:00,"0.0x relative volume = feed/data anomaly, not a tradeable move.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,SMTC,+14.1,1.6,long,skip,2026-08-28T11:47:15+00:00,"Real read (record beat, Q3 revenue guide ~14pct above consensus, 91pct data-center growth) but it is the SAME AI-optical/datacenter macro draw as the live FN bet — correlated exposure shrinks the pool's effective N.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,OI,+13.0,0.7,long,skip,2026-08-28T11:47:15+00:00,"Move is five sessions old and already fading on 0.7x volume; glass packaging, no mechanism to name.",skip,,,,tail
+2026-08-28T11:34:36+00:00,2026-08-27,BURL,-13.0,5.2,short,skip,2026-08-28T11:47:15+00:00,"Comps decelerated 6pct to 2pct, revenue missed, Citi downgrade ahead of the print. Genuine deceleration, not an overreaction.",skip,,,,tail
