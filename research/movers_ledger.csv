@@ -382,20 +382,20 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-07-31T11:34:07+00:00,2026-07-30,BAX,+23.4,3.9,long,take,2026-07-31T11:37:36+00:00,51pct EPS beat + raised FY guide + FCF turnaround; name-specific -> bet long 63d XLV,taken,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,LII,-22.4,2.1,short,skip,2026-07-31T11:37:39+00:00,"HVAC down -22pct; no read on the driver, thin",skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,PTC,+20.6,2.0,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,SNDK,-20.5,1.8,short,skip,2026-07-31T11:37:38+00:00,"memory selloff; sector/cyclical move, no differentiated read",skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,COHR,-20.5,1.4,short,skip,2026-07-31T11:37:39+00:00,"optical selloff (with LITE); sector move, thin read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,SNDK,-20.5,1.8,short,skip,2026-07-31T11:37:38+00:00,"memory selloff; sector/cyclical move, no differentiated read",skip,,-20.40,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,COHR,-20.5,1.4,short,skip,2026-07-31T11:37:39+00:00,"optical selloff (with LITE); sector move, thin read",skip,,+4.82,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,CMG,+20.3,1.8,long,take,2026-07-31T11:37:36+00:00,beat+comps re-accelerated to +2.2% & RAISED FY comp guide; name-specific turnaround inflection -> bet long 63d XLY,taken,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,NOW,+19.7,1.3,long,skip,2026-07-31T11:37:37+00:00,already live bet (06-24 long); also part of broad software/AI rotation,skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,MSFT,+18.2,2.6,long,skip,2026-07-31T11:37:38+00:00,"mega-cap Azure beat; textbook-arbitraged drift, no differentiated edge",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,NOW,+19.7,1.3,long,skip,2026-07-31T11:37:37+00:00,already live bet (06-24 long); also part of broad software/AI rotation,skip,,+28.36,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,MSFT,+18.2,2.6,long,skip,2026-07-31T11:37:38+00:00,"mega-cap Azure beat; textbook-arbitraged drift, no differentiated edge",skip,,+2.99,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,ACN,+17.7,0.9,long,skip,2026-07-31T11:37:37+00:00,already live bet (06-25 long),skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,KLAC,-17.6,1.3,short,skip,2026-07-31T11:37:39+00:00,"semicap selloff; sector move, thin read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,KLAC,-17.6,1.3,short,skip,2026-07-31T11:37:39+00:00,"semicap selloff; sector move, thin read",skip,,+5.12,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,LITE,-16.8,1.2,short,skip,2026-07-31T11:37:39+00:00,"optical selloff (with COHR); sector move, thin read",skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,ADBE,+16.8,1.2,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,WTW,+16.5,2.0,long,skip,2026-07-31T11:37:39+00:00,"insurance broker up on earnings; covered, no differentiated read",skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,DASH,+16.4,0.8,long,skip,2026-07-31T11:37:39+00:00,"covered; move on low volume (0.8x), no conviction",skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,CRM,+15.2,1.0,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,CRM,+15.2,1.0,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,+37.26,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,FIS,+14.9,1.6,long,skip,2026-07-31T11:37:39+00:00,"fintech up on earnings; thin read, no differentiated edge",skip,,,,sp500
-2026-07-31T11:34:07+00:00,2026-07-30,HOOD,-14.7,1.3,short,skip,2026-07-31T11:38:13+00:00,"Robinhood -14.7pct; profit-taking after large run / crypto-beta unwind, no differentiated catalyst read",skip,,,,sp500
+2026-07-31T11:34:07+00:00,2026-07-30,HOOD,-14.7,1.3,short,skip,2026-07-31T11:38:13+00:00,"Robinhood -14.7pct; profit-taking after large run / crypto-beta unwind, no differentiated catalyst read",skip,,-14.78,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,IQV,+14.7,1.4,long,skip,2026-07-31T11:37:37+00:00,already live bet (07-29 post-earnings-drift long),skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,ADSK,+14.5,1.1,long,skip,2026-07-31T11:37:38+00:00,software rotation cluster; sector move not name-specific,skip,,,,sp500
 2026-07-31T11:34:07+00:00,2026-07-30,IT,+14.4,1.7,long,skip,2026-07-31T11:37:38+00:00,"software/research complex, part of rotation; thin name-specific read",skip,,,,sp500
