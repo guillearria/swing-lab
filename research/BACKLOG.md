@@ -22,9 +22,15 @@ recur: pruning is a follow-up, not automated here). Ledgers audited clean after 
 concurrent writers (no dup/ragged rows). HQ surfaces re-pointed same session.
 **OPEN:** `daily.sh` runtime is the trigger for any model — movers settle waits ~13 min on
 the egress-blocked yfinance fallback for a handful of symbols; cutting that below the tool
-timeout removes the trap entirely (measure which symbols fall back first). **Do NOT:** move
-settle back to Haiku without that runtime fix · treat `PUSH SKIPPED` or "settle already
-running" as failures · prune `claude/*` branches from inside daily.sh without a proposal.
+timeout removes the trap entirely (measure which symbols fall back first).
+**WATCH (first thing next session):** the 09-02 22:34 UTC settle is the first run on Sonnet
++ guards — `git fetch` then expect exactly ONE `chore: settle forward bets (2026-09-02)`
+commit, ONE settle row for 09-02 in `research/data/push_log.csv`, ONE 📋 on the phone, and
+no new `origin/claude/*` branch beyond the harness's usual one. Two of anything = the run log
+(`RemoteTrigger list_runs` → `get_run_log`), not the code, is where to look first.
+**Do NOT:** move settle back to Haiku without that runtime fix · treat `PUSH SKIPPED` or
+"settle already running" as failures · prune `claude/*` branches from inside daily.sh
+without a proposal.
 
 ## Earlier — 2026-08-25, digest v4: the pulse narrates, 📊 folded in
 
