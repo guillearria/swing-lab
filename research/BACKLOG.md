@@ -4,7 +4,29 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-08-25 — digest v4: the pulse narrates, 📊 folded in)
+## ▶ PICK UP HERE (2026-09-01 — settle double-posts: model reverted + two code guards)
+
+**[OPS 2026-09-01]** — the settle leg pushed 2–4 📋 messages on 4 of 6 nights (08-26, 08-27's
+bare "--dry-run", 08-30, 09-01). Root cause from the cloud run logs: the 08-24 model swap
+(settle Sonnet 4.6 → Haiku 4.5, HQ budget pass, owner-approved). `daily.sh` runs 15–20 min in
+the cloud and prints nothing to stdout, so the Bash tool backgrounds it after its timeout;
+Sonnet waited on a Monitor, Haiku read "empty output + no commit" as "never ran" and
+improvised everything the prompt forbids — a second (concurrent) `daily.sh`, hand-fired
+`digest settle --notify` (the word became the headline), `research.notify --dry-run` (sent
+verbatim). **Done:** settle routine back on **Sonnet 4.6** + prompt gained the WAIT rule and
+the new verdicts (RemoteTrigger update, full body verified by readback); `digest --notify`
+same-day guard (`PUSH SKIPPED`, exit 0, no stamp — REJECTED still retries, UNCONFIRMED
+blocks); `daily.sh` single-flight lock (fails open); 14 stray `origin/claude/*` branches
+deleted (all fully merged — they are the cloud stop hook's litter, one per run, and WILL
+recur: pruning is a follow-up, not automated here). Ledgers audited clean after the
+concurrent writers (no dup/ragged rows). HQ surfaces re-pointed same session.
+**OPEN:** `daily.sh` runtime is the trigger for any model — movers settle waits ~13 min on
+the egress-blocked yfinance fallback for a handful of symbols; cutting that below the tool
+timeout removes the trap entirely (measure which symbols fall back first). **Do NOT:** move
+settle back to Haiku without that runtime fix · treat `PUSH SKIPPED` or "settle already
+running" as failures · prune `claude/*` branches from inside daily.sh without a proposal.
+
+## Earlier — 2026-08-25, digest v4: the pulse narrates, 📊 folded in
 
 **[MSG v4]** — owner: the daily scoreboard rows "repeat themselves almost daily". The digest
 now NARRATES the run (quiet settle = one sentence; read opens with its own sentences; pool
@@ -1263,9 +1285,11 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   **(1) DONE 2026-08-06 — live config VERIFIED via the triggers API and recorded here.
   RE-VERIFIED + MODELS CHANGED 2026-08-24 in the routines UI (owner-approved):**
   read `trig_01EsetvEZmVLb56fEmc7YvSi` = `30 11 * * 1-5` (**Opus 5**, was Opus 4.8) · settle
-  `trig_01Uz2fQRMh5UwjnSvFkaSNBY` = `30 22 * * *` since 2026-08-07 (**Haiku 4.5**, was
-  Sonnet 4.6 — the run only executes `scripts/daily.sh` and confirms the push; the model was
-  over-provisioned for a shell wrapper) · watchdog
+  `trig_01Uz2fQRMh5UwjnSvFkaSNBY` = `30 22 * * *` since 2026-08-07 (**Sonnet 4.6 again since
+  2026-09-01** — Haiku 4.5 held 08-24→09-01 on the "it only executes `scripts/daily.sh`"
+  reasoning and double-posted 4 of 6 nights: the job is to WAIT 15–20 min for a backgrounded
+  script and read cron.log, which is judgment, not a shell wrapper; FINDINGS [OPS]
+  2026-09-01) · watchdog
   `trig_01Jk65Rg2VQ9WjzjvCdD5SHP` = `13 19 * * *` (Haiku 4.5, read-only, unchanged) — all three in the
   SAME environment (`env_01Cd6kqjVXv6m1DVCmYm9emL`), all repo-bound. Docs were right, the hq
   board was stale (synced same day). **Prompt edits via `RemoteTrigger update` WORK** (the old

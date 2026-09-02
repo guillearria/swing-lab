@@ -2669,3 +2669,41 @@ in one single paragraph at most").** Two halves, split by what can actually enfo
   anyway, the fix is another tombstone in the contract, not a prose classifier.
   Reproduce: `python3 -m pytest research/tests` (239) · the merge: `python3 -m research.digest`
   with a multi-line note.
+
+**2026-09-01 · [OPS] SETTLE DOUBLE-POSTS 08-26..09-01 — ROOT CAUSE THE 08-24 MODEL SWAP; REVERTED +
+TWO DETERMINISTIC GUARDS.** Four of six nights pushed 2–4 📋 SETTLE messages (plus a bare
+"--dry-run" on 08-27 and two bare "settle" headlines on 09-01). Diagnosed from the cloud run
+logs, not guessed:
+- **Mechanism:** `daily.sh` takes 15–20 min in the cloud (movers settle waits on the
+  egress-blocked yfinance fallback) and writes every step to cron.log, so the agent's Bash tool
+  backgrounds it after its timeout with an EMPTY output file. On 08-24 (Sonnet 4.6) the agent
+  waited on a Monitor and sent one message. From 08-25 the routine ran on Haiku 4.5 (HQ budget
+  pass: "the run's entire job is to execute daily.sh — a shell wrapper does not need a
+  mid-tier model"; owner-approved). Haiku read "empty output + no commit yet" as "never ran"
+  and did what the prompt forbids in so many words: re-launched `daily.sh` (two copies racing
+  over the same CSVs), hand-fired `digest settle --notify` (the word became the headline, the
+  narrative dropped), and ran `research.notify --dry-run` (notify sends its argv verbatim).
+  08-26's first run WAS a real PUSH REJECTED (pip install failed in the dependency guard → no
+  dotenv → nothing sent and no heartbeat either, the 08-07 strand shape) — the one sanctioned
+  retry — but two retries were launched concurrently.
+- **Evidence:** push_log rows 08-26 REJECTED·DELIVERED·DELIVERED, 08-30 ×2, 09-01 ×4; commits
+  c46652a/6d08b69/af7e1cc, 4fc70ae/54fca77, 3aad196/7c351fc/5919e4d; run logs
+  `RemoteTrigger get_run_log` on the settle trigger's 08-24..09-01 sessions. Ledgers audited
+  after the concurrent writers: bets/movers/orders 0 duplicate, 0 ragged rows.
+- **Fixed (owner "do it"):** settle routine back on Sonnet 4.6 and its prompt now says the
+  script prints nothing, WILL be backgrounded, and must be WAITED for — an empty output file
+  means still running; `digest --notify` refuses a second same-day push of a leg already
+  DELIVERED/UNCONFIRMED (`PUSH SKIPPED`, exit 0, no stamp; REJECTED still retries);
+  `daily.sh` takes a single-flight lock (fails open if flock/tmp are unavailable). 14 stray
+  `origin/claude/*` branches (the cloud stop hook's per-run litter, all fully merged) deleted.
+- **Lesson, stated plainly:** "it just runs a script" was the wrong description of the job.
+  The job is to wait out a slow script the harness backgrounds and then interpret verdict
+  lines — that is where every improvisation in this log has happened (08-06 Opus 4.8,
+  08-26..09-01 Haiku 4.5). The weaker the model, the more the prompt's prohibitions must be
+  code. One green night (08-25) was n=1 and was read as validation.
+- **Residual risk:** the guards bound the damage to one message per leg per day; they cannot
+  stop a manual push that lands BEFORE the real one (that day the real digest is the one
+  skipped). The runtime trap itself is untouched — BACKLOG open item.
+  Reproduce: `python3 -m pytest research/tests` · `python3 -m research.digest --notify` twice
+  on a stamped day (second prints PUSH SKIPPED) · hold `flock /tmp/swing-lab-settle.lock` and
+  run `bash scripts/daily.sh` (exits 0 with "settle already running").

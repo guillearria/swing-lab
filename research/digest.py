@@ -40,6 +40,12 @@ UNCHANGED from v2 — push_log stamps, delivery verdicts, the UNCONFIRMED re-sen
   python3 -m research.digest --notify              # print + Telegram push (exit 1 on failed send)
   python3 -m research.digest --notify "📖 READ …"  # + a run note: 1st line = the headline,
                                                   #   the rest (🟢 cards) rides after the rows
+
+Same-day guard [2026-09-01]: `--notify` refuses a SECOND push of the same leg on a UTC day
+whose push_log already holds a DELIVERED or UNCONFIRMED row for it — prints `PUSH SKIPPED`,
+sends nothing, stamps nothing, exits 0 (a refused duplicate is not a failure). REJECTED does
+not block: nothing was sent, so the one sanctioned retry stays open. Enforced in code because
+the prompt rule alone lost 4 of 6 nights (FINDINGS [OPS] 2026-09-01).
 """
 import html
 import logging
@@ -418,6 +424,28 @@ def _log_push(kind: str, verdict: str) -> None:
         w.writerow([_utcnow().date().isoformat(), kind, verdict])
 
 
+def _pushed_today(kind: str) -> str:
+    """The verdict of a same-UTC-day push of `kind` that forbids another one, else ''.
+
+    DELIVERED: the contract is ONE message per leg per day — a second send IS the
+    2026-08-26..09-01 double-post (a cloud agent re-launched daily.sh and hand-fired this
+    module while the first run sat in the tool's background; four of six nights).
+    UNCONFIRMED: the message MAY be delivered and the standing rule is never re-send
+    (2026-08-06). REJECTED does NOT block: nothing was sent, the one sanctioned retry stays
+    open. A missing log = pre-rollout = nothing to guard.
+    """
+    import csv
+    import os
+    if not os.path.exists(PUSH_LOG):
+        return ""
+    today = _utcnow().date().isoformat()
+    with open(PUSH_LOG, newline="") as f:
+        hits = [r["verdict"] for r in csv.DictReader(f)
+                if r.get("date_utc") == today and r.get("kind") == kind
+                and r.get("verdict") in ("DELIVERED", "UNCONFIRMED")]
+    return hits[-1] if hits else ""
+
+
 # UTC hour after which TODAY's push for that leg is due. settle fires 22:30 UTC daily (moved
 # from ~05:08 on 2026-08-07 after three stranded nights in the 05:00 window); read fires
 # pre-market on weekdays (~11:45 UTC). Each leg is held against its OWN calendar.
@@ -591,6 +619,16 @@ def _plain(text: str) -> str:
 
 def run(argv: list[str]) -> int:
     note = " ".join(a for a in argv if not a.startswith("--"))   # optional run note (1st line = headline)
+    # `--slim` = the READ leg's stamp [v3: its only remaining job — composition no longer
+    # branches on it; the headline is the leg's identity]. Renaming the flag would break
+    # the cloud routine prompts, so it keeps its historical name.
+    kind = "read" if "--slim" in argv else "settle"
+    if "--notify" in argv:
+        prior = _pushed_today(kind)
+        if prior:   # the deterministic half of "exactly ONE message per leg" [2026-09-01]
+            print(f"PUSH SKIPPED — a {kind} digest was already {prior} today (push_log); "
+                  f"nothing sent, nothing stamped — this leg is DONE for today, never re-run it")
+            return 0
     text = compose(note)
     print(_plain(text))
     if "--notify" in argv:
@@ -612,12 +650,8 @@ def run(argv: list[str]) -> int:
             except Exception as e:  # send() is documented fail-soft; an escape here MAY be
                 log.error("notify.send raised (%s)", e)   # post-request → treat as ambiguous
                 ok = None
-        # `--slim` = the READ leg's stamp [v3: its only remaining job — composition no longer
-        # branches on it; the headline is the leg's identity]. Renaming the flag would break
-        # the cloud routine prompts, so it keeps its historical name.
         try:
-            _log_push("read" if "--slim" in argv else "settle",
-                      "DELIVERED" if ok else ("UNCONFIRMED" if ok is None else "REJECTED"))
+            _log_push(kind, "DELIVERED" if ok else ("UNCONFIRMED" if ok is None else "REJECTED"))
         except Exception as e:   # the stamp must never cost the push path
             log.warning("push-log stamp failed (%s) — delivery verdict unrecorded", e)
         if ok:

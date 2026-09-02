@@ -230,7 +230,11 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   delivery [2026-08-06]: exit 1 ≠ undelivered — a routine re-sends ONLY on `PUSH REJECTED
   (nothing sent)`, never on `PUSH UNCONFIRMED` (re-sending a maybe-delivered message is the
   2026-07-24 double-post; a "delivery check" copy + a bare "Probe" arrived 2026-08-06 that way);
-  every push stamps `research/data/push_log.csv` (committed), and the next delivered message
+  every push stamps `research/data/push_log.csv` (committed) — and since 2026-09-01 the digest
+  itself REFUSES a second same-day push of a leg already stamped DELIVERED/UNCONFIRMED
+  (`PUSH SKIPPED`, exit 0, nothing sent) while `daily.sh` refuses to run concurrently (a lock),
+  because the prompt-only rule double-posted 4 of 6 nights once the settle routine was moved
+  to a weaker model that re-ran the backgrounded script (FINDINGS [OPS] 2026-09-01); and the next delivered message
   raises a DO-NOW when EITHER leg's last due push was never confirmed — settle daily, read on
   weekdays, each held against its own calendar [both legs since 2026-08-11; settle-only until
   then, which is why the 08-10 read died UNCONFIRMED — bet committed, alert never seen — behind

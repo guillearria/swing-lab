@@ -393,9 +393,11 @@ def test_delivered_push_stamps_the_scored_rows(monkeypatch, tmp_path, capsys):
     from research import bets, notify
     calls = []
     monkeypatch.setattr(bets, "mark_notified", lambda: calls.append(1) or 1)
-    monkeypatch.setattr(D, "PUSH_LOG", str(tmp_path / "push_log.csv"))
-    for verdict, expect in ((True, 1), (False, 1), (None, 1)):
+    for i, verdict in enumerate((True, False, None)):
         calls.clear()
+        # a fresh log per verdict: the same-day guard [2026-09-01] would otherwise SKIP every
+        # push after the first DELIVERED one and the later cases would test nothing
+        monkeypatch.setattr(D, "PUSH_LOG", str(tmp_path / f"push_log{i}.csv"))
         monkeypatch.setattr(notify, "send", lambda t, html=False, _v=verdict: _v)
         D.run(["--notify"])
         assert len(calls) == (1 if verdict is True else 0), verdict
@@ -692,11 +694,12 @@ def test_run_prints_the_delivery_verdict(monkeypatch, capsys, tmp_path):
     non-delivered states (daily.sh accounting unchanged), but only REJECTED licenses a
     re-send — an agent that re-sent on UNCONFIRMED double-posted (the 'delivery check' copy)."""
     from research import notify
-    monkeypatch.setattr(D, "PUSH_LOG", str(tmp_path / "push_log.csv"))
     monkeypatch.setattr(D, "compose", lambda note: "x")
     for verdict, marker, code in [(True, "PUSH DELIVERED", 0),
                                   (None, "PUSH UNCONFIRMED", 1),
                                   (False, "PUSH REJECTED", 1)]:
+        # fresh log per case — the same-day guard [2026-09-01] would SKIP after the first
+        monkeypatch.setattr(D, "PUSH_LOG", str(tmp_path / f"push_log_{marker[5:]}.csv"))
         monkeypatch.setattr(notify, "send", lambda t, html=False, v=verdict: v)
         assert D.run(["--notify", "note"]) == code
         assert marker in capsys.readouterr().out
@@ -719,6 +722,41 @@ def test_run_stamps_the_push_log_and_slim_marks_the_read_leg(monkeypatch, tmp_pa
         rows = list(csv.DictReader(f))
     assert [(r["kind"], r["verdict"]) for r in rows] == [("read", "DELIVERED"),
                                                          ("settle", "UNCONFIRMED")]
+
+
+def test_second_same_day_push_is_skipped_never_sent(monkeypatch, tmp_path, capsys):
+    """[2026-09-01] The deterministic half of "exactly ONE message per leg": once today's
+    push_log holds a DELIVERED (or UNCONFIRMED — never re-send) row for a leg, --notify
+    prints PUSH SKIPPED, sends nothing, stamps nothing, exits 0. The other leg is untouched
+    and a REJECTED row does not block (nothing was sent — the one sanctioned retry stays
+    open). Four of six nights double-posted (08-26..09-01) with the rule living only in the
+    routine prompt; a cloud agent re-ran daily.sh and hand-fired this module."""
+    import csv
+    from research import notify
+    p = tmp_path / "push_log.csv"
+    monkeypatch.setattr(D, "PUSH_LOG", str(p))
+    monkeypatch.setattr(D, "compose", lambda note: "x")
+    sent = []
+    monkeypatch.setattr(notify, "send", lambda t, html=False: sent.append(t) or True)
+
+    assert D.run(["--notify"]) == 0 and len(sent) == 1           # first settle: delivered
+    assert D.run(["--notify"]) == 0 and len(sent) == 1           # second: SKIPPED, not sent
+    assert "PUSH SKIPPED" in capsys.readouterr().out
+    assert D.run(["--notify", "--slim", "n"]) == 0 and len(sent) == 2   # read leg unaffected
+    with open(p, newline="") as f:
+        rows = [(r["kind"], r["verdict"]) for r in csv.DictReader(f)]
+    assert rows == [("settle", "DELIVERED"), ("read", "DELIVERED")]  # no SKIPPED stamp
+
+    # REJECTED does not block the retry; UNCONFIRMED does (the 2026-08-06 rule, now in code)
+    q = tmp_path / "push_log2.csv"
+    monkeypatch.setattr(D, "PUSH_LOG", str(q))
+    monkeypatch.setattr(notify, "send", lambda t, html=False: False)
+    assert D.run(["--notify"]) == 1                              # REJECTED, nothing sent
+    monkeypatch.setattr(notify, "send", lambda t, html=False: None)
+    assert D.run(["--notify"]) == 1                              # retry allowed → UNCONFIRMED
+    monkeypatch.setattr(notify, "send", lambda t, html=False: sent.append(t) or True)
+    assert D.run(["--notify"]) == 0 and len(sent) == 2           # blocked: never re-send
+    assert "PUSH SKIPPED" in capsys.readouterr().out
 
 
 def test_slim_no_longer_changes_the_composition(monkeypatch, tmp_path):

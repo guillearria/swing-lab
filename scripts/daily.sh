@@ -9,6 +9,21 @@ set -uo pipefail
 # dead and the routine improvised its own messages; fixed 2026-07-24).
 cd "$(dirname "$(readlink -f "$0")")/.." || exit 1
 
+# Single-flight guard [2026-09-01]: two copies of this script ran CONCURRENTLY on 08-26 and
+# 09-01 — a cloud agent re-launched it while the first copy sat in the tool's background
+# after the 120s timeout (this script takes 15–20 min and prints nothing to stdout) — two 📋
+# digests, two commits, two writers on the same CSVs. The kernel releases the lock when the
+# holder exits, so a crashed run can never wedge tomorrow's. Exit 0 on purpose: a refused
+# duplicate is not a failure and must not raise a 🚨. Fails OPEN (guard skipped, run proceeds)
+# if flock is missing or the lock path is unwritable — a guard that could fail closed would
+# be a silent kill switch on the primary settle path.
+if command -v flock >/dev/null 2>&1 && exec 9>>"${TMPDIR:-/tmp}/swing-lab-settle.lock" 2>/dev/null; then
+  if ! flock -n 9; then
+    echo "settle already running — another daily.sh holds the lock; this copy exits. Wait for the first one (pgrep -f scripts/daily.sh), then read cron.log."
+    exit 0
+  fi
+fi
+
 # Dependency guard [2026-08-08]: a COLD cloud container without python-dotenv kills the digest
 # push AND the heartbeat on the same import (notify → config → dotenv) — no message, no alarm,
 # no stamp (the 08-07 strand; FINDINGS 2026-08-08). The watchdog prompt already installs deps;
