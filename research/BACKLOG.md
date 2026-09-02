@@ -20,9 +20,16 @@ blocks); `daily.sh` single-flight lock (fails open); 14 stray `origin/claude/*` 
 deleted (all fully merged — they are the cloud stop hook's litter, one per run, and WILL
 recur: pruning is a follow-up, not automated here). Ledgers audited clean after the
 concurrent writers (no dup/ragged rows). HQ surfaces re-pointed same session.
-**OPEN:** `daily.sh` runtime is the trigger for any model — movers settle waits ~13 min on
-the egress-blocked yfinance fallback for a handful of symbols; cutting that below the tool
-timeout removes the trap entirely (measure which symbols fall back first).
+**OPEN — measured 2026-09-02 (corrects the first draft of this item, which blamed egress):**
+`daily.sh` runtime is the trigger for any model, and the cause is the settle LOOP, not the
+network. `movers settle` re-fetches EVERY decided-but-unmatured row every day — ticker + SPY
+per open horizon, no calendar check, no SPY reuse: 1,183 rows → 3,968 chart calls/run at a
+measured 0.24 s median = ~20 min. Only 18 rows could actually mature today (36 calls, ~11 s).
+All 363 symbols succeed on the primary endpoint (0 failures probed); the egress-blocked
+yfinance fallback fires only on transient cloud connection resets (LEG/META in the logs) and
+is a minor share. FIX (proposed, ~10 lines, pre-registered number: chart calls 3,968 → ≤~50,
+movers settle < 1 min): skip the fetch when fewer than `h` weekdays have elapsed since the
+decision date, in both `movers.settle` and `bets.settle`; holidays only delay a row a day.
 **WATCH (first thing next session):** the 09-02 22:34 UTC settle is the first run on Sonnet
 + guards — `git fetch` then expect exactly ONE `chore: settle forward bets (2026-09-02)`
 commit, ONE settle row for 09-02 in `research/data/push_log.csv`, ONE 📋 on the phone, and

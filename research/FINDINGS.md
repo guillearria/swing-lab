@@ -2704,6 +2704,15 @@ logs, not guessed:
 - **Residual risk:** the guards bound the damage to one message per leg per day; they cannot
   stop a manual push that lands BEFORE the real one (that day the real digest is the one
   skipped). The runtime trap itself is untouched — BACKLOG open item.
+- **CORRECTION, same day (2026-09-02, measured):** the mechanism line above blames the
+  egress-blocked yfinance fallback for the runtime. Wrong emphasis. Probed all 363 symbols a
+  settle run touches: 0 fail on the primary chart endpoint (median 0.24 s, p90 0.42 s). The
+  runtime is the LOOP: `movers settle` fetches ticker + SPY for every decided row per open
+  horizon with no calendar pre-check — 3,968 calls/run ≈ 20 min, when only 18 rows could
+  mature today (36 calls). The fallback fires only on transient cloud connection resets and
+  is a minor share. The wrong claim stands above, struck by this line, not rewritten.
+  Reproduce: count `(status in taken/skip) × empty x21/x63 × 2` in `movers_ledger.csv`;
+  `prices._chart_rows` over the same symbols.
   Reproduce: `python3 -m pytest research/tests` · `python3 -m research.digest --notify` twice
   on a stamped day (second prints PUSH SKIPPED) · hold `flock /tmp/swing-lab-settle.lock` and
   run `bash scripts/daily.sh` (exits 0 with "settle already running").
