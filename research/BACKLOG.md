@@ -30,11 +30,17 @@ yfinance fallback fires only on transient cloud connection resets (LEG/META in t
 is a minor share. FIX (proposed, ~10 lines, pre-registered number: chart calls 3,968 → ≤~50,
 movers settle < 1 min): skip the fetch when fewer than `h` weekdays have elapsed since the
 decision date, in both `movers.settle` and `bets.settle`; holidays only delay a row a day.
-**WATCH (first thing next session):** the 09-02 22:34 UTC settle is the first run on Sonnet
-+ guards — `git fetch` then expect exactly ONE `chore: settle forward bets (2026-09-02)`
-commit, ONE settle row for 09-02 in `research/data/push_log.csv`, ONE 📋 on the phone, and
-no new `origin/claude/*` branch beyond the harness's usual one. Two of anything = the run log
-(`RemoteTrigger list_runs` → `get_run_log`), not the code, is where to look first.
+**09-02 RESULT: PASSED the count** (one commit 61931ec, one stamp, one 📋) **but 49 min and a
+false DO-NOW.** Sonnet obeyed every rule; it lost 30 min to a `pgrep -f scripts/daily.sh`
+pre-check the PROMPT suggested — pgrep matched its own shell wrapper, so it waited on itself
+— then the 17-min script pushed the digest to 23:24, past the push-log check's 23:00
+due-hour, and the digest flagged ITS OWN day as never delivered (its stamp is written after
+the text). Three fixes same night: prompt says never pre-check, wait with
+`flock $TMPDIR/swing-lab-settle.lock true` (blocks until the run exits, no PID, no pgrep);
+`_pushlog_section` never judges the composing leg's own day; stamp + guard key on the LEG
+DAY (UTC − 6 h) so a settle that ends after midnight cannot make the guard SKIP the next
+evening's real digest — a hole in the 09-01 guard, found by tonight's 36-minute margin.
+**WATCH 09-03:** one of everything again, digest before 23:00, NO ⚠️.
 **Do NOT:** move settle back to Haiku without that runtime fix · treat `PUSH SKIPPED` or
 "settle already running" as failures · prune `claude/*` branches from inside daily.sh
 without a proposal.

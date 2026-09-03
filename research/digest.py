@@ -45,7 +45,10 @@ Same-day guard [2026-09-01]: `--notify` refuses a SECOND push of the same leg on
 whose push_log already holds a DELIVERED or UNCONFIRMED row for it — prints `PUSH SKIPPED`,
 sends nothing, stamps nothing, exits 0 (a refused duplicate is not a failure). REJECTED does
 not block: nothing was sent, so the one sanctioned retry stays open. Enforced in code because
-the prompt rule alone lost 4 of 6 nights (FINDINGS [OPS] 2026-09-01).
+the prompt rule alone lost 4 of 6 nights (FINDINGS [OPS] 2026-09-01). Stamp and guard key on
+the LEG DAY (UTC minus 6 h), so a settle that finishes after midnight still counts as the day
+it settled and cannot block the next evening's real push. The composing leg never judges its
+own day in the stranded-push check — it cannot see a stamp written after this text [09-02].
 """
 import html
 import logging
@@ -409,6 +412,18 @@ def _utcnow():
     return datetime.now(timezone.utc)
 
 
+def _leg_day(now=None) -> date:
+    """The push-log DATE for a push happening now: the UTC date shifted back 6 h.
+
+    Settle fires 22:30 UTC; the 09-02 run ended 23:24 (a 30-min stall + a 17-min script) and a
+    slow night can cross 00:00. Stamped with the raw UTC date, that run would land on the NEXT
+    day and the same-day guard would SKIP the next evening's real digest — the guard's own
+    failure mode, inverted. Reads (~11:45 UTC) are unaffected by the shift.
+    """
+    now = now or _utcnow()
+    return (now - timedelta(hours=6)).date()
+
+
 def _log_push(kind: str, verdict: str) -> None:
     """One delivery row per --notify push. Committed with the ledgers, which is what makes a
     stranded message visible to the NEXT run: settle commits its ledgers even when its 📋 dies
@@ -421,7 +436,7 @@ def _log_push(kind: str, verdict: str) -> None:
         w = csv.writer(f)
         if new:
             w.writerow(["date_utc", "kind", "verdict"])
-        w.writerow([_utcnow().date().isoformat(), kind, verdict])
+        w.writerow([_leg_day().isoformat(), kind, verdict])
 
 
 def _pushed_today(kind: str) -> str:
@@ -438,7 +453,7 @@ def _pushed_today(kind: str) -> str:
     import os
     if not os.path.exists(PUSH_LOG):
         return ""
-    today = _utcnow().date().isoformat()
+    today = _leg_day().isoformat()
     with open(PUSH_LOG, newline="") as f:
         hits = [r["verdict"] for r in csv.DictReader(f)
                 if r.get("date_utc") == today and r.get("kind") == kind
@@ -460,8 +475,13 @@ def _last_due(kind: str, now) -> date:
     return d
 
 
-def _pushlog_section() -> tuple[list, list]:
+def _pushlog_section(composing: str = "") -> tuple[list, list]:
     """DO-NOW when a due push was never confirmed delivered [2026-08-06; both legs 2026-08-11].
+
+    `composing` names the leg whose digest this text belongs to. That leg can never see its
+    own stamp — it is written AFTER this text is composed — so past its own due-hour it judges
+    itself only up to yesterday [2026-09-02: the settle digest composed at 23:24, due-hour 23,
+    and accused itself of not delivering]. The OTHER leg is still held to its full calendar.
 
     Holds each leg's log against the last day THAT leg was due. Two corrections earned from the
     2026-08-10 incident (FINDINGS 2026-08-11):
@@ -494,7 +514,10 @@ def _pushlog_section() -> tuple[list, list]:
         mine = [r for r in rows if r.get("kind") == kind]
         if not mine:
             continue
-        due = _last_due(kind, now).isoformat()
+        when = now
+        if kind == composing and now.hour >= PUSH_DUE_H[kind]:
+            when = now.replace(hour=0, minute=0)    # → _last_due rolls back to yesterday
+        due = _last_due(kind, when).isoformat()
         if any(r["date_utc"] >= due and r["verdict"] == "DELIVERED" for r in mine):
             continue
         last = mine[-1]
@@ -550,7 +573,7 @@ def _cards(body: str) -> list[str]:
     return out
 
 
-def compose(note: str = "") -> str:
+def compose(note: str = "", leg: str = "settle") -> str:
     """The v3 message, optionally wrapped around a run note.
 
     The note's FIRST line is the run's headline and rides on top — it is what Telegram shows
@@ -576,7 +599,8 @@ def compose(note: str = "") -> str:
     head, _, body = note.partition("\n")
     sections = [_safe(_bets_section, "bets"),
                 _safe(_git_section, "git"), _safe(_stranded_section, "stranded"),
-                _safe(_feed_section, "feed"), _safe(_pushlog_section, "push-log")]
+                _safe(_feed_section, "feed"),
+                _safe(lambda: _pushlog_section(composing=leg), "push-log")]
     # Event flags + scored cards are composed separately because they lead the message — but
     # both still go through _safe, so a broken silo is a loud DO-NOW, never a silent revert.
     events = _safe(_pool_events, "pool-events")
@@ -629,7 +653,7 @@ def run(argv: list[str]) -> int:
             print(f"PUSH SKIPPED — a {kind} digest was already {prior} today (push_log); "
                   f"nothing sent, nothing stamped — this leg is DONE for today, never re-run it")
             return 0
-    text = compose(note)
+    text = compose(note, leg=kind)
     print(_plain(text))
     if "--notify" in argv:
         # The printed verdict is the ONLY truth about delivery — exit 1 covers BOTH non-delivered

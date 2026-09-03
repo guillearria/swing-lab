@@ -25,7 +25,7 @@ def _neutralize_environment_sections(monkeypatch):
     for name in ("_bets_section", "_git_section", "_stranded_section",
                  "_feed_section", "_pushlog_section", "_pool_events",
                  "_scored_section", "_quiet_line"):
-        monkeypatch.setattr(D, name, lambda: ([], []))
+        monkeypatch.setattr(D, name, lambda *a, **k: ([], []))
 
 
 # ---------------------------------------------------------------------------- compose (v3)
@@ -694,7 +694,7 @@ def test_run_prints_the_delivery_verdict(monkeypatch, capsys, tmp_path):
     non-delivered states (daily.sh accounting unchanged), but only REJECTED licenses a
     re-send — an agent that re-sent on UNCONFIRMED double-posted (the 'delivery check' copy)."""
     from research import notify
-    monkeypatch.setattr(D, "compose", lambda note: "x")
+    monkeypatch.setattr(D, "compose", lambda note, leg="settle": "x")
     for verdict, marker, code in [(True, "PUSH DELIVERED", 0),
                                   (None, "PUSH UNCONFIRMED", 1),
                                   (False, "PUSH REJECTED", 1)]:
@@ -713,7 +713,7 @@ def test_run_stamps_the_push_log_and_slim_marks_the_read_leg(monkeypatch, tmp_pa
     from research import notify
     p = tmp_path / "push_log.csv"
     monkeypatch.setattr(D, "PUSH_LOG", str(p))
-    monkeypatch.setattr(D, "compose", lambda note: "x")
+    monkeypatch.setattr(D, "compose", lambda note, leg="settle": "x")
     monkeypatch.setattr(notify, "send", lambda t, html=False: True)
     D.run(["--notify", "--slim", "n"])
     monkeypatch.setattr(notify, "send", lambda t, html=False: None)
@@ -735,7 +735,7 @@ def test_second_same_day_push_is_skipped_never_sent(monkeypatch, tmp_path, capsy
     from research import notify
     p = tmp_path / "push_log.csv"
     monkeypatch.setattr(D, "PUSH_LOG", str(p))
-    monkeypatch.setattr(D, "compose", lambda note: "x")
+    monkeypatch.setattr(D, "compose", lambda note, leg="settle": "x")
     sent = []
     monkeypatch.setattr(notify, "send", lambda t, html=False: sent.append(t) or True)
 
@@ -782,7 +782,7 @@ def test_run_survives_a_notify_death_and_still_stamps(monkeypatch, capsys, tmp_p
     from research import notify
     p = tmp_path / "push_log.csv"
     monkeypatch.setattr(D, "PUSH_LOG", str(p))
-    monkeypatch.setattr(D, "compose", lambda note: "x")
+    monkeypatch.setattr(D, "compose", lambda note, leg="settle": "x")
 
     def boom(t, html=False):
         raise RuntimeError("ImportError-by-proxy: dotenv missing")
@@ -819,6 +819,49 @@ def test_a_stranded_settle_push_becomes_a_do_now(monkeypatch, tmp_path):
     monkeypatch.setattr(D, "_utcnow", lambda: datetime(2026, 8, 7, 11, 42, tzinfo=timezone.utc))
     p.write_text("date_utc,kind,verdict\n2026-08-06,settle,DELIVERED\n")
     assert _REAL_PUSHLOG() == ([], [])
+
+
+def test_the_composing_leg_never_accuses_itself(monkeypatch, tmp_path):
+    """[2026-09-02] The settle digest composed at 23:24 UTC (due-hour 23) and flagged ITS OWN
+    day as never delivered — its stamp is written after the text. Past its due-hour the
+    composing leg judges itself only up to yesterday; the other leg keeps the full calendar,
+    and a settle composing before its due-hour still flags a dead yesterday (weekend cover)."""
+    from datetime import datetime, timezone
+    p = tmp_path / "push_log.csv"
+    monkeypatch.setattr(D, "PUSH_LOG", str(p))
+    at = lambda *w: monkeypatch.setattr(D, "_utcnow", lambda: datetime(*w, tzinfo=timezone.utc))
+    p.write_text("date_utc,kind,verdict\n2026-09-01,settle,DELIVERED\n2026-09-02,read,DELIVERED\n")
+    at(2026, 9, 2, 23, 24)
+    assert _REAL_PUSHLOG(composing="settle") == ([], [])          # the 09-02 false alarm
+    assert "2026-09-02" in _REAL_PUSHLOG(composing="read")[0][0]   # the other leg still holds it
+    p.write_text("date_utc,kind,verdict\n2026-08-31,settle,DELIVERED\n2026-09-02,read,DELIVERED\n")
+    at(2026, 9, 2, 22, 55)
+    assert "2026-09-01" in _REAL_PUSHLOG(composing="settle")[0][0]   # yesterday's death still flagged
+    # compose() and run() thread the leg through: settle by default, read under --slim
+    seen = []
+    monkeypatch.setattr(D, "_pushlog_section", lambda composing="": seen.append(composing) or ([], []))
+    D.compose(); D.compose("📖 READ x", leg="read"); D.run(["--slim", "n"]); D.run([])
+    assert seen == ["settle", "read", "read", "settle"]
+
+
+def test_stamp_and_guard_use_the_leg_day(monkeypatch, tmp_path):
+    """[2026-09-02] A settle that ends after midnight UTC must stamp the day it settled, or the
+    same-day guard would SKIP the next evening's real digest (the 09-02 run ended 23:24)."""
+    import csv
+    from datetime import datetime, timezone
+    from research import notify
+    p = tmp_path / "push_log.csv"
+    monkeypatch.setattr(D, "PUSH_LOG", str(p))
+    monkeypatch.setattr(D, "compose", lambda note, leg="settle": "x")
+    sent = []
+    monkeypatch.setattr(notify, "send", lambda t, html=False: sent.append(t) or True)
+    monkeypatch.setattr(D, "_utcnow", lambda: datetime(2026, 9, 3, 0, 30, tzinfo=timezone.utc))
+    assert D.run(["--notify"]) == 0 and len(sent) == 1
+    monkeypatch.setattr(D, "_utcnow", lambda: datetime(2026, 9, 3, 22, 50, tzinfo=timezone.utc))
+    assert D._pushed_today("settle") == ""                        # not blocked by the late run
+    assert D.run(["--notify"]) == 0 and len(sent) == 2
+    with open(p, newline="") as f:
+        assert [r["date_utc"] for r in csv.DictReader(f)] == ["2026-09-02", "2026-09-03"]
 
 
 # ------------------------------------------- the 2026-08-10 delivery incident (FINDINGS 08-11)

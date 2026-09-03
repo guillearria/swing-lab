@@ -2716,3 +2716,29 @@ logs, not guessed:
   Reproduce: `python3 -m pytest research/tests` · `python3 -m research.digest --notify` twice
   on a stamped day (second prints PUSH SKIPPED) · hold `flock /tmp/swing-lab-settle.lock` and
   run `bash scripts/daily.sh` (exits 0 with "settle already running").
+
+**2026-09-02 · [OPS] FIRST SONNET+GUARDS SETTLE: COUNT PASSED, 49 MINUTES, AND THE DIGEST ACCUSED
+ITSELF — three fixes, one of them a hole in yesterday's guard.** One commit, one stamp, one 📋:
+the double-post class is closed. But the message carried "the settle digest for 2026-09-02
+was never confirmed delivered" — about itself.
+- **Cause 1 (prompt, mine):** the 09-01 prompt suggested waiting on `pgrep -f scripts/daily.sh`.
+  Sonnet ran it as a PRE-check, it matched the Bash tool's own wrapper (whose command line
+  contains the pattern), and the agent waited 30 min on a process that was its own pgrep
+  before diagnosing it and launching the script. Fix: the prompt now says never pre-check
+  (the script's lock makes a second copy a no-op) and to wait with
+  `flock ${TMPDIR:-/tmp}/swing-lab-settle.lock true`, which blocks until the run exits.
+- **Cause 2 (latent code):** `_pushlog_section` holds the settle leg to a 23:00 UTC due-hour
+  and the settle digest composed at 23:24 — before its own stamp exists by construction. Fix:
+  the composing leg judges its own day only up to yesterday; the other leg keeps the full
+  calendar (the settle still flags a dead Saturday on Sunday; the read still flags a dead
+  settle next morning).
+- **Cause 3 (found, not yet fired):** the 09-01 same-day guard keyed on the raw UTC date. A
+  settle ending after 00:00 UTC — tonight missed it by 36 min — would stamp the NEXT day and
+  the guard would SKIP that evening's real digest: the guard's own failure, inverted. Fix:
+  stamp and guard key on the LEG DAY (UTC − 6 h); reads are unaffected.
+- **Number:** 243 tests green (2 new). Residual: the 17-min script is untouched — the
+  calendar pre-check (BACKLOG OPEN, 3,968 → ~36 calls) still awaits a go, and it is what
+  keeps every one of these timing edges away from midnight.
+  Reproduce: `pytest research/tests -k "composing_leg or leg_day"` · the run log:
+  `RemoteTrigger get_run_log cse_01SjB6pmZkMCv8Ya5LMBCq6v`.
+
