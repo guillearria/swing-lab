@@ -1,16 +1,16 @@
 {
  "sp500-movers": {
-  "last_bar": "2026-09-01",
+  "last_bar": "2026-09-02",
   "last_error": "",
-  "last_ok": "2026-09-02",
-  "n_ok": 484,
+  "last_ok": "2026-09-03",
+  "n_ok": 503,
   "n_total": 503
  },
  "tail-movers": {
-  "last_bar": "2026-09-01",
+  "last_bar": "2026-09-02",
   "last_error": "",
-  "last_ok": "2026-09-02",
-  "n_ok": 967,
+  "last_ok": "2026-09-03",
+  "n_ok": 1002,
   "n_total": 1003
  }
 }
