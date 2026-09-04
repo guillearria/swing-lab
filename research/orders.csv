@@ -1,5 +1,5 @@
 logged_at,ticker,direction,shares,ref,ref_date,scan_from,limit_px,stop_px,horizon_d,benchmark,status,resolved_on,fill_px,x21_pct,placed_at,pulled_at,note
-2026-08-03T18:46:15+00:00,DXCM,long,5,83.45,2026-07-31,2026-08-03,84.28,76.80,21,XLV,filled,2026-08-05,84.28,,2026-08-03,,
+2026-08-03T18:46:15+00:00,DXCM,long,5,83.45,2026-07-31,2026-08-03,84.28,76.80,21,XLV,filled,2026-08-05,84.28,+2.70,2026-08-03,,
 2026-08-07T13:53:08+00:00,DVA,long,2,180.67,2026-08-06,2026-08-07,178.00,169.00,21,XLV,filled,2026-08-07,178.00,,2026-08-07,,"user's own dip-bid limit 178 at broker (below mkt ~180.7); ledger records the REAL order | owner corrected 2026-08-18: real GTC was 3 sh, ledger recorded 2 [ARC 5 #13a]"
 2026-08-13T14:07:21+00:00,CACI,long,1,680.08,2026-08-12,2026-08-13,686.88,620.00,63,ITA,filled,2026-08-13,674.00,,2026-08-13,,read 2026-08-12 HIGH (only HIGH on board) · funded by 8/13 legacy conversion
 2026-08-14T12:07:25+00:00,TPR,long,5,128.39,2026-08-13,2026-08-13,129.67,115.00,21,XRT,filled,2026-08-14,127.95,,,,
