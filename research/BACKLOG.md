@@ -45,6 +45,18 @@ evening's real digest — a hole in the 09-01 guard, found by tonight's 36-minut
 "settle already running" as failures · prune `claude/*` branches from inside daily.sh
 without a proposal.
 
+## Observed — 2026-09-07, split artifacts enter the scan as phantom movers
+
+**[SCAN 2026-09-07]** — 2 of today's 40 SEEN rows were pure feed artifacts: APH +109.9% 5d
+(2-for-1 split distributed 09-02) and RUSHA +50.3% 5d (3-for-2 split effective 09-01). In both
+the daily bars step up by the split ratio on a NORMAL-volume session, so `momentum.compute`
+reads a violent move where nothing happened. Both were skipped with the reason logged, so the
+denominator is honest — but this WILL recur every split season and it wastes a read slot and
+inflates the multiple-testing N. Cheap tell, if anyone fixes it: a 5d move above ~30% on
+rel_volume ≈ 1.0x is almost never real. NOT fixed here (no code change proposed mid-read-run);
+recording it so the next engineering pass has the case. **Do NOT** silently drop such rows from
+the ledger — a scan that hides its own bad rows corrupts the denominator worse than the rows do.
+
 ## Earlier — 2026-08-25, digest v4: the pulse narrates, 📊 folded in
 
 **[MSG v4]** — owner: the daily scoreboard rows "repeat themselves almost daily". The digest

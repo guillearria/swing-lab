@@ -1300,3 +1300,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-09-04T11:34:49+00:00,2026-09-03,ACMR,-13.8,0.7,short,skip,2026-09-04T12:04:32+00:00,Semi-cap sympathy on 0.7x volume; no own catalyst.,skip,,,,tail
 2026-09-04T11:34:49+00:00,2026-09-03,ONTO,-13.7,0.8,short,skip,2026-09-04T12:04:32+00:00,Semi-cap sympathy on 0.8x volume; no own catalyst.,skip,,,,tail
 2026-09-04T11:34:49+00:00,2026-09-03,AGCO,+13.5,1.8,long,skip,2026-09-04T12:04:32+00:00,Ag-equipment tariff cut plus the Baird upgrade; a sector policy move shared with DE and CNH.,skip,,,,tail
+2026-09-07T11:33:39+00:00,2026-09-04,APH,+109.9,1.0,long,skip,2026-09-07T11:42:01+00:00,"2-for-1 split distributed 2026-09-02 (record 8/17); the +110pct 5d is a feed split artifact, not a move",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,FICO,-19.2,4.7,short,skip,2026-09-07T11:42:01+00:00,"FHFA (Pulte) ordered Fannie/Freddie to accept VantageScore 9/3 - permanent loss of the regulated single-model monopoly, a structural de-rate not an overreaction; short is guard-blocked",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,EIX,-19.1,1.3,short,skip,2026-09-07T11:42:01+00:00,"CA wildfire bill advanced WITHOUT the 6B per-incident liability cap or the subrogation ban - uncapped Eaton Fire exposure; outcome is a legislative binary, not a readable mechanism",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,SNDK,+17.2,1.2,long,skip,2026-09-07T11:42:01+00:00,"AI-memory momentum (Dell NAND-scarcity remark + Nvidia/HuggingFace); +525pct YTD, no name-specific catalyst - chasing an extended trend",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,HOOD,+17.1,1.3,long,skip,2026-09-07T11:42:01+00:00,"index/momentum flow, no fresh name-specific catalyst; +34.6pct 21d already",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,LULU,-16.7,13.2,short,skip,2026-09-07T11:42:01+00:00,"THIRD FY26 guide cut - FY EPS 10.95-11.15 to 9.48-9.73, NA comps -12pct, Q3 EPS guide ~60pct below consensus; deterioration is real, not an overreaction",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,ADSK,-16.4,2.1,short,skip,2026-09-07T11:42:02+00:00,"fQ2 beat but FY27 EPS/FCF guide light (MaintainX costs) plus the rates-driven de-rating of expensive design software; no exhaustion signal, still making lower lows",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,CIEN,-15.2,1.8,short,skip,2026-09-07T11:42:02+00:00,record fQ3 beat sold on guided sequential gross/op-margin compression at a ~120x P/E; the multiple is doing the work and it is only 6 sessions into a -49pct de-rate from the 6m high,skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,DELL,+14.9,2.1,long,skip,2026-09-07T11:42:02+00:00,"already a live bet (21d post-earnings-drift, logged 2026-09-04) - not re-betting a name already open",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,AXON,-14.2,0.7,short,skip,2026-09-07T11:42:02+00:00,"-14pct on 0.7x volume, no identifiable catalyst - low-volume drift is not a readable situation",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,CDNS,-14.0,2.1,short,skip,2026-09-07T11:42:02+00:00,"already a live bet (63d spike-fade, logged 2026-07-20)",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,PCG,-13.9,1.6,short,skip,2026-09-07T11:42:02+00:00,"same CA wildfire bill as EIX - uncapped liability, a legislative binary rather than a read",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,SWKS,+12.5,1.0,long,skip,2026-09-07T11:42:02+00:00,"semis sympathy on the AI-memory tape, 1.0x volume, no name-specific catalyst",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,SNPS,-11.0,1.8,short,skip,2026-09-07T11:42:03+00:00,EDA/design-software sympathy de-rating on higher yields; CDNS already carries this exact thesis as a live bet,skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,DASH,-10.6,0.9,short,skip,2026-09-07T11:42:03+00:00,"rates-driven de-risking of expensive growth, 0.9x volume, no name news",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,PANW,-10.3,1.0,short,skip,2026-09-07T11:42:03+00:00,"same growth de-risking, 1.0x volume, no name-specific catalyst",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,PTC,-10.3,1.8,short,skip,2026-09-07T11:42:03+00:00,"design-software sympathy selloff, no company-specific event",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,DDOG,-10.1,0.5,short,skip,2026-09-07T11:42:03+00:00,growth de-risking on 0.5x volume - below-average volume means no information event,skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,DE,+10.0,0.9,long,skip,2026-09-07T11:42:03+00:00,"sector re-rating (Baird farm-equipment upgrade 8/31 + the agri-equipment tariff cut), not name-specific; already +12.8pct 21d at an all-time high",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,MOS,+9.5,1.1,long,skip,2026-09-07T11:42:03+00:00,fertilizer sympathy inside the same ag re-rating; no name-specific catalyst,skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,EXPE,-9.5,1.2,short,skip,2026-09-07T11:42:04+00:00,"growth de-risking, no name news",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,BBY,+9.5,1.0,long,take,2026-09-07T11:42:06+00:00,"fQ2 beat-and-raise 8/27: adj EPS 1.47 vs 1.38, comps +4.1pct vs a +1pct guide, FY27 comps guide RAISED from -1/+1pct to +1.9/+3.0pct and FY EPS to 6.70-6.90",taken,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,CLX,-9.2,0.9,short,skip,2026-09-07T11:42:04+00:00,"staples bleed, 0.9x volume, no catalyst",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,VRT,+9.1,0.7,long,skip,2026-09-07T11:42:04+00:00,"already a live bet (63d revenue-miss-overreaction, logged 2026-07-30)",skip,,,,sp500
+2026-09-07T11:33:39+00:00,2026-09-04,AON,-9.1,1.8,short,skip,2026-09-07T11:42:04+00:00,insurance-broker de-rating with no identifiable event; -10.4pct 21d drift,skip,,,,sp500
+2026-09-07T11:34:20+00:00,2026-09-04,RUSHA,+50.3,0.6,long,skip,2026-09-07T11:42:04+00:00,"3-for-2 split effective 2026-09-01; the +50pct 5d is a feed split artifact, not a move",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,CXM,-27.6,1.6,short,skip,2026-09-07T11:42:04+00:00,sub-6-dollar micro-cap; no differentiated mechanism identified - the tail bar (name who is forced and what resolves it) is not cleared,skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,ENOV,-25.5,1.7,short,skip,2026-09-07T11:42:04+00:00,at the 6m low with no identifiable mechanism; tail bar not cleared,skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,CNH,+23.3,1.5,long,skip,2026-09-07T11:42:05+00:00,"ag sector re-rating (Baird upgrade + tariff cut), already +32.7pct 21d - sector flow, no name-specific edge",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,GWRE,-21.1,4.4,short,take,2026-09-07T11:42:06+00:00,"fQ4 9/3: rev 411.1M and adj EPS 0.99 both beat, FY27 revenue guided +16pct and ARR +18pct cc vs 19pct - a 1pp ARR trim took 21pct off the stock",taken,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,NX,+18.1,6.5,long,take,2026-09-07T11:42:06+00:00,"fQ3 8/28-9/4: adj EPS 0.79 vs 0.66 (+20pct) on rev 501.8M beat, +22pct on 6.5x volume; price increases plus fading tariff costs close the cost-price gap into fQ4",taken,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,AGCO,+17.6,2.2,long,skip,2026-09-07T11:42:05+00:00,"same ag re-rating; +31.7pct 21d at an all-time high, chasing sector flow",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,MIR,+17.6,1.4,long,skip,2026-09-07T11:42:05+00:00,"Jefferies initiation + a users conference - an opinion and a marketing event, not a fundamental catalyst",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,GIII,-17.1,2.2,short,skip,2026-09-07T11:42:05+00:00,no identifiable mechanism behind the -17pct; tail bar not cleared,skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,PATH,-16.3,1.6,short,skip,2026-09-07T11:42:05+00:00,"Q2 revenue beat but Q3 guide implies ~8pct growth vs 13.4pct delivered, billings missed, Canaccord cut to Hold - the decel is real",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,FMC,+14.5,0.9,long,skip,2026-09-07T11:42:05+00:00,"ag-chem sympathy inside the same sector re-rating, 0.9x volume",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,GPI,+14.2,2.7,long,skip,2026-09-07T11:42:05+00:00,dealer-group momentum with no name-specific event,skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,VSXY,-14.0,2.7,short,skip,2026-09-07T11:42:06+00:00,no readable catalyst found for the -14pct; not a situation we can read,skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,SMTC,+12.7,0.9,long,skip,2026-09-07T11:42:06+00:00,"the beat-and-raise pop was 2026-08-26; the 9/4 move is AI data-center sympathy, a spent catalyst re-chased",skip,,,,tail
+2026-09-07T11:34:20+00:00,2026-09-04,TDS,+12.4,1.1,long,skip,2026-09-07T11:42:06+00:00,no readable catalyst behind the +12pct; not a situation we can read,skip,,,,tail
