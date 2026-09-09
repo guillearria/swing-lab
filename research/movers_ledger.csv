@@ -1340,3 +1340,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-09-07T11:34:20+00:00,2026-09-04,VSXY,-14.0,2.7,short,skip,2026-09-07T11:42:06+00:00,no readable catalyst found for the -14pct; not a situation we can read,skip,,,,tail
 2026-09-07T11:34:20+00:00,2026-09-04,SMTC,+12.7,0.9,long,skip,2026-09-07T11:42:06+00:00,"the beat-and-raise pop was 2026-08-26; the 9/4 move is AI data-center sympathy, a spent catalyst re-chased",skip,,,,tail
 2026-09-07T11:34:20+00:00,2026-09-04,TDS,+12.4,1.1,long,skip,2026-09-07T11:42:06+00:00,no readable catalyst behind the +12pct; not a situation we can read,skip,,,,tail
+2026-09-09T11:33:50+00:00,2026-09-08,APH,+106.3,0.9,long,skip,2026-09-09T11:38:33+00:00,"Split artifact — feed shows an unadjusted 2:1 split, no real move",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,FICO,-18.6,2.3,short,skip,2026-09-09T11:38:33+00:00,"FHFA opened Fannie/Freddie to VantageScore 4.0 — structural loss of the mortgage-score monopoly, not an overreaction",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,ADSK,-17.9,1.6,short,skip,2026-09-09T11:38:33+00:00,"Part of the market-wide AI-disruption software de-rating, no name-specific read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,DELL,+17.1,1.2,long,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet logged 2026-09-04,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,INTC,+16.7,1.4,long,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet logged 2026-07-27,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,CDNS,-16.1,2.1,short,skip,2026-09-09T11:38:34+00:00,EDA/software de-rating and CDNS already carries a live open bet,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,SYK,-14.6,2.9,short,skip,2026-09-09T11:38:43+00:00,Large-cap covered name; CFO confirmed the supply issue extends into Q4 plus joint softness — contrarian deferral read is thin,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,PTC,-14.4,1.6,short,skip,2026-09-09T11:38:34+00:00,"Same software de-rating cluster, thin read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,LULU,-14.2,3.3,short,skip,2026-09-09T11:38:43+00:00,"Third FY guidance cut, comps -9pct, 8-year low — deterioration, not an overreaction",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,DASH,-13.5,1.0,short,skip,2026-09-09T11:38:43+00:00,"Fell with the tariff-driven consumer-internet group — market-wide, not name-specific",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,EXPE,-13.4,2.3,short,skip,2026-09-09T11:38:43+00:00,"Same tariff-driven consumer-internet group move — market-wide, not name-specific",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,IT,-12.9,1.0,short,skip,2026-09-09T11:38:35+00:00,Software/research de-rating and IT already carries a live open bet,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,SWKS,+12.5,1.3,long,skip,2026-09-09T11:38:43+00:00,"Up ~24pct in a month on flow and Qorvo chatter, no fresh event — momentum chase",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,VRT,+12.4,1.1,long,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet logged 2026-07-30,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,ADBE,-12.1,1.3,short,skip,2026-09-09T11:38:34+00:00,"Same software de-rating; CEO change plus AI-disruption narrative, thin read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,HOOD,+12.0,1.4,long,skip,2026-09-09T11:38:51+00:00,"Broker upgrades and a prediction-market narrative — sell-side flow, no readable event",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,PANW,-11.8,1.1,short,skip,2026-09-09T11:38:34+00:00,"Same software de-rating cluster, thin read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,PCG,+11.7,1.9,long,skip,2026-09-09T11:38:51+00:00,California wildfire-liability reform failing to pass is a policy non-event repriced same day,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,GLW,+11.6,1.5,long,skip,2026-09-09T11:38:52+00:00,Large-cap AI-optical name already extended; conference product news is a thin read,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,BBY,+11.5,0.8,long,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet logged 2026-09-07,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,DDOG,-11.3,1.1,short,skip,2026-09-09T11:38:34+00:00,"Same software de-rating cluster, thin read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,INTU,-11.2,1.1,short,skip,2026-09-09T11:38:34+00:00,"Same software de-rating cluster, thin read",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,SNDK,+10.9,0.8,long,skip,2026-09-09T11:38:52+00:00,S&P 100 index inclusion — the arbitraged forced-flow family Arc 2 already killed,skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,CIEN,-10.8,1.7,short,skip,2026-09-09T11:38:52+00:00,"Beat-and-raise sold for three straight months — a de-rating regime, not a snapback setup",skip,,,,sp500
+2026-09-09T11:33:50+00:00,2026-09-08,SNPS,-10.8,1.3,short,skip,2026-09-09T11:38:34+00:00,"EDA de-rating on the same macro draw, no name-specific read",skip,,,,sp500
+2026-09-09T11:34:33+00:00,2026-09-08,RUSHA,+45.8,0.9,long,skip,2026-09-09T11:38:33+00:00,"Split artifact — feed shows an unadjusted 3:2 split, no real move",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,CXM,-32.4,1.6,short,skip,2026-09-09T11:38:41+00:00,Guidance cut with no confidence in the reset — real deterioration,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,GWRE,-26.9,2.6,short,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet logged 2026-09-07,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,SEI,+26.0,2.0,long,take,2026-09-09T11:38:26+00:00,"Mid-quarter EBITDA raise: Q3 to 110-130M from 90-105M, Q4 145-180M, Q1-27 initiated 200-240M — off-cycle reset of forward numbers on data-center power demand",taken,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,PATH,-25.0,0.9,short,skip,2026-09-09T11:38:42+00:00,"Q3 guide implies growth roughly halving — real deceleration, not an overreaction",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,SMTC,+22.3,1.5,long,take,2026-09-09T11:38:26+00:00,Q2 FY27 record beat + Q3 guide 405-415M far above consensus; data center/LoRa guided ~120pct YoY to ~60pct of mix — estimate revisions lag a guide this size,taken,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,ROIV,+19.7,3.2,long,skip,2026-09-09T11:38:52+00:00,"Phase 2 win at an all-time high; revenue years out, no 21-63d mechanism",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,ENOV,-18.7,3.6,short,skip,2026-09-09T11:38:52+00:00,"Q2 plus a leveraged robotics acquisition and PT cuts — deteriorating, not deferred",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,CLSK,+16.0,0.9,long,skip,2026-09-09T11:38:52+00:00,"Bitcoin-miner beta to BTC, no name-specific catalyst",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,NX,+15.6,3.1,long,skip,2026-09-09T11:38:42+00:00,Already carries a live open bet plus a pending counterfactual order,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,VSAT,+15.6,1.1,long,skip,2026-09-09T11:38:52+00:00,Up ~26pct in 30d on contract wins already priced — momentum chase,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,COHU,+15.3,0.9,long,skip,2026-09-09T11:38:53+00:00,Up ~195pct YTD with no fresh named catalyst — momentum chase,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,GIII,-15.3,2.7,short,skip,2026-09-09T11:38:53+00:00,Revenue -9.7pct YoY on lost licenses; the margin story does not offset a shrinking top line,skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,CNH,+15.0,0.9,long,skip,2026-09-09T11:38:53+00:00,"Six-day 26pct run on an upgrade and a high-end-of-range nudge — soft catalyst, extended",skip,,,,tail
+2026-09-09T11:34:33+00:00,2026-09-08,DOCN,+14.5,1.8,long,skip,2026-09-09T11:38:53+00:00,Re-rating on a conference strategy talk with no new numbers — thin read,skip,,,,tail
