@@ -1380,3 +1380,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-09-09T11:34:33+00:00,2026-09-08,GIII,-15.3,2.7,short,skip,2026-09-09T11:38:53+00:00,Revenue -9.7pct YoY on lost licenses; the margin story does not offset a shrinking top line,skip,,,,tail
 2026-09-09T11:34:33+00:00,2026-09-08,CNH,+15.0,0.9,long,skip,2026-09-09T11:38:53+00:00,"Six-day 26pct run on an upgrade and a high-end-of-range nudge — soft catalyst, extended",skip,,,,tail
 2026-09-09T11:34:33+00:00,2026-09-08,DOCN,+14.5,1.8,long,skip,2026-09-09T11:38:53+00:00,Re-rating on a conference strategy talk with no new numbers — thin read,skip,,,,tail
+2026-09-10T11:34:23+00:00,2026-09-09,APH,+99.4,0.9,long,skip,2026-09-10T11:41:55+00:00,"+99.4pct 5d is a feed artifact - price ~81 with no split, deal or news; a bad bar, not a move",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,DELL,+25.9,1.2,long,skip,2026-09-10T11:41:55+00:00,"already live in the catalogue (bet 2026-09-04, 21d vs XLK) - no second bet on the same name",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,INTC,+19.4,1.0,long,skip,2026-09-10T11:41:55+00:00,"already live in the catalogue (bet 2026-07-27, 63d vs SOXX)",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,CASY,-18.0,8.3,short,skip,2026-09-10T11:41:55+00:00,"EPS beat +28pct YoY but inside same-store comps missed; at ~30x trailing a comp-driven derating is legitimate, not a clean overreaction - thin read",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,ADSK,-16.6,1.2,short,skip,2026-09-10T11:41:55+00:00,"fQ2 beat but RPO grew 2pct against revenue 16pct - a real forward-visibility deceleration, not an overreaction to fade",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,HPE,+15.8,1.9,long,skip,2026-09-10T11:41:55+00:00,"record fQ3 +34pct and a raise, but this is the same AI-server beat-and-raise trade as the live DELL bet - redundant read",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,GLW,+15.7,0.9,long,skip,2026-09-10T11:41:56+00:00,"AI optical/datacenter sector rally, market-wide rather than name-specific",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,PTC,-15.7,2.1,short,skip,2026-09-10T11:41:56+00:00,"revenue miss with a raised ARR guide, but PTC and ADSK sold off together - a design-software AI-disruption narrative that does not resolve inside the window",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,LULU,-15.5,2.8,short,skip,2026-09-10T11:41:56+00:00,"genuine guidance cut on a 4pct revenue decline plus a CEO turnaround - structural brand damage, no long here",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,SNDK,+14.8,0.7,long,skip,2026-09-10T11:41:56+00:00,"memory/AI-capex sector rally, no name-specific catalyst",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,TER,+14.4,0.9,long,skip,2026-09-10T11:42:03+00:00,"semiconductor-test sector rally into the AI capex bid, market-wide",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,ORCL,+14.4,1.2,long,skip,2026-09-10T11:42:03+00:00,the 5d run-up is pre-print positioning; fiscal Q1 landed after the last complete bar and ORCL is the most-arbitraged mega-cap in the batch,skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,LITE,+13.8,0.9,long,skip,2026-09-10T11:42:04+00:00,"AI optical sector rally, market-wide",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,SWKS,+13.5,0.9,long,skip,2026-09-10T11:42:04+00:00,"semis sector rally, no name-specific catalyst",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,AMD,+13.4,1.1,long,skip,2026-09-10T11:42:04+00:00,"AI-capex sector rally in a mega-cap, the most-arbitraged arena",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,SYK,-13.2,2.5,short,skip,2026-09-10T11:42:04+00:00,"supply-chain disruption with no quantified guidance change - duration unknowable, thin read",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,META,+13.0,2.3,long,skip,2026-09-10T11:42:04+00:00,Muse AI agent launch plus a JPMorgan upgrade - narrative in the most-covered mega-cap,skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,DASH,-12.6,1.0,short,skip,2026-09-10T11:42:04+00:00,"no discrete catalyst found for the 5d drop; competitive-pressure drift, thin read",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,MRNA,-12.1,0.3,short,skip,2026-09-10T11:42:05+00:00,"volume 0.3x - drift rather than an event, no catalyst in the window",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,MRVL,+11.7,0.8,long,skip,2026-09-10T11:42:05+00:00,"AI-capex semis sector rally, market-wide",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,COHR,+11.6,0.7,long,skip,2026-09-10T11:42:05+00:00,"AI optical sector rally, market-wide",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,BKNG,-11.4,2.4,short,skip,2026-09-10T11:42:05+00:00,EU court blocked the eTraveli deal on top of travel-demand drift - no single clean catalyst to fade,skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,HOOD,+11.4,1.0,long,skip,2026-09-10T11:42:05+00:00,"ARK accumulation plus analyst price targets - positioning narrative, no discrete catalyst",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,FICO,-10.9,2.9,short,skip,2026-09-10T11:42:05+00:00,"FHFA ordered Fannie and Freddie to accept VantageScore - a permanent moat loss, not an overreaction",skip,,,,sp500
+2026-09-10T11:34:23+00:00,2026-09-09,ADBE,-10.9,1.0,short,skip,2026-09-10T11:42:05+00:00,AI-competition derating into a fiscal Q3 print that lands after the last complete bar - no edge pre-event,skip,,,,sp500
+2026-09-10T11:35:01+00:00,2026-09-09,SEI,+36.3,2.1,long,skip,2026-09-10T11:42:14+00:00,"already live in the catalogue (bet 2026-09-09, 63d vs IWM)",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,CXM,-30.0,1.1,short,skip,2026-09-10T11:42:14+00:00,"revenue grew 1pct at 59x trailing on a 1.3B cap - a broken growth story, not a dislocation",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,GWRE,-29.3,1.9,short,skip,2026-09-10T11:42:14+00:00,"already live in the catalogue (bet 2026-09-07, 63d vs IGV)",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,COHU,+28.4,1.6,long,skip,2026-09-10T11:42:14+00:00,"+28pct 5d off a month-old print with no fresh catalyst; up 143pct YTD, this is momentum chasing",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,SIG,+26.1,7.5,long,take,2026-09-10T11:42:18+00:00,Q2 beat with a RAISED FY profit outlook on cost discipline against flat sales; best day in over a year off a de-rated base at ~8x forward earnings,taken,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,PATH,-25.2,0.8,short,skip,2026-09-10T11:42:15+00:00,"fiscal Q2 beat but the Q3 revenue guide was cut on competitive pressure - a guidance cut, no long",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,MXL,+24.2,1.5,long,skip,2026-09-10T11:42:15+00:00,"no fresh dated catalyst; up ~450pct over a year on AI-optical momentum, chasing",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,SMTC,+23.9,1.1,long,skip,2026-09-10T11:42:15+00:00,"already live in the catalogue (bet 2026-09-09, 21d vs SMH)",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,TBBK,-22.3,10.5,short,skip,2026-09-10T11:42:15+00:00,"-22pct on 10.5x volume with no verifiable catalyst in the public record - unreadable, skip",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,DOCN,+21.8,1.9,long,skip,2026-09-10T11:42:15+00:00,"AI-agent narrative at a premium multiple with margin pressure, no fresh dated catalyst",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,ROIV,+21.1,1.4,long,skip,2026-09-10T11:42:15+00:00,the Phase 2 mosliciguat win already carried it to all-time highs - spent catalyst and Phase 3 is years out,skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,CLSK,+20.1,0.7,long,skip,2026-09-10T11:42:16+00:00,"volume 0.7x bitcoin-miner beta, no name-specific catalyst",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,FORM,+19.7,1.1,long,skip,2026-09-10T11:42:16+00:00,"semiconductor-test sector rally, market-wide",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,ASO,+19.5,3.7,long,skip,2026-09-10T11:42:16+00:00,"beat plus a raised FY guide is real, but it is the same US-discretionary cost-discipline draw as the SIG take this run - one macro draw, not two",skip,,,,tail
+2026-09-10T11:35:01+00:00,2026-09-09,NX,+18.2,2.5,long,skip,2026-09-10T11:42:16+00:00,"already live in the catalogue (bet 2026-09-07, 21d vs XHB)",skip,,,,tail
