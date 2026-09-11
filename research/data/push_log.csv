@@ -67,3 +67,4 @@ date_utc,kind,verdict
 2026-09-10,read,DELIVERED
 2026-09-10,settle,DELIVERED
 2026-09-11,read,DELIVERED
+2026-09-11,settle,REJECTED
