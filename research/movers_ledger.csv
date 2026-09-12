@@ -584,86 +584,86 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-10T11:36:03+00:00,2026-08-07,ENTG,+27.7,0.7,long,skip,2026-08-10T11:40:55+00:00,"Entegris semis-materials tail, low vol 0.7x, chasing",skip,,-3.72,,tail
 2026-08-10T11:36:03+00:00,2026-08-07,PRGO,+27.0,0.7,long,skip,2026-08-10T11:40:55+00:00,"Perrigo tail +27pct low vol 0.7x, consumer-health, no differentiated read",skip,,+14.95,,tail
 2026-08-10T11:36:03+00:00,2026-08-07,QLYS,+26.8,1.0,long,skip,2026-08-10T11:40:26+00:00,already open long bet 08-06 (post-earnings-drift) — read exists,skip,,-8.57,,tail
-2026-08-11T11:37:39+00:00,2026-08-10,PLTR,+39.5,1.6,long,skip,2026-08-11T11:44:31+00:00,"+39.5% mega-cap AI momentum, crowded and covered, parabolic — no name-specific mispricing a read can exploit",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,ZBRA,+29.6,0.8,long,skip,2026-08-11T11:44:31+00:00,already live long (bet 2026-08-05 post-earnings-drift) — not a new read,skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,IT,+27.5,1.2,long,take,2026-08-11T11:44:30+00:00,"Q2 beat-and-raise (rev 1.68B, adj EPS 4.37, op margin +5.6pp, raised FY guide, buyback accel) on a name priced for AI-disruption decline over the past year — narrative-invalidation re-rating, the durable multiple-expansion piece is what the read adds",taken,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,TTD,-26.8,4.2,short,skip,2026-08-11T11:44:31+00:00,already live short (bet 2026-08-10 guide-down continuation),skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,NEM,+23.0,1.4,long,skip,2026-08-11T11:44:31+00:00,"gold-miner move is macro (gold rally), not name-specific — no differentiated read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,ABNB,+22.6,2.9,long,skip,2026-08-11T11:44:31+00:00,"large-cap earnings pop already +22%, covered and arbitraged, thin read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,HONA,-21.7,1.7,short,skip,2026-08-11T11:44:32+00:00,"recent Honeywell-complex spinoff stub, thin and ambiguous catalyst, no clean mechanism",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,DVA,-21.4,1.2,short,skip,2026-08-11T11:44:32+00:00,already live long plus book position (bet 2026-08-07),skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,CRL,+20.0,1.2,long,skip,2026-08-11T11:44:32+00:00,"Charles River earnings rebound, covered large-cap, +20% already, thin read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,LDOS,+17.2,1.4,long,skip,2026-08-11T11:44:32+00:00,"defense-IT sector momentum, already hold defense (LMT/RTX/HII), chasing +17% same macro draw",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,WDC,-16.9,1.0,short,skip,2026-08-11T11:44:32+00:00,"memory/semi sector move, not name-specific, thin",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,APP,-16.5,1.0,short,skip,2026-08-11T11:44:33+00:00,"adtech growth-deceleration but already -16% (chasing) and a near-duplicate of live TTD short, same macro draw would shrink effective N",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,PODD,-15.8,1.2,short,skip,2026-08-11T11:44:33+00:00,already live long (bet 2026-08-06),skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,CMG,-14.2,0.9,short,skip,2026-08-11T11:44:33+00:00,already held (book plus bet 2026-07-31 long),skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,NRG,-14.1,1.0,short,skip,2026-08-11T11:44:33+00:00,"IPP/power volatility, no clean idiosyncratic catalyst",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,VEEV,+13.8,1.1,long,skip,2026-08-11T11:44:33+00:00,"software up-move, covered large-cap, thin read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,TPL,-13.7,1.7,short,skip,2026-08-11T11:44:34+00:00,"Texas Pacific Land high-vol royalty name, no clean readable catalyst",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,APTV,-13.0,1.5,short,skip,2026-08-11T11:44:34+00:00,"auto-supplier weakness is cyclical/secular (EV and tariff headwinds), not an overreaction to fade",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,COHR,+12.8,2.1,long,skip,2026-08-11T11:44:34+00:00,"optical/AI semi sector momentum, not name-specific",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,PSKY,+12.8,0.9,long,skip,2026-08-11T11:44:34+00:00,"Paramount-Skydance post-merger, messy special situation, no clean forward window",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,SWKS,+12.2,0.9,long,skip,2026-08-11T11:44:34+00:00,"semi sector move, thin name-specific read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,CVNA,+12.1,1.1,long,skip,2026-08-11T11:44:34+00:00,"high-beta momentum, covered, chasing",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,NOW,+11.6,0.7,long,skip,2026-08-11T11:44:35+00:00,"mega-cap software earnings pop, covered and arbitraged",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,WDAY,+11.6,0.9,long,skip,2026-08-11T11:44:35+00:00,"large-cap software pop, covered, thin read",skip,,,,sp500
-2026-08-11T11:37:39+00:00,2026-08-10,VRTX,+11.3,1.8,long,skip,2026-08-11T11:44:35+00:00,"5d +11% is diffuse (sector plus Crinetics deal), stock fell on its own Q2, no clean single catalyst",skip,,,,sp500
-2026-08-11T11:38:34+00:00,2026-08-10,AHCO,-51.8,7.0,short,skip,2026-08-11T11:44:35+00:00,"-52% is a real guidance slash / structural DME-reimbursement deterioration, not a quality-name overreaction, no forced-buyer mechanism",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,HZO,+48.4,27.0,long,skip,2026-08-11T11:44:35+00:00,"all-cash 53 buyout (Safe Harbor/Blackstone), spread ~1.75% = merger arb, capped upside, no directional edge",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,QNST,+41.1,2.7,long,skip,2026-08-11T11:44:35+00:00,"small-cap earnings pop +41%, thin float and wide spread, no differentiated mechanism",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,HTZ,+38.6,3.8,long,skip,2026-08-11T11:44:36+00:00,"meme/turnaround volatility, no durable readable catalyst",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,NABL,-36.6,3.6,short,skip,2026-08-11T11:44:36+00:00,"software guide-down, real deceleration in a thin-float small-cap, not an overreaction to fade",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,UTI,-35.3,3.3,short,skip,2026-08-11T11:44:36+00:00,"for-profit education small-cap drop, thin, no clean mechanism",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,LZ,-31.2,2.1,short,skip,2026-08-11T11:44:36+00:00,"LegalZoom guide-down, secular consumer-legal weakness, not a quality-name overreaction",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,MTRN,+30.9,1.0,long,skip,2026-08-11T11:44:36+00:00,"Materion +31% on flat 1.0x volume, no confirming flow, thin read",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,SEDG,-28.6,1.6,short,skip,2026-08-11T11:44:36+00:00,"SolarEdge chronic solar-sector weakness, not a fadeable overreaction",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,SEZL,-27.6,3.0,short,skip,2026-08-11T11:44:37+00:00,"Sezzle BNPL high-flyer momentum unwind, no clean mispricing to read",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,TWLO,+27.2,2.0,long,skip,2026-08-11T11:44:37+00:00,"Twilio earnings pop already +27%, chasing, generic beat no differentiated read",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,CRSR,+26.9,2.0,long,skip,2026-08-11T11:44:37+00:00,"Corsair small-cap pop, thin float, no durable catalyst",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,KTOS,+26.8,1.3,long,skip,2026-08-11T11:44:37+00:00,"Kratos defense-drone momentum +27%, chasing hot sector, already hold defense",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,PAYC,+26.5,1.6,long,skip,2026-08-11T11:44:37+00:00,"Paycom earnings pop +27%, covered, chasing",skip,,,,tail
-2026-08-11T11:38:34+00:00,2026-08-10,CACI,+26.4,1.5,long,skip,2026-08-11T11:44:38+00:00,"defense-IT earnings pop +26%, already hold defense, same macro draw, chasing",skip,,,,tail
-2026-08-12T11:34:20+00:00,2026-08-11,TTD,-29.9,2.2,short,skip,2026-08-12T11:41:15+00:00,already live: short bet registered 2026-08-10,skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,APP,-24.1,1.3,short,skip,2026-08-12T11:41:16+00:00,first-ever guidance miss + downgrades but still 53% growth/66% margin; short a hypergrower on one miss or buy a broken high-flyer both coin-flips - ambiguous,skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,ABNB,+23.4,2.3,long,skip,2026-08-12T11:41:16+00:00,"large-cap earnings pop, arbitraged, extended - thin read",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,HONA,-23.4,1.6,short,skip,2026-08-12T11:41:16+00:00,"Honeywell Aerospace spinoff, new-listing dislocation, no clean basis",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,DVA,-21.8,1.4,short,skip,2026-08-12T11:41:15+00:00,already live: long bet + book position (2026-08-07),skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,CRL,+20.5,1.4,long,take,2026-08-12T11:40:59+00:00,Q2 beat 3.02 vs 2.74 + RAISED FY; FIRST organic growth since Q3'23 and DSA book-to-bill at 4-yr high = CRO demand inflection -> fast momentum-continuation,taken,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,WDC,-20.2,0.8,short,skip,2026-08-12T11:41:16+00:00,memory-cycle macro drop on below-avg volume (0.8x) - not name-specific,skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,NEM,+19.9,1.0,long,skip,2026-08-12T11:41:16+00:00,"gold-miner commodity beta on gold rally - macro, not name-specific",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,DDOG,-14.4,1.1,short,skip,2026-08-12T11:41:17+00:00,"beat+raised guide but sold 17-21% on largest AI customer usage cut + Q3 decel = real forward concern, direction ambiguous, not clean overreaction",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,APA,+13.5,1.2,long,skip,2026-08-12T11:41:17+00:00,"oil E&P, crude/commodity beta - macro",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,PODD,-13.3,1.0,short,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-08-06,skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,CDW,-12.1,0.7,short,skip,2026-08-12T11:41:17+00:00,"IT-reseller drop on below-avg volume (0.7x) - thin, low conviction",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,PSKY,+11.9,0.7,long,skip,2026-08-12T11:41:17+00:00,"Paramount Skydance merger-arb noise, low vol (0.7x) - deal-driven, no edge",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,VEEV,+11.7,1.1,long,skip,2026-08-12T11:41:17+00:00,"large-cap SaaS earnings pop, arbitraged",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,SNDK,-11.0,0.6,short,skip,2026-08-12T11:41:17+00:00,"memory-cycle drop on low vol (0.6x) - macro, thin",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,HST,-10.8,1.6,short,skip,2026-08-12T11:41:18+00:00,"Host Hotels REIT - rate/macro sensitive, no differentiated read",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,VRTX,+10.6,0.7,long,skip,2026-08-12T11:41:18+00:00,"large-cap biopharma pop on low vol (0.7x), arbitraged",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,CVS,-10.5,1.1,short,skip,2026-08-12T11:41:18+00:00,"CVS Health, well-covered, no differentiated read vs consensus",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,BKNG,+9.6,0.6,long,skip,2026-08-12T11:41:18+00:00,"Booking large-cap pop on low vol (0.6x), arbitraged",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,UBER,+9.1,1.2,long,skip,2026-08-12T11:41:18+00:00,"Q2 rev + guide light, stock fell on print; 5d-up is a bounce - mixed mega-cap, arbitraged",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,COR,+9.0,1.0,long,skip,2026-08-12T11:41:19+00:00,"Cencora drug distributor, defensive, arbitraged",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,PSX,+9.0,1.1,long,skip,2026-08-12T11:41:19+00:00,"Phillips 66 refiner - crack-spread/commodity beta, macro",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,GOOGL,-9.0,0.9,short,skip,2026-08-12T11:41:19+00:00,"Alphabet mega-cap - most-arbitraged name, no edge",skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,ISRG,+8.9,1.0,long,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-07-22,skip,,,,sp500
-2026-08-12T11:34:20+00:00,2026-08-11,LLY,+8.9,0.9,long,skip,2026-08-12T11:41:19+00:00,"Eli Lilly mega-cap GLP-1, arbitraged",skip,,,,sp500
-2026-08-12T11:35:12+00:00,2026-08-11,HTZ,+62.3,5.7,long,skip,2026-08-12T11:41:32+00:00,"meme/short-squeeze rip (vol 5.7x), no fundamental mechanism, uninvestable friction",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,HZO,+45.8,7.5,long,skip,2026-08-12T11:41:32+00:00,"MarineMax thin-float spike (vol 7.5x) - illiquid, no clean read",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,UTI,-39.6,2.9,short,skip,2026-08-12T11:41:33+00:00,"for-profit education small-cap - no differentiated read, small-cap friction",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,NABL,-39.5,2.0,short,skip,2026-08-12T11:41:33+00:00,"N-able earnings collapse = real deterioration/guidance cut, small-cap, not overreaction",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,LZ,-35.2,1.1,short,skip,2026-08-12T11:41:33+00:00,"LegalZoom broken-story drop - thin, no edge",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,QNST,+33.7,3.2,long,skip,2026-08-12T11:41:33+00:00,"QuinStreet small-cap performance-marketing spike (vol 3.2x) - illiquid, thin read",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,TWLO,+31.9,1.7,long,skip,2026-08-12T11:41:33+00:00,"beat+raise but already ripped +24% to ~239 = at analyst PTs, move already realized/extended",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,SEDG,-31.7,1.2,short,skip,2026-08-12T11:41:34+00:00,"SolarEdge - solar-policy/structural decline, no edge",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,P,+30.3,2.3,long,skip,2026-08-12T11:41:34+00:00,"small-cap spike (vol 2.3x), unclear catalyst, illiquid",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,DAVE,-27.8,0.9,short,skip,2026-08-12T11:41:34+00:00,Dave Inc fintech small-cap drop on below-avg vol - thin,skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,SEZL,-27.6,2.1,short,skip,2026-08-12T11:41:34+00:00,"Sezzle BNPL small-cap high-vol swing (2.1x) - illiquid, no edge",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,CACI,+27.4,1.1,long,take,2026-08-12T11:40:58+00:00,"fiscal Q4 blowout: EPS 8.91 vs 7.32 + FY27 guide 17% above consensus (EPS 32.96-33.86 vs 28.16, rev 10.65-10.85B vs 9.55B), funded backlog +29% -> multi-week estimate revisions; defense-IT compounder not a meme",taken,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,COLL,-27.3,3.6,short,skip,2026-08-12T11:41:34+00:00,"Collegium small-cap pharma drop (vol 3.6x) - binary/friction, no differentiated read",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,FOUR,-26.2,1.3,short,skip,2026-08-12T11:41:34+00:00,"beat but LOWERED FY guide + Middle East disruption + leverage concern = real guidance cut, not overreaction",skip,,,,tail
-2026-08-12T11:35:12+00:00,2026-08-11,EXTR,-26.1,0.7,short,skip,2026-08-12T11:41:35+00:00,"Extreme Networks drop on low vol (0.7x) - thin, low conviction",skip,,,,tail
+2026-08-11T11:37:39+00:00,2026-08-10,PLTR,+39.5,1.6,long,skip,2026-08-11T11:44:31+00:00,"+39.5% mega-cap AI momentum, crowded and covered, parabolic — no name-specific mispricing a read can exploit",skip,,-1.13,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,ZBRA,+29.6,0.8,long,skip,2026-08-11T11:44:31+00:00,already live long (bet 2026-08-05 post-earnings-drift) — not a new read,skip,,-7.18,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,IT,+27.5,1.2,long,take,2026-08-11T11:44:30+00:00,"Q2 beat-and-raise (rev 1.68B, adj EPS 4.37, op margin +5.6pp, raised FY guide, buyback accel) on a name priced for AI-disruption decline over the past year — narrative-invalidation re-rating, the durable multiple-expansion piece is what the read adds",taken,,-3.03,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,TTD,-26.8,4.2,short,skip,2026-08-11T11:44:31+00:00,already live short (bet 2026-08-10 guide-down continuation),skip,,-5.46,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NEM,+23.0,1.4,long,skip,2026-08-11T11:44:31+00:00,"gold-miner move is macro (gold rally), not name-specific — no differentiated read",skip,,+9.16,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,ABNB,+22.6,2.9,long,skip,2026-08-11T11:44:31+00:00,"large-cap earnings pop already +22%, covered and arbitraged, thin read",skip,,-5.01,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,HONA,-21.7,1.7,short,skip,2026-08-11T11:44:32+00:00,"recent Honeywell-complex spinoff stub, thin and ambiguous catalyst, no clean mechanism",skip,,+6.48,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,DVA,-21.4,1.2,short,skip,2026-08-11T11:44:32+00:00,already live long plus book position (bet 2026-08-07),skip,,-1.80,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CRL,+20.0,1.2,long,skip,2026-08-11T11:44:32+00:00,"Charles River earnings rebound, covered large-cap, +20% already, thin read",skip,,-2.10,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,LDOS,+17.2,1.4,long,skip,2026-08-11T11:44:32+00:00,"defense-IT sector momentum, already hold defense (LMT/RTX/HII), chasing +17% same macro draw",skip,,-5.82,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,WDC,-16.9,1.0,short,skip,2026-08-11T11:44:32+00:00,"memory/semi sector move, not name-specific, thin",skip,,-3.43,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,APP,-16.5,1.0,short,skip,2026-08-11T11:44:33+00:00,"adtech growth-deceleration but already -16% (chasing) and a near-duplicate of live TTD short, same macro draw would shrink effective N",skip,,-5.43,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,PODD,-15.8,1.2,short,skip,2026-08-11T11:44:33+00:00,already live long (bet 2026-08-06),skip,,+5.26,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CMG,-14.2,0.9,short,skip,2026-08-11T11:44:33+00:00,already held (book plus bet 2026-07-31 long),skip,,-12.59,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NRG,-14.1,1.0,short,skip,2026-08-11T11:44:33+00:00,"IPP/power volatility, no clean idiosyncratic catalyst",skip,,+5.57,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,VEEV,+13.8,1.1,long,skip,2026-08-11T11:44:33+00:00,"software up-move, covered large-cap, thin read",skip,,+9.96,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,TPL,-13.7,1.7,short,skip,2026-08-11T11:44:34+00:00,"Texas Pacific Land high-vol royalty name, no clean readable catalyst",skip,,-8.88,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,APTV,-13.0,1.5,short,skip,2026-08-11T11:44:34+00:00,"auto-supplier weakness is cyclical/secular (EV and tariff headwinds), not an overreaction to fade",skip,,+3.86,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,COHR,+12.8,2.1,long,skip,2026-08-11T11:44:34+00:00,"optical/AI semi sector momentum, not name-specific",skip,,-15.67,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,PSKY,+12.8,0.9,long,skip,2026-08-11T11:44:34+00:00,"Paramount-Skydance post-merger, messy special situation, no clean forward window",skip,,+11.16,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,SWKS,+12.2,0.9,long,skip,2026-08-11T11:44:34+00:00,"semi sector move, thin name-specific read",skip,,+22.49,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,CVNA,+12.1,1.1,long,skip,2026-08-11T11:44:34+00:00,"high-beta momentum, covered, chasing",skip,,-1.14,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,NOW,+11.6,0.7,long,skip,2026-08-11T11:44:35+00:00,"mega-cap software earnings pop, covered and arbitraged",skip,,+6.88,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,WDAY,+11.6,0.9,long,skip,2026-08-11T11:44:35+00:00,"large-cap software pop, covered, thin read",skip,,+7.49,,sp500
+2026-08-11T11:37:39+00:00,2026-08-10,VRTX,+11.3,1.8,long,skip,2026-08-11T11:44:35+00:00,"5d +11% is diffuse (sector plus Crinetics deal), stock fell on its own Q2, no clean single catalyst",skip,,-0.23,,sp500
+2026-08-11T11:38:34+00:00,2026-08-10,AHCO,-51.8,7.0,short,skip,2026-08-11T11:44:35+00:00,"-52% is a real guidance slash / structural DME-reimbursement deterioration, not a quality-name overreaction, no forced-buyer mechanism",skip,,-3.28,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,HZO,+48.4,27.0,long,skip,2026-08-11T11:44:35+00:00,"all-cash 53 buyout (Safe Harbor/Blackstone), spread ~1.75% = merger arb, capped upside, no directional edge",skip,,+2.03,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,QNST,+41.1,2.7,long,skip,2026-08-11T11:44:35+00:00,"small-cap earnings pop +41%, thin float and wide spread, no differentiated mechanism",skip,,-11.38,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,HTZ,+38.6,3.8,long,skip,2026-08-11T11:44:36+00:00,"meme/turnaround volatility, no durable readable catalyst",skip,,-24.89,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,NABL,-36.6,3.6,short,skip,2026-08-11T11:44:36+00:00,"software guide-down, real deceleration in a thin-float small-cap, not an overreaction to fade",skip,,-21.03,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,UTI,-35.3,3.3,short,skip,2026-08-11T11:44:36+00:00,"for-profit education small-cap drop, thin, no clean mechanism",skip,,+17.76,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,LZ,-31.2,2.1,short,skip,2026-08-11T11:44:36+00:00,"LegalZoom guide-down, secular consumer-legal weakness, not a quality-name overreaction",skip,,-10.74,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,MTRN,+30.9,1.0,long,skip,2026-08-11T11:44:36+00:00,"Materion +31% on flat 1.0x volume, no confirming flow, thin read",skip,,-9.20,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,SEDG,-28.6,1.6,short,skip,2026-08-11T11:44:36+00:00,"SolarEdge chronic solar-sector weakness, not a fadeable overreaction",skip,,-16.67,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,SEZL,-27.6,3.0,short,skip,2026-08-11T11:44:37+00:00,"Sezzle BNPL high-flyer momentum unwind, no clean mispricing to read",skip,,+3.71,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,TWLO,+27.2,2.0,long,skip,2026-08-11T11:44:37+00:00,"Twilio earnings pop already +27%, chasing, generic beat no differentiated read",skip,,-4.38,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,CRSR,+26.9,2.0,long,skip,2026-08-11T11:44:37+00:00,"Corsair small-cap pop, thin float, no durable catalyst",skip,,-0.81,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,KTOS,+26.8,1.3,long,skip,2026-08-11T11:44:37+00:00,"Kratos defense-drone momentum +27%, chasing hot sector, already hold defense",skip,,-24.49,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,PAYC,+26.5,1.6,long,skip,2026-08-11T11:44:37+00:00,"Paycom earnings pop +27%, covered, chasing",skip,,+4.32,,tail
+2026-08-11T11:38:34+00:00,2026-08-10,CACI,+26.4,1.5,long,skip,2026-08-11T11:44:38+00:00,"defense-IT earnings pop +26%, already hold defense, same macro draw, chasing",skip,,-6.35,,tail
+2026-08-12T11:34:20+00:00,2026-08-11,TTD,-29.9,2.2,short,skip,2026-08-12T11:41:15+00:00,already live: short bet registered 2026-08-10,skip,,-0.24,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,APP,-24.1,1.3,short,skip,2026-08-12T11:41:16+00:00,first-ever guidance miss + downgrades but still 53% growth/66% margin; short a hypergrower on one miss or buy a broken high-flyer both coin-flips - ambiguous,skip,,-5.36,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,ABNB,+23.4,2.3,long,skip,2026-08-12T11:41:16+00:00,"large-cap earnings pop, arbitraged, extended - thin read",skip,,-6.32,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,HONA,-23.4,1.6,short,skip,2026-08-12T11:41:16+00:00,"Honeywell Aerospace spinoff, new-listing dislocation, no clean basis",skip,,+5.05,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,DVA,-21.8,1.4,short,skip,2026-08-12T11:41:15+00:00,already live: long bet + book position (2026-08-07),skip,,-3.08,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CRL,+20.5,1.4,long,take,2026-08-12T11:40:59+00:00,Q2 beat 3.02 vs 2.74 + RAISED FY; FIRST organic growth since Q3'23 and DSA book-to-bill at 4-yr high = CRO demand inflection -> fast momentum-continuation,taken,,+0.68,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,WDC,-20.2,0.8,short,skip,2026-08-12T11:41:16+00:00,memory-cycle macro drop on below-avg volume (0.8x) - not name-specific,skip,,+6.45,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,NEM,+19.9,1.0,long,skip,2026-08-12T11:41:16+00:00,"gold-miner commodity beta on gold rally - macro, not name-specific",skip,,+13.03,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,DDOG,-14.4,1.1,short,skip,2026-08-12T11:41:17+00:00,"beat+raised guide but sold 17-21% on largest AI customer usage cut + Q3 decel = real forward concern, direction ambiguous, not clean overreaction",skip,,+10.55,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,APA,+13.5,1.2,long,skip,2026-08-12T11:41:17+00:00,"oil E&P, crude/commodity beta - macro",skip,,+13.57,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PODD,-13.3,1.0,short,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-08-06,skip,,+8.14,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CDW,-12.1,0.7,short,skip,2026-08-12T11:41:17+00:00,"IT-reseller drop on below-avg volume (0.7x) - thin, low conviction",skip,,-10.53,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PSKY,+11.9,0.7,long,skip,2026-08-12T11:41:17+00:00,"Paramount Skydance merger-arb noise, low vol (0.7x) - deal-driven, no edge",skip,,+8.07,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,VEEV,+11.7,1.1,long,skip,2026-08-12T11:41:17+00:00,"large-cap SaaS earnings pop, arbitraged",skip,,+5.61,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,SNDK,-11.0,0.6,short,skip,2026-08-12T11:41:17+00:00,"memory-cycle drop on low vol (0.6x) - macro, thin",skip,,-8.63,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,HST,-10.8,1.6,short,skip,2026-08-12T11:41:18+00:00,"Host Hotels REIT - rate/macro sensitive, no differentiated read",skip,,+0.49,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,VRTX,+10.6,0.7,long,skip,2026-08-12T11:41:18+00:00,"large-cap biopharma pop on low vol (0.7x), arbitraged",skip,,+1.55,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,CVS,-10.5,1.1,short,skip,2026-08-12T11:41:18+00:00,"CVS Health, well-covered, no differentiated read vs consensus",skip,,-1.40,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,BKNG,+9.6,0.6,long,skip,2026-08-12T11:41:18+00:00,"Booking large-cap pop on low vol (0.6x), arbitraged",skip,,-16.53,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,UBER,+9.1,1.2,long,skip,2026-08-12T11:41:18+00:00,"Q2 rev + guide light, stock fell on print; 5d-up is a bounce - mixed mega-cap, arbitraged",skip,,-3.80,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,COR,+9.0,1.0,long,skip,2026-08-12T11:41:19+00:00,"Cencora drug distributor, defensive, arbitraged",skip,,+5.68,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,PSX,+9.0,1.1,long,skip,2026-08-12T11:41:19+00:00,"Phillips 66 refiner - crack-spread/commodity beta, macro",skip,,+13.89,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,GOOGL,-9.0,0.9,short,skip,2026-08-12T11:41:19+00:00,"Alphabet mega-cap - most-arbitraged name, no edge",skip,,+0.46,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,ISRG,+8.9,1.0,long,skip,2026-08-12T11:41:15+00:00,already live: long bet registered 2026-07-22,skip,,-6.26,,sp500
+2026-08-12T11:34:20+00:00,2026-08-11,LLY,+8.9,0.9,long,skip,2026-08-12T11:41:19+00:00,"Eli Lilly mega-cap GLP-1, arbitraged",skip,,-5.84,,sp500
+2026-08-12T11:35:12+00:00,2026-08-11,HTZ,+62.3,5.7,long,skip,2026-08-12T11:41:32+00:00,"meme/short-squeeze rip (vol 5.7x), no fundamental mechanism, uninvestable friction",skip,,-11.26,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,HZO,+45.8,7.5,long,skip,2026-08-12T11:41:32+00:00,"MarineMax thin-float spike (vol 7.5x) - illiquid, no clean read",skip,,+2.07,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,UTI,-39.6,2.9,short,skip,2026-08-12T11:41:33+00:00,"for-profit education small-cap - no differentiated read, small-cap friction",skip,,+19.65,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,NABL,-39.5,2.0,short,skip,2026-08-12T11:41:33+00:00,"N-able earnings collapse = real deterioration/guidance cut, small-cap, not overreaction",skip,,-6.64,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,LZ,-35.2,1.1,short,skip,2026-08-12T11:41:33+00:00,"LegalZoom broken-story drop - thin, no edge",skip,,-6.06,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,QNST,+33.7,3.2,long,skip,2026-08-12T11:41:33+00:00,"QuinStreet small-cap performance-marketing spike (vol 3.2x) - illiquid, thin read",skip,,-9.63,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,TWLO,+31.9,1.7,long,skip,2026-08-12T11:41:33+00:00,"beat+raise but already ripped +24% to ~239 = at analyst PTs, move already realized/extended",skip,,-7.10,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,SEDG,-31.7,1.2,short,skip,2026-08-12T11:41:34+00:00,"SolarEdge - solar-policy/structural decline, no edge",skip,,-9.52,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,P,+30.3,2.3,long,skip,2026-08-12T11:41:34+00:00,"small-cap spike (vol 2.3x), unclear catalyst, illiquid",skip,,-14.59,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,DAVE,-27.8,0.9,short,skip,2026-08-12T11:41:34+00:00,Dave Inc fintech small-cap drop on below-avg vol - thin,skip,,-6.82,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,SEZL,-27.6,2.1,short,skip,2026-08-12T11:41:34+00:00,"Sezzle BNPL small-cap high-vol swing (2.1x) - illiquid, no edge",skip,,+6.72,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,CACI,+27.4,1.1,long,take,2026-08-12T11:40:58+00:00,"fiscal Q4 blowout: EPS 8.91 vs 7.32 + FY27 guide 17% above consensus (EPS 32.96-33.86 vs 28.16, rev 10.65-10.85B vs 9.55B), funded backlog +29% -> multi-week estimate revisions; defense-IT compounder not a meme",taken,,-5.54,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,COLL,-27.3,3.6,short,skip,2026-08-12T11:41:34+00:00,"Collegium small-cap pharma drop (vol 3.6x) - binary/friction, no differentiated read",skip,,+17.44,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,FOUR,-26.2,1.3,short,skip,2026-08-12T11:41:34+00:00,"beat but LOWERED FY guide + Middle East disruption + leverage concern = real guidance cut, not overreaction",skip,,+4.40,,tail
+2026-08-12T11:35:12+00:00,2026-08-11,EXTR,-26.1,0.7,short,skip,2026-08-12T11:41:35+00:00,"Extreme Networks drop on low vol (0.7x) - thin, low conviction",skip,,+5.95,,tail
 2026-08-13T11:35:41+00:00,2026-08-12,MNST,-51.2,1.5,short,skip,2026-08-13T11:40:19+00:00,"-51pct is a 2-for-1 split artifact (8/10); real move ~-6pct on margin miss, rich 40x P/E — no tradable dislocation",skip,,,,sp500
 2026-08-13T11:35:41+00:00,2026-08-12,TTD,-28.9,1.6,short,skip,2026-08-13T11:40:19+00:00,already open short bet (2026-08-10); not re-betting,skip,,,,sp500
 2026-08-13T11:35:41+00:00,2026-08-12,APP,-27.3,1.4,short,skip,2026-08-13T11:40:20+00:00,"first guidance miss since IPO but tiny top-line miss (1.92 vs 1.94B); direction two-sided (AI-model deceleration vs overdone), crowded/volatile — thin read",skip,,,,sp500
