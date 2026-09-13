@@ -4,6 +4,65 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
+## [SITE 2026-09-13] Design floor — three gaps on the live page, each a small in-repo fix
+
+A deterministic floor checker now runs against the three public sites in this portfolio and
+grades every page on the same fifteen required elements. **This page scores two must-fails and
+one ruled gap** — the most of the three; one sibling site is already at zero. Nothing here
+changes the ledger, the engine, or any number — it is all `research/site.py` chrome, and it is
+**independent of the open OPS item below** (take either first). Everything needed is restated
+below so this item stands alone.
+
+**1. `og:image` — MUST, currently missing.** `render()` emits the full OG block
+(`og:type`/`og:site_name`/`og:title`/`og:description`/`og:url`) but no image, and
+`twitter:card` is `summary`. Required: a **1200×630** card showing the mark + the wordmark
+"Swing Lab" on the page's own `--page` background — the card must look like the masthead, not
+like a generic logo on white. Then switch `twitter:card` to `summary_large_image` and add
+`og:image` (absolute URL) + `og:image:width`/`height`.
+
+Proven recipe from the sibling site that solved the identical problem: write
+a small standalone HTML page that draws the mark and wordmark with the site's own CSS tokens,
+render it headlessly at 1200×630, and commit the PNG. The card then matches the masthead by
+construction and never drifts from it, because it is generated from the same tokens. A
+hand-drawn SVG exported once is the alternative and is also fine — the requirement is the
+dimensions, the content, and that it ships.
+
+**2. An About in reader language — MUST, currently missing.** The checker finds no About
+link, heading, or section. What exists today is the tagline plus the framing paragraph, and
+they are good but thin against the requirement: **what this site is, where its figures come
+from, and who makes it — in a reader's words, with no internal vocabulary** (no "ledger" as
+jargon, no "bets catalogue", no "settle", no "horizon"). A visiting recruiter should be able to
+read it cold and understand that predictions are published before the outcome is known and
+scored mechanically, wins and losses both.
+
+An About *tab* alongside the existing tabs is the natural form here (the sibling site used
+three short panels), but a single `<section id="about">` in reader language satisfies the
+floor. Keep "Not investment advice."
+
+**3. Newsreader for the wordmark and `h1` — ruled requirement, currently `system-ui`.** The
+portfolio's type floor is **Newsreader 600 for wordmark + h1, minimum; the body face is free**.
+This page is `system-ui` throughout (`font-family` in the stylesheet block of `render()`), which
+makes it the one surface below the type floor. Self-host a **latin-subset woff2 (~25 KB)** and
+apply it to `h1.brand` only — the body stays exactly as it is. **Do not link a hosted font**:
+this page's no-third-party-requests property is itself a floor requirement and a font link
+would break it. Vendor the file into this repo; do not reference a file in another repo.
+
+**4. One-line cutover, later — not now.** When the portfolio's front-door site goes live, the
+footer's author link (`research/site.py`, the `<footer>` line) changes from the GitHub profile
+to the front door. One string, and it is *that* project's cutover item — listed here only so it
+is not a surprise.
+
+**How to verify:** the floor checker is deterministic and run from the governing repo; ask for a
+run against `https://guillearria.github.io/swing-lab/` when the fixes are deployed. Target:
+**zero must-fails**. Items 1 and 2 are what the checker grades; item 3 is a ruled requirement it
+does not yet test.
+
+**Provenance:** written into this backlog 2026-09-13 from the portfolio's design standard, which
+was extracted from this site's own v2 pass plus the two sibling sites and ruled by the owner
+2026-09-05. Briefed here rather than kept upstream because a session working in this repo never
+reads the upstream file — which is exactly why these three sat undone for a week after being
+measured.
+
 ## ▶ PICK UP HERE (2026-09-01 — settle double-posts: model reverted + two code guards)
 
 **[OPS 2026-09-01]** — the settle leg pushed 2–4 📋 messages on 4 of 6 nights (08-26, 08-27's
