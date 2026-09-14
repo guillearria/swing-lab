@@ -59,13 +59,11 @@ from datetime import date, timedelta
 
 
 def _busdays(start: date, end: date) -> int:
-    """Weekday count in [start, end) — stdlib, no numpy (digest stays dependency-light)."""
-    full, rem = divmod(max((end - start).days, 0), 7)
-    n = full * 5
-    for i in range(rem):
-        if (start + timedelta(days=full * 7 + i)).weekday() < 5:
-            n += 1
-    return n
+    """TRADING-day count in [start, end) — weekdays minus NYSE holidays (research/tradingdays,
+    stdlib). Was a bare weekday count until 2026-09-13: the day after Labor Day it flagged
+    both cohorts' bars as "2 weekdays behind the last scan" — a false ⚠️ on both legs."""
+    from research import tradingdays
+    return tradingdays.count(start, end)
 
 log = logging.getLogger(__name__)
 LEDGERS = ("research/bets_catalogue.csv", "research/movers_ledger.csv", "research/orders.csv")

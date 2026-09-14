@@ -20,7 +20,7 @@ Verdict codes:
   NULL    — hit its own kill-criterion without clearing the bar; stopped expanding
 """
 import sys
-from datetime import date, timedelta
+from datetime import date
 
 # (family, name, verdict, beats_spy_riskadj)   beats_spy: True/False/None(pending|blocked)
 PROBES = [
@@ -63,12 +63,9 @@ def _agg(vals: list[float]):
 
 
 def _add_trading_days(d: date, n: int) -> date:
-    """Approx: step n weekdays forward from d (ignores holidays — a maturity HINT, not exact)."""
-    while n > 0:
-        d += timedelta(days=1)
-        if d.weekday() < 5:  # Mon-Fri
-            n -= 1
-    return d
+    """Step n trading days forward from d — weekdays minus NYSE holidays (research/tradingdays)."""
+    from research import tradingdays
+    return tradingdays.add(d, n)
 
 
 def _first_maturity(rows, horizon_of) -> date | None:

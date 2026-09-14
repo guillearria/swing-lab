@@ -387,3 +387,11 @@ def test_wilcoxon_p_is_withheld_below_the_bar(capsys, monkeypatch):
 
     B.show([_closed("T%d" % i, "long", "+2.00") for i in range(B.BAR_N)])
     assert "p=" in capsys.readouterr().out
+
+
+def test_next_maturity_skips_nyse_holidays(frozen):
+    """A 21d bet logged Thu 2026-08-13 spans Labor Day (Mon 09-07): the exit bar is Mon 09-14,
+    not the bare-weekday Fri 09-11 the digest printed on 2026-09-11."""
+    rows = [{"logged_at": "2026-08-13T11:40:55+00:00", "ticker": "TWLO", "horizon_d": "21",
+             "status": "open"}]
+    assert B.next_maturity(rows) == ("2026-09-14", "TWLO")

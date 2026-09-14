@@ -8,6 +8,7 @@ COUNTS, not row identities, so the collision class cannot reach it.
 import pytest
 
 from research import digest as D
+from research import tradingdays as T
 
 # Captured before the autouse fixture below can stub them out, so the sections that read the
 # real repo/filesystem can still be tested directly.
@@ -442,7 +443,7 @@ def test_overdue_bet_escalates_but_holiday_drift_does_not(monkeypatch):
         back = 0
         while busdays_elapsed > 0:               # walk back that many weekdays
             back += 1
-            if (d - timedelta(days=back)).weekday() < 5:
+            if T.is_trading_day(d - timedelta(days=back)):
                 busdays_elapsed -= 1
         return {"logged_at": (d - timedelta(days=back)).isoformat(), "ticker": ticker,
                 "horizon_d": str(horizon), "status": "open", "benchmark": "SPY",
@@ -463,7 +464,7 @@ def test_bets_line_counts_the_rest_of_the_settle_week(monkeypatch):
         d, back, gone = date.today(), 0, horizon - busdays_left
         while gone > 0:
             back += 1
-            if (d - timedelta(days=back)).weekday() < 5:
+            if T.is_trading_day(d - timedelta(days=back)):
                 gone -= 1
         return {"logged_at": (d - timedelta(days=back)).isoformat(), "ticker": ticker,
                 "horizon_d": str(horizon), "status": "open", "benchmark": "SPY",
@@ -600,7 +601,7 @@ def test_feed_section_fresh_bar_and_full_coverage_silent(tmp_path, monkeypatch):
     from datetime import date, timedelta
     d = date.today()
     prev = d - timedelta(days=1)
-    while prev.weekday() >= 5:
+    while not T.is_trading_day(prev):
         prev -= timedelta(days=1)
     _feed_json(tmp_path, monkeypatch,
                {"last_ok": d.isoformat(), "last_bar": prev.isoformat(),
@@ -639,10 +640,10 @@ def test_feed_section_frozen_bars_with_live_scan_fires_at_the_threshold(tmp_path
     from datetime import date, timedelta
     d = date.today()
     prev = d - timedelta(days=1)
-    while prev.weekday() >= 5:
+    while not T.is_trading_day(prev):
         prev -= timedelta(days=1)
     prev2 = prev - timedelta(days=1)
-    while prev2.weekday() >= 5:
+    while not T.is_trading_day(prev2):
         prev2 -= timedelta(days=1)                # 2 weekdays behind last_ok on ANY run day
     _feed_json(tmp_path, monkeypatch,
                {"last_ok": d.isoformat(), "last_bar": prev2.isoformat(),
@@ -660,10 +661,10 @@ def test_feed_section_dead_scan_flags_on_the_second_missed_weekday(tmp_path, mon
     from datetime import date, timedelta
     d = date.today()
     prev = d - timedelta(days=1)
-    while prev.weekday() >= 5:
+    while not T.is_trading_day(prev):
         prev -= timedelta(days=1)
     prev2 = prev - timedelta(days=1)
-    while prev2.weekday() >= 5:
+    while not T.is_trading_day(prev2):
         prev2 -= timedelta(days=1)          # last scan 2 weekdays back = 2nd missed run
     _feed_json(tmp_path, monkeypatch,
                {"last_ok": prev2.isoformat(), "last_bar": prev2.isoformat(),
@@ -916,3 +917,46 @@ def test_no_read_is_due_on_a_weekend(monkeypatch, tmp_path):
                        "2026-08-07,read,DELIVERED\n2026-08-08,settle,DELIVERED\n",
                        (2026, 8, 8, 22, 30))          # Saturday
     assert actions == []
+
+
+# ------------------------------------------------------------- holidays (2026-09-13)
+
+def test_feed_section_labor_day_gap_is_not_stale(tmp_path, monkeypatch):
+    """The live false alarm of Tue 2026-09-08: scan ok on 09-08, newest bar Fri 09-04, Mon
+    09-07 = Labor Day. A weekday count read 2 and fired a DO-NOW on BOTH legs; trading-day
+    arithmetic reads 1 — the healthy day-after-a-holiday shape is quiet."""
+    from datetime import date
+
+    class _Tue(date):
+        @classmethod
+        def today(cls):
+            return cls(2026, 9, 8)
+
+    monkeypatch.setattr(D, "date", _Tue)
+    _feed_json(tmp_path, monkeypatch,
+               {"last_ok": "2026-09-08", "last_bar": "2026-09-04",
+                "n_ok": 503, "n_total": 503})
+    assert _REAL_FEED() == ([], [])
+
+
+def test_bets_line_walks_over_a_holiday(monkeypatch):
+    """TWLO, logged Thu 2026-08-13 for 21 trading days: the weekday walk said Fri 09-11 (and
+    the digest printed it); Labor Day makes the 21st bar Mon 09-14."""
+    from datetime import date
+
+    from research import bets
+
+    class _Sat(date):
+        @classmethod
+        def today(cls):
+            return cls(2026, 9, 12)
+
+    monkeypatch.setattr(D, "date", _Sat)
+    monkeypatch.setattr(bets, "date", _Sat)
+    monkeypatch.setattr(bets, "_load", lambda: [
+        {"logged_at": "2026-08-13T11:40:55+00:00", "ticker": "TWLO", "horizon_d": "21",
+         "status": "open", "excess_pct": "", "benchmark": "IGV", "direction": "long",
+         "pattern_tag": ""}])
+    actions, lines = _REAL_BETS()
+    assert actions == []
+    assert lines == ["📈 next scores Mon 09-14 (TWLO)"]

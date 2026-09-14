@@ -20,7 +20,7 @@ import math
 import os
 import re
 import sys
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timezone
 from statistics import mean, median
 
 from research import prices
@@ -288,10 +288,10 @@ def next_maturity(rows: list[dict]) -> tuple[str, str] | None:
     edge prior, is most days. Nothing computed this before, so the digest could say "nothing to
     do" but never "and here is the date that changes".
 
-    horizon_d counts TRADING days (bets.settle scores on trading bars), so this walks weekdays
-    forward. Market holidays can only push a real settlement LATER, never earlier — and `_score`
-    additionally needs the exit bar COMPLETE, which costs another trading day — so the digest
-    renders it as ">=" rather than a promise.
+    horizon_d counts TRADING days (bets.settle scores on trading bars), so this walks trading
+    days forward — weekdays minus NYSE holidays (research/tradingdays; a bare weekday walk ran
+    a day early after every holiday until 2026-09-13). The date is the EXIT bar's day; `_score`
+    needs that bar COMPLETE, so the card itself lands on the next run — a floor, not a promise.
 
     Rows that have ALREADY matured are skipped. They are not "next": a bet past its horizon and
     still open is either settling today or stuck, and the digest has a separate STUCK alarm for
@@ -306,11 +306,8 @@ def next_maturity(rows: list[dict]) -> tuple[str, str] | None:
             d, left = date.fromisoformat(r["logged_at"][:10]), int(r["horizon_d"])
         except Exception:                 # a hand-edited row must not take the whole line down
             continue
-        while left > 0:
-            d += timedelta(days=1)
-            if d.weekday() < 5:
-                left -= 1
-        iso = d.isoformat()
+        from research import tradingdays
+        iso = tradingdays.add(d, left).isoformat()   # holiday-aware since 2026-09-13
         if iso >= today and (out is None or iso < out[0]):
             out = (iso, r["ticker"])
     return out
