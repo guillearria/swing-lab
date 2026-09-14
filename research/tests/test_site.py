@@ -4,6 +4,7 @@ FULL catalogue must be on the page (filters are views, never removals), ledger p
 escaped, internal method language must NOT leak to the end user, and the module must never
 touch the real-dollar book (publishable by construction)."""
 import inspect
+import os
 
 from research import site
 
@@ -116,3 +117,39 @@ def test_write_creates_the_page(tmp_path, monkeypatch):
     assert "Swing Lab" in html and "The forward ledger" in html
     assert "github.com/guillearria/swing-lab" in html
     assert "Not investment advice." in html
+
+
+def test_design_floor_og_image_about_and_display_face():
+    """Portfolio design floor (HQ checker F6/F9 + ruled R2), shipped 2026-09-13: a 1200×630
+    og:image generated from the masthead's own source, an About tab in reader language, and
+    Newsreader 600 self-hosted for the wordmark — with NO third-party request on first paint
+    (a hosted font link would break a floor requirement of its own)."""
+    import re
+    page = site.render(BETS)
+    assert 'property="og:image" content="https://guillearria.github.io/swing-lab/og-image.png"' in page
+    assert 'property="og:image:width" content="1200"' in page
+    assert 'property="og:image:height" content="630"' in page
+    assert 'name="twitter:card" content="summary_large_image"' in page
+    assert 'data-tab="about"' in page and '<section id="about">' in page and "<h2>About</h2>" in page
+    about = page.split('<section id="about">')[1].split("</section>")[0]
+    for jargon in ("ledger", "settle", "horizon", "catalogue", "pre-regist"):
+        assert jargon not in about.lower(), jargon          # reader language only
+    assert "investment advice" in about
+    assert "@font-face" in page and 'url("fonts/newsreader-600-latin.woff2")' in page
+    assert 'rel="preload" href="fonts/newsreader-600-latin.woff2"' in page
+    assert not re.search(r'(href|src|url\()\s*=?\s*["\']?https?://fonts\.', page)
+    assert not re.search(r'url\(\s*["\']?https?://', page)  # no cross-origin CSS fetch at all
+    # the shipped assets the tags point at
+    png = open("docs/og-image.png", "rb").read()
+    assert png[:8] == b"\x89PNG\r\n\x1a\n"
+    assert (int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")) == (1200, 630)
+    assert open("docs/fonts/newsreader-600-latin.woff2", "rb").read(4) == b"wOF2"
+    assert os.path.exists("docs/fonts/OFL.txt")
+
+
+def test_og_card_is_the_masthead_in_light_tokens():
+    card = site.og_card("file:///x/newsreader.woff2")
+    assert site._MARK in card and "Swing Lab" in card and "Newsreader" in card
+    assert "prefers-color-scheme" not in card            # deterministic: light tokens only
+    assert "--page: #f9f9f7" in card and 'url("file:///x/newsreader.woff2")' in card
+    assert "width: 1200px; height: 630px" in card

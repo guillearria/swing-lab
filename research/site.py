@@ -16,7 +16,13 @@ not a feature. What the page keeps, by construction:
   unchanged ledger renders byte-identical HTML and push_ledgers' no-op skip keeps working.
 - Standing "Not investment advice." framing.
 
-  python3 -m research.site      # (re)generate docs/index.html — the only command
+  python3 -m research.site      # (re)generate docs/index.html — the only daily command
+  scripts/og_image.sh           # one-off: re-render docs/og-image.png after a masthead change
+
+Design floor (portfolio standard, shipped 2026-09-13): og:image card generated from the
+masthead's own source (`og_card`), an About tab in reader language, and Newsreader 600 for
+the wordmark only — self-hosted under docs/fonts/ (OFL), never a hosted font link, because
+the page's no-third-party-requests property is itself a floor requirement.
 """
 import html
 import math
@@ -403,6 +409,45 @@ def _catalogue_table(bets_rows: list[dict]) -> str:
             '</tr></thead><tbody>' + "".join(rows_html) + "</tbody></table></div>")
 
 
+_MARK = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" '
+         'focusable="false"><rect width="32" height="32" rx="7" fill="#1a1a19"/><polyline '
+         'points="6,22 13,12 19,17 26,7" fill="none" stroke="#3987e5" stroke-width="3.2" '
+         'stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def og_card(font_url: str = "fonts/newsreader-600-latin.woff2") -> str:
+    """The 1200×630 social card as a standalone page: the masthead's own mark, wordmark, face
+    and LIGHT tokens (the `:root` default — the dark block is sliced off so the render is the
+    same on every machine). `scripts/og_image.sh` screenshots it into docs/og-image.png; the
+    card is GENERATED from the same source as the masthead so it cannot drift from it
+    (design floor F6, 2026-09-13). PURE (no I/O — testable)."""
+    light = _CSS_TOKENS.split("@media")[0]
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+{light}
+@font-face {{ font-family: Newsreader; font-style: normal; font-weight: 600;
+              src: url("{font_url}") format("woff2"); }}
+* {{ box-sizing: border-box; margin: 0; }}
+html, body {{ width: 1200px; height: 630px; overflow: hidden; }}
+body {{ background: var(--page); color: var(--ink);
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }}
+.card {{ position: absolute; inset: 0; padding: 0 96px; display: flex; flex-direction: column;
+         justify-content: center; }}
+.brand {{ display: flex; align-items: center; gap: 30px; }}
+.brand svg {{ width: 112px; height: 112px; display: block; }}
+.brand span {{ font-family: Newsreader, Georgia, "Times New Roman", serif; font-weight: 600;
+               font-size: 112px; line-height: 1; letter-spacing: -0.01em; }}
+.tag {{ color: var(--ink-2); font-size: 34px; line-height: 1.35; max-width: 960px; margin-top: 44px; }}
+.tabs {{ color: var(--muted); font-size: 22px; letter-spacing: 0.12em; text-transform: uppercase;
+         margin-top: 40px; }}
+</style></head><body><div class="card">
+<div class="brand">{_MARK}<span>Swing Lab</span></div>
+<p class="tag">Timestamped market predictions, published before the outcome is known and
+scored mechanically against a benchmark. Wins and losses both count.</p>
+<p class="tabs">Predictions · Performance · About</p>
+</div></body></html>
+"""
+
+
 def render(bets_rows: list[dict]) -> str:
     """The whole page from the catalogue. PURE (no I/O — testable)."""
     through = data_through(bets_rows)
@@ -424,9 +469,16 @@ Not investment advice.">
 <meta property="og:description" content="Timestamped market predictions, published before the
 outcome is known and scored mechanically. Wins and losses both count. Not investment advice.">
 <meta property="og:url" content="https://guillearria.github.io/swing-lab/">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://guillearria.github.io/swing-lab/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Swing Lab — the forward ledger: timestamped market predictions, scored after the fact">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="fonts/newsreader-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 {_CSS_TOKENS}
+@font-face {{ font-family: Newsreader; font-style: normal; font-weight: 600; font-display: swap;
+              src: url("fonts/newsreader-600-latin.woff2") format("woff2"); }}
 * {{ box-sizing: border-box; margin: 0; }}
 body {{ background: var(--page); color: var(--ink); line-height: 1.5; padding: 24px 16px 48px;
        font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }}
@@ -438,8 +490,8 @@ a:hover {{ text-decoration-thickness: 2px; }}
 a:focus-visible {{ outline: 2px solid var(--link); outline-offset: 2px; border-radius: 2px; }}
 .masthead {{ max-width: 860px; margin: 0 auto 14px; display: flex; align-items: flex-start;
              justify-content: space-between; gap: 12px; flex-wrap: wrap; }}
-h1.brand {{ display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 26px;
-            letter-spacing: -0.01em; }}
+h1.brand {{ display: flex; align-items: center; gap: 10px; font-size: 28px; letter-spacing: -0.01em;
+            font-family: Newsreader, Georgia, "Times New Roman", serif; font-weight: 600; }}
 .brand svg {{ width: 28px; height: 28px; display: block; }}
 .masthead nav {{ display: flex; gap: 14px; font-size: 13.5px; padding-top: 8px; }}
 .tagline {{ color: var(--ink-2); font-size: 14.5px; margin: 6px 0 2px; max-width: 62ch; }}
@@ -496,7 +548,7 @@ footer {{ color: var(--muted); font-size: 13px; text-align: center; }}
 
 <header class="masthead">
   <div>
-    <h1 class="brand"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect width="32" height="32" rx="7" fill="#1a1a19"/><polyline points="6,22 13,12 19,17 26,7" fill="none" stroke="#3987e5" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg> Swing Lab</h1>
+    <h1 class="brand">{_MARK} Swing Lab</h1>
     <p class="tagline">The forward ledger — timestamped market predictions, logged before
 the outcome and scored mechanically against a benchmark. None are removed.</p>
     <p class="muted">Data through {_e(through) or "—"} · Not investment advice.</p>
@@ -512,7 +564,7 @@ the outcome and scored mechanically against a benchmark. None are removed.</p>
 </section>
 
 <div id="tabs"><button data-tab="predictions" class="on">Predictions</button><button
-  data-tab="performance">Performance</button></div>
+  data-tab="performance">Performance</button><button data-tab="about">About</button></div>
 
 <section id="predictions">
 <h2>Predictions</h2>
@@ -529,6 +581,27 @@ no signal here has been shown to make money.</p>
 <p class="muted">Across settled predictions, percentage points.</p>
 {_svg_curve(pts)}
 {_svg_bars(pts)}
+</section>
+
+<section id="about">
+<h2>About</h2>
+<h3>What this is</h3>
+<p>Swing Lab publishes stock market predictions before their outcomes are known. Each one
+names a company, a direction, a time window and the benchmark it has to beat, with the
+reasoning written down at the time. When the window closes, the result is scored
+automatically against that benchmark. Wins and losses both stay on the page, and nothing is
+removed or revised afterwards.</p>
+<h3>Where the figures come from</h3>
+<p>Prices are daily closing prices from public market data. A prediction's score is its own
+return over the window minus the benchmark's return over the same days, so a call only
+counts as a win when it did better than simply holding the benchmark. The scoring is done by
+code on a fixed daily schedule, not by hand, and the running total on the Performance tab
+is the sum of those scores.</p>
+<h3>Who makes it</h3>
+<p>Built by <a href="https://github.com/guillearria">Guillermo Arria-Devoe</a> as a research
+project in making predictions honestly: state the call first, let the outcome decide. The
+project is at the hypothesis stage and no method here has been shown to make money. Nothing
+on this page is investment advice.</p>
 </section>
 
 <footer>Project code on <a href="https://github.com/guillearria/swing-lab">GitHub</a> ·
