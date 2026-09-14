@@ -1,9 +1,21 @@
 """Tunables + secrets for the research capture layer — one tiny place."""
 
 import os
-from dotenv import load_dotenv
 
-load_dotenv()  # read .env (gitignored)
+# python-dotenv is a LOCAL convenience (it reads the gitignored .env); the cloud env sets the
+# TELEGRAM_* variables directly and never needs it. It must therefore never be able to kill
+# the deterministic path: on 2026-08-07 AND 2026-09-11 a cold cloud container lacked the
+# package, this hard import died, and everything that imports config died with it — movers
+# settle, orders, pulse, the digest PUSH and the 🚨 heartbeat — so the run went SILENT (no 📋,
+# no alarm) while its commit landed and looked healthy. daily.sh's pip guard (08-08) did not
+# save the 09-11 run. Optional import: without the package, os.environ is the whole config.
+try:
+    from dotenv import load_dotenv
+except ImportError:                      # cold container — see above
+    def load_dotenv(*_a, **_k) -> bool:  # same signature, reads nothing
+        return False
+
+load_dotenv()  # read .env (gitignored) when the package is present
 
 ALPHA_VANTAGE_API_KEY = os.getenv("ALPHA_VANTAGE_API_KEY")
 

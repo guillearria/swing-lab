@@ -28,8 +28,16 @@ fi
 # push AND the heartbeat on the same import (notify → config → dotenv) — no message, no alarm,
 # no stamp (the 08-07 strand; FINDINGS 2026-08-08). The watchdog prompt already installs deps;
 # the routine that matters most did not. Quiet no-op on a warm container.
-python3 -c "import dotenv, requests, yfinance, pandas" 2>/dev/null \
-  || pip install -q -r requirements.txt >> cron.log 2>&1
+# 2026-09-11: the guard fired and the run STILL died on `import dotenv` — and cron.log held
+# nothing about it, because the probe's stderr was discarded and pip's outcome was never
+# named. Now both are logged, and pip runs under the SAME interpreter the probe used
+# (`python3 -m pip`, not a bare `pip` that may belong to another Python). config.py no
+# longer hard-requires dotenv either, so this guard is belt to that fix's braces.
+if ! python3 -c "import dotenv, requests, yfinance, pandas" 2>>cron.log; then
+  echo "deps: probe failed — installing requirements.txt" >> cron.log
+  python3 -m pip install -q -r requirements.txt >> cron.log 2>&1 \
+    || echo "deps: pip install FAILED (exit $?) — steps that import these may die" >> cron.log
+fi
 
 # Telegram (research/notify.py, fail-soft — needs TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID in
 # the env): settlements push their own 🚨 message from the settle paths; the 📋 digest below
