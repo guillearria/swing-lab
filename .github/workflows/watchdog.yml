@@ -1,0 +1,27 @@
+name: watchdog
+# The EXTERNAL dead-man's switch, OFF the platform it watches [BACKLOG OPS 2026-08-05 (2); built
+# 2026-09-13]. Goes RED (GitHub emails the owner) and pushes 🚨 to Telegram (repo secrets) when:
+#   - no commit has touched the ledgers in 36h (the routines stopped running), or
+#   - a due settle/read push has no DELIVERED stamp in research/data/push_log.csv (the run
+#     committed but its message died — the 09-11 shape, invisible to a commit watcher).
+# Silent when healthy. Stdlib only: no pip, ~20 s. Replaces the Haiku cloud routine.
+on:
+  schedule:
+    - cron: '30 12 * * *'   # after the weekday read (11:30 UTC) has pushed and stamped
+    - cron: '30 23 * * *'   # after the settle (22:35 UTC, ~2 min) has pushed and stamped
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  watchdog:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # last_commit_epoch reads the watched ledgers' history
+      - name: watchdog
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python3 -m research.watchdog --notify

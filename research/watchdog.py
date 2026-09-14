@@ -8,12 +8,17 @@ This checks the one artifact a live pipeline cannot fake: the timestamp of the l
 touching the ledgers / equity log. Run it from a SEPARATE cloud routine, on its own schedule,
 in a fresh session — the whole point is that it fails independently of what it watches.
 
-HONEST LIMIT: this narrows the blind spot, it does not close it. The watchdog only reports
-while the watchdog itself runs; if the scheduling platform dies, both go with it and nothing
-here says so. Only an off-platform monitor would cover that, and we have not bought one.
+OFF-PLATFORM since 2026-09-13: this runs as a GitHub Action (`.github/workflows/watchdog.yml`,
+twice daily, stdlib only, no pip) — a different platform from the cloud routines it watches, so
+a dead routine platform no longer kills the alarm with the pipeline. It also inherited the
+push-log check the daily digest already runs (`digest._pushlog_section`): a due settle or read
+push with no DELIVERED stamp is the failure a commit-watcher cannot see — the 09-11 settle
+committed on time and pushed nothing, and nothing alarmed for 24 h. A red run emails the
+owner by itself; the 🚨 Telegram push rides on the repo's TELEGRAM_* secrets. Silent when
+healthy, by contract (🚨 means failure only).
 
   python3 -m research.watchdog             # print the verdict
-  python3 -m research.watchdog --notify    # print + 🚨 Telegram push when stale
+  python3 -m research.watchdog --notify    # print + 🚨 Telegram push when anything is wrong
 """
 import logging
 import subprocess
@@ -57,16 +62,34 @@ def verdict(last_epoch: int | None, now_epoch: float, stale_h: int = STALE_H) ->
     return False, f"✅ watchdog: last ledger commit {hours:.0f}h ago (threshold {stale_h}h)"
 
 
+def pushlog_actions() -> list[str]:
+    """The digest's own delivery check, judged on the full calendar for BOTH legs (no
+    composing leg here). A broken check is itself an alarm, never a silent pass."""
+    try:
+        from research import digest
+        actions, _ = digest._pushlog_section("")
+        return list(actions)
+    except Exception as e:                      # import/parse death → say so, loudly
+        return [f"push-log check could not run ({type(e).__name__}: {e})"]
+
+
+def compose(stale: bool, msg: str, actions: list[str]) -> tuple[bool, str]:
+    """(alarm, text). PURE. Commit staleness and undelivered pushes are ONE verdict: any
+    failure is a 🚨; a healthy day is the single ✅ line."""
+    lines = ([msg] if stale else []) + [f"🚨 WATCHDOG: {a}" for a in actions]
+    return (True, "\n".join(lines)) if lines else (False, msg)
+
+
 def run(argv: list[str]) -> int:
     stale, msg = verdict(last_commit_epoch(), time.time())
-    print(msg)
-    # Push ONLY when stale: a healthy watchdog stays silent so it never competes with the
+    alarm, text = compose(stale, msg, pushlog_actions())
+    print(text)
+    # Push ONLY on alarm: a healthy watchdog stays silent so it never competes with the
     # digest for attention. The digest is the daily proof-of-life; this is the exception.
-    if stale and "--notify" in argv:
+    if alarm and "--notify" in argv:
         from research import notify
-        if not notify.send(msg):
-            return 1
-    return 1 if stale else 0
+        notify.send(text)                       # fail-soft; the red exit is the alarm of record
+    return 1 if alarm else 0
 
 
 if __name__ == "__main__":

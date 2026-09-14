@@ -42,3 +42,39 @@ def test_watched_set_holds_a_file_written_every_day_including_weekends():
     """
     assert "research/data/push_log.csv" in W.WATCHED
     assert "research/book_equity.csv" not in W.WATCHED     # frozen evidence, never written again
+
+
+def test_compose_folds_undelivered_pushes_into_the_verdict():
+    """[2026-09-13] the push-log check joins the commit check: a settle that committed on time
+    but never delivered (09-11) is an alarm, and any failure is one 🚨 text."""
+    from research import watchdog as W
+    ok = "✅ watchdog: last ledger commit 3h ago (threshold 36h)"
+    assert W.compose(False, ok, []) == (False, ok)
+    alarm, text = W.compose(False, ok, ["the settle digest for 2026-09-11 was never confirmed delivered (x)"])
+    assert alarm and text.startswith("🚨 WATCHDOG: the settle digest for 2026-09-11")
+    alarm, text = W.compose(True, "🚨 WATCHDOG: no ledger commit for 40h", ["a"])
+    assert alarm and text.count("🚨") == 2
+
+
+def test_run_exits_red_on_an_undelivered_push_and_never_sends_when_healthy(monkeypatch):
+    from research import watchdog as W
+    import research.notify as N
+    sent = []
+    monkeypatch.setattr(N, "send", lambda text, **k: sent.append(text) or True)
+    monkeypatch.setattr(W, "last_commit_epoch", lambda paths=W.WATCHED: W.time.time() - 3600)
+    monkeypatch.setattr(W, "pushlog_actions", lambda: [])
+    assert W.run(["--notify"]) == 0 and sent == []          # healthy: silent, green
+    monkeypatch.setattr(W, "pushlog_actions", lambda: ["the read brief for 2026-09-14 was never confirmed delivered"])
+    assert W.run(["--notify"]) == 1 and len(sent) == 1 and "read brief" in sent[0]
+
+
+def test_watchdog_imports_on_a_bare_runner(monkeypatch):
+    """The Action installs nothing: watchdog → digest → notify → config must import with
+    every third-party module absent (requests/yfinance/pandas/dotenv)."""
+    import importlib, sys
+    for m in ("requests", "yfinance", "pandas", "dotenv"):
+        monkeypatch.setitem(sys.modules, m, None)
+    for m in ("research.config", "research.notify", "research.digest", "research.watchdog"):
+        monkeypatch.delitem(sys.modules, m, raising=False)
+    W = importlib.import_module("research.watchdog")
+    assert isinstance(W.pushlog_actions(), list)         # runs end-to-end on the real push log
