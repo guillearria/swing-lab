@@ -2851,3 +2851,36 @@ SCAN LEARNED WHAT A STOCK SPLIT LOOKS LIKE.**
   Reproduce: `gh run list --workflow=watchdog.yml` · `pytest research/tests/test_watchdog.py
   research/tests/test_movers.py` · the nine-name probe recomputes from `prices.bars_after`
   and `momentum.compute` (config.SPLIT_*).
+
+**2026-09-14 · [ARC 5 #16] MILESTONE REVIEW AT n=10 SETTLED LONGS — REACHABILITY IS FINE, THE
+VERDICT LOOK IS TWO WEEKS OUT, AND [ORDERS #1] IS THE ONE BAR MISSING AN ARM.**
+Absorbed into the read run per [ARC 5 #12a], not scheduled. Nothing here is self-approved; the
+one proposal below is a DRAFT for the owner. Live numbers: `python3 -m research.engine`.
+- **Pooled verdict [ARC 5 #7 · #14] — reachable, and SOON.** Computing each open row's maturity
+  from its own `logged_at` + `horizon_d` in weekdays: 20 more mature by **2026-09-28**, so the
+  ONE LOOK at N≥30 fires on a settle run roughly two weeks from now. Stated plainly BEFORE it
+  lands, because [ARC 5 #14] makes a FAIL **final** and forbids recomputing at a larger n: the
+  pool is presently well BELOW the bar (median and beat-rate both short of median>+1% /
+  beat>55%; see the engine). **No goalpost moves, no bar softens, no look is deferred** — that
+  is the whole content of #14, and naming the likely outcome in advance is the opposite of
+  p-hacking only if nothing changes afterwards. Kill date 2027-06-30 is not the binding
+  constraint; the maturity wall is.
+- **[ORDERS #1] band diagnostic — N is reachable, the BAR is not.** 21 orders filled, **0
+  expired**, 2 resolved at 21d. The 19 unresolved fills all resolve by ~mid-October, so N≥20 by
+  the 2026-12-31 deadline is comfortable. But the bar compares the EXPIRED median against the
+  FILLED median (+3pp), and with a 21/21 fill rate the expired arm is **empty** — the
+  comparison is uncomputable at any N. This is the [ARC 3 #1] shape the SKILL rule was written
+  for ("check at WRITE time whether the bar is reachable"), caught this time by arithmetic
+  rather than by a calendar running out. **DRAFT for the owner, not adopted:** at the
+  2026-12-31 audit, declare the +3pp comparison UNREACHABLE-AS-WRITTEN and either re-scope it
+  openly to a fill-rate/entry-advantage statement that one arm CAN answer, or retire it. Declare,
+  don't decorate.
+- **Mix verdict [ARC 5 #12a].** `post-earnings-drift` was 9 of the last 15 catalogue rows (60%)
+  before this run and this run added one more. Driver: ENVIRONMENT more than habit — the
+  late-August/early-September window is the fiscal-quarter tail for retailers and software, so
+  the candidate pool itself is drift-shaped. Habit is the honest second half of the answer: the
+  read reaches for the shape it knows. Named, not corrected — forcing diversity would dilute the
+  pool under test [ARC 5 #10].
+- **New-hypothesis / re-arm proposals: none warranted this milestone.** The one live question
+  (does the READ beat its benchmark) is two weeks from its own answer; opening a second one
+  before that lands would be building for a future that has not arrived.
