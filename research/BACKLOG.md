@@ -28,17 +28,24 @@ what's queued, and what NOT to touch — in one screen. Newest first. Holds no l
 - **Branch litter:** 19 merged `origin/claude/*` branches (the cloud stop hook, one per run;
   14 were deleted 09-01). Deleting remote refs is gated in an agent session — it is a human
   `git push origin --delete …`. WILL keep recurring nightly.
-**OPEN — the calendar pre-check in the settle loops is STILL NOT BUILT.** The 09-02 proposal
-(skip the fetch when `tradingdays.count(logged_day, today) < h`; 3,968 → ~50 chart calls,
-movers settle < 1 min) was never implemented — `movers.settle` and `bets.settle` still fetch
-every unmatured row every day, which is why the script runs 17–20 min and why every timing edge
-sits near midnight UTC. The primitive now exists; ~6 lines + one test per loop. Propose → go.
-**WATCH 09-14:** the read run carries the n=10 milestone review; the settle 📈 should read
-"TWLO Mon 09-14" (its card lands Tue) with NO ⚠️. **Do NOT:** hand-edit `docs/og-image.png`
+- **The settle calendar pre-check — proposed 09-02, BUILT tonight (11863cf).** Both loops had
+  kept fetching every unmatured row daily (measured: 2,257 mover pairs + 77 open bets = 4,668
+  chart calls/run). `tradingdays.can_have_matured` mirrors `_score`'s two gates and now gates
+  the fetch in `movers.settle` + `bets.settle`: chart calls tonight 4,668 → 0, local movers
+  settle 0.12 s, ledgers byte-identical. The cloud settle prompt still says "15–20 min" —
+  harmless (its wait is duration-agnostic); fold into the next prompt re-echo.
+- **SPCX — the owner's ruling applied (FINDINGS [SCOPE] 2026-09-13).** His personal short row
+  is REMOVED from the public CSV with a ticker-less disclosure on the page (one step past HQ's
+  "status withdrawn" letter, on his own words — reversible from `0557abf`); ownership language
+  redacted tree-wide (HQ's U-2 regex 21 → 0 hits); the conflict-of-interest exclusion no longer
+  names its ticker anywhere public (the list = private realm + cloud read prompt). Pooled verdict
+  unchanged to the digit; N 89 → 88. History not rewritten — an owner decision if wanted.
+**WATCH 09-14:** the read run carries the n=10 milestone review; the settle should finish in
+~2 min (was ~18), push ONE 📋 with 📈 "TWLO Mon 09-14" (its card lands Tue) and NO ⚠️. **Do NOT:** hand-edit `docs/og-image.png`
 (re-render with the script) · link a hosted font · put a holiday anywhere but
 `tradingdays.HOLIDAYS` · treat the recurring `claude/*` branches as a failure.
 
-## ~~[SITE 2026-09-13] Design floor — three gaps on the live page~~ DONE the same night (59a3524; live checker 0 must-fails; item 4, the footer cutover, still waits on the front door)
+## ~~[SITE 2026-09-13] Design floor — three gaps on the live page~~ DONE the same night (59a3524; live checker 0 must-fails; item 4, the footer cutover, RETIRED 2026-09-13 per HQ — there will be no front-door site, the GitHub profile is the hub and the footer link stays)
 
 A deterministic floor checker now runs against the three public sites in this portfolio and
 grades every page on the same fifteen required elements. **This page scores two must-fails and
@@ -224,7 +231,7 @@ could not parse it; that thread ran all the way down into the verdict machinery.
   up). Bar is a COUNT ("17 of 30 beating"), median is words ("8.0% behind"); `settle_msg` speaks
   the same vocabulary. Headline is a dateline only; no scoreboard glyph. `compose` now STRIPS the
   mix mirror + scan denominator rather than trusting the note. Verified on-device, 3 previews.
-- **[SCOPE] SPCX** — owner holds none. Present-tense holding claims stripped from `cases/`,
+- **[SCOPE] SPCX** — market subject only on the public tree. Present-tense ownership claims stripped from `cases/`,
   BACKLOG and one FINDINGS possessive (inline redaction, the file's own convention). Dated
   closed-book evidence and the grandfathered short row STAND; git history is not scrubbed and the
   entry says so. The conflict-of-interest exclusion stands with its cause now lapsed — lifting it
@@ -361,8 +368,8 @@ needs no edit (mark/snapshot early-return post-retire; step removal stays option
   tracked files; `push_log.csv` carries only date/kind/verdict. Operating docs genericized in HEAD
   this session (CLAUDE.md two-realms + book bullets, README, ARCHITECTURE, SKILL ×2, digest.py
   comment, book.py docstring, test_book.py docstring): private-realm specifics → "long-realm
-  personal assets", private-repo name/paths dropped, SPCX restated as a standing
-  conflict-of-interest exclusion (reason recorded in the private realm).
+  personal assets", private-repo name/paths dropped, the conflict-of-interest exclusion restated
+  generically (reason recorded in the private realm; the name left the public tree 2026-09-13).
   **SNAPSHOT REDACTION LIST (apply to the SNAPSHOT at seed time — never to this repo's evidence
   files, which stay append-only):** FINDINGS.md (the 2026-08-02 book-correction entry's plan
   mechanics + balances; the lockup-shares sentence; the one-real-position paragraph; the 08-13
@@ -370,7 +377,8 @@ needs no edit (mark/snapshot early-return post-retire; step removal stays option
   (2026-08-02 entries, the MOVED-OUT block, scattered mentions — same grep), cases/SPCX.md (front
   matter + private-realm framing; SpaceX-as-MARKET-SUBJECT stays — the leak is the private context, not
   the ticker), bets_catalogue.csv SPCX row thesis prose (the ROW and its score STAY — dropping a
-  scored row is cherry-picking; redact prose, note the redaction inline). Residual-inference call
+  scored row is cherry-picking; redact prose, note the redaction inline) [SUPERSEDED 2026-09-13:
+  that row was the owner's unscored personal call — withdrawn under his ruling]. Residual-inference call
   (OWNER): ACCEPTED 2026-08-15 — redaction bounds detail, not deduction; zero private figures
   survive in the public tree.
   **OWNER GATES — state 2026-08-16:** (1) name LOCKED: swing-lab (owner call). (2) DONE — LICENSE
@@ -426,7 +434,8 @@ needs no edit (mark/snapshot early-return post-retire; step removal stays option
   numbers touched; the ONE deliberate evidence-text edit of this cleanse, logged here), the page
   regenerated, and the mirror updated directly. Residuals kept in the seed BY DESIGN: sell-side
   "Morgan Stanley note" mentions (market prose), the generic employee-stock-plan lesson in SKILL,
-  and the SPCX conflict-of-interest exclusion — the accepted weak inference, zero figures.
+  and the conflict-of-interest exclusion — the accepted weak inference, zero figures (the
+  exclusion stopped naming its ticker on the public tree 2026-09-13).
 
 - [ ] **P9 — README voice pass (owner request, 2026-08-16).** The public preamble was written
   owner-facing and reads as the agent narrating the project's inner workings. Rewrite the top of
@@ -711,7 +720,7 @@ bar, log the number — FINDINGS [MSG] 2026-08-06) now compares a 22:30 📋 vs 
 of 21 — churn accepted: swapped a chased post-pop entry for the fresher DVA dislocation);
 DVA = the USER'S OWN dip-bid GTC limit 178, FILLED same morning and booked (2 sh, stop 169,
 21d vs XLV; stop goes live at the broker 08-08 after the funding sale settles — T+1); his
-loose 1-sh SPCX lot sold @ 119.74 = −$15.26 REALIZED, proceeds stay OUTSIDE
+loose 1-sh long-realm lot [redacted 2026-09-13] sold = −$15.26 REALIZED, proceeds stay OUTSIDE
 the book (inflow freeze honored), recorded in the private long-realm repo.
 Same session: READ_LOOP step 7 got the note-is-a-CARD rule (≤6 lines — user call), and
 `digest._pushlog_section`'s due boundary moved 06:00→23:00 UTC to track the new settle time.
@@ -771,7 +780,7 @@ in `SKILL.md` (guard-on-the-wrong-axis · alarms need a clear path · our order 
 fully-private repo.** Separate research, separate actions, markdown pointers only; neither side
 imports the other. **Do not research long-realm holdings or personal plan mechanics here.** This
 boundary had been written down since June and enforced nowhere, and on 2026-08-02 it cost half a
-session: SPCX sat in the swing book, we chased its lockup terms through four documents, and **the
+session: a long-realm name [redacted] sat in the swing book, we chased its lockup terms through four documents, and **the
 position turned out not to exist** — a cash balance misread as 17 shares at seed (FINDINGS
 2026-08-02). Full detail in `CLAUDE.md` SCOPE.
 
@@ -800,7 +809,7 @@ patched 2026-08-02** (`read` = `trig_01EsetvEZmVLb56fEmc7YvSi`, `settle` =
 `insider_*` command, do not treat their absence as a bug" block, and `read` gained "if this summary
 and the doc disagree, the DOC WINS — say so in your report". **Patched a second time the same day**
 when the two-realm split landed: `read` now also carries a SCOPE block (short-swing only; never
-research long-realm personal assets, never pre-register a bet on SPCX (standing exclusion), never
+research long-realm personal assets, never pre-register a bet on an excluded name (standing exclusion), never
 suggest deploying book cash into it).
 **The standing rule (this is the second time it has bitten, after 2026-07-02): a repo-only grep is
 NOT a complete refactor. Whenever `READ_LOOP.md`, `daily.sh`, or a module name changes, re-read the
@@ -871,15 +880,14 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
    answer, plus the "N=40, one earnings season" caveat, are written out under *Backlog*.
 
 **0b. [DONE 2026-08-02 — the book is now SWING-ONLY and its numbers changed twice]** Two removals,
-   both corrections rather than trades: the phantom 17-share SPCX lot ($1,785 of cash
-   recorded as stock at seed and marked to SPCX's price for five weeks) and then the real 1-share
-   SPCX lot (long-realm holding → the private repo). The seed baseline was cut twice and the
+   both corrections rather than trades: the phantom 17-share lot ($1,785 of cash
+   recorded as stock at seed and marked to a long-realm name's price for five weeks) and then the real 1-share
+   lot (long-realm holding → the private repo) [name redacted 2026-09-13]. The seed baseline was cut twice and the
    phantom lot had been hiding ~7.5 points of drawdown; current seed, equity and % vs baseline are
    rendered every day by `python3 -m research.book mark` and on the digest's BOOK line — never
    restated here. `book_equity.csv` history was deliberately NOT rewritten — those were the numbers we
    actually reported, so the curve carries a step down. Book = CMPS, NIO, SPY anchor. Nothing was
-   sold at the time; SPCX left this repo's scope entirely — and there is no SPCX position
-   anywhere as of 2026-08-19.
+   sold at the time; the name left this repo's scope entirely [redacted 2026-09-13].
 
 **1. [DONE 2026-08-02 — Arc 3 is CLOSED, the silo is DELETED]** The [ARC 3 #1d] audit ran:
    **0–2 entity-stack artifacts of 18** against a locked ≥7 threshold — the candidate stream was
@@ -1073,7 +1081,7 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   - **`SIZED SUGGESTION:` prose marker DELETED.** It was a structured fact inside a free-text
     thesis that no code read (`grep --include=*.py` → 0 hits); 2 of 2 issued, 0 executed, nothing
     noticed. The digest now nags when an order fills and no book position appears — that specific
-    blind spot is closed. Same lesson as the SPCX 🔒-on-prose bug: structured facts get a column.
+    blind spot is closed. Same lesson as the 🔒-on-prose bug: structured facts get a column.
   - **Scope guard:** `bets.py` scoring is UNTOUCHED and orders is explicitly DIAGNOSTIC, not a
     second verdict silo — [ORDERS #1] pre-registration written before any order existed.
 - **2026-08-02b (Arc 3 closed · the repo shrinks · two corrections)**
@@ -1106,7 +1114,7 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
     Convergence doctrine was scoped to swing capital (as written, it was what justified keeping
     a long-realm holding in the book). **A live landmine was defused on the way:** `digest`'s 🔒 flag
     sniffed the THESIS PROSE for "lock"/"park", so a position's alarm state depended on its
-    wording — SPCX was silenced by a thesis saying "NO lockup". Now ticker-keyed, regression-tested
+    wording — one position was silenced by a thesis saying "NO lockup". Now ticker-keyed, regression-tested
     both directions. **A privacy gap was closed in portfolio-hq:** `hq/finance/` sits inside an
     APPROVED publishing source and was protected only by a net-worth regex — now an explicit
     Hard-never source plus six targeted redlist tokens (NOT "lockup"/"IPO", which would kill our
@@ -1295,7 +1303,7 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   — `notify.py` gains HTML mode + newline-safe >4096 truncation + plain-text retry on rejected HTML;
   `digest.py` rebuilt: DO-NOW list with tap-to-copy `<code>` commands, per-position BOOK block
   (entry→spot, P&L%, stop/⚠️THRU/🔒 flags), dual-mom arrow; lock flag now requires NO stop set
-  (fixed the SPCX liquid lot masked by its thesis mentioning the locked sibling — it surfaced as
+  (fixed a liquid lot masked by its thesis mentioning the locked sibling — it surfaced as
   THROUGH its stop). `daily.sh`: heartbeat is now the 🚨 FALLBACK (fires only on a failed step or
   failed digest push; digest exits 1 on a lost send) — clean day = exactly ONE 📋. Rejected-for-now
   v1.2: folding the 🚨 settle pushes into the digest (needs a `settled_at` column in two silos for
@@ -1314,7 +1322,7 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   kept as proof-of-life backstop). (2) **`movers settle`** [ARC 5 #9] — scores take AND skip fwd vs
   SPY at 21/63d (+`x21_pct`/`x63_pct` cols, reuses `bets._score`); the DIAGNOSTIC for "is the read too
   conservative?", pre-registered threshold locked, NOT a 3rd edge silo. (3) **`book stop TICKER PRICE`**
-  subcommand; set CMPS/NIO/SPCX-liquid exit rules. (4) **Idle cash → SGOV** (risk-free park, kills the
+  subcommand; set CMPS/NIO/[redacted]-liquid exit rules. (4) **Idle cash → SGOV** (risk-free park, kills the
   dead-nominal drag). (5) **Local env**: system py3.14 had no pip/pandas/dotenv — restored via apt
   (`python3-pandas python3-pytest python3-dotenv`). Verified: 57 tests green, full status + `movers
   settle` run clean. Doc sync: README/CLAUDE/ARCHITECTURE (digest push + movers `settle`).
@@ -1442,9 +1450,9 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   is lost at the starting line and is named here so it cannot be romanticized later). Not
   now: [ARC 5 #2b] is unresolved, and the capital gate is closed — the long-term realm's
   priorities come first; its private repo carries the numbers and the two-gate
-  rule. SPCX is never a
+  rule. An excluded name is never a
   candidate asset — standing conflict-of-interest exclusion since 2026-08-02, owner
-  confirmed 2026-08-05. **Trigger (BOTH):** the
+  confirmed 2026-08-05 (the list lives in the private realm + the read prompt). **Trigger (BOTH):** the
   [ARC 5 #2b] decision point resolves (either branch) AND the owner declares the capital
   gate open. When it fires: ONE fresh pre-registration per edge family (hypothesis, bar,
   kill-criterion, deadline arithmetic checked at write time — the SKILL.md rule Arc 3 paid
@@ -1551,7 +1559,7 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
      human types. Nothing ever reads the actual account. A read-only positions/fills pull would
      make the whole ledger self-checking rather than self-reported. **Gate: a real reconciliation
      error that costs something — `SKILL.md` already carries "reconcile before reasoning" from the
-     phantom-SPCX session, which is the warning shot.**
+     phantom-position session, which is the warning shot.**
   3. ~~**Position sizing with a risk unit.**~~ **DONE 2026-08-04 [ORDERS #2], on the user's
      explicit call.** `orders place` auto-sizing is now min(cash cap, risk cap) — the stop
      being hit costs ~`config.RISK_PCT` of book equity. Shorts still need `--shares`.

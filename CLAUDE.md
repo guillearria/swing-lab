@@ -138,9 +138,11 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   decision point is measured in YEARS it is not ours. Do NOT research long-realm holdings,
   personal comp-plan mechanics, or multi-year tax milestones in this repo — that is how a session
   got spent on a position that did not exist (FINDINGS 2026-08-02). Marginal-dollar ranking
-  recorded there, not here. **Standing conflict-of-interest exclusion: SPCX is NEVER a scored,
-  held, or recommended leg in this repo** (owner rule 2026-08-02; the reason is recorded in the
-  private realm) — this line is the guard the cloud read routine relies on.
+  recorded there, not here. **Standing conflict-of-interest exclusion list: kept in the private
+  realm and in the cloud read prompt, NEVER restated in this public repo [2026-09-13] — a name
+  on it is never a scored, held, or recommended leg here** (owner rule 2026-08-02). The cloud
+  read prompt carries the list; that prompt is the guard, this line is its pointer. The owner's
+  one personal row in the catalogue was withdrawn 2026-09-13 (FINDINGS [SCOPE] 2026-09-13).
 - `research/orders.py` (+ `orders.csv`, tracked) — **COUNTERFACTUAL since [ARC 5 #12a] (code
   P3, 2026-08-14): `place/check/cancel/show`, blank shares — no cash, no sizing, nothing to
   execute; ONE order per take-carrying read run; `placed`/`pulled` deleted with the broker leg;

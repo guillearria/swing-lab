@@ -550,7 +550,7 @@ footer {{ color: var(--muted); font-size: 13px; text-align: center; }}
   <div>
     <h1 class="brand">{_MARK} Swing Lab</h1>
     <p class="tagline">The forward ledger — timestamped market predictions, logged before
-the outcome and scored mechanically against a benchmark. None are removed.</p>
+the outcome and scored mechanically against a benchmark. None are revised.</p>
     <p class="muted">Data through {_e(through) or "—"} · Not investment advice.</p>
   </div>
   <nav><a href="https://github.com/guillearria/swing-lab">Code</a><a
@@ -575,7 +575,9 @@ the outcome and scored mechanically against a benchmark. None are removed.</p>
 <h2>Performance so far</h2>
 <p class="frame">This is the complete record of these predictions, not a highlight reel: each
 one is logged before its outcome and scored mechanically against a benchmark, wins and losses
-alike, and none are removed or revised after the fact. The project is at the hypothesis stage;
+alike, and none are revised after the fact. One disclosed exception: an entry logged in July
+2026 was withdrawn on 2026-09-13 because it was a personal note by the author, never a
+prediction of this project; it had not been scored. The project is at the hypothesis stage;
 no signal here has been shown to make money.</p>
 <h3>Running total of excess return</h3>
 <p class="muted">Across settled predictions, percentage points.</p>
@@ -590,7 +592,8 @@ no signal here has been shown to make money.</p>
 names a company, a direction, a time window and the benchmark it has to beat, with the
 reasoning written down at the time. When the window closes, the result is scored
 automatically against that benchmark. Wins and losses both stay on the page, and nothing is
-removed or revised afterwards.</p>
+revised afterwards. One entry was withdrawn in September 2026 because it was a personal note
+by the author rather than a prediction of this project; the Performance tab says so.</p>
 <h3>Where the figures come from</h3>
 <p>Prices are daily closing prices from public market data. A prediction's score is its own
 return over the window minus the benchmark's return over the same days, so a call only

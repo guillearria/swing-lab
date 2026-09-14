@@ -316,7 +316,7 @@ def equity_marks(rows: list[dict]) -> dict:
         pnl = sh * (spot - en) if r["side"] == "long" else sh * (en - spot)
         equity += sh * spot * (1 if r["side"] == "long" else -1)
         unreal += pnl
-        # a retired stop is stored as 0 (see the SPCX stub) — that is "no stop", not a stop at
+        # a retired stop is stored as 0 (the retired-stop stub, FINDINGS 2026-07-27) — that is "no stop", not a stop at
         # zero, so it must not print as one
         stp = f" stop {float(r['stop']):.2f}" if r["stop"] and float(r["stop"]) > 0 else ""
         lines.append(f"  {r['side']:>5} {r['ticker']:>5} {sh:g} @ {en:6.2f} -> {spot:6.2f}  "

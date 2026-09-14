@@ -1,7 +1,7 @@
 # Case study: SPCX (Space Exploration Technologies) — the real vehicle behind the narrative
 
 > See `cases/_TEMPLATE.md`. Companion/contrast to `cases/ILLR.md`. **SPCX is a MARKET SUBJECT
-> here and nothing else — no position in this repo or anywhere else [2026-08-19].** Nothing here
+> here and nothing else [2026-08-19; holding language removed 2026-09-13].** Nothing here
 > restates a number.
 
 **Status:** PATTERN retained; NO position · **Date:** 2026-06-26
@@ -9,9 +9,7 @@
 
 ## Move
 SPCX ran hard off the 2026-06-12 IPO, then gave it back — first market close $160.95, ~$108 by
-early August. **This case survives as a PATTERN (real-vehicle-vs-meme), never as a position.**
-The lot mechanics this file was originally written around were an accounting error (corrected
-2026-08-02) and are moot: there is no SPCX position [2026-08-19].
+early August. **This case survives as a PATTERN (real-vehicle-vs-meme), never as a trade of ours.**
 
 ## Why
 SPCX is the actual **Space Exploration Technologies Corp** stock — recently public — not a fund
@@ -34,7 +32,7 @@ flows / scarce exposure and let the borrowed-narrative impostors (the "X-treasur
 be the SHORT. The tell that you hold the real one: operating revenue, a re-rating that *holds*,
 and the *impostors quoting your name* (ILLR putting "a SpaceX position" on its balance sheet is
 the confirmation that SPCX is the genuine vehicle). The pattern trade is expressed across silos:
-long the real (SPCX — never scored here, standing conflict-of-interest exclusion) + short the
+long the real (SPCX — never scored here; only the meme leg was pre-registered) + short the
 meme (ILLR, in `bets.py`). Only the ILLR leg is scored.
 
 ## Prediction
@@ -73,13 +71,10 @@ instance:
 All three print → **LONG 21d vs SPY**, logged in `bets.py` on the day condition 3 prints —
 not before (that's front-running the test), not days after (that's a chase).
 
-**Prediction.** NO new scored SPCX bet from this pattern — standing conflict-of-interest
-exclusion (the 2026-08-02 rule). And entering here, +23% AFTER the trigger day, would be the chase the
-tell-stack exists to prevent. (One SPCX row already exists in `bets.py` and STANDS: the owner's
-2026-07-10 `#lockup-supply` SHORT, 174d vs SPY — it pre-dates this update, runs to its own
-settle, and this rally is evidence against it; the settle will say.) **The scored leg is DEFERRED to the first non-excluded name that completes
-the tell-stack**; the daily mover scan is the watchlist. Until then this pattern has a
-pre-registration and no P&L.
+**Prediction.** NO new scored SPCX bet from this pattern (owner rule, 2026-08-02). And
+entering here, +23% AFTER the trigger day, would be the chase the tell-stack exists to prevent.
+**The scored leg is DEFERRED to the first non-excluded name that completes the tell-stack**;
+the daily mover scan is the watchlist. Until then this pattern has a pre-registration and no P&L.
 
 ## Links (2026-08-07 addendum)
 - FINDINGS entry: 2026-08-07 · [CASE]

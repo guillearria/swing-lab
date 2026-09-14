@@ -108,7 +108,7 @@ _e = html.escape
 # the Δ-since-HEAD line (+ _row_id/_by_id) were DELETED in v3 [MSG 2026-08-18]: the book is
 # TERMINAL [ARC 5 #12] (its tombstone line taught its lesson), orders/movers are diagnostics
 # the owner never read on his phone, and the Δ line was plumbing news. Their lessons stay in
-# git history and FINDINGS (SPCX prose-lock 2026-08-02, NIO target 2026-08-04, the batch-write
+# git history and FINDINGS (the prose-lock bug 2026-08-02, NIO target 2026-08-04, the batch-write
 # row identity 2026-08-04). A re-funded book gets a fresh digest design, never a blind revert.
 
 

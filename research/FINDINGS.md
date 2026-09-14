@@ -255,7 +255,7 @@ partner. Goal = real GROWTH; cadence = short swing (days–2wk).
   our own 4 arcs found zero free edge — the open question this book answers is whether discretionary
   short-swing reads DEFY that, on a tiny scored sample. It may simply bleed to the −40% stop; that is itself
   a logged result. The book = the FULL experimental portfolio across **both brokers** (Robinhood + E*TRADE +
-  a locked SPCX slug [redacted: long-realm]), seeded 2026-06-25 (CMPS/HELP/NIO/XRP + two SPCX lots + blended cash).
+  [redacted: long-realm]), seeded 2026-06-25 (CMPS/HELP/NIO/XRP + two long-realm lots [redacted] + blended cash).
   First trade: trimmed the HELP position into its +24% catalyst spike (loss harvested; weakest binary horse).
   **Balances/sizes live in `book.csv`, never restated in this log.** Reproduce:
   `python3 -m research.book mark`.
@@ -451,7 +451,7 @@ concerns logged in `BACKLOG.md` (NIO, cloud digest first-run; two items [redacte
 
 **2026-07-10 · BOOK RECONCILIATION + ALL-IN SUGGESTION POLICY (operating decision w/ user).**
 (a) **Phantom position found and removed:** the 2026-07-06 SGOV park (11 sh @ 100.44 = $1,104.84)
-was booked in `book.csv` but the order was NEVER placed at the broker (user-confirmed; CMPS/NIO/SPCX
+was booked in `book.csv` but the order was NEVER placed at the broker (user-confirmed; CMPS/NIO/[redacted 2026-09-13: long-realm name]
 are real). Fix = direct CSV edit, the exact inverse of the phantom `open`: row deleted, cash
 68.64 → 1,173.48; realized P&L verified unchanged before AND after (sum −525.31); equity unchanged
 (SGOV ≈ cash). The commit is the audit trail — no `book cancel` plumbing for a one-time event.
@@ -495,7 +495,7 @@ basket of 12 liquid high-beta names (SPY QQQ TSLA NVDA AMD META AAPL AMZN COIN N
 **2026-07-24 · GO-ACTIVE book decision (with user) — kill the passivity tax, honor the stops, own beta.**
 Origin: user frustrated the real-money book is stagnant (−16.4% vs baseline while same-$-in-SPY is +0.4%
 — a ~$1.1k opportunity-cost gap) and chose "go active now". Diagnosis on live marks (`book mark`): the
-loss is NOT SPCX (the locked 17-lot is +$143) — it's realized −$525 (HELP/XRP) + NIO −47%, and **$1,173
+loss is NOT the long-realm lot [redacted 2026-09-13] — it's realized −$525 (HELP/XRP) + NIO −47%, and **$1,173
 idle cash earning zero through a rally**. The stance was "cautious under the null" but was implemented as
 sit-in-cash-and-underwater-names — the worst of both worlds (took the caution tax AND the passivity tax).
 - **Decision:** (1) **honor the stops** — NIO 4.52 is THROUGH its 4.60 stop and was never cut; cut it.
@@ -571,9 +571,9 @@ alerted INTC long with the $428 idle cash. Checked the alert's premise against b
   backwards. Honest prior UNCHANGED: LOW. Reproduce: `python3 -m research.bets show` · `python3 -m
   research.movers show`.
 
-**2026-07-27 · BOOK STRUCTURE — retired the stale SPCX stop (a nag is not a signal); user's "wait for
+**2026-07-27 · BOOK STRUCTURE — retired the stale stop on a long-realm lot [redacted 2026-09-13] (a nag is not a signal); user's "wait for
 the bounce" reasoning rejected while reaching the same action.** The digest had repeated a DO-NOW
-"SPCX THROUGH stop 150.00" for weeks; the user wanted to hold because "it dipped so low."
+"[redacted] THROUGH stop 150.00" for weeks; the user wanted to hold because "it dipped so low."
 - **The user's stated reason is the error we already named** — "the bounce-wait is the loser's anchor"
   [ARC 5 #4, XRP]. Right action, wrong reason; logged as such so the reasoning doesn't get banked as
   validated. (The 7/24 audit's lesson is *how* to exit — limit into strength — not *whether*.)
@@ -585,7 +585,7 @@ the bounce" reasoning rejected while reaching the same action.** The digest had 
   is no floor below it to anchor a replacement, so inventing one would be false precision. Logged as a
   deliberate, timestamped exception to the [ARC 5 #4] harness-3 stop-at-entry rule, scoped to an
   un-hedgeable stub — **not silent drift**. Exposure decision deferred [redacted: long-realm]; revisit on
-  SpaceX-SPECIFIC news (today's −3.8% is tape: SOXX −3.5%, AMD −7.0%, NVDA −4.2%).
+  name-SPECIFIC news (today's −3.8% is tape: SOXX −3.5%, AMD −7.0%, NVDA −4.2%).
 - **Generalizable lesson:** a recurring DO-NOW that no one acts on is usually a **stale rule**, not a
   disobeyed one. Fix the rule or honor it; leaving it to nag trains us to ignore the alert channel — the
   one channel whose silence is supposed to mean "broken." Reproduce: `python3 -m research.book show`.
@@ -1092,7 +1092,7 @@ inadmissible as evidence about the read. Two facts I had wrong, corrected here.*
 
 **(a) The book's drawdown says NOTHING about the system.** I framed the gap ("beta didn't fail, our
 picks did") as evidence the read underperforms. It is not. `book.csv` shows **every open position
-was opened 2026-06-25 at seed** — CMPS, NIO, SPCX ×2, the user's pre-existing inventory —
+was opened 2026-06-25 at seed** — CMPS, NIO, [redacted 2026-09-13: long-realm name] ×2, the user's pre-existing inventory —
 plus the SPY beta anchor opened 2026-07-24. **Zero read-generated equity positions have ever been
 in the book.** The −17.1% vs baseline measures legacy inventory and a deliberate beta hedge. Citing
 it as evidence about signal quality inverts the exact silo separation `CLAUDE.md` exists to enforce,
@@ -1101,7 +1101,7 @@ catch, this was the other kind. **The read's only evidence remains the catalogue
 
 **Twin coverage of the live book, measured:** 1 of 5 open positions has a pre-registered bet twin
 (CMPS, logged 2026-06-25T15:46, same day as the fill — genuine, not retroactive). NIO and the two
-locked SPCX lots are seed inventory; SPY is the beta anchor by design. So the book is currently
+locked long-realm lots [redacted] are seed inventory; SPY is the beta anchor by design. So the book is currently
 ~20% covered, which is the concrete thing the new twin rule below is for.
 
 **(b) NIO: the deferred cut is REVERSED — HOLD.** Backlog handoff item 2 said "cut NIO, confirm the
@@ -1337,15 +1337,15 @@ book, one banked usable result (dual momentum). **Honest prior UNCHANGED: LOW.**
 Reproduce: `python3 -m research.engine`
 
 **2026-08-02 · BOOK CORRECTION — a third of the book was never a position. $1,785 of CASH was
-recorded as 17 shares of stock at seed and marked to SPCX's price for five weeks.**
+recorded as 17 shares of stock at seed and marked to a long-realm name's price [redacted 2026-09-13] for five weeks.**
 
 *[Body redacted for the public record — long-realm personal detail. The full entry is preserved
 in the private archive; what the science needs survives below.]*
 
-**What happened.** At seed (2026-06-25) a human-seeded line item was logged as `SPCX 17 @
+**What happened.** At seed (2026-06-25) a human-seeded line item was logged as `[redacted] 17 @
 $105.00`. Reconciliation against the account's own statements showed **0 shares** — the
 "position" was a cash balance held outside the brokerage, money that cannot move with the
-stock. The book had been marking cash to SPCX's live price for five weeks, manufacturing P&L
+stock. The book had been marking cash to that name's live price for five weeks, manufacturing P&L
 (a fictitious +$57 at discovery) and diluting the loss on everything else. **Corrected book
 equity is −24.6% vs baseline, not −17.1% — the error was hiding 7.5 points of drawdown.**
 
@@ -1355,8 +1355,8 @@ the vs-SPY comparison stays apples-to-apples. Private git history holds the orig
 cash stays OUT of the book by design: it is not a trading decision, and counting it would
 corrupt the benchmark the book exists to measure against.
 
-**Consequence for the one real SPCX position.** The 1-share lot's standing rationale ("selling
-it disposes of 6% of the exposure and manages nothing") is **void**: it was 100% of the SPCX
+**Consequence for the one real long-realm position [redacted 2026-09-13].** The 1-share lot's standing rationale ("selling
+it disposes of 6% of the exposure and manages nothing") is **void**: it was 100% of that name
 held anywhere. The [ARC5#4] stop exception logged on 7/27 was reasoned from a holding that did
 not exist.
 
@@ -1485,7 +1485,7 @@ schema could tell them apart.
 - **The distinction:** an order row without `placed_at` is a COUNTERFACTUAL (the market traded
   through our limit; nobody was there). With `placed_at`, a fill is money that actually moved and
   needs a `book open` with the real broker fill. Conflating them invites the worst possible ledger
-  error — recording a position that never existed, which is exactly the phantom-SPCX failure of
+  error — recording a position that never existed, which is exactly the phantom-position failure of
   2026-08-02, arrived at from the opposite direction.
 - **Applied:** `placed_at` is its OWN column, not a phrase in `note`. That is this session's own
   rule taken seriously — the whole reason `SIZED SUGGESTION:` failed is that it hid a structured
@@ -1674,7 +1674,7 @@ get a column, and generation gets a diversity ceiling.**
   (consistent with the banked exit-into-strength rule); his added claim — "likely to flip" — is a
   hypothesis with, in his own words, no clear evidence. Per the standing accountability rule his
   claims get the same test as the model's: pre-registered as a scored bet (long 63d vs SPY,
-  `--tag=capitulation-reversal`), SPCX-USER-bet precedent. It also closes NIO's twin-rule gap
+  `--tag=capitulation-reversal`), the USER-bet precedent (row withdrawn 2026-09-13). It also closes NIO's twin-rule gap
   (the book lot had no open bet twin). Scored either way; n=1 will decide nothing.
 - **(b) Exit plans become STRUCTURED.** The number that forced it: NIO's exit plan ("limit-sell
   into strength 4.85–5.15") lived in thesis PROSE; **NIO's high since 7/24 was 4.94 — inside the
@@ -1833,7 +1833,7 @@ reported Cursor acquisition + a Morgan Stanley entry note + short-covering (~219
 Registered as `unlock-relief` in `research/cases/SPCX.md` with the tell-stack pre-registered
 BEFORE the next instance: hard-dated unlock ≥10% of float + price ≥30% under its high going in +
 unlock session closes flat/up on above-average volume → LONG 21d vs SPY, scored in `bets.py`
-the day it fires. SPCX itself is NEVER the scored leg (standing conflict-of-interest exclusion,
+the day it fires. the real vehicle is NEVER the scored leg (owner rule,
 2026-08-02 rule) — and a +23%-later entry would be a chase, the exact thing the trigger exists to
 prevent. Long-realm consequences recorded in the private long-realm repo, not here. No bar moves,
 prior UNCHANGED: LOW.
@@ -1845,7 +1845,7 @@ the memory layer failed hardest.** Method (per the owner-amended independence ru
 3 fresh-context Fable agents (statistical / regime-skeptic / neutral lenses) + 1 Opus cross-model
 control, each blind to the generator's conclusions and to each other; disagreement = the signal.
 CONSENSUS 4/4: the live-book memory's paper-book frame was wrong on EVERY load-bearing fact
-(paper→REAL, stale cash figure, HELP/XRP shown open→long closed, SPCX in book→moved to the
+(paper→REAL, stale cash figure, HELP/XRP shown open→long closed, [redacted 2026-09-13: long-realm name] in book→moved to the
 long-term realm, 35% cap→lifted) — memories REWRITTEN same-day to hold only non-derivable facts
 and point at `book show` (memories now obey the docs' anti-drift rule). CONSENSUS 3–4/4 —
 EMPIRICAL rules wearing law's clothing, no live kill-path: exit-into-strength (n≈2, both
@@ -1858,8 +1858,8 @@ earned its seat with items no Fable lens produced: (a) the [ORDERS #1] N≥20 ba
 UNREACHABLE at the current cash/order rate — the Arc-3 decorative-bar death replaying; (b) the
 standing "LLM out of the decision path" rule contradicts READ_LOOP being an LLM read in the
 decision path — the rule's real meaning (no LLM in DETERMINISTIC triggers/settles; the read IS
-the hypothesis under test) is nowhere stated; (c) the open SPCX 174d bet's thesis text cites the
-phantom "17-sh locked lot" (bet STANDS — pre-registered — the annotation is false). OPEN
+the hypothesis under test) is nowhere stated; (c) the open 174d USER bet's thesis text cites a
+phantom lot (bet STANDS — pre-registered — the annotation is false) [row withdrawn 2026-09-13]. OPEN
 CONTRADICTION PAIRS for the owner: don't-lose-it stance vs the size-aggressively memory;
 "propose, wait for approval" vs drive-autonomously; SKILL.md/ARCHITECTURE.md still carry the
 superseded different-model review rule. Anti-drift violations: dated movers snapshot hardcoded
@@ -1882,8 +1882,8 @@ to SKILL step 3 + ARCHITECTURE; the LLM rule's real meaning stated (deterministi
 model-free; the READ layer IS the hypothesis under test); the movers 08-01 snapshot
 genericized; [ORDERS #1] reachability deadline pre-registered (if N<20 by 2026-12-31, declare
 the bar UNREACHABLE and re-scope openly — declare, don't decorate); NIO book note now leads
-with live status (the dead thesis was the first thing `book show` printed); the SPCX user bet's
-phantom "17-sh hedge" corrected (bet STANDS, unhedged, pure pre-registered call).
+with live status (the dead thesis was the first thing `book show` printed); the user bet's
+phantom hedge annotation corrected (bet STANDS, unhedged, pure pre-registered call) [row withdrawn 2026-09-13].
 RECONCILIATION 1 — sizing: ruin-bounded at the POOL (−40% stop, inflows frozen),
 conviction-sized at the POSITION [ARC 5 #6]; supersedes the pre-#6 "don't-lose-it + cheap
 beta + capped experiments" phrasing — bounded-loss aggressive exploration maximizes
@@ -1992,7 +1992,7 @@ prior UNCHANGED: LOW.
 **2026-08-09 · [OPS] THE DXCM NAG WAS THE DIGEST'S BUG, NOT A LEDGER GAP — both digest fixes
 APPLIED (owner "go").** The "DXCM order FILLED @ 84.28 … but no book position" DO-NOW (every
 settle since 08-07; the owner corrected it three times, finally with the broker screenshot:
-sold 5 @ 82.575 on 08-07 to fund DVA, plus the 1-sh SPCX @ 119.74 whose proceeds stay OUTSIDE
+sold 5 @ 82.575 on 08-07 to fund DVA, plus a 1-sh long-realm lot [redacted 2026-09-13] whose proceeds stay OUTSIDE
 the book per the inflow freeze) was a false alarm against a ledger that was ALREADY RIGHT:
 book.csv holds the full round trip (open 08-05 @ 84.28 → closed 08-07 @ 82.575, −$8.52) and
 cash reconciles to the penny ($6.41 → +$412.88 → −$356.00 → $63.29). Root cause: the fills
@@ -2384,14 +2384,13 @@ one-sided Wilcoxon α≈0.017. What follows is procedure, and every clause moves
   Reproduce: `python3 -m research.engine` (the bar line now carries `#14 ONE LOOK`) ·
   `python3 -m research.bets show` · this entry's projections recompute from `bets_catalogue.csv`.
 
-**2026-08-19 · [SCOPE] SPCX — NO POSITION, ANYWHERE. Present-tense holding language stripped
-from the public tree.** Owner, this session: he no longer holds SPCX (the only upcoming
-long-realm action is an ESPP purchase, which is that repo's business and not restated here).
-Every claim in the working tree that SPCX was currently held is now FALSE as well as off-scope
-for a repo public since 2026-08-16, so it is gone: `cases/SPCX.md` (front matter, the lot
+**2026-08-19 · [SCOPE] SPCX — present-tense ownership language stripped from the public tree.**
+Owner, this session: [redacted 2026-09-13: personal-holding detail].
+Every claim in the working tree that the name was currently held is now FALSE as well as off-scope
+for a repo public since 2026-08-16, so it is gone: `cases/SPCX.md` (front matter, the accounting
 paragraph, the pattern line, the Prediction, the private-realm Links and the quoted long-realm
 falsifier attribution), `cases/ILLR.md` ("the real SpaceX vehicle we own"), `BACKLOG.md` ("the
-SPCX share is still held"). SPCX is a MARKET SUBJECT in this repo and nothing else.
+a present-tense ownership claim). SPCX is a MARKET SUBJECT in this repo and nothing else.
 - **Left alone, deliberately:** dated evidence of the CLOSED book (the phantom-17-share entries,
   the 08-02 correction) — that is the audit trail of a terminal, owner-published ledger, and
   rewriting a dated log to tidy a fact is worse than the fact. FINDINGS' one present-tense
@@ -2399,12 +2398,13 @@ SPCX share is still held"). SPCX is a MARKET SUBJECT in this repo and nothing el
   `[redacted: long-realm]` treatment rather than a rewrite.
 - **Not fixable here:** the repo has been public since 2026-08-16 and git history keeps every
   prior revision. This cleans the current page, not the record. Say so rather than imply a scrub.
-- **The standing conflict-of-interest exclusion STANDS** (CLAUDE.md, 2026-08-02): SPCX is never
+- **The standing conflict-of-interest exclusion STANDS** (CLAUDE.md, 2026-08-02): the name is never
   a scored, held or recommended leg here. Its original reason has lapsed with the holding, so
   the exclusion is now an owner rule with no stated cause in this repo — lifting it is an owner
   call, not a cleanup consequence. The grandfathered 2026-07-10 `#lockup-supply` SHORT row is
   untouched and runs to its own settle (~2027-03): dropping a scored pre-registered row is
-  cherry-picking, whatever the reason.
+  cherry-picking, whatever the reason. [SUPERSEDED 2026-09-13: the row was the owner's personal
+  call, unscored and outside the verdict pool — withdrawn; see that entry.]
   Reproduce: `grep -rn SPCX --include=*.md .` · `python3 -m research.bets show` (the row stands).
 
 **2026-08-19 · [MSG] DIGEST v3.1 — THE MESSAGE STOPPED BEING PROSE AND THE NUMBERS STARTED
@@ -2476,10 +2476,10 @@ population, bars, floors, one pooled verdict) is untouched:
   (205) · git diff bcd2785..HEAD.
 
 **2026-08-21 · [SCOPE] THE SPCX SWEEP MISSED THE ONE SURFACE THAT WAS ACTUALLY PUBLIC — its
-own reproduce line could not see a `.csv`.** The 2026-08-19 sweep scrubbed present-tense SPCX
-holding language and closed with `grep -rn SPCX --include=*.md .`. That filter is the finding:
+own reproduce line could not see a `.csv`.** The 2026-08-19 sweep scrubbed present-tense ownership
+language about SPCX and closed with `grep -rn SPCX --include=*.md .`. That filter is the finding:
 `bets_catalogue.csv` row 10 (ILLR, 2026-06-26) ended `Fade the borrowed-narrative meme; own the
-real SPCX.` and `site.py` renders thesis text VERBATIM, so the public dashboard carried an
+real [redacted 2026-09-13].` and `site.py` renders thesis text VERBATIM, so the public dashboard carried an
 unqualified buy recommendation for the one ticker CLAUDE.md says is never a recommended leg
 here — under the owner's byline, with "Not investment advice." as the only disclaimer, for the
 five days the page has been live. Found by a blind adversarial review pass, not by the sweep.
@@ -2776,3 +2776,45 @@ calendar now knows holidays.** Found by the owner reading the week's Telegram, n
   Reproduce: `pytest research/tests/test_config.py research/tests/test_tradingdays.py` ·
   `python3 -c "import sys; sys.modules['dotenv']=None; import research.notify"` ·
   `RemoteTrigger get_run_log cse_01YLddoSNaMjLtvibMFquRS1`.
+
+**2026-09-13 · [SCOPE] THE OWNER'S PERSONAL ROW IS WITHDRAWN FROM THE PUBLIC LEDGER, AND NO PUBLIC
+DATA NAMES A PERSONAL POSITION.** Owner ruling, recorded in HQ today as BACKLOG U-1/U-2/U-3 and
+restated to this session in his words: the row "was a non-system bet that was personal for me …
+shouldn't live in our project, especially publicly … no public data should push my personal
+positions."
+- **U-1, applied one step past HQ's letter — deliberately, and reversible in one command.** HQ's
+  draft kept the row in the CSV under a third status, `withdrawn`, rendered muted on the page.
+  That leaves the exact exposure HQ itself named (the ticker, a directional short, the owner's
+  name, on a recruiter-visible page — now with "conflict of interest" printed next to it) on
+  both public surfaces, and the CSV is as public as the page. The owner's words require it off
+  the public surfaces, so the 2026-07-10 `#lockup-supply` USER short row (open, never scored,
+  outside the long-only verdict pool since [ARC 5 #12a]) is REMOVED from `bets_catalogue.csv`,
+  with a ticker-less disclosure on the page (Performance frame + About: "an entry logged in July
+  2026 was withdrawn on 2026-09-13 because it was a personal note by the author, never a
+  prediction of this project; it had not been scored") and here. Precedent: the two phantom
+  rows of 2026-07-10 and 08-02 were REMOVED, not closed — a row that was never a system decision
+  is not a losing bet. **It cannot flatter the record — pooled verdict identical before and
+  after: 10 settled, median −1.71%, beat 40%, accruing; multiple-testing N 89 → 88; open shorts
+  9 → 8; settled shorts unchanged (n=2).** The 08-19 and 08-21 entries' "the row stands" carry an
+  inline SUPERSEDED marker, not a rewrite. If the owner prefers HQ's letter, `git show
+  0557abf:research/bets_catalogue.csv` has the row and the status flip is a 10-line change.
+- **U-2, the holding shape, applied tree-wide.** HQ narrowed its redlist the same day: the bare
+  ticker is a legitimate market subject (the case study, the `unlock-relief` pattern, ILLR's
+  contrast all stay); what leaks is the ticker within reach of position vocabulary. Applied to
+  FINDINGS, BACKLOG, `cases/`, CLAUDE.md and two code comments with the files' inline
+  `[redacted 2026-09-13: …]` convention — dated entries keep their science (a cash balance
+  misbooked as shares; a stale stop retired; a prose-sniffing lock flag) and lose the name.
+  **Pre-registered check: HQ's U-2 regex over every tracked file plus the rendered page — 21
+  hits at HEAD → 0.**
+- **U-3** (the "17-sh lot" claim and its correction) left with the row.
+- **The exclusion no longer names its ticker on the public tree.** A conflict-of-interest rule
+  that names a stock is itself the inference the owner does not want public. The list lives in
+  the private realm and in the cloud read prompt (verified tonight via the triggers API: the
+  prompt carries it), and CLAUDE.md now points there instead of restating it.
+- **Not fixable here, said plainly:** the repo has been public since 2026-08-16 and every prior
+  revision, this row included, is in git history on GitHub. A history rewrite (force-push +
+  a GitHub support purge of cached commits) is the only way to change that; it is a separate
+  owner decision and was not done. This cleans the current tree, not the record.
+  Reproduce: `git grep -n SPCX` (market-subject mentions only) · `python3 -m research.engine`
+  (pooled unchanged, N=88) · the `re:` SPCX line of HQ's `redlist.txt` over `git ls-files` +
+  `docs/index.html` (0 hits).
