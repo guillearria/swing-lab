@@ -2798,6 +2798,8 @@ positions."
   9 → 8; settled shorts unchanged (n=2).** The 08-19 and 08-21 entries' "the row stands" carry an
   inline SUPERSEDED marker, not a rewrite. If the owner prefers HQ's letter, `git show
   0557abf:research/bets_catalogue.csv` has the row and the status flip is a 10-line change.
+  **Owner confirmed the removal the same night ("your version is better, final confirm") and
+  declined a history rewrite — the git-history caveat below is accepted, not pending.**
 - **U-2, the holding shape, applied tree-wide.** HQ narrowed its redlist the same day: the bare
   ticker is a legitimate market subject (the case study, the `unlock-relief` pattern, ILLR's
   contrast all stay); what leaks is the ticker within reach of position vocabulary. Applied to
