@@ -247,9 +247,14 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   only after Telegram confirms, so a lost message is RE-SENT next run instead of vanishing with the
   row's open status; settle exits nonzero on a lost push. The digest fails LOUD — a dead silo, a
   stale feed (`research/feedstatus.py`), uncommitted/unpushed ledgers, or a stuck settlement each
-  become a DO-NOW rather than prose. `research/watchdog.py` (its OWN routine, 36h) is the EXTERNAL
-  dead-man's switch: every other alarm is emitted BY the daily run and so cannot fire when the daily
-  run is what died — it NARROWS that blind spot, it does not close it (a dead platform kills both).
+  become a DO-NOW rather than prose. `research/watchdog.py` is the EXTERNAL dead-man's switch — a
+  **GitHub Action since 2026-09-13** (`.github/workflows/watchdog.yml`, 12:30 + 23:30 UTC, stdlib,
+  ~20 s): 36h commit staleness on the ledgers PLUS the push-log delivery check on both legs (a run
+  that commits but never delivers — the 09-11 shape — is an alarm within hours, not the next
+  evening). Every other alarm is emitted BY the daily run and so cannot fire when the daily run is
+  what died; this one runs on a DIFFERENT platform, so a dead routine platform no longer kills the
+  alarm with the pipeline. Red run = GitHub email; 🚨 via the repo's TELEGRAM_* secrets. The old
+  Haiku cloud routine is disabled (trigger kept, `enabled:false`).
 - `research/site.py` → `docs/index.html` (committed) — **THE PUBLIC DASHBOARD** [P7a], GitHub
   Pages (https://guillearria.github.io/swing-lab/): predictions + performance ONLY per the
   audience contract — method/reasoning prose stays owner-side; thesis text behind

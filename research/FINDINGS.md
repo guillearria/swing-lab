@@ -2820,3 +2820,34 @@ positions."
   Reproduce: `git grep -n SPCX` (market-subject mentions only) · `python3 -m research.engine`
   (pooled unchanged, N=88) · the `re:` SPCX line of HQ's `redlist.txt` over `git ls-files` +
   `docs/index.html` (0 hits).
+
+**2026-09-13 · [OPS] TWO GUARDS SHIPPED — THE WATCHDOG LEFT THE PLATFORM IT WATCHES, AND THE
+SCAN LEARNED WHAT A STOCK SPLIT LOOKS LIKE.**
+- **Watchdog → GitHub Action** (`.github/workflows/watchdog.yml`, 12:30 + 23:30 UTC, stdlib, no
+  pip, ~20 s). Keeps the 36h commit check and inherits the digest's own push-log check on BOTH
+  legs — the failure a commit watcher cannot see (09-11: committed on time, delivered nothing,
+  unalarmed for 24 h). A red run emails the owner by itself; the 🚨 push rides on repo secrets
+  the owner sets (an agent session cannot write them). First dispatched run: green — "✅
+  watchdog: last ledger commit 1h ago (threshold 36h)". The Haiku cloud routine is disabled,
+  trigger kept. Closes the docstring's admitted limit ("a dead platform kills both") with the
+  honest residual restated: GitHub's scheduler is now the platform that can die silently; two
+  platforms watching each other is the best a free stack gets.
+- **Split-artifact tell.** The 09-07 note's cheap tell (|5d| ≥ 30% on ≤ 1.3x volume), applied
+  to the ledger first: 39 of 1,461 rows, of which 15 are the three known splits (APH, RUSHA,
+  SFBS) and 24 are REAL low-volume movers (AXON, SNDK, IESC, COHR, LITE, MTRN …) — all skipped
+  by the reads, but "artifact" would have been a false label on 24 rows. REJECTED. The precise
+  tell: ONE day inside the trend window whose close/prev-close sits at a split grid ratio
+  (3:2, 2:1, 3:1, 4:1, 5:1, 10:1 and inverses, ±6%) on ≤ 1.5x baseline volume — a real one-day
+  2x brings volume. Pre-registered on live bars, then reproduced through the built code:
+  **5/5 artifacts flagged** (APH 2.0, RUSHA 1.5, SFBS 2.0, MNST 2.0, IESC 2.0 — the last one a
+  split the reads never even saw) and **0/4 real movers** (MRNA 2.77x on 37x volume, MTRN,
+  COHR, AXON). Such a row is logged with status `artifact`: in the denominator, out of the read
+  queue, not decidable, never settled. The 39 historical rows are NOT backfilled — their skips
+  stand with the reasons the reads gave.
+- **Number:** 262 tests green (5 new across both). Residual: a real one-day move that happens
+  to sit at a grid ratio on quiet volume would be mislabelled and unreadable — the probe says
+  that shape did not occur in 1,461 candidates; if it ever does, the row is in the ledger to
+  be found.
+  Reproduce: `gh run list --workflow=watchdog.yml` · `pytest research/tests/test_watchdog.py
+  research/tests/test_movers.py` · the nine-name probe recomputes from `prices.bars_after`
+  and `momentum.compute` (config.SPLIT_*).

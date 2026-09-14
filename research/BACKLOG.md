@@ -40,8 +40,22 @@ what's queued, and what NOT to touch — in one screen. Newest first. Holds no l
   redacted tree-wide (HQ's U-2 regex 21 → 0 hits); the conflict-of-interest exclusion no longer
   names its ticker anywhere public (the list = private realm + cloud read prompt). Pooled verdict
   unchanged to the digit; N 89 → 88. History not rewritten — an owner decision if wanted.
-**WATCH 09-14:** the read run carries the n=10 milestone review; the settle should finish in
-~2 min (was ~18), push ONE 📋 with 📈 "TWLO Mon 09-14" (its card lands Tue) and NO ⚠️. **Do NOT:** hand-edit `docs/og-image.png`
+- **Watchdog → GitHub Action (986999a), the last un-gated engineering item.** Twice daily,
+  stdlib, ~20 s; 36h commit staleness PLUS `digest._pushlog_section` on both legs, so the
+  09-11 shape (committed, never delivered) alarms within hours. First dispatched run green.
+  Haiku cloud routine disabled (`enabled:false`, trigger kept). **Owner to-do:** the two
+  `gh secret set TELEGRAM_*` commands (an agent session cannot write secrets) — until then a
+  failure is a red run + GitHub email, no 🚨; and move the watchdog routine to `_off` on HQ's
+  schedule board + BUDGET.
+- **Split-artifact tell (5fc1f13), the 09-07 observation closed.** The naive tell was
+  REJECTED on the ledger (39 rows flagged, 15 splits, 24 real low-volume movers); the precise
+  one — one day at a split grid ratio ±6% on ≤1.5x volume — probed on live bars 5/5 artifacts,
+  0/4 real movers, then reproduced through the built code. Status `artifact`: in the
+  denominator, out of the queue, not decidable, never settled. No backfill.
+**WATCH 09-14:** the read run carries the n=10 milestone review and is the first scan with
+the split tell live (`movers show` should list any `artifact` rows); the settle should
+finish in ~2 min (was ~18), push ONE 📋 with 📈 "TWLO Mon 09-14" (its card lands Tue) and
+NO ⚠️; the watchdog Action runs 12:30 + 23:30 UTC and should stay green and silent. **Do NOT:** hand-edit `docs/og-image.png`
 (re-render with the script) · link a hosted font · put a holiday anywhere but
 `tradingdays.HOLIDAYS` · treat the recurring `claude/*` branches as a failure.
 
@@ -1429,8 +1443,12 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   they now delegate to the repo docs (doc wins) and carry only the non-negotiables + the
   delivery-verdict rule (re-send ONLY on `PUSH REJECTED`; `research.notify` HUMAN-ONLY; never
   probe/test). Smaller prompt = less second-copy drift surface. Watchdog prompt untouched.
-  (2) **STILL OPEN: port the watchdog schedule to a GitHub Actions staleness workflow in
-  THIS repo** (cron + last-commit age on the WATCHED ledgers, red run = email; Telegram via
+  (2) ~~**STILL OPEN: port the watchdog schedule to a GitHub Actions staleness workflow in
+  THIS repo**~~ **DONE 2026-09-13** (`.github/workflows/watchdog.yml`, 986999a: 12:30 + 23:30
+  UTC, commit staleness + the push-log delivery check on both legs, first run green, cloud
+  trigger disabled — the item's own "would ALSO inherit the push-transport fix" note is what
+  shipped, because 09-11 was exactly that shape). Original text kept below for the record:
+  (cron + last-commit age on the WATCHED ledgers, red run = email; Telegram via
   repo secrets optional). Kills an LLM routine AND closes the docstring's admitted limit:
   today the watchdog runs on the SAME scheduling platform it watches, so a dead platform
   kills alarm and pipeline together — Actions is a separate platform. `research/watchdog.py`
