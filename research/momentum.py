@@ -33,9 +33,22 @@ def compute(bars: list[dict]) -> dict | None:
     strong = (rel_volume >= config.REL_VOLUME_STRONG
               and pct_change >= config.PCT_STRONG)
 
+    # Split-artifact tell (config.SPLIT_*): one day inside the trend window whose close ratio
+    # sits at a split grid point on ~normal volume. 0.0 = no such day; else the grid ratio.
+    split_hint = 0.0
+    for i in range(len(closes) - trend, len(closes)):
+        if not closes[i - 1] or not avg_vol:
+            continue
+        r, day_rv = closes[i] / closes[i - 1], volumes[i] / avg_vol
+        hit = next((g for g in config.SPLIT_GRID if abs(r / g - 1) <= config.SPLIT_TOL), 0.0)
+        if hit and day_rv <= config.SPLIT_RELVOL_MAX:
+            split_hint = hit
+            break
+
     return {
         "price": closes[-1],
         "pct_change": pct_change,
         "rel_volume": rel_volume,
         "strong": strong,
+        "split_hint": split_hint,
     }

@@ -38,6 +38,14 @@ LOOKBACK_DAYS = 20        # baseline window for average daily volume
 TREND_DAYS = 5            # window for the recent % price move
 REL_VOLUME_STRONG = 2.0   # latest volume >= 2x the baseline average
 PCT_STRONG = 0.03         # AND price up >= 3% over the trend window
+# Split-artifact tell [SCAN 2026-09-07 → built 2026-09-13]: an unadjusted stock split shows in the
+# feed as ONE day whose close/prev-close sits at a split ratio on ~normal volume (APH 2.05x on
+# 0.9x vol, SFBS 1.99x/1.0x, MNST 1.99x/0.8x, RUSHA 1.43x/1.2x, IESC 1.89x/0.6x — probed on live
+# bars 2026-09-13). A real one-day 2x move brings volume (MRNA 2.77x on 37x vol). Such a row is
+# logged with status `artifact`, never read, never dropped.
+SPLIT_GRID = (1.5, 2.0, 3.0, 4.0, 5.0, 10.0, 2 / 3, 0.5, 1 / 3, 0.25, 0.2, 0.1)
+SPLIT_TOL = 0.06            # |ratio / grid − 1| ≤ 6% (RUSHA's 3:2 printed 1.428; IESC's 2:1 1.893)
+SPLIT_RELVOL_MAX = 1.5      # ...on a day whose volume is under 1.5x the pre-window baseline
 
 # News signal (Alpha Vantage, deterministic). Stocks only.
 NEWS_RECENCY_HOURS = 48

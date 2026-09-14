@@ -195,3 +195,38 @@ def test_settle_never_fetches_a_row_that_cannot_have_matured(monkeypatch):
              "logged_at": f"{today}T12:00:00+00:00", "seen_at": "", "x21_pct": "", "x63_pct": ""}]
     assert M.settle(rows) == 0
     assert calls == []
+
+
+def _split_bars(jump_vol: float, n: int = 30, ratio: float = 2.0) -> list[dict]:
+    """Flat 100 close / 1000 volume, then the price steps to 100·ratio three bars from the end on
+    a day whose volume is `jump_vol` — an unadjusted split (normal volume) or a real 2x (heavy)."""
+    bars = []
+    for i in range(n):
+        close = 100.0 * (ratio if i >= n - 3 else 1.0)
+        vol = jump_vol if i == n - 3 else 1000.0
+        bars.append({"date": f"2026-02-{(i % 27) + 1:02d}", "open": close, "high": close,
+                     "low": close, "close": close, "volume": vol})
+    return bars
+
+
+def test_rank_marks_a_split_shaped_jump_and_not_a_real_one():
+    """[SCAN 2026-09-07 → 2026-09-13] a 2x one-day step on normal volume is an unadjusted split
+    (APH 2.05x on 0.9x, SFBS/MNST 1.99x); the same step on 5x volume is a move (MRNA 2.77x on 37x)."""
+    ranked = M.rank({"SPLIT": _split_bars(1000.0), "REAL": _split_bars(5000.0),
+                     "THREE2": _split_bars(1200.0, ratio=1.43)})   # RUSHA's 3:2 printed 1.428
+    hints = {c["ticker"]: c["split_hint"] for c in ranked}
+    assert hints["SPLIT"] == 2.0 and hints["THREE2"] == 1.5 and hints["REAL"] == 0.0
+
+
+def test_scan_logs_a_split_artifact_outside_the_read_queue(monkeypatch):
+    statuses = []
+    _cohort_setup(monkeypatch, ["SPLIT", "REAL"], [], statuses)
+    monkeypatch.setattr(M, "_fetch", lambda syms: {"SPLIT": _split_bars(1000.0),
+                                                    "REAL": _split_bars(5000.0)})
+    rows = []
+    assert M.scan(rows, today="2026-03-01") == 2            # BOTH logged — the denominator
+    by = {r["ticker"]: r for r in rows}
+    assert by["SPLIT"]["status"] == "artifact" and "split-artifact tell" in by["SPLIT"]["rationale"]
+    assert by["REAL"]["status"] == "seen" and by["REAL"]["rationale"] == ""
+    assert not M.decide(rows, "SPLIT", "take", "x")          # an artifact is not decidable
+    assert M.settle(rows) == 0                               # ...and never scored

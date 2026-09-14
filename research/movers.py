@@ -117,7 +117,8 @@ def rank(bars_by_ticker: dict[str, list[dict]], top_n: int = TOP_N) -> list[dict
         if not m or abs(m["pct_change"]) < config.PCT_STRONG:
             continue
         cands.append({"ticker": t, "date": b[-1]["date"],
-                      "pct_change": m["pct_change"], "rel_volume": m["rel_volume"]})
+                      "pct_change": m["pct_change"], "rel_volume": m["rel_volume"],
+                      "split_hint": m.get("split_hint", 0.0)})
     cands.sort(key=lambda c: abs(c["pct_change"]), reverse=True)
     return cands[:top_n]
 
@@ -161,11 +162,20 @@ def scan(rows: list[dict], today: str | None = None) -> int:
             if (c["ticker"], c["date"]) in seen:
                 continue
             seen.add((c["ticker"], c["date"]))
+            # Split-artifact tell [SCAN 2026-09-07 → 2026-09-13]: logged (the denominator stays
+            # honest — never dropped), but status `artifact` keeps it out of the read queue and
+            # out of settle. A row the scan mislabels cannot be un-labelled by `decide`; the
+            # probe on live bars (config.SPLIT_*) is the evidence that this is rare.
+            art = c.get("split_hint", 0.0)
             rows.append({"seen_at": _now(), "date": c["date"], "ticker": c["ticker"],
                          "pct_change": f"{c['pct_change'] * 100:+.1f}",
                          "rel_volume": f"{c['rel_volume']:.1f}",
                          "direction_hint": "long" if c["pct_change"] > 0 else "short",
-                         "action": "", "logged_at": "", "rationale": "", "status": "seen",
+                         "action": "", "logged_at": "",
+                         "rationale": (f"split-artifact tell: one-day x{art:.2f} close ratio on "
+                                       f"~normal volume — not a move, not read [SCAN 2026-09-07]"
+                                       if art else ""),
+                         "status": "artifact" if art else "seen",
                          "pattern_tag": "", "universe": univ})
             n += 1
     return n
@@ -249,9 +259,10 @@ def settle_summary(rows: list[dict]) -> None:
 
 def summary(rows: list[dict]) -> None:
     st = lambda s: [r for r in rows if r["status"] == s]
-    seen, taken, skip = st("seen"), st("taken"), st("skip")
+    seen, taken, skip, art = st("seen"), st("taken"), st("skip"), st("artifact")
     print(f"\nmover ledger ({LEDGER}): {len(rows)} movers SEEN (denominator) | "
-          f"taken {len(taken)} skips {len(skip)} | unread {len(seen)}")
+          f"taken {len(taken)} skips {len(skip)} | unread {len(seen)}"
+          + (f" | split artifacts {len(art)} (logged, never read)" if art else ""))
     for r in seen:
         # The universe label matters to the reader: tail names get the HIGHER read bar
         # (mechanism named or SKIP, liquidity checked) [ARC 5 #11].

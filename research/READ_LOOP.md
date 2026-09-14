@@ -71,7 +71,10 @@ execution") made operational. What this means for the run:
    naive benchmark — so a thin read is a SKIP, not a coin-flip take.
 4. **PRE-REGISTER every decision** (immovable timestamp = the anchor; lookahead-guarded):
    - Mover candidates → `python3 -m research.movers decide TICKER take|skip "why"` — clear the
-     QUEUE: decide on EVERY unread SEEN mover (dashboard "unread" count). A TAKE then graduates to
+     QUEUE: decide on EVERY unread SEEN mover (dashboard "unread" count). Rows the scan
+     logged as `artifact` (a one-day close ratio at a stock-split grid point on ~normal
+     volume, `config.SPLIT_*`, since 2026-09-13) are NOT in the queue and cannot be decided —
+     they stay in the ledger for the denominator's honesty; `movers show` counts them. A TAKE then graduates to
      a scored `bets add ... --tag=` below; a SKIP stays logged (that's the denominator working).
    - General theses → `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario-type> --conviction=<high|medium>`
      **LONG only** — `add` refuses a short and a name under the liquidity floor, fail-closed

@@ -167,7 +167,8 @@ def forward_track():
         mu = lambda u: sum(1 for r in m if r["universe"] == u)
         print(f"      denominator [Arc 5 #8]: mover scan logged {len(m)} candidates "
               f"(sp500 {mu('sp500')} / tail {mu('tail')}; {mc('taken')} taken / "
-              f"{mc('skip')} skipped / {mc('seen')} unread) → selection BOUNDED by the two "
+              f"{mc('skip')} skipped / {mc('seen')} unread / {mc('artifact')} split artifacts) "
+              f"→ selection BOUNDED by the two "
               f"scan cohorts [ARC 5 #11], reduced not eliminated (universe ≠ all reads).")
     else:
         print("      caveat: UNBOUNDED news scan, no candidate denominator yet → a pass is "
