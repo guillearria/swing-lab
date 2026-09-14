@@ -2742,3 +2742,37 @@ was never confirmed delivered" — about itself.
   Reproduce: `pytest research/tests -k "composing_leg or leg_day"` · the run log:
   `RemoteTrigger get_run_log cse_01SjB6pmZkMCv8Ya5LMBCq6v`.
 
+**2026-09-13 · [OPS] SILENT STRAND #2 (09-11) — THE DEPENDENCY GUARD DID NOT GUARD, SO THE
+IMPORT CAN NO LONGER KILL THE TRANSPORT. Plus: Labor Day produced two false DO-NOWs, and the
+calendar now knows holidays.** Found by the owner reading the week's Telegram, not by any alarm.
+- **What happened 09-11 22:35Z** (run log `cse_01YLddoSNaMjLtvibMFquRS1`): cold container,
+  `No module named 'dotenv'`. `config.py`'s hard import took down movers settle, orders check,
+  pulse, the digest push (`PUSH REJECTED`) and the 🚨 heartbeat — zero messages Friday evening.
+  bets settle ran (nothing due: CRL's 21st bar was 09-11 itself, deferred to 09-12 by the
+  partial-bar guard, by design). The commit landed at 22:36 — 2 min instead of ~18, because the
+  fetch loops were the casualties — so the commit-watching watchdog and HQ's dashboard both read
+  a healthy day. The push log's REJECTED row raised the 09-12 DO-NOW and the 09-12 run caught
+  movers up (80 rows vs the usual 40). Evidence lost: none. Contract broken: SILENCE = BROKEN,
+  unalarmed for 24 h. The Sonnet routine reported it exactly and correctly refused the sanctioned
+  retry ("a re-run would produce the same failure") — right call; the only copy of the diagnosis
+  sat in a run log nobody reads.
+- **Why the 08-08 guard failed: unknown, and deliberately not chased.** Its probe's stderr went
+  to /dev/null and pip's outcome was never named; cron.log is not committed. The fix removes the
+  dependency rather than repairing the installer: python-dotenv is a LOCAL convenience (.env)
+  and the cloud env sets TELEGRAM_* directly, so `config.py` now imports it optionally; the guard
+  logs both outcomes and runs `python3 -m pip` under the probe's own interpreter.
+- **Labor Day:** 09-08 both legs carried "bars last advanced 2026-09-04 (2 weekdays behind the
+  last scan)" — a weekday count over a holiday, hedged in its own text. The same blind spot put
+  "next scores Fri 09-11 (TWLO)" in the 09-11 digest for a bet whose 21st bar is Mon 09-14, and
+  the STUCK buffer has been absorbing the drift since July 4. `research/tradingdays.py` (NYSE
+  holidays 2026–27, stdlib) now backs every trading-day count and walk. Pre-registered before
+  the change: lag(09-04→09-08) 2 → 1; next_maturity TWLO 09-11 → 09-14 — both verified.
+  `orders._weekdays_between` deliberately untouched: its ≥2 threshold already absorbs a holiday,
+  and changing a diagnostic's threshold is its own pre-registration.
+- **Number:** 254 tests green (11 new). Design floor shipped the same night (BACKLOG [SITE]:
+  live checker 0 must-fails). Residual: the settle loops still fetch every unmatured row daily
+  (17–20 min per run) — the calendar pre-check proposed 09-02 was never built and only now has
+  its primitive; it is the next proposal.
+  Reproduce: `pytest research/tests/test_config.py research/tests/test_tradingdays.py` ·
+  `python3 -c "import sys; sys.modules['dotenv']=None; import research.notify"` ·
+  `RemoteTrigger get_run_log cse_01YLddoSNaMjLtvibMFquRS1`.

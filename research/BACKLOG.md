@@ -4,7 +4,41 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## [SITE 2026-09-13] Design floor — three gaps on the live page, each a small in-repo fix
+## ▶ PICK UP HERE (2026-09-13 — silent strand #2 closed at the import · holidays in the calendar · design floor green)
+
+**[OPS 2026-09-13]** — owner session, four commits, 254 tests green, live floor checker 0 must-fails.
+- **The 09-11 settle went SILENT (no 📋, no 🚨) — the 08-07 class again.** Cold container
+  without python-dotenv; `config.py`'s hard import killed movers settle, orders, pulse, the
+  digest push and the heartbeat in one shot (bets settle survived; nothing was due). The 08-08
+  pip guard fired and did not help, and cron.log said nothing about why. The commit landed, so
+  the watchdog and HQ both read a healthy day; only the push log (`REJECTED`) and the 09-12
+  DO-NOW caught it, a day late. The Sonnet routine reported it correctly and correctly did NOT
+  retry. **Fixed:** dotenv is OPTIONAL in `config.py` (os.environ is the config; the cloud env
+  sets TELEGRAM_* directly); the guard logs its probe + pip outcome and runs `python3 -m pip`;
+  a test pins the import with dotenv forced absent. FINDINGS [OPS] 2026-09-13.
+- **Labor Day false ⚠️ on BOTH legs 09-08**, and 📈 dates a day early after every holiday.
+  `research/tradingdays.py` (NYSE 2026–27, stdlib) now backs `digest._busdays`,
+  `bets.next_maturity` and `engine._add_trading_days`. Pre-registered check verified before
+  commit: lag 09-04→09-08 2→1; next_maturity TWLO 09-11→09-14. **Extend `HOLIDAYS` before
+  each new year** — a year without entries degrades to the old weekday count.
+- **Design floor SHIPPED** (the SITE item below, same night): og:image generated from the
+  masthead's own source (`site.og_card` + `scripts/og_image.sh`), an About tab in reader
+  language, Newsreader 600 vendored for the wordmark only. Live `check_site.py`: F6 PASS
+  (1200×630), F9 PASS, F12 all same-origin.
+- **Branch litter:** 19 merged `origin/claude/*` branches (the cloud stop hook, one per run;
+  14 were deleted 09-01). Deleting remote refs is gated in an agent session — it is a human
+  `git push origin --delete …`. WILL keep recurring nightly.
+**OPEN — the calendar pre-check in the settle loops is STILL NOT BUILT.** The 09-02 proposal
+(skip the fetch when `tradingdays.count(logged_day, today) < h`; 3,968 → ~50 chart calls,
+movers settle < 1 min) was never implemented — `movers.settle` and `bets.settle` still fetch
+every unmatured row every day, which is why the script runs 17–20 min and why every timing edge
+sits near midnight UTC. The primitive now exists; ~6 lines + one test per loop. Propose → go.
+**WATCH 09-14:** the read run carries the n=10 milestone review; the settle 📈 should read
+"TWLO Mon 09-14" (its card lands Tue) with NO ⚠️. **Do NOT:** hand-edit `docs/og-image.png`
+(re-render with the script) · link a hosted font · put a holiday anywhere but
+`tradingdays.HOLIDAYS` · treat the recurring `claude/*` branches as a failure.
+
+## ~~[SITE 2026-09-13] Design floor — three gaps on the live page~~ DONE the same night (59a3524; live checker 0 must-fails; item 4, the footer cutover, still waits on the front door)
 
 A deterministic floor checker now runs against the three public sites in this portfolio and
 grades every page on the same fifteen required elements. **This page scores two must-fails and
@@ -63,7 +97,7 @@ was extracted from this site's own v2 pass plus the two sibling sites and ruled 
 reads the upstream file — which is exactly why these three sat undone for a week after being
 measured.
 
-## ▶ PICK UP HERE (2026-09-01 — settle double-posts: model reverted + two code guards)
+## Earlier — 2026-09-01, settle double-posts: model reverted + two code guards (WATCH 09-03 PASSED — one message per leg every day since 09-02 per push_log; the 09-11 gap was a different class, see the head item)
 
 **[OPS 2026-09-01]** — the settle leg pushed 2–4 📋 messages on 4 of 6 nights (08-26, 08-27's
 bare "--dry-run", 08-30, 09-01). Root cause from the cloud run logs: the 08-24 model swap
