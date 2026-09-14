@@ -32,7 +32,7 @@ import os
 import sys
 from datetime import datetime, timezone
 
-from research import config, momentum, universe, feedstatus
+from research import config, momentum, universe, feedstatus, tradingdays
 
 log = logging.getLogger(__name__)
 
@@ -207,6 +207,8 @@ def settle(rows: list[dict]) -> int:
         got = False
         for col, h in HORIZONS:
             if r.get(col):
+                continue
+            if not tradingdays.can_have_matured(day, h):   # cannot score yet → no fetch [09-13]
                 continue
             try:
                 res = bets._score(prices.bars_after(r["ticker"], day, h + 5),

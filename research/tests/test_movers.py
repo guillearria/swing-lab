@@ -181,3 +181,17 @@ def test_ledger_survives_a_save_crash_and_malformed_rows_are_named(tmp_path, mon
     with pytest.raises(ValueError):
         M._save([{None: ["overflow"]}])
     assert led.read_text() == original
+
+
+def test_settle_never_fetches_a_row_that_cannot_have_matured(monkeypatch):
+    """[OPS 2026-09-13] the calendar gate: a row decided today has no scoreable bar, so the loop
+    must not spend two chart calls on it (4,668 calls/run → the handful that can mature)."""
+    from datetime import datetime, timezone
+    from research import prices
+    calls = []
+    monkeypatch.setattr(prices, "bars_after", lambda sym, day, n: calls.append(sym) or [])
+    today = datetime.now(timezone.utc).date().isoformat()
+    rows = [{"status": "taken", "direction_hint": "long", "ticker": "FRESH",
+             "logged_at": f"{today}T12:00:00+00:00", "seen_at": "", "x21_pct": "", "x63_pct": ""}]
+    assert M.settle(rows) == 0
+    assert calls == []

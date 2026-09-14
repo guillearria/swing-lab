@@ -14,7 +14,7 @@ with no entries degrades to the old weekday-only behaviour — conservative, nev
 Stdlib only: the digest and bets stay dependency-light. Early closes do not matter here (a
 half session is still a completed bar).
 """
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 HOLIDAYS = frozenset(map(date.fromisoformat, (
     # 2026: New Year · MLK · Presidents · Good Friday · Memorial · Juneteenth · Jul 4 (obs Fri)
@@ -48,3 +48,16 @@ def add(start: date, n: int) -> date:
         if is_trading_day(d):
             n -= 1
     return d
+
+
+def can_have_matured(day: str, horizon: int, today: date | None = None) -> bool:
+    """Could a row pre-registered on `day` (ISO) have `horizon` COMPLETE bars strictly after it
+    and strictly before `today`? Mirrors bets._score's two gates exactly (entry bar AFTER the
+    pre-registration day; exit bar dated BEFORE today), so a settle loop can skip the price
+    fetch for every row that cannot score yet — the [OPS 2026-09-02] proposal, built 09-13:
+    both loops re-fetched EVERY unmatured row every day (4,668 chart calls, 17–20 min/run) for
+    the handful that could actually mature. Conservative by construction: an unlisted closure
+    makes the count LARGER, so the row is fetched and _score says None — never a missed settle.
+    `today` is injected for tests; it defaults to the UTC date, the same clock _score uses."""
+    today = today or datetime.now(timezone.utc).date()
+    return count(date.fromisoformat(day) + timedelta(days=1), today) >= horizon

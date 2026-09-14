@@ -28,3 +28,13 @@ def test_a_year_without_entries_degrades_to_weekdays():
     d0, d1 = date(2030, 1, 1), date(2031, 1, 1)
     weekdays = sum(1 for i in range((d1 - d0).days) if (d0 + timedelta(days=i)).weekday() < 5)
     assert T.count(d0, d1) == weekdays
+
+
+def test_can_have_matured_mirrors_the_score_gates():
+    # CRL 21d logged Wed 08-12: 21st bar is Fri 09-11 → scoreable from 09-12 (what happened)
+    assert not T.can_have_matured("2026-08-12", 21, today=date(2026, 9, 11))
+    assert T.can_have_matured("2026-08-12", 21, today=date(2026, 9, 12))
+    # TWLO 21d logged Thu 08-13, Labor Day inside: 21st bar Mon 09-14 → scoreable from 09-15
+    assert not T.can_have_matured("2026-08-13", 21, today=date(2026, 9, 14))
+    assert T.can_have_matured("2026-08-13", 21, today=date(2026, 9, 15))
+    assert not T.can_have_matured("2026-09-10", 63, today=date(2026, 9, 14))   # a fresh core row

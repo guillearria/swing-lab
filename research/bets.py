@@ -24,6 +24,7 @@ from datetime import date, datetime, timezone
 from statistics import mean, median
 
 from research import prices
+from research import tradingdays
 
 log = logging.getLogger(__name__)
 CATALOGUE = "research/bets_catalogue.csv"
@@ -234,6 +235,8 @@ def settle(rows: list[dict]) -> tuple[int, list[str]]:
         if r["status"] != "open":
             continue
         h, day = int(r["horizon_d"]), r["logged_at"][:10]
+        if not tradingdays.can_have_matured(day, h):       # cannot score yet → no fetch [09-13]
+            continue
         try:
             res = _score(prices.bars_after(r["ticker"], day, h + 5),
                          prices.bars_after(r["benchmark"], day, h + 5), r["direction"], h, day)

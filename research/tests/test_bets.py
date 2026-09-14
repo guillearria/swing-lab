@@ -395,3 +395,16 @@ def test_next_maturity_skips_nyse_holidays(frozen):
     rows = [{"logged_at": "2026-08-13T11:40:55+00:00", "ticker": "TWLO", "horizon_d": "21",
              "status": "open"}]
     assert B.next_maturity(rows) == ("2026-09-14", "TWLO")
+
+
+def test_settle_never_fetches_a_bet_that_cannot_have_matured(monkeypatch):
+    """[OPS 2026-09-13] the calendar gate, bets side: an open bet logged today is skipped
+    BEFORE any price call; an old one still fetches (the poisoned-row test above covers it)."""
+    from datetime import datetime, timezone
+    calls = []
+    monkeypatch.setattr(B.prices, "bars_after", lambda sym, day, n: calls.append(sym) or [])
+    today = datetime.now(timezone.utc).date().isoformat()
+    fresh = {"logged_at": f"{today}T12:00:00+00:00", "ticker": "FRESH", "direction": "long",
+             "horizon_d": "21", "benchmark": "SPY", "status": "open"}
+    assert B.settle([fresh]) == (0, [])
+    assert calls == [] and fresh["status"] == "open"
