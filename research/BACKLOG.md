@@ -52,10 +52,20 @@ what's queued, and what NOT to touch — in one screen. Newest first. Holds no l
   one — one day at a split grid ratio ±6% on ≤1.5x volume — probed on live bars 5/5 artifacts,
   0/4 real movers, then reproduced through the built code. Status `artifact`: in the
   denominator, out of the queue, not decidable, never settled. No backfill.
-**WATCH 09-14:** the read run carries the n=10 milestone review and is the first scan with
-the split tell live (`movers show` should list any `artifact` rows); the settle should
-finish in ~2 min (was ~18), push ONE 📋 with 📈 "TWLO Mon 09-14" (its card lands Tue) and
-NO ⚠️; the watchdog Action runs 12:30 + 23:30 UTC and should stay green and silent. **Do NOT:** hand-edit `docs/og-image.png`
+**WATCH 09-14 → VERIFIED 09-15 (owner session), all four firsts clean:** the read ran 14 min,
+2 takes (HPE 21d, CASY 63d + new case), wrote the n=10 milestone review to FINDINGS
+([ARC 5 #16]: reachability fine, the verdict look lands ~2026-09-28 at the current pace,
+[ORDERS #1] is the one bar missing an arm, no proposals warranted), PUSH DELIVERED, no ⚠️;
+the split tell ran live with 0 artifacts (no split in the window — expected); the settle
+ran **62 s end to end** (script ~25 s, was ~18 min), ONE 📋 "Nothing matured today — 70 bets
+running · 📈 next scores Mon 09-14 (TWLO)", PUSH DELIVERED, no ⚠️; the watchdog Action's
+three scheduled runs all green + silent (GitHub crons fired 2–5.5 h late — 18:06, 01:46,
+17:09 UTC — harmless: the checks are calendar-based, not clock-based). Tuesday's read: 1 take
+(HWM + case), DELIVERED. The settle prompt's "15–20 min" wording confused nothing (Sonnet
+backgrounded, flocked, read the log). TWLO scores tonight (09-15), TPR Wed.
+**Do NOT:** re-echo the settle prompt just for the duration wording (a body update replaces
+`ccr` wholesale — batch it with the next real prompt change) · delete `origin/claude/*`
+litter from inside a routine (it recurs ~2/day; prune by hand now and then). **Do NOT:** hand-edit `docs/og-image.png`
 (re-render with the script) · link a hosted font · put a holiday anywhere but
 `tradingdays.HOLIDAYS` · treat the recurring `claude/*` branches as a failure.
 
