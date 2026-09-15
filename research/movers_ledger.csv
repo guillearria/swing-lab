@@ -1500,3 +1500,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-09-14T11:34:06+00:00,2026-09-11,RELY,-18.3,1.2,short,skip,2026-09-14T11:43:44+00:00,"could not identify the driver of the -18pct week - the Etsy payout partnership is positive news; thin read, tail bar not met",skip,,,,tail
 2026-09-14T11:34:06+00:00,2026-09-11,INSP,+17.5,2.9,long,skip,2026-09-14T11:43:44+00:00,Friday's +8.7pct was a sector-wide healthcare rally on an ACA-subsidy headline plus a Stifel PT raise; sector move on a thin catalyst,skip,,,,tail
 2026-09-14T11:34:06+00:00,2026-09-11,TNDM,-16.3,1.0,short,skip,2026-09-14T11:43:44+00:00,already an open bet (2026-08-14) - never re-bet a live ticker,skip,,,,tail
+2026-09-15T11:33:41+00:00,2026-09-14,COO,-22.1,3.3,short,skip,2026-09-15T11:39:21+00:00,"Real revenue miss plus an FY guidance cut, and management says US contact-lens channel destocking continues into Q4 - the cut is genuine, not an overreaction",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,CASY,-17.8,1.8,short,skip,2026-09-15T11:39:21+00:00,Already pre-registered as a take on 2026-09-14; no second bet on the same name,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,VRT,-15.4,2.7,short,skip,2026-09-15T11:39:21+00:00,"Already an open bet since 2026-07-30; this week is the AI-power complex drawdown, no new read",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,AMGN,-12.7,1.2,short,skip,2026-09-15T11:39:21+00:00,"Novartis pelacarsen Phase 3 failure challenges the whole Lp(a) target class, not one drug; handicapping olpasiran is a coin flip",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,HWM,-12.4,1.0,short,take,2026-09-15T11:39:21+00:00,SpaceX in-house turbine-blade plan (Aug 31) knocked ~27% off a name that raised FY guidance three weeks earlier; new capacity is 2028 at the earliest and HWM holds >50% global share on long-term agreements,taken,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,PANW,+12.2,1.9,long,skip,2026-09-15T11:39:21+00:00,"One-day AI-safety narrative pop to an all-time high - spent catalyst, chasing",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,CEG,-11.5,1.5,short,skip,2026-09-15T11:39:21+00:00,"AI-power demand narrative unwind IS the mechanism, not a mispricing of it",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,LRCX,-11.1,1.8,short,skip,2026-09-15T11:39:22+00:00,"AI-capex complex selloff - one macro draw, no name-specific read",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,SNDK,-10.8,0.7,short,skip,2026-09-15T11:39:22+00:00,Below-average volume (0.7x): pure memory/AI-capex beta with no name-specific news,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,BKR,-10.6,1.5,short,skip,2026-09-15T11:39:22+00:00,AI-power/gas-turbine complex drag plus oil noise; no clean name-specific catalyst,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,CRWD,+10.5,2.4,long,skip,2026-09-15T11:39:22+00:00,Record high on a one-day AI-risk narrative pop - spent catalyst,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,DLTR,-9.3,1.4,short,skip,2026-09-15T11:39:22+00:00,"No catalyst - insider sales, valuation drift and a Q3 estimate trim",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,MU,-9.1,1.0,short,skip,2026-09-15T11:39:22+00:00,"AI-capex selloff, one macro draw shared with the whole semi complex",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,BKNG,-9.1,1.7,short,skip,2026-09-15T11:39:23+00:00,EU court blocked the eTraveli deal and travel-demand overhang is unresolved; no resolution date,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,KLAC,-8.9,1.3,short,skip,2026-09-15T11:39:23+00:00,Same AI-capex macro draw as LRCX/MU - not an independent read,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,FTNT,+8.9,1.4,long,skip,2026-09-15T11:39:23+00:00,AI-security narrative pop - spent catalyst,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,NRG,-8.9,1.3,short,skip,2026-09-15T11:39:23+00:00,"AI-power demand unwind; the theme is the mechanism, nothing name-specific",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,ORCL,-8.8,1.9,short,skip,2026-09-15T11:39:23+00:00,"AI-capex/OCI backlog scare - theme-wide, no readable resolution",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,WDC,-8.6,1.1,short,skip,2026-09-15T11:39:23+00:00,"Memory/AI-capex beta, no name-specific catalyst",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,ALB,-8.6,1.0,short,skip,2026-09-15T11:39:24+00:00,"Normal volume, no catalyst - lithium sector drift",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,BLDR,-8.4,1.4,short,skip,2026-09-15T11:39:24+00:00,"Company cut its 2026 outlook on a deepening housing slump - continuation, not overreaction",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,NVDA,-8.3,1.0,short,skip,2026-09-15T11:39:24+00:00,"The AI-safety regulatory shock is the whole markets story, not a read",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,FDS,-8.3,1.4,short,skip,2026-09-15T11:39:24+00:00,Reports fiscal Q4 on 2026-09-30 (event risk inside any window) and the AI-disruption narrative is unresolved - thin read,skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,DDOG,+8.0,0.7,long,skip,2026-09-15T11:39:24+00:00,"Below-average volume (0.7x) rotation pop, not a name-specific catalyst",skip,,,,sp500
+2026-09-15T11:33:41+00:00,2026-09-14,IP,-8.0,1.5,short,skip,2026-09-15T11:39:24+00:00,Already an open bet since 2026-07-28,skip,,,,sp500
+2026-09-15T11:34:21+00:00,2026-09-14,TBBK,-24.9,2.9,short,skip,2026-09-15T11:39:33+00:00,"Chime is buying Stride Bank and in-housing its charter - a permanent revenue loss with contagion risk to other fintech partners, not an overreaction",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,ASO,+20.7,1.3,long,skip,2026-09-15T11:39:33+00:00,"Beat leans on tariff refunds with comps -0.4%, and the FY raise is smaller than the quarters beat - the NDSN one-off disqualifier, and the move is already made",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,QDEL,-20.4,2.1,short,skip,2026-09-15T11:39:34+00:00,"Repeated guidance cuts, down 56% YTD at under 12 dollars - falling knife with no identified change",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,RCUS,-18.8,1.6,short,skip,2026-09-15T11:39:34+00:00,Biotech trial binary - nothing cheap to read here,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,SIG,+18.1,2.1,long,skip,2026-09-15T11:39:34+00:00,Already pre-registered as a take on 2026-09-10,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,INSP,+17.8,2.5,long,skip,2026-09-15T11:39:34+00:00,Move is a Stifel price-target hike plus a medtech sector rally - no name-specific change,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,ROIV,+17.4,1.0,long,skip,2026-09-15T11:39:34+00:00,Mosliciguat Phase 2 win already priced at an all-time high; next readout is years out - spent catalyst,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,MBC,-16.6,2.2,short,skip,2026-09-15T11:39:34+00:00,"Housing-downturn continuation, same draw as BLDR and IBP",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,IBP,-16.0,2.8,short,skip,2026-09-15T11:39:35+00:00,"Residential install volumes still declining - continuation, not overreaction",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,LEU,-15.9,1.6,short,skip,2026-09-15T11:39:35+00:00,Nuclear-fuel name unwinding with the AI-power complex; the theme is the mechanism,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,TNDM,-15.5,1.5,short,skip,2026-09-15T11:39:35+00:00,Already an open bet since 2026-08-14,skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,FMC,-15.3,1.0,short,skip,2026-09-15T11:39:35+00:00,"Normal volume, no catalyst - ag-chem drift at a 3-month low",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,FUN,-15.0,0.8,short,skip,2026-09-15T11:39:35+00:00,"Below-average volume (0.8x), down 21% in a month with no identified catalyst",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,RELY,-15.0,1.0,short,skip,2026-09-15T11:39:35+00:00,"JMP cut its target on the Q3 guide, unproven lending economics and immigration-enforcement risk - the concerns are real and unresolved",skip,,,,tail
+2026-09-15T11:34:21+00:00,2026-09-14,GT,-14.9,1.2,short,skip,2026-09-15T11:39:35+00:00,At a 3-month low with no catalyst - a falling knife,skip,,,,tail
