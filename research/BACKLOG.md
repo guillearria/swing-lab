@@ -63,9 +63,14 @@ three scheduled runs all green + silent (GitHub crons fired 2–5.5 h late — 1
 17:09 UTC — harmless: the checks are calendar-based, not clock-based). Tuesday's read: 1 take
 (HWM + case), DELIVERED. The settle prompt's "15–20 min" wording confused nothing (Sonnet
 backgrounded, flocked, read the log). TWLO scores tonight (09-15), TPR Wed.
+- **Run-branch litter is now pruned by an Action (`prune.yml`, daily 04:00 UTC, 2026-09-15).**
+  The cloud stop hook pushes one `claude/<routine>-<id>` branch per run (~12/week) after the
+  commits are already on master. The prune deletes only `claude/*` refs whose tip is merged into
+  `origin/master` — never `master`, never `settle-backup/*` (an unmerged tip = a stranded run,
+  left alone). Own workflow, so a red prune never reads as a watchdog alarm.
 **Do NOT:** re-echo the settle prompt just for the duration wording (a body update replaces
-`ccr` wholesale — batch it with the next real prompt change) · delete `origin/claude/*`
-litter from inside a routine (it recurs ~2/day; prune by hand now and then). **Do NOT:** hand-edit `docs/og-image.png`
+`ccr` wholesale — batch it with the next real prompt change) · prune from inside a routine or
+`daily.sh` (the Action is the one place). **Do NOT:** hand-edit `docs/og-image.png`
 (re-render with the script) · link a hosted font · put a holiday anywhere but
 `tradingdays.HOLIDAYS` · treat the recurring `claude/*` branches as a failure.
 

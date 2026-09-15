@@ -1,0 +1,35 @@
+name: prune-run-branches
+# Deletes the cloud routines' leftover run branches — one `claude/<routine>-<id>` per run, pushed by
+# the cloud environment's stop hook AFTER the run's commits already reached master (push_ledgers.sh
+# pushes HEAD:master; the read pushes HEAD:master itself). ~12 a week, zero content of their own.
+# Safe by construction [2026-09-15]:
+#   - only refs under claude/ — never master, never settle-backup/* (push_ledgers' parking refs
+#     for a run whose master push failed; those need a human merge and are NOT under claude/);
+#   - only branches whose tip is ALREADY an ancestor of origin/master (`--merged`): a run whose
+#     master push failed has an unmerged tip and is left alone;
+#   - its own workflow, so a red run here can never read as a watchdog alarm; nothing else runs
+#     on a branch delete (Pages deploys from master pushes; the watchdog reads master history).
+on:
+  schedule:
+    - cron: '0 4 * * *'     # a quiet hour: read 11:30 UTC, settle 22:35 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: delete merged claude/* run branches
+        run: |
+          set -euo pipefail
+          git fetch --prune origin
+          merged=$(git branch -r --merged origin/master | sed 's/^ *//' | grep '^origin/claude/' | sed 's#^origin/##' || true)
+          if [ -z "$merged" ]; then echo "nothing to prune"; exit 0; fi
+          echo "$merged" | sed 's/^/deleting /'
+          # shellcheck disable=SC2086
+          git push origin --delete $merged
+          echo "pruned $(echo "$merged" | wc -l) merged run branch(es)"
