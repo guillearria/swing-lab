@@ -704,46 +704,46 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-13T11:36:25+00:00,2026-08-12,DAVE,-26.5,1.0,short,skip,2026-08-13T11:40:34+00:00,fintech -26pct on vol 1.0x (no confirmation); thin small-cap,skip,,-11.32,,tail
 2026-08-13T11:36:25+00:00,2026-08-12,SITM,+25.3,1.0,long,skip,2026-08-13T11:40:34+00:00,+25pct on vol 1.0x (no volume confirmation on a big move = gappy); thin,skip,,-19.58,,tail
 2026-08-13T11:36:25+00:00,2026-08-12,DIOD,+25.1,0.9,long,skip,2026-08-13T11:40:34+00:00,"+25pct on vol 0.9x (below-avg, no confirmation); thin",skip,,-10.74,,tail
-2026-08-14T11:54:12+00:00,2026-08-13,MNST,-50.6,1.8,short,skip,2026-08-14T12:05:58+00:00,"-50.6% is the 2-for-1 stock split effective 8/11 (100% stock dividend) — mechanical price halving, not a real move; data artifact",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,SMCI,+33.3,2.8,long,skip,2026-08-14T12:05:58+00:00,already live: SMCI 21d post-earnings-drift bet open (7/22) — do not re-bet,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,ABNB,+22.1,1.4,long,skip,2026-08-14T12:05:58+00:00,"mega-cap post-earnings pop, heavily covered/arbitraged; no differentiated read",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,SNDK,+21.4,1.3,long,skip,2026-08-14T12:05:58+00:00,"NAND memory upcycle widely known and name already ran; momentum, no name-specific mispricing",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,WDAY,+21.3,3.7,long,skip,2026-08-14T12:05:59+00:00,"PRE-earnings run-up (reports ~8/27) on AI narrative; Morgan Stanley cut to Underweight; earnings event-risk inside window, no drift to ride",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,TPR,-20.7,4.0,short,take,2026-08-14T12:06:17+00:00,"beat (rev +8.9% to $1.88B in-line, non-GAAP EPS $1.32 +3.4% above cons) but -15% on FY27 rev guide $8.4-8.5B marginally below $8.47B est + Kate Spade -10% + tariff noise — punishment outsized vs a marginal guide trim",taken,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,MPC,+19.1,1.1,long,skip,2026-08-14T12:05:59+00:00,"refiner crack-spread MACRO rally (record 3-2-1 spread, +80% YTD); market-wide sector momentum, late, no name edge",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,MRNA,+18.2,1.5,long,skip,2026-08-14T12:05:59+00:00,already live: MRNA short bet open (7/13) — leave thesis to score,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,AXON,+17.8,1.0,long,skip,2026-08-14T12:05:59+00:00,"high-valuation momentum post-beat, well-covered; thin read",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,TTD,-17.6,1.9,short,skip,2026-08-14T12:05:59+00:00,already live: TTD short bet open (8/10),skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,VEEV,+16.0,1.6,long,skip,2026-08-14T12:05:59+00:00,"large-cap SaaS, covered; no differentiated read",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,PLTR,+14.8,0.8,long,skip,2026-08-14T12:05:59+00:00,"below-average volume (0.8x) momentum, no fresh catalyst",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,HPE,+14.1,1.5,long,skip,2026-08-14T12:06:00+00:00,covered large-cap; thin read,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,PSX,+13.2,0.9,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,VLO,+13.2,0.8,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,DELL,+13.0,1.3,long,skip,2026-08-14T12:06:00+00:00,covered large-cap AI-server narrative; thin read,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,APO,+12.2,1.0,long,skip,2026-08-14T12:06:00+00:00,already live: APO short bet open (6/28); alt-manager sector move,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,BX,+11.9,0.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move (rate-cut narrative), market-wide, below-avg volume",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,KKR,+11.8,1.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move, market-wide",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,CSGP,+11.7,1.0,long,skip,2026-08-14T12:06:01+00:00,covered; no differentiated read,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,INTU,+11.3,1.1,long,skip,2026-08-14T12:06:01+00:00,"large-cap, covered; thin read",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,GDDY,+11.2,1.5,long,skip,2026-08-14T12:06:01+00:00,covered; no edge,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,HPQ,+11.1,1.5,long,skip,2026-08-14T12:06:01+00:00,covered large-cap; thin read,skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,LRCX,+10.2,0.8,long,skip,2026-08-14T12:06:01+00:00,"semicap momentum, below-avg volume, covered",skip,,,,sp500
-2026-08-14T11:54:12+00:00,2026-08-13,DXCM,+10.2,0.9,long,skip,2026-08-14T12:06:01+00:00,already live: DXCM 21d post-earnings-drift bet open (8/3),skip,,,,sp500
-2026-08-14T11:54:55+00:00,2026-08-13,HZO,+48.1,2.5,long,skip,2026-08-14T12:06:15+00:00,"boat-retailer +48% illiquid pop, no clear named mechanism; tail friction fails the higher bar",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,QNST,+36.3,1.2,long,skip,2026-08-14T12:06:15+00:00,"small-cap momentum, no differentiated read; tail friction",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,P,+34.5,1.7,long,skip,2026-08-14T12:06:15+00:00,"micro/tail momentum, unclear catalyst, illiquid",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,TWLO,+29.1,1.1,long,skip,2026-08-14T12:06:15+00:00,earnings pop already extended; no name-specific edge,skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,DOCS,+28.7,1.3,long,skip,2026-08-14T12:06:15+00:00,"8/7 earnings pop already ran +100% AH / ~40% session — too extended to chase, drift priced",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,SEZL,-27.3,1.0,short,skip,2026-08-14T12:06:15+00:00,"BNPL selloff, no clear overreaction read; avg volume, tail friction",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,CRSR,+26.8,1.4,long,skip,2026-08-14T12:06:15+00:00,"gaming-hardware pop, tail, no durable named mechanism",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,ONTO,+25.7,0.8,long,skip,2026-08-14T12:06:16+00:00,"semicap tail, below-avg volume, no edge",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,NABL,-24.4,2.6,short,skip,2026-08-14T12:06:16+00:00,"software guide-down; no differentiated overreaction read, tail friction",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,TNDM,+23.1,0.7,long,take,2026-08-14T12:06:16+00:00,"profitability inflection medtech: op margin -21.5%->-5.4% YoY + adj EBITDA $6.42M vs $3.52M cons + PayGo recurring-rev shift (10% of shipments, 45% formulary) — named mechanism re-rating, not just a beat",taken,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,REZI,-21.5,3.1,short,skip,2026-08-14T12:06:16+00:00,"Resideo earnings miss; no clean overreaction read, tail friction",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,PBF,+21.4,0.7,long,skip,2026-08-14T12:06:16+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,CELH,+21.1,0.8,long,skip,2026-08-14T12:06:16+00:00,"energy-drink pop, below-avg volume, covered mid-cap",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,NOG,+20.6,0.7,long,skip,2026-08-14T12:06:16+00:00,"oil&gas momentum with energy complex, below-avg volume",skip,,,,tail
-2026-08-14T11:54:55+00:00,2026-08-13,LQDA,-19.4,3.2,short,skip,2026-08-14T12:06:17+00:00,"biotech binary/litigation (Liquidia vs United Therapeutics); binary legal risk, not readable drift",skip,,,,tail
+2026-08-14T11:54:12+00:00,2026-08-13,MNST,-50.6,1.8,short,skip,2026-08-14T12:05:58+00:00,"-50.6% is the 2-for-1 stock split effective 8/11 (100% stock dividend) — mechanical price halving, not a real move; data artifact",skip,,-0.02,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,SMCI,+33.3,2.8,long,skip,2026-08-14T12:05:58+00:00,already live: SMCI 21d post-earnings-drift bet open (7/22) — do not re-bet,skip,,-4.92,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,ABNB,+22.1,1.4,long,skip,2026-08-14T12:05:58+00:00,"mega-cap post-earnings pop, heavily covered/arbitraged; no differentiated read",skip,,-4.14,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,SNDK,+21.4,1.3,long,skip,2026-08-14T12:05:58+00:00,"NAND memory upcycle widely known and name already ran; momentum, no name-specific mispricing",skip,,-12.35,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,WDAY,+21.3,3.7,long,skip,2026-08-14T12:05:59+00:00,"PRE-earnings run-up (reports ~8/27) on AI narrative; Morgan Stanley cut to Underweight; earnings event-risk inside window, no drift to ride",skip,,+1.71,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,TPR,-20.7,4.0,short,take,2026-08-14T12:06:17+00:00,"beat (rev +8.9% to $1.88B in-line, non-GAAP EPS $1.32 +3.4% above cons) but -15% on FY27 rev guide $8.4-8.5B marginally below $8.47B est + Kate Spade -10% + tariff noise — punishment outsized vs a marginal guide trim",taken,,+6.91,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,MPC,+19.1,1.1,long,skip,2026-08-14T12:05:59+00:00,"refiner crack-spread MACRO rally (record 3-2-1 spread, +80% YTD); market-wide sector momentum, late, no name edge",skip,,+16.99,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,MRNA,+18.2,1.5,long,skip,2026-08-14T12:05:59+00:00,already live: MRNA short bet open (7/13) — leave thesis to score,skip,,+125.02,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,AXON,+17.8,1.0,long,skip,2026-08-14T12:05:59+00:00,"high-valuation momentum post-beat, well-covered; thin read",skip,,-24.87,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,TTD,-17.6,1.9,short,skip,2026-08-14T12:05:59+00:00,already live: TTD short bet open (8/10),skip,,-13.92,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,VEEV,+16.0,1.6,long,skip,2026-08-14T12:05:59+00:00,"large-cap SaaS, covered; no differentiated read",skip,,+13.84,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,PLTR,+14.8,0.8,long,skip,2026-08-14T12:05:59+00:00,"below-average volume (0.8x) momentum, no fresh catalyst",skip,,+1.98,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,HPE,+14.1,1.5,long,skip,2026-08-14T12:06:00+00:00,covered large-cap; thin read,skip,,-1.03,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,PSX,+13.2,0.9,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,+12.70,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,VLO,+13.2,0.8,long,skip,2026-08-14T12:06:00+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,+16.34,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,DELL,+13.0,1.3,long,skip,2026-08-14T12:06:00+00:00,covered large-cap AI-server narrative; thin read,skip,,+15.25,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,APO,+12.2,1.0,long,skip,2026-08-14T12:06:00+00:00,already live: APO short bet open (6/28); alt-manager sector move,skip,,-3.23,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,BX,+11.9,0.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move (rate-cut narrative), market-wide, below-avg volume",skip,,-7.89,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,KKR,+11.8,1.8,long,skip,2026-08-14T12:06:00+00:00,"alt-asset-manager sector move, market-wide",skip,,-6.14,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,CSGP,+11.7,1.0,long,skip,2026-08-14T12:06:01+00:00,covered; no differentiated read,skip,,+2.65,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,INTU,+11.3,1.1,long,skip,2026-08-14T12:06:01+00:00,"large-cap, covered; thin read",skip,,+0.09,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,GDDY,+11.2,1.5,long,skip,2026-08-14T12:06:01+00:00,covered; no edge,skip,,+12.81,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,HPQ,+11.1,1.5,long,skip,2026-08-14T12:06:01+00:00,covered large-cap; thin read,skip,,+18.13,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,LRCX,+10.2,0.8,long,skip,2026-08-14T12:06:01+00:00,"semicap momentum, below-avg volume, covered",skip,,-19.24,,sp500
+2026-08-14T11:54:12+00:00,2026-08-13,DXCM,+10.2,0.9,long,skip,2026-08-14T12:06:01+00:00,already live: DXCM 21d post-earnings-drift bet open (8/3),skip,,-0.62,,sp500
+2026-08-14T11:54:55+00:00,2026-08-13,HZO,+48.1,2.5,long,skip,2026-08-14T12:06:15+00:00,"boat-retailer +48% illiquid pop, no clear named mechanism; tail friction fails the higher bar",skip,,+2.46,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,QNST,+36.3,1.2,long,skip,2026-08-14T12:06:15+00:00,"small-cap momentum, no differentiated read; tail friction",skip,,-7.04,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,P,+34.5,1.7,long,skip,2026-08-14T12:06:15+00:00,"micro/tail momentum, unclear catalyst, illiquid",skip,,-15.14,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,TWLO,+29.1,1.1,long,skip,2026-08-14T12:06:15+00:00,earnings pop already extended; no name-specific edge,skip,,+7.90,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,DOCS,+28.7,1.3,long,skip,2026-08-14T12:06:15+00:00,"8/7 earnings pop already ran +100% AH / ~40% session — too extended to chase, drift priced",skip,,+7.24,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,SEZL,-27.3,1.0,short,skip,2026-08-14T12:06:15+00:00,"BNPL selloff, no clear overreaction read; avg volume, tail friction",skip,,+0.57,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,CRSR,+26.8,1.4,long,skip,2026-08-14T12:06:15+00:00,"gaming-hardware pop, tail, no durable named mechanism",skip,,+11.13,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,ONTO,+25.7,0.8,long,skip,2026-08-14T12:06:16+00:00,"semicap tail, below-avg volume, no edge",skip,,-28.49,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,NABL,-24.4,2.6,short,skip,2026-08-14T12:06:16+00:00,"software guide-down; no differentiated overreaction read, tail friction",skip,,-25.22,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,TNDM,+23.1,0.7,long,take,2026-08-14T12:06:16+00:00,"profitability inflection medtech: op margin -21.5%->-5.4% YoY + adj EBITDA $6.42M vs $3.52M cons + PayGo recurring-rev shift (10% of shipments, 45% formulary) — named mechanism re-rating, not just a beat",taken,,-24.87,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,REZI,-21.5,3.1,short,skip,2026-08-14T12:06:16+00:00,"Resideo earnings miss; no clean overreaction read, tail friction",skip,,+7.37,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,PBF,+21.4,0.7,long,skip,2026-08-14T12:06:16+00:00,"refiner macro crack-spread rally, below-avg volume; market-wide",skip,,+1.51,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,CELH,+21.1,0.8,long,skip,2026-08-14T12:06:16+00:00,"energy-drink pop, below-avg volume, covered mid-cap",skip,,-5.77,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,NOG,+20.6,0.7,long,skip,2026-08-14T12:06:16+00:00,"oil&gas momentum with energy complex, below-avg volume",skip,,+8.21,,tail
+2026-08-14T11:54:55+00:00,2026-08-13,LQDA,-19.4,3.2,short,skip,2026-08-14T12:06:17+00:00,"biotech binary/litigation (Liquidia vs United Therapeutics); binary legal risk, not readable drift",skip,,+13.44,,tail
 2026-08-17T11:36:53+00:00,2026-08-14,SNDK,+35.4,1.2,long,skip,2026-08-17T11:42:04+00:00,"AI-NAND investor-day 2028-30 guide + JPM upgrade; up 6x YTD, entire memory complex moved together = sector beta chase, no name-specific mispricing",skip,,,,sp500
 2026-08-17T11:36:53+00:00,2026-08-14,SMCI,+28.0,1.4,long,skip,2026-08-17T11:42:20+00:00,already a live bet (7/22 21d); not re-betting the same name,skip,,,,sp500
 2026-08-17T11:36:53+00:00,2026-08-14,TPR,-20.6,2.6,short,skip,2026-08-17T11:42:20+00:00,already a live bet (8/14 21d); not re-betting,skip,,,,sp500
