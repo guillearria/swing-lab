@@ -31,33 +31,30 @@ catalogue **per `pattern_tag`** (21 tags; post-earnings-drift 42 rows; 14 rows u
 page is one static HTML from `render()` with three tabs that degrade to stacked sections.
 So: **generation is already automatic. The new thing is the page and the gate.**
 
-*Recommendation.*
+*Recommendation (simplified 2026-09-15 with the owner: "keep it simple and valuable").*
 1. **Name:** "Cases" (or "Patterns"). Not "Thesis" — every ledger row already has a thesis
-   field, and readers would expect an essay; not "Playbook"/"Strategies" — they read as advice
-   next to "Not investment advice." Reader language throughout, like the About tab.
-2. **What an entry shows:** ticker + the one-line headline, date, the pattern it named, the
-   move in plain words (Move + Why, ~120 words), and — the part that makes this more than a
-   blog — **the measured line for that pattern from the engine's per-tag aggregation: N bets ·
-   settled · median excess vs benchmark · beat rate.** "What we learned" is a number the ledger
-   computed, never a sentence the writer believed. Group by pattern, most-tested first;
-   untagged rows excluded; below the engine's own minimum-N, print "too few to read" and no
-   adjective. Nothing on the tab may claim more than the number does.
-3. **The gate — the important part.** These files are machine prose (the read model, written
-   the same hour as the take): plausible, unverified, public in the repo already, but not yet
-   on the page a recruiter lands on. Render **only** files whose frontmatter carries
-   `reviewed: <date>`; the routine keeps writing drafts exactly as it does; a human (the owner,
-   or a session he directs) flips a file after reading it back against the sources in its
-   Links section. Same shape as every public surface in this portfolio: deterministic check +
-   human approve, machine mechanics after. Phases: (1) one evening — read back the 18, flip the
-   ones that hold, ship the tab; (2) the daily digest gains one line: "N case drafts awaiting
-   review"; (3) **pre-register now** the bar for ever auto-rendering unreviewed drafts — e.g.
-   ≥10 reviewed drafts with ≤1 factual correction — so that decision is made from a number,
-   not from enthusiasm.
-4. **Kill metric (VF-style):** if no draft is reviewed for 8 weeks after the tab ships, the tab
-   keeps only the per-pattern numbers and drops the prose — the numbers are worth having at
-   zero prose.
-5. **Fix the dead field while here:** derive a case's state from its ledger rows (any settled?)
-   or drop `Status:` from the template. Do not render a field nothing maintains.
+   field; not "Playbook" — reads as advice next to "Not investment advice."
+2. **Every case renders, immediately, machine-written or not** — the ledger's own principle
+   (publish before you know, mark it, let it stand). No review queue, no gate on the prose.
+3. **One status line per case, and one automatic flip that the case has to earn.** The line
+   reads *"Machine-written 2026-09-15 · pattern `<tag>`: too few to read (N=2)"* and becomes
+   *"… pattern `<tag>`: tested — N=12 · median excess −1.2pp · beat 42%"* the day the ledger has
+   settled enough rows tagged with it. That number comes from `engine.py`'s existing per-tag
+   aggregation — **nothing new to build beyond wiring it into `render()`**. The flip is earned
+   by settled bets, never by elapsed time, and the word "verified" never appears on its own.
+   (The two hand-written cases say "Written by the author" instead.)
+4. **Optional, two lines:** a `reviewed: <date>` frontmatter key changes the label to
+   *"Reviewed by the author <date>"*. No obligation, no queue — for whenever he reads one.
+5. **Entry content:** ticker + headline, date, the Move and Why sections in plain words
+   (~120 words), the status line above. Grouped by pattern, most-tested first; untagged rows
+   excluded. Below the engine's own minimum-N, "too few to read" and no adjective.
+6. **Drop the dead `Status:` field** from the template and the files; nothing maintains it and
+   the ledger rows carry the real state.
+
+*Dropped on purpose (would be machinery, not value):* re-deriving each case's figures from the
+price feed, a link probe on the Links section, a pre-registered auto-render bar, and a kill
+metric on the prose — none of them needed once the prose is labelled and the only claim that
+flips is a number the ledger already computes.
 
 *Constraints, restated so this stands alone:* market subjects only — no holding or position
 language anywhere in a case (a daily portfolio-level scan now checks this repo's tracked files
@@ -68,8 +65,7 @@ design-floor chrome is unchanged and the fourth tab degrades without JS like the
 `render()` stays a pure function the tests can call; case markdown → HTML by parsing the
 template's fixed headings (no new dependency). "Not investment advice." stays.
 
-*Cost:* one evening for the tab + the first review pass; the routine changes by one line (write
-`reviewed:` absent). *Value:* the page stops being a table and becomes the thing the README
+*Cost:* one evening for the tab; the routine does not change. *Value:* the page stops being a table and becomes the thing the README
 already claims the project is — a method that names patterns and then measures them in public.
 
 ## ▶ PICK UP HERE (2026-09-13 — silent strand #2 closed at the import · holidays in the calendar · design floor green)
