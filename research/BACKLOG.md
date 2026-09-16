@@ -4,6 +4,74 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
+## [SITE 2026-09-15] README line 71, and a "Cases" tab for the live page (owner idea, considered)
+
+Two items from the portfolio level, written here so a session in this repo picks them up cold.
+Independent of the OPS item below.
+
+**A. README — one line, a claim that is no longer true.** Line 71 under "The docs": *"case
+studies … (each births a scored bet; listed in the status panel). First pair: ILLR + SPCX."*
+Today there are 18 case files, the SPCX study births no bet and never will (the standing
+exclusion in `CLAUDE.md`), and the status panel no longer lists it. Suggested: *"case studies:
+why a notable move happened → a reusable pattern (most birth a scored bet; a few stay as
+pattern notes). First pair: ILLR + SPCX."* Same class as the page's own rule — copy claims only
+what is true — and the one public sentence that currently contradicts it.
+
+**B. A fourth tab: the case studies, with what the ledger measured about each pattern.**
+Owner, 2026-09-15: a page *"which covers studied cases and what we learned about them.
+eventually the case studies should grow and novel ones can be created automatically by our
+system."* Considered against what exists here; the recommendation follows.
+
+*What already exists (measured 2026-09-15):* 18 files in `research/cases/`, **16 of them
+written by the read routine** since 08-20 — it creates one each time it coins a new pattern
+tag (commit subjects: "+ case file declaring the tag"). Sections are fixed by `_TEMPLATE.md`
+(Move · Why · How · Pattern · Prediction · Links). Every file says `Status: open` — the field
+is never updated; the ledger rows carry the real state. `engine.py` already aggregates the
+catalogue **per `pattern_tag`** (21 tags; post-earnings-drift 42 rows; 14 rows untagged). The
+page is one static HTML from `render()` with three tabs that degrade to stacked sections.
+So: **generation is already automatic. The new thing is the page and the gate.**
+
+*Recommendation.*
+1. **Name:** "Cases" (or "Patterns"). Not "Thesis" — every ledger row already has a thesis
+   field, and readers would expect an essay; not "Playbook"/"Strategies" — they read as advice
+   next to "Not investment advice." Reader language throughout, like the About tab.
+2. **What an entry shows:** ticker + the one-line headline, date, the pattern it named, the
+   move in plain words (Move + Why, ~120 words), and — the part that makes this more than a
+   blog — **the measured line for that pattern from the engine's per-tag aggregation: N bets ·
+   settled · median excess vs benchmark · beat rate.** "What we learned" is a number the ledger
+   computed, never a sentence the writer believed. Group by pattern, most-tested first;
+   untagged rows excluded; below the engine's own minimum-N, print "too few to read" and no
+   adjective. Nothing on the tab may claim more than the number does.
+3. **The gate — the important part.** These files are machine prose (the read model, written
+   the same hour as the take): plausible, unverified, public in the repo already, but not yet
+   on the page a recruiter lands on. Render **only** files whose frontmatter carries
+   `reviewed: <date>`; the routine keeps writing drafts exactly as it does; a human (the owner,
+   or a session he directs) flips a file after reading it back against the sources in its
+   Links section. Same shape as every public surface in this portfolio: deterministic check +
+   human approve, machine mechanics after. Phases: (1) one evening — read back the 18, flip the
+   ones that hold, ship the tab; (2) the daily digest gains one line: "N case drafts awaiting
+   review"; (3) **pre-register now** the bar for ever auto-rendering unreviewed drafts — e.g.
+   ≥10 reviewed drafts with ≤1 factual correction — so that decision is made from a number,
+   not from enthusiasm.
+4. **Kill metric (VF-style):** if no draft is reviewed for 8 weeks after the tab ships, the tab
+   keeps only the per-pattern numbers and drops the prose — the numbers are worth having at
+   zero prose.
+5. **Fix the dead field while here:** derive a case's state from its ledger rows (any settled?)
+   or drop `Status:` from the template. Do not render a field nothing maintains.
+
+*Constraints, restated so this stands alone:* market subjects only — no holding or position
+language anywhere in a case (a daily portfolio-level scan now checks this repo's tracked files
+against a privacy list; keep it clean); the standing conflict-of-interest exclusion applies
+(the SPCX study may render as a pattern note — the owner ruled 09-15 that its acquisition
+sentence stays as a public fact); copy claims only what renders; reader language; the
+design-floor chrome is unchanged and the fourth tab degrades without JS like the other three;
+`render()` stays a pure function the tests can call; case markdown → HTML by parsing the
+template's fixed headings (no new dependency). "Not investment advice." stays.
+
+*Cost:* one evening for the tab + the first review pass; the routine changes by one line (write
+`reviewed:` absent). *Value:* the page stops being a table and becomes the thing the README
+already claims the project is — a method that names patterns and then measures them in public.
+
 ## ▶ PICK UP HERE (2026-09-13 — silent strand #2 closed at the import · holidays in the calendar · design floor green)
 
 **[OPS 2026-09-13]** — owner session, four commits, 254 tests green, live floor checker 0 must-fails.
