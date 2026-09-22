@@ -1699,3 +1699,42 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-09-21T11:35:16+00:00,2026-09-18,NEO,+15.0,2.8,long,skip,2026-09-21T11:40:18+00:00,Same macro rate-driven afternoon rally as FTRE; no name-specific catalyst.,skip,,,,tail
 2026-09-21T11:35:16+00:00,2026-09-18,BRKR,+14.9,1.5,long,skip,2026-09-21T11:40:18+00:00,"Last report missed on revenue and trimmed full-year guidance, and the stock is down 19% since - the fundamentals point the same way the price does.",skip,,,,tail
 2026-09-21T11:35:16+00:00,2026-09-18,BOOT,-14.9,1.7,short,skip,2026-09-21T11:40:18+00:00,"Disclosed comparable sales decelerating from 8.4% to 2% - the deceleration is real news, and the guidance reaffirm covers one quarter of it.",skip,,,,tail
+2026-09-22T11:34:22+00:00,2026-09-21,INTC,+25.3,2.1,long,skip,2026-09-22T11:38:30+00:00,"Already a live long (bet 2026-07-27, 63d vs SOXX) - no re-bet on an open ticker.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,AMD,+24.7,2.5,long,skip,2026-09-22T11:38:30+00:00,"The AI-capex scare round-tripped and the whole semi complex ripped together; sector-wide draw, no name-specific read.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,P,+21.2,2.3,long,skip,2026-09-22T11:38:30+00:00,No readable catalyst and the price feed for this symbol remains unreliable; nothing to underwrite.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,COHR,+20.6,1.2,long,skip,2026-09-22T11:38:30+00:00,"AI-optical melt-up on 1.2x volume; the complex moved as one, no name-specific news.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,MRNA,+17.9,0.6,long,skip,2026-09-22T11:38:31+00:00,"Cancer-vaccine narrative already up ~137% in a month, and we hold the other side of the same melanoma readout via MRK; correlated and extended.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,MRVL,+17.6,0.9,long,skip,2026-09-22T11:38:31+00:00,Semi-complex sympathy on sub-1x volume; no name-specific catalyst.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,TER,+15.9,1.3,long,skip,2026-09-22T11:38:31+00:00,Semi-cap equipment rebound inside the same complex-wide move; market-wide.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,GNRC,+15.8,1.7,long,skip,2026-09-22T11:38:31+00:00,Already a live long (bet 2026-09-18) - no re-bet.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,ILMN,+14.7,1.7,long,skip,2026-09-22T11:38:31+00:00,Life-science tools re-rating already ran ~133% over a year; chasing an extended sector move.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,CIEN,+14.5,1.2,long,skip,2026-09-22T11:38:32+00:00,Optical sympathy on 1.2x volume; no fresh name-specific news this week.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,LITE,+14.3,1.1,long,skip,2026-09-22T11:38:32+00:00,Optical/AI-infrastructure sympathy at 1.1x volume; sector beta only.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,JBHT,-14.1,1.3,short,skip,2026-09-22T11:38:32+00:00,Already a live long (bet 2026-09-17) - no re-bet.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,CHTR,-14.0,0.9,short,skip,2026-09-22T11:38:32+00:00,"Secular broadband subscriber loss plus a Wells Fargo downgrade and a ~100M dollar Liberty Broadband block sale; real deterioration, not an overreaction.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,SNDK,+13.8,0.9,long,skip,2026-09-22T11:38:32+00:00,Memory complex melt-up on sub-1x volume; market-wide theme.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,MU,+13.0,1.1,long,skip,2026-09-22T11:38:33+00:00,Memory complex melt-up; market-wide theme in the most-covered arena.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,SMCI,+12.1,1.2,long,skip,2026-09-22T11:38:33+00:00,AI-server beta inside the same complex move; no name-specific catalyst.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,SWKS,+12.0,0.7,long,skip,2026-09-22T11:38:33+00:00,Semi sympathy on 0.7x volume with no name-specific news.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,MPWR,+11.8,1.7,long,skip,2026-09-22T11:38:33+00:00,AI-power semi sympathy; sector-wide draw.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,RVTY,+11.8,1.3,long,skip,2026-09-22T11:38:33+00:00,"Earnings, an upgrade cycle and a tuck-in acquisition already delivered a +15% week; the news is in the price.",skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,HPE,+11.7,0.8,long,skip,2026-09-22T11:38:34+00:00,Already a live long (bet 2026-09-14) - no re-bet.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,META,+11.5,2.6,long,skip,2026-09-22T11:38:34+00:00,Megacap narrative in the most-covered name in the market; nothing mispriced for us to read.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,MTD,+11.3,0.9,long,skip,2026-09-22T11:38:34+00:00,Life-science tools drift with no name-specific event; sector re-rating.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,AKAM,+11.2,1.5,long,skip,2026-09-22T11:38:34+00:00,Up ~12% on vague AI-security-cooperation headlines with no verifiable contract disclosed; narrative pop inside the AI melt-up.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,ETN,+10.8,1.2,long,skip,2026-09-22T11:38:34+00:00,AI-power and electrification beta; sector-wide draw.,skip,,,,sp500
+2026-09-22T11:34:22+00:00,2026-09-21,GLW,+10.7,1.0,long,skip,2026-09-22T11:38:35+00:00,Already a live long (bet 2026-09-21) - no re-bet.,skip,,,,sp500
+2026-09-22T11:35:05+00:00,2026-09-21,SDGR,+45.7,2.9,long,skip,2026-09-22T11:38:43+00:00,"Up ~60% in a week on AI-drug-discovery enthusiasm and a co-founded-venture headline against slowing software metrics; a narrative pump, not a read.",skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,ALHC,-35.6,3.2,short,skip,2026-09-22T11:38:43+00:00,Whistleblower accounting allegations plus multiple securities investigations; unreadable downside and shorts are barred.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,MXL,+32.7,1.8,long,skip,2026-09-22T11:38:43+00:00,Semi-cycle sympathy in a tail name with no named mechanism; fails the higher tail bar.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,ENVA,-24.4,1.7,short,skip,2026-09-22T11:38:44+00:00,Already a live long (bet 2026-09-16) - no re-bet.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,DOCN,+21.6,1.9,long,skip,2026-09-22T11:38:44+00:00,AI-inference narrative off conference talk; tail name with no named mechanism.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,COHU,+21.3,1.5,long,skip,2026-09-22T11:38:44+00:00,Semi-equipment sympathy on 1.5x volume; no name-specific catalyst.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,VICR,+21.2,1.4,long,skip,2026-09-22T11:38:44+00:00,AI-power narrative with no disclosed counterparty; fails the tail bar.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,SMTC,+20.6,1.3,long,skip,2026-09-22T11:38:44+00:00,Already a live long (bet 2026-09-09) - no re-bet.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,RMBS,+20.6,2.2,long,skip,2026-09-22T11:38:45+00:00,Semi-IP sympathy inside the complex-wide melt-up; no name-specific news.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,AN,-17.9,1.6,short,skip,2026-09-22T11:38:45+00:00,"AutoNation management itself issued the warning (softer service, lower vehicle margins) into a Fed-hike credit squeeze; the source of the bad news, not its victim.",skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,PENG,+17.9,0.9,long,skip,2026-09-22T11:38:45+00:00,AI-server tail name on sub-1x volume; illiquid sympathy move with a wide spread.,skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,RSI,-17.7,2.4,short,skip,2026-09-22T11:38:45+00:00,"A fade with no discrete catalyst, a year of insider selling, and a price still above fair-value estimates; thin read.",skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,AMRX,+17.1,3.8,long,skip,2026-09-22T11:38:45+00:00,"The FDA lanreotide approval reads like a first-generic windfall, but Cipla has had an approved lanreotide since 2021 and a final ANDA since 2024 - there is no exclusivity behind the 983M dollar brand number, so the mechanism the take would have named does not exist.",skip,,,,tail
+2026-09-22T11:35:05+00:00,2026-09-21,BRKR,+17.0,0.8,long,skip,2026-09-22T11:38:46+00:00,"Last report missed on revenue and trimmed full-year guidance; drifting up with the tools complex, not on its own news.",skip,,,,tail
