@@ -1,29 +1,29 @@
 seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,rationale,status,pattern_tag,x21_pct,x63_pct,universe
-2026-06-28T07:47:18+00:00,2026-06-26,ON,-25.5,3.6,short,skip,2026-06-28T16:27:46+00:00,"already a live bet (long ON 21d vs SOXX, 06-26) - do not double-count",skip,,+4.70,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,TECH,+22.5,4.4,long,skip,2026-06-28T16:28:01+00:00,"Merck 11.3B all-cash buyout TARGET; merger-arb pinned to deal price, no directional edge",skip,,+1.67,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,WDC,-21.4,2.9,short,skip,2026-06-28T16:27:46+00:00,"semiconductor sector rotation (Broadcom AI guide-down + oil/rate macro); moved with SOXX, no name-specific divergence",skip,,+28.88,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,ORCL,-19.4,1.4,short,skip,2026-06-28T16:27:46+00:00,real AI-capex debt overhang but already -22pct/30d; late and poor risk-reward vs XLK; beat-and-raise muddies a short,skip,,+18.51,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,ABBV,+17.0,9.6,long,skip,2026-06-28T16:28:01+00:00,"Apogee 10.9B M&A already announced Jun22 + all-time high; catalyst in the tape, large-cap arbitraged",skip,,+4.25,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,CRL,+16.6,1.7,long,skip,2026-06-28T16:28:01+00:00,"life-science tools re-rating read-through from Merck/Bio-Techne deal; pop already in, speculative",skip,,+6.61,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,ALB,-16.6,2.0,short,skip,2026-06-28T16:27:46+00:00,lithium/materials macro risk-off; no idiosyncratic read,skip,,+12.75,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,QCOM,-16.2,1.6,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+13.67,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,MPWR,-16.0,4.1,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.18,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,STX,-15.9,2.5,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+22.82,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,INCY,+15.8,1.9,long,skip,2026-06-28T16:28:01+00:00,biotech riding the healthcare defensive rotation; no name-specific high-conviction read,skip,,+13.34,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,ARES,-15.6,1.7,short,skip,2026-06-28T16:27:47+00:00,"private-credit redemption stress, but betting the epicenter APO instead - do not double-bet one thesis",skip,,-18.89,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,UAL,+15.0,1.0,long,skip,2026-06-28T16:28:01+00:00,oil collapse <70 is a sector/commodity tailwind at a record high (priced); weak Q2 EPS print Jul15 inside window = poor risk-reward,skip,,-8.43,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,MRVL,-14.1,0.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX (rel-vol only 0.6x)",skip,,+37.15,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,APO,-14.0,3.5,short,take,2026-06-28T16:27:47+00:00,"private-credit redemption gates + SEC valuation probe + fiduciary investigation; 80x PE on declining revenue; idiosyncratic vs XLF, structural overhang",taken,,-8.61,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,IQV,+13.9,1.0,long,skip,2026-06-28T16:28:01+00:00,"life-science tools/CRO re-rating read-through (Bio-Techne deal); sector, thin idiosyncratic edge",skip,,+25.71,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,GLW,+13.4,3.6,long,skip,2026-06-28T16:28:01+00:00,"AI-optical theme (Amazon deal + Nvidia endorsement) but +106pct YTD extended; same thesis as CIEN, betting the less-extended name",skip,,-50.70,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,RVTY,+13.0,2.4,long,skip,2026-06-28T16:28:02+00:00,"life-science tools re-rating read-through; sector, thin",skip,,+0.35,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,MRK,+13.0,1.5,long,skip,2026-06-28T16:28:02+00:00,"acquirer in Bio-Techne deal + pharma defensive rotation; large-cap beta vs XLV, no clean read",skip,,+1.90,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,PLTR,-12.1,1.5,short,skip,2026-06-28T16:27:47+00:00,high-multiple software de-rating in the AI/tech rotation; beta and momentum-chase,skip,,-6.79,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,CIEN,+12.0,2.5,long,take,2026-06-28T16:28:02+00:00,fQ2 blowout rev +40pct YoY + raised FY guide (Jun4) + AI-optical leadership; post-earnings drift + intra-AI rotation as chips roll over,taken,,-26.80,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,MCHP,-11.9,2.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+14.97,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,VEEV,+11.8,2.0,long,skip,2026-06-28T16:28:02+00:00,"healthcare-software riding the rotation; large-cap, thin idiosyncratic read",skip,,+14.19,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,TXN,-11.6,3.3,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.93,,sp500
-2026-06-28T07:47:18+00:00,2026-06-26,JNJ,+11.5,2.0,long,skip,2026-06-28T16:28:02+00:00,"pure defensive rotation to all-time high; beta vs XLV, catalyst-free",skip,,+3.20,,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ON,-25.5,3.6,short,skip,2026-06-28T16:27:46+00:00,"already a live bet (long ON 21d vs SOXX, 06-26) - do not double-count",skip,,+4.70,+17.19,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,TECH,+22.5,4.4,long,skip,2026-06-28T16:28:01+00:00,"Merck 11.3B all-cash buyout TARGET; merger-arb pinned to deal price, no directional edge",skip,,+1.67,-1.83,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,WDC,-21.4,2.9,short,skip,2026-06-28T16:27:46+00:00,"semiconductor sector rotation (Broadcom AI guide-down + oil/rate macro); moved with SOXX, no name-specific divergence",skip,,+28.88,+34.26,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ORCL,-19.4,1.4,short,skip,2026-06-28T16:27:46+00:00,real AI-capex debt overhang but already -22pct/30d; late and poor risk-reward vs XLK; beat-and-raise muddies a short,skip,,+18.51,+11.25,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ABBV,+17.0,9.6,long,skip,2026-06-28T16:28:01+00:00,"Apogee 10.9B M&A already announced Jun22 + all-time high; catalyst in the tape, large-cap arbitraged",skip,,+4.25,+0.33,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,CRL,+16.6,1.7,long,skip,2026-06-28T16:28:01+00:00,"life-science tools re-rating read-through from Merck/Bio-Techne deal; pop already in, speculative",skip,,+6.61,+25.47,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ALB,-16.6,2.0,short,skip,2026-06-28T16:27:46+00:00,lithium/materials macro risk-off; no idiosyncratic read,skip,,+12.75,+19.48,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,QCOM,-16.2,1.6,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+13.67,-3.25,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MPWR,-16.0,4.1,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.18,+0.03,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,STX,-15.9,2.5,short,skip,2026-06-28T16:27:46+00:00,"semi sector rotation, beta vs SOXX",skip,,+22.82,+9.62,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,INCY,+15.8,1.9,long,skip,2026-06-28T16:28:01+00:00,biotech riding the healthcare defensive rotation; no name-specific high-conviction read,skip,,+13.34,+3.70,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,ARES,-15.6,1.7,short,skip,2026-06-28T16:27:47+00:00,"private-credit redemption stress, but betting the epicenter APO instead - do not double-bet one thesis",skip,,-18.89,-10.24,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,UAL,+15.0,1.0,long,skip,2026-06-28T16:28:01+00:00,oil collapse <70 is a sector/commodity tailwind at a record high (priced); weak Q2 EPS print Jul15 inside window = poor risk-reward,skip,,-8.43,-20.04,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MRVL,-14.1,0.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX (rel-vol only 0.6x)",skip,,+37.15,+10.02,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,APO,-14.0,3.5,short,take,2026-06-28T16:27:47+00:00,"private-credit redemption gates + SEC valuation probe + fiduciary investigation; 80x PE on declining revenue; idiosyncratic vs XLF, structural overhang",taken,,-8.61,-2.07,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,IQV,+13.9,1.0,long,skip,2026-06-28T16:28:01+00:00,"life-science tools/CRO re-rating read-through (Bio-Techne deal); sector, thin idiosyncratic edge",skip,,+25.71,+35.53,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,GLW,+13.4,3.6,long,skip,2026-06-28T16:28:01+00:00,"AI-optical theme (Amazon deal + Nvidia endorsement) but +106pct YTD extended; same thesis as CIEN, betting the less-extended name",skip,,-50.70,-42.94,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,RVTY,+13.0,2.4,long,skip,2026-06-28T16:28:02+00:00,"life-science tools re-rating read-through; sector, thin",skip,,+0.35,+31.61,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MRK,+13.0,1.5,long,skip,2026-06-28T16:28:02+00:00,"acquirer in Bio-Techne deal + pharma defensive rotation; large-cap beta vs XLV, no clean read",skip,,+1.90,+11.32,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,PLTR,-12.1,1.5,short,skip,2026-06-28T16:27:47+00:00,high-multiple software de-rating in the AI/tech rotation; beta and momentum-chase,skip,,-6.79,-59.58,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,CIEN,+12.0,2.5,long,take,2026-06-28T16:28:02+00:00,fQ2 blowout rev +40pct YoY + raised FY guide (Jun4) + AI-optical leadership; post-earnings drift + intra-AI rotation as chips roll over,taken,,-26.80,-29.83,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,MCHP,-11.9,2.6,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+14.97,+15.47,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,VEEV,+11.8,2.0,long,skip,2026-06-28T16:28:02+00:00,"healthcare-software riding the rotation; large-cap, thin idiosyncratic read",skip,,+14.19,+54.92,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,TXN,-11.6,3.3,short,skip,2026-06-28T16:27:47+00:00,"semi sector rotation, beta vs SOXX",skip,,+2.93,+6.45,sp500
+2026-06-28T07:47:18+00:00,2026-06-26,JNJ,+11.5,2.0,long,skip,2026-06-28T16:28:02+00:00,"pure defensive rotation to all-time high; beta vs XLV, catalyst-free",skip,,+3.20,+1.08,sp500
 2026-07-02T04:03:54+00:00,2026-07-01,AXON,+30.0,1.5,long,skip,2026-07-02T14:46:51+00:00,"narrative-driven 5d spike (Trump-disclosure/ICE $220M TASER solicitation) at all-time high; strong fundamentals but extended, spike-fade risk, no clean forward edge",skip,,-8.32,,sp500
 2026-07-02T04:03:54+00:00,2026-07-01,PANW,+23.4,0.8,long,skip,2026-07-02T14:46:52+00:00,large-cap security riding broad tech rebound; no differentiated name-specific catalyst; arbitraged arena,skip,,-3.76,,sp500
 2026-07-02T04:03:54+00:00,2026-07-01,APP,+21.4,1.0,long,skip,2026-07-02T14:46:52+00:00,"AppLovin momentum name, extended; no fresh readable catalyst beyond momentum",skip,,-26.16,,sp500
@@ -984,46 +984,46 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-08-25T11:34:23+00:00,2026-08-24,SMTC,-21.6,1.3,short,skip,2026-08-25T11:39:37+00:00,"one market-wide AI-capex de-rating (WSJ $3T off-balance-sheet report + AI ARR disclosures below privately circulated figures): ~27 semis/memory/optical names down 13-30pct in five sessions with almost no dispersion = ONE macro draw, not 27 reads; already bet via FN 08-24",skip,,-23.54,,tail
 2026-08-25T11:34:23+00:00,2026-08-24,MTSI,-21.4,1.1,short,skip,2026-08-25T11:39:37+00:00,"one market-wide AI-capex de-rating (WSJ $3T off-balance-sheet report + AI ARR disclosures below privately circulated figures): ~27 semis/memory/optical names down 13-30pct in five sessions with almost no dispersion = ONE macro draw, not 27 reads; already bet via FN 08-24",skip,,-4.11,,tail
 2026-08-25T11:34:23+00:00,2026-08-24,AEIS,-21.2,1.2,short,skip,2026-08-25T11:39:37+00:00,"one market-wide AI-capex de-rating (WSJ $3T off-balance-sheet report + AI ARR disclosures below privately circulated figures): ~27 semis/memory/optical names down 13-30pct in five sessions with almost no dispersion = ONE macro draw, not 27 reads; already bet via FN 08-24",skip,,+2.17,,tail
-2026-08-26T11:37:21+00:00,2026-08-25,MRNA,+152.3,9.1,long,skip,2026-08-26T11:47:48+00:00,parabolic +152pct/5d short-squeeze on the Merck melanoma readout; chasing that entry is the worst possible one and we hold the opposite side already,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,COIN,+28.0,1.4,long,skip,2026-08-26T11:47:48+00:00,"crypto/risk-on beta move, no name-specific catalyst",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,EL,+24.4,1.4,long,skip,2026-08-26T11:47:48+00:00,already a live bet (2026-08-20) — no re-bet,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,HOOD,+22.5,1.4,long,skip,2026-08-26T11:47:49+00:00,"same crypto/risk-on beta draw as COIN, not name-specific",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,FCX,+20.5,1.2,long,skip,2026-08-26T11:47:49+00:00,"copper/gold commodity macro move, no name catalyst",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,CVNA,+16.6,0.9,long,skip,2026-08-26T11:47:49+00:00,"momentum continuation on 0.9x volume, no fresh catalyst",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,NEM,+16.5,1.0,long,skip,2026-08-26T11:47:49+00:00,"gold macro draw, not name-specific",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,MRK,+15.7,1.7,long,skip,2026-08-26T11:47:49+00:00,already a live bet (2026-08-20) — no re-bet,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,ARE,+15.4,1.5,long,skip,2026-08-26T11:47:50+00:00,rate-sensitive REIT bounce plus financing news; no identifiable name-specific catalyst,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,MOS,+14.8,0.8,long,skip,2026-08-26T11:47:50+00:00,"fertilizer commodity move on 0.8x volume, no name catalyst",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,JKHY,+13.4,1.5,long,skip,2026-08-26T11:47:50+00:00,already a live bet (2026-08-25) with a pending counterfactual order,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,PWR,-13.3,1.1,short,skip,2026-08-26T11:47:59+00:00,"sector-wide engineering-and-construction selloff — PWR, EME, FIX, IESC, AGX all fell in lockstep; no name-specific mechanism",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,CRWD,-12.9,1.1,short,skip,2026-08-26T11:47:59+00:00,reports fiscal Q2 tonight (8/26) — an unresolved binary inside any horizon we could open,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,CMG,+12.2,0.6,long,skip,2026-08-26T11:48:00+00:00,already a live bet (2026-07-31) — no re-bet,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,MRVL,+11.3,1.0,long,skip,2026-08-26T11:48:00+00:00,"semi beta bounce, same AI-hardware macro draw we already hold via FN",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,EME,-10.3,0.9,short,skip,2026-08-26T11:48:00+00:00,"same E&C cluster selloff as PWR — one macro draw, not a name read",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,FIX,-10.2,0.9,short,skip,2026-08-26T11:48:00+00:00,same E&C cluster selloff as PWR,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,HWM,-9.8,0.9,short,skip,2026-08-26T11:48:00+00:00,"profit-taking on a >60x trailing P/E after a multi-week rally — a de-rate, not an overreaction",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,RVTY,+9.7,0.7,long,skip,2026-08-26T11:48:01+00:00,follow-through on a late-July print at a 52-week high; the catalyst is four weeks stale,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,NDSN,+9.7,1.1,long,take,2026-08-26T11:48:01+00:00,"record fiscal Q3 (rpt 8/19) beat-and-raise with backlog +35pct YoY and Advanced Technology +31pct organic — the ORDER BOOK, not the beat, and it lands while the market is de-rating AI-hardware demand; gap held three sessions",taken,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,INTC,-9.5,0.7,short,skip,2026-08-26T11:48:01+00:00,already a live bet (2026-07-27) — no re-bet,skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,TER,-9.4,0.5,short,skip,2026-08-26T11:48:01+00:00,"semi-cap sympathy, same AI-hardware macro draw",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,DDOG,-9.4,0.6,short,skip,2026-08-26T11:48:01+00:00,"software multiple compression on 0.6x volume, no name catalyst",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,WDC,-9.2,0.6,short,skip,2026-08-26T11:48:02+00:00,"AI-hardware sympathy selloff, same draw as the live FN bet",skip,,,,sp500
-2026-08-26T11:37:21+00:00,2026-08-25,PANW,-9.2,0.8,short,skip,2026-08-26T11:48:02+00:00,reports fiscal Q4 on 9/1 — an unresolved binary inside the window; the drop is drift-less profit-taking off the 8/13 high,skip,,,,sp500
-2026-08-26T11:38:06+00:00,2026-08-25,SFBS,+91.6,0.8,long,skip,2026-08-26T11:48:13+00:00,"DATA ARTIFACT — the 5d window straddles the 8/20 two-for-one stock split; the +91.6pct is unadjusted feed data, not a real move",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,DKS,-35.1,28.7,short,skip,2026-08-26T11:48:13+00:00,"the FY non-GAAP EPS guide was cut from 13.50-14.50 to 11.00-12.00 (~20pct) — a genuine cut, and Telsey flags the core DICKS business now needs promotions in 2H; deterioration on two fronts, not sentiment",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,MARA,+32.0,1.1,long,skip,2026-08-26T11:48:14+00:00,"bitcoin-miner beta, no name catalyst",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,AMR,+27.3,1.0,long,skip,2026-08-26T11:48:14+00:00,"met-coal commodity move on 1.0x volume, no name catalyst",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,AAP,-23.4,1.2,short,skip,2026-08-26T11:48:14+00:00,the 27pct EPS beat was tariff-refund-and-cost-aided while comps decelerated on DIY demand — the market punished the durable half and the beat is the one-off,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,LZB,-21.5,1.8,short,skip,2026-08-26T11:48:14+00:00,"adj EPS fell YoY on wholesale weakness and expense deleverage; a housing-cycle read, not a mispricing",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,IESC,-21.1,1.4,short,skip,2026-08-26T11:48:14+00:00,same E&C cluster selloff as PWR,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,EZPW,+20.8,1.1,long,skip,2026-08-26T11:48:15+00:00,no identifiable catalyst found in the scan window — thin read,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,MFP,+19.9,0.8,long,take,2026-08-26T11:48:15+00:00,"first standalone quarter since the July spin from Middleby: revenue beat, FY revenue guide RAISED, plus a 50M buyback — an orphan-equity structure (forced parent selling, near-zero sell-side coverage, index membership unsettled) meeting its first real fundamental datapoint",taken,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,VICR,-19.7,0.7,short,skip,2026-08-26T11:48:15+00:00,"AI-power unwind, roughly half off the 3-month high, same macro draw as FN; no name-specific mechanism to read",skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,ILMN,+19.5,1.0,long,skip,2026-08-26T11:48:15+00:00,+67pct YTD at a multi-year high on a late-July print — chasing a stale catalyst,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,AGX,-18.5,0.9,short,skip,2026-08-26T11:48:15+00:00,same E&C / power-EPC cluster selloff,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,CELH,+18.2,0.6,long,skip,2026-08-26T11:48:16+00:00,activist-stake bounce; an activist catalyst resolves over quarters and core energy-drink sales are declining,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,OI,+18.1,0.9,long,skip,2026-08-26T11:48:16+00:00,a single sell-side upgrade on a name that itself cut its 2026-27 EBITDA outlook; two other brokers cut targets the same week,skip,,,,tail
-2026-08-26T11:38:06+00:00,2026-08-25,RH,-17.4,1.1,short,skip,2026-08-26T11:48:16+00:00,"housing and big-ticket discretionary weakness, same cluster draw as LZB",skip,,,,tail
+2026-08-26T11:37:21+00:00,2026-08-25,MRNA,+152.3,9.1,long,skip,2026-08-26T11:47:48+00:00,parabolic +152pct/5d short-squeeze on the Merck melanoma readout; chasing that entry is the worst possible one and we hold the opposite side already,skip,,+39.02,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,COIN,+28.0,1.4,long,skip,2026-08-26T11:47:48+00:00,"crypto/risk-on beta move, no name-specific catalyst",skip,,+2.02,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,EL,+24.4,1.4,long,skip,2026-08-26T11:47:48+00:00,already a live bet (2026-08-20) — no re-bet,skip,,-11.03,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,HOOD,+22.5,1.4,long,skip,2026-08-26T11:47:49+00:00,"same crypto/risk-on beta draw as COIN, not name-specific",skip,,+8.50,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,FCX,+20.5,1.2,long,skip,2026-08-26T11:47:49+00:00,"copper/gold commodity macro move, no name catalyst",skip,,-8.07,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,CVNA,+16.6,0.9,long,skip,2026-08-26T11:47:49+00:00,"momentum continuation on 0.9x volume, no fresh catalyst",skip,,-12.47,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,NEM,+16.5,1.0,long,skip,2026-08-26T11:47:49+00:00,"gold macro draw, not name-specific",skip,,-8.30,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,MRK,+15.7,1.7,long,skip,2026-08-26T11:47:49+00:00,already a live bet (2026-08-20) — no re-bet,skip,,-0.20,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,ARE,+15.4,1.5,long,skip,2026-08-26T11:47:50+00:00,rate-sensitive REIT bounce plus financing news; no identifiable name-specific catalyst,skip,,-4.78,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,MOS,+14.8,0.8,long,skip,2026-08-26T11:47:50+00:00,"fertilizer commodity move on 0.8x volume, no name catalyst",skip,,-2.62,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,JKHY,+13.4,1.5,long,skip,2026-08-26T11:47:50+00:00,already a live bet (2026-08-25) with a pending counterfactual order,skip,,-12.84,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,PWR,-13.3,1.1,short,skip,2026-08-26T11:47:59+00:00,"sector-wide engineering-and-construction selloff — PWR, EME, FIX, IESC, AGX all fell in lockstep; no name-specific mechanism",skip,,-4.11,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,CRWD,-12.9,1.1,short,skip,2026-08-26T11:47:59+00:00,reports fiscal Q2 tonight (8/26) — an unresolved binary inside any horizon we could open,skip,,-10.32,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,CMG,+12.2,0.6,long,skip,2026-08-26T11:48:00+00:00,already a live bet (2026-07-31) — no re-bet,skip,,-16.11,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,MRVL,+11.3,1.0,long,skip,2026-08-26T11:48:00+00:00,"semi beta bounce, same AI-hardware macro draw we already hold via FN",skip,,+8.21,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,EME,-10.3,0.9,short,skip,2026-08-26T11:48:00+00:00,"same E&C cluster selloff as PWR — one macro draw, not a name read",skip,,+1.94,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,FIX,-10.2,0.9,short,skip,2026-08-26T11:48:00+00:00,same E&C cluster selloff as PWR,skip,,-2.44,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,HWM,-9.8,0.9,short,skip,2026-08-26T11:48:00+00:00,"profit-taking on a >60x trailing P/E after a multi-week rally — a de-rate, not an overreaction",skip,,+13.42,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,RVTY,+9.7,0.7,long,skip,2026-08-26T11:48:01+00:00,follow-through on a late-July print at a 52-week high; the catalyst is four weeks stale,skip,,+16.22,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,NDSN,+9.7,1.1,long,take,2026-08-26T11:48:01+00:00,"record fiscal Q3 (rpt 8/19) beat-and-raise with backlog +35pct YoY and Advanced Technology +31pct organic — the ORDER BOOK, not the beat, and it lands while the market is de-rating AI-hardware demand; gap held three sessions",taken,,-1.52,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,INTC,-9.5,0.7,short,skip,2026-08-26T11:48:01+00:00,already a live bet (2026-07-27) — no re-bet,skip,,-33.28,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,TER,-9.4,0.5,short,skip,2026-08-26T11:48:01+00:00,"semi-cap sympathy, same AI-hardware macro draw",skip,,-6.83,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,DDOG,-9.4,0.6,short,skip,2026-08-26T11:48:01+00:00,"software multiple compression on 0.6x volume, no name catalyst",skip,,-10.09,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,WDC,-9.2,0.6,short,skip,2026-08-26T11:48:02+00:00,"AI-hardware sympathy selloff, same draw as the live FN bet",skip,,+1.37,,sp500
+2026-08-26T11:37:21+00:00,2026-08-25,PANW,-9.2,0.8,short,skip,2026-08-26T11:48:02+00:00,reports fiscal Q4 on 9/1 — an unresolved binary inside the window; the drop is drift-less profit-taking off the 8/13 high,skip,,+2.40,,sp500
+2026-08-26T11:38:06+00:00,2026-08-25,SFBS,+91.6,0.8,long,skip,2026-08-26T11:48:13+00:00,"DATA ARTIFACT — the 5d window straddles the 8/20 two-for-one stock split; the +91.6pct is unadjusted feed data, not a real move",skip,,-4.63,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,DKS,-35.1,28.7,short,skip,2026-08-26T11:48:13+00:00,"the FY non-GAAP EPS guide was cut from 13.50-14.50 to 11.00-12.00 (~20pct) — a genuine cut, and Telsey flags the core DICKS business now needs promotions in 2H; deterioration on two fronts, not sentiment",skip,,-4.24,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,MARA,+32.0,1.1,long,skip,2026-08-26T11:48:14+00:00,"bitcoin-miner beta, no name catalyst",skip,,+5.45,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,AMR,+27.3,1.0,long,skip,2026-08-26T11:48:14+00:00,"met-coal commodity move on 1.0x volume, no name catalyst",skip,,-23.57,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,AAP,-23.4,1.2,short,skip,2026-08-26T11:48:14+00:00,the 27pct EPS beat was tariff-refund-and-cost-aided while comps decelerated on DIY demand — the market punished the durable half and the beat is the one-off,skip,,+4.72,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,LZB,-21.5,1.8,short,skip,2026-08-26T11:48:14+00:00,"adj EPS fell YoY on wholesale weakness and expense deleverage; a housing-cycle read, not a mispricing",skip,,+8.29,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,IESC,-21.1,1.4,short,skip,2026-08-26T11:48:14+00:00,same E&C cluster selloff as PWR,skip,,+3.14,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,EZPW,+20.8,1.1,long,skip,2026-08-26T11:48:15+00:00,no identifiable catalyst found in the scan window — thin read,skip,,-9.73,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,MFP,+19.9,0.8,long,take,2026-08-26T11:48:15+00:00,"first standalone quarter since the July spin from Middleby: revenue beat, FY revenue guide RAISED, plus a 50M buyback — an orphan-equity structure (forced parent selling, near-zero sell-side coverage, index membership unsettled) meeting its first real fundamental datapoint",taken,,-12.51,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,VICR,-19.7,0.7,short,skip,2026-08-26T11:48:15+00:00,"AI-power unwind, roughly half off the 3-month high, same macro draw as FN; no name-specific mechanism to read",skip,,-38.18,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,ILMN,+19.5,1.0,long,skip,2026-08-26T11:48:15+00:00,+67pct YTD at a multi-year high on a late-July print — chasing a stale catalyst,skip,,+18.30,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,AGX,-18.5,0.9,short,skip,2026-08-26T11:48:15+00:00,same E&C / power-EPC cluster selloff,skip,,+21.08,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,CELH,+18.2,0.6,long,skip,2026-08-26T11:48:16+00:00,activist-stake bounce; an activist catalyst resolves over quarters and core energy-drink sales are declining,skip,,-15.44,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,OI,+18.1,0.9,long,skip,2026-08-26T11:48:16+00:00,a single sell-side upgrade on a name that itself cut its 2026-27 EBITDA outlook; two other brokers cut targets the same week,skip,,-19.00,,tail
+2026-08-26T11:38:06+00:00,2026-08-25,RH,-17.4,1.1,short,skip,2026-08-26T11:48:16+00:00,"housing and big-ticket discretionary weakness, same cluster draw as LZB",skip,,+14.53,,tail
 2026-08-27T11:34:54+00:00,2026-08-26,FCX,+14.3,1.4,long,skip,2026-08-27T11:43:44+00:00,"Copper/gold complex move, no name-specific catalyst. A read here is a commodity call, not a company call.",skip,,,,sp500
 2026-08-27T11:34:54+00:00,2026-08-26,MRNA,-14.2,1.4,short,skip,2026-08-27T11:43:44+00:00,"Already carries an open catalogue bet (short, 7/13); no new information and adds are long-only now.",skip,,,,sp500
 2026-08-27T11:34:54+00:00,2026-08-26,COIN,+13.5,0.8,long,skip,2026-08-27T11:43:44+00:00,Crypto beta - the read would be a bitcoin call wearing a ticker.,skip,,,,sp500
