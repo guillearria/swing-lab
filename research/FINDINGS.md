@@ -2884,3 +2884,49 @@ one proposal below is a DRAFT for the owner. Live numbers: `python3 -m research.
 - **New-hypothesis / re-arm proposals: none warranted this milestone.** The one live question
   (does the READ beat its benchmark) is two weeks from its own answer; opening a second one
   before that lands would be building for a future that has not arrived.
+
+**2026-09-28 · [ARC 5 #17] MILESTONE REVIEW AT n=20 SETTLED LONGS — THE ONE LOOK FIRES THIS
+WEEK, AND THE POOL GOES INTO IT BELOW ITS BAR.**
+Absorbed into the read run per [ARC 5 #12a]; the n=20 crossing happened on the 2026-09-25 settle
+(17 → 21 settled longs), which ran AFTER that day's read, so this is the first read run to carry
+it. Nothing below is self-approved; the one proposal is a DRAFT for the owner. Live numbers:
+`python3 -m research.engine` · `python3 -m research.bets show`.
+- **Pooled verdict [ARC 5 #7 · #14] — the ONE LOOK is days away, not weeks.** Computing each
+  open long's maturity from its own `logged_at` + `horizon_d` in weekdays, the **30th settled
+  long matures 2026-09-30**, so the single pre-registered look fires on that settle run or the
+  next one. [ARC 5 #16] forecast this for "roughly two weeks from 09-14" and the arithmetic has
+  held to within two sessions. Restating what #16 said, because #14 makes a FAIL **final** and
+  forbids recomputing at a larger n: the pool enters the look **below the bar on both legs** —
+  median excess short of +1% and beat-rate short of 55% at n=23. **No goalpost moves, no bar
+  softens, no look is deferred, and nothing about this entry may be cited afterwards as grounds
+  to re-run it.** Naming the likely outcome in advance is only the opposite of p-hacking if
+  nothing changes after it lands. The 2027-06-30 kill date was never the binding constraint;
+  the maturity wall is, and it arrives this week.
+- **[ORDERS #1] band diagnostic — N still reachable, and the bar is now demonstrably, not just
+  arithmetically, lame.** 27 filled / 1 expired; 10 resolved at 21d. The remaining fills all
+  resolve by roughly end-October on the newest fill's own clock, so N≥20 resolved by the
+  2026-12-31 deadline stays comfortable. The update to #16 is that GLW (expired 2026-09-23) is
+  the **first expired order in the ledger's history**, so the expired arm is no longer
+  structurally empty — it is n=1. That does not rescue the bar: a median-versus-median
+  comparison with one observation in an arm is not a comparison, and #16's DRAFT stands
+  unchanged — at the 2026-12-31 audit, declare the +3pp expired-vs-filled comparison
+  UNREACHABLE-AS-WRITTEN and either re-scope it openly to a fill-rate / entry-advantage
+  statement that a single-arm sample CAN answer, or retire it. Declare, don't decorate.
+- **Mix verdict [ARC 5 #12a] — the concentration has cleared on its own.** `post-earnings-drift`
+  is 5 of the last 15 catalogue rows (33%), down from 60% at #16, and below the >50% mirror
+  threshold, so no naming sentence was owed in the push. Driver: environment, not a corrected
+  habit. The fiscal-quarter tail for retail and software has passed and the September candidate
+  pool is now off-cycle events — 8-K disclosures, mid-quarter guidance updates, deal news — so
+  the reads followed the pool rather than the pool following the reads. Recorded, not steered:
+  forcing the number in either direction is what [ARC 5 #10] forbids.
+- **New-hypothesis proposal (DRAFT, not adopted).** The horizon diagnostic has opened a wide gap
+  — the 63/126d core arm is positive on both median and beat-rate at n=9 while the ≤30d fast arm
+  is negative on both at n=20. It is a DIAGNOSTIC decomposition of ONE verdict [Arc 5 #8], it is
+  **not** a per-horizon bar, and it must not become one: the fast sleeve exists by the 2026-08-01
+  cadence rule and changing the mix now is exactly the mid-flight change [ARC 5 #10] forbids.
+  What is legitimate is to write it down as a candidate hypothesis for the future — *does the
+  read's edge, if any, live only at a quarter-scale horizon?* — testable ONLY on data accrued
+  AFTER the pooled look, at a bar pre-registered before that data exists, per the SKILL re-arm
+  protocol's out-of-sample clause. Owner's call, and nothing about it changes generation today.
+- **Re-arm proposal: none.** Shorts, the insider silo and the killed mechanical rules stay
+  closed; no regime flip or fresh evidence has arrived to justify the three-part protocol.
