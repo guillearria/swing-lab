@@ -2930,3 +2930,68 @@ it. Nothing below is self-approved; the one proposal is a DRAFT for the owner. L
   protocol's out-of-sample clause. Owner's call, and nothing about it changes generation today.
 - **Re-arm proposal: none.** Shorts, the insider silo and the killed mechanical rules stay
   closed; no regime flip or fresh evidence has arrived to justify the three-part protocol.
+
+**2026-10-05 · [ARC 5 #18] THE ONE LOOK FIRED AND THE POOL FAILED. The pre-registered general
+forward-bet verdict is NEGATIVE, and under [ARC 5 #14] that FAIL is FINAL.**
+Carried by this read run under the [ARC 5 #12a] absorbed-milestone rule: the n=30 crossing
+happened on the **2026-10-02 settle** (commit `678b660`), which ran AFTER that day's read, so
+this is the first read run to carry it — the same sequence as [ARC 5 #17] at n=20. Live numbers:
+`python3 -m research.bets show` · `python3 -m research.engine`.
+- **The look, at the commit that crossed N.** Reproduce: `git show
+  678b660:research/bets_catalogue.csv` → `direction=long, status=closed`. **n=30 · mean +1.19% ·
+  median −1.71% · beat 43% · Wilcoxon one-sided p=0.715.** Bar [ARC 5 #7 · #12a]: N≥30 AND
+  median excess >+1% AND beat-rate >55% AND Wilcoxon p ≤ α≈0.017. **FAIL on all three
+  substantive legs, and not marginally** — the median is 2.7pp under its threshold and on the
+  wrong side of zero, the beat-rate is 12pp under, and p is nowhere near α.
+- **It was the RIGHT look.** #14 fixes the look to the FIRST settle reaching N≥30; #14a added
+  the tie rule. Checked at the crossing commit: that settle closed CRL, APD and SOLS, and **no
+  row sharing a `logged_at`+`horizon_d` with a newly-closed row was left open** — no tie group
+  was split, so n=30 is a clean cut, not an arbitrary one inside a simultaneous maturity. (#14a
+  projected the first crossing at n=31; it landed at 30 because OKTA's 21d clock matured one
+  session later. The projection was off by one row; the rule was not.)
+- **What the FAIL says, and what it does not.** Says: across 103 pre-registered rows, 30 settled
+  long-only bets and a bounded denominator of 2052 logged mover candidates, **the LLM read did
+  not beat its own benchmarks.** That is the question this project asked, asked properly, and
+  answered. Does not say the reads were noise: mean +1.19% against median −1.71% is exactly the
+  right-skew SKILL.md warns about — a few large winners carrying a typical loser, which is a
+  lottery shape, not an edge. Per [ARC 5 #12a] the consequence is already written: **no real
+  money returns on this evidence.**
+- **No recount and no second look.** #14 forbids recomputing at a larger n, and nothing in this
+  entry may be cited as grounds to re-run. The pool is already n=31 and marginally less bad;
+  that is precisely the optional-stopping drift #14 closed, and it changes nothing. The
+  2027-06-30 kill date is moot — the maturity wall arrived first, as #16 and #17 forecast.
+- **The diagnostics, named so they cannot be smuggled in as a rescue.** At the look, core
+  63/126d was n=8 median +11.28% beat 62% while fast ≤30d was n=22 median −2.42% beat 36%.
+  [Arc 5 #8] makes those a DECOMPOSITION of one verdict, never a second bar. A pooled FAIL whose
+  positive half is an 8-row subgroup selected by horizon is the textbook subgroup rescue. #17
+  already logged that gap as a candidate hypothesis testable ONLY on data accrued AFTER this
+  look, at a bar written before that data exists; that is the single legitimate door.
+- **Reachability on the one remaining live deadline.** [ORDERS #1]: 31 filled / 1 expired / 1
+  pending, 15 resolved at 21d; the unresolved fills clear by roughly mid-November on their own
+  clocks, so N≥20 resolved before 2026-12-31 still holds comfortably. The bar itself stands as
+  #16 and #17 called it — a median-vs-median comparison with n=1 in the expired arm is not a
+  comparison — and the standing DRAFT is unchanged: at the 2026-12-31 audit declare the +3pp
+  expired-vs-filled test UNREACHABLE-AS-WRITTEN and re-scope or retire it openly.
+- **Mix verdict [ARC 5 #12a].** No `pattern_tag` exceeds 2 of the last 15 catalogue rows, far
+  under the >50% mirror threshold, so no naming sentence was owed in the push.
+- **DRAFTS for the owner — nothing self-approved, nothing adopted.** (1) The pre-registered
+  consequence is **[ARC 5 #2], the PAID-DATA trigger**: READ_LOOP states it in terms — if
+  free-data reads cannot clear the bar, buy better data, do NOT lower the bar. That is a spend,
+  so it is the owner's call. (2) **Generation after a final FAIL.** This run executed the
+  documented loop end to end because nothing in READ_LOOP stops it and stopping is a system
+  change — but the silo it accrues to is now decided, so further rows accrue to no live verdict.
+  Owner's pick: (a) stop generating and close Arc 5; (b) keep generating only against a FRESH
+  pre-registration written before the next row is logged (the #17 horizon question is the one
+  already drafted); (c) keep generating unscored, which this project's own rules call churn.
+  (3) **Code defect, not touched here:** `engine.py` still prints the forward track as
+  "accruing" and `bets show` still serves the pooled line as an open question. Both are now
+  wrong and both are code, so they go to the propose-first lane; logged in BACKLOG.
+- **Residual risks in this entry.** The FAIL is only as strong as the ledger under it: 30 rows
+  is the pre-registered minimum and no more, and the four [ARC 5 #7] composition caveats
+  (same-season clustering shrinking effective N, benchmark choice, scan-bounded selection,
+  overlapping entry windows) were written to discount a PASS. They do not rescue a FAIL, but
+  they do mean the honest claim is "did not beat its benchmark", not "reliably loses". Red-team
+  note: this entry was written by the same agent that generated many of the rows it grades — the
+  computation is three lines over a committed CSV at a named commit and is reproducible by hand,
+  and the judgement that the bar failed required no judgement. That is the whole point of having
+  pre-registered it.

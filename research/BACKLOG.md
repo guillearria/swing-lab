@@ -1698,7 +1698,16 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   standings / assumptions that surfaces blind spots and proposes changes / bets / case studies /
   unused trading techniques. Build only on a validated need; if it ever generates bets it MUST
   keep the integrity guards (pre-registration + log-every-candidate + multiple-testing).
-- Forward-bet verdict accrues toward N≥30 / 2027-06-30 — no build; let `read`/`settle` run.
+- ~~Forward-bet verdict accrues toward N≥30 / 2027-06-30~~ — **DECIDED 2026-10-05: the ONE
+  LOOK fired on the 2026-10-02 settle and the pool FAILED (FINDINGS [ARC 5 #18]; FINAL under
+  [ARC 5 #14]).**
+- **P-NEW (propose-first, NOT built): the verdict surfaces still say "accruing".** `engine.py`
+  prints the forward reading track as `accruing` and `bets show` serves the pooled line as an
+  open question; after [ARC 5 #18] both are stating a decided verdict as undecided — the exact
+  "a prose rule the code contradicts is not a rule" shape [ARC 5 #14a] fixed once already. The
+  fix is a DISPLAY change (render the FAIL and its look commit, keep the numbers in their silo),
+  deliberately not made by the run that found the defect: it is code, so it is the propose-first
+  lane, and it must NOT be bundled with any change to the bar. Owner's call.
 - If a clean "real-vehicle-vs-meme" pair recurs, add the case (don't force it).
 - Resist building ahead of a validated need (CLAUDE.md anti-over-engineering).
 
