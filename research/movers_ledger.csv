@@ -2051,3 +2051,43 @@ seen_at,date,ticker,pct_change,rel_volume,direction_hint,action,logged_at,ration
 2026-10-05T11:39:27+00:00,2026-10-02,ONTO,+14.0,1.1,long,skip,2026-10-05T11:44:04+00:00,"Semicap metrology basket with TER, VECO and ACLS. Sector beta on 1.1x volume.",skip,,,,tail
 2026-10-05T11:39:27+00:00,2026-10-02,UTHR,+13.9,1.3,long,skip,2026-10-05T11:44:04+00:00,Already carried: the catalogue holds a UTHR long pre-registered 2026-10-02 on the Delaware ruling against YUTREPIA.,skip,,,,tail
 2026-10-05T11:39:27+00:00,2026-10-02,AZTA,+13.9,3.9,long,skip,2026-10-05T11:44:04+00:00,Lab and semicap instrumentation basket. No company fact; the move is the complex.,skip,,,,tail
+2026-10-06T11:38:47+00:00,2026-10-05,CTVA,-84.1,37.0,short,skip,2026-10-06T11:46:38+00:00,"spin-off distribution artifact (Vylor 10/01, 1-for-1); the only residual flow is the S&P500-to-400 deletion effective today, which is the index-deletion mechanism Arc 2 already killed - reviving it needs a fresh pre-registration under the SKILL re-arm protocol, not a read run's call",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,PTC,+37.6,17.3,long,skip,2026-10-06T11:46:38+00:00,"agreed all-cash Schneider Electric takeover at 22.6B (42pct premium, close ~Q3-2027); merger arb spread, not a read",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,LITE,+18.5,0.7,long,skip,2026-10-06T11:46:38+00:00,AI-optics basket move on 0.7x volume; no name-specific news,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,COHR,+18.1,0.9,long,skip,2026-10-06T11:46:38+00:00,"same optics basket (PhotonLink plus a Bernstein initiation); already re-rated, 0.9x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,FICO,-18.0,2.6,short,skip,2026-10-06T11:46:38+00:00,"FHFA cleared VantageScore 4.0 for all GSE mortgage originators - a structural break in the scoring monopoly, not an overreaction to fade",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,SNPS,+17.0,1.5,long,skip,2026-10-06T11:46:39+00:00,already live - bet logged 2026-10-02; never re-bet an open ticker,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,CCL,+15.4,0.9,long,skip,2026-10-06T11:46:39+00:00,already live - bet logged 2026-09-30,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,ON,+13.6,1.0,long,skip,2026-10-06T11:46:39+00:00,"onsemi recut the SYNA deal from stock to all-cash, removing the arb short overhang; that cover is a days-scale flow and is already done, 1.0x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,RCL,+13.4,1.0,long,skip,2026-10-06T11:46:39+00:00,cruise-sector sympathy with CCL on 1.0x volume; no name-specific catalyst,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,CIEN,+13.2,0.9,long,skip,2026-10-06T11:46:39+00:00,"AI-optics basket, 0.9x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,ACN,+11.8,1.4,long,skip,2026-10-06T11:46:39+00:00,already up ~50pct off the June low on the Q3 security/mid-market pivot; mega-cap at highs on old news,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,AMAT,+11.4,0.7,long,skip,2026-10-06T11:46:39+00:00,semicap basket on 0.7x volume,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,MPC,+11.3,0.7,long,skip,2026-10-06T11:46:40+00:00,"refining-margin sector beta, 0.7x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,P,+11.2,0.7,long,skip,2026-10-06T11:46:40+00:00,0.7x volume drift with no identifiable catalyst,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,TER,+10.8,0.7,long,skip,2026-10-06T11:46:40+00:00,"semicap basket, 0.7x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,ECHO,+10.1,2.2,long,skip,2026-10-06T11:46:49+00:00,"EchoStar trades as a SpaceX proxy (19.6B spectrum sale for cash plus SpaceX equity); SPCX is a standing conflict-of-interest exclusion in CLAUDE.md, so the proxy is not a leg we score here",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,LRCX,+10.0,0.7,long,skip,2026-10-06T11:46:50+00:00,"semicap basket, 0.7x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,MPWR,+9.7,0.9,long,skip,2026-10-06T11:46:50+00:00,"semi basket, 0.9x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,CBOE,+9.6,1.3,long,skip,2026-10-06T11:46:50+00:00,"exchange-volume / volatility-regime beta, not a name-specific read",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,NTAP,+9.5,1.3,long,skip,2026-10-06T11:46:50+00:00,AI-storage theme beta on 1.3x volume; no name-specific catalyst,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,KLAC,+9.3,0.8,long,skip,2026-10-06T11:46:50+00:00,"semicap basket, 0.8x volume",skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,LEN,-9.3,2.2,short,skip,2026-10-06T11:46:50+00:00,fiscal Q3 miss plus a full-year delivery cut into a real housing downturn; that is a short read and bets are long-only,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,HPE,+9.1,0.6,long,skip,2026-10-06T11:46:51+00:00,already live - bet logged 2026-09-14,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,BE,+9.0,0.4,long,skip,2026-10-06T11:46:51+00:00,AI-power theme beta on 0.4x volume,skip,,,,sp500
+2026-10-06T11:38:47+00:00,2026-10-05,INCY,-8.6,1.3,short,skip,2026-10-06T11:46:51+00:00,no identified catalyst; biotech drift on 1.3x volume,skip,,,,sp500
+2026-10-06T11:39:24+00:00,2026-10-05,LQDA,-62.5,6.3,short,skip,2026-10-06T11:46:51+00:00,lost the Delaware Yutrepia patent ruling; direct counterparty to our open UTHR bet (logged 2026-10-02) and the appeal is binary - we do not bet both sides of one event,skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,RXO,+42.2,11.7,long,skip,2026-10-06T11:46:51+00:00,"agreed 5.8B C.H. Robinson cash-and-stock takeover at a 29pct premium, close H1-2027; merger arb spread, not a read",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,AZTA,+24.8,2.7,long,skip,2026-10-06T11:46:51+00:00,"activist (Politan) plus a CEO resignation and interim CEO - a governance process with no dated resolution, and securities class-action probes are open",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,MTRN,+21.8,2.5,long,skip,2026-10-06T11:46:52+00:00,critical-materials and defense thematic momentum at highs; next dated event is 10/29 earnings,skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,VIRT,+21.0,2.1,long,skip,2026-10-06T11:46:52+00:00,"trading-volume boom lifting the market-maker complex; momentum into highs, already at the Street's target",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,MAT,+20.3,3.5,long,skip,2026-10-06T11:46:59+00:00,"unagreed Authentic Brands approach above 20 a share; the gap to that price is just the market's deal odds and the board named a new CEO the day before, which argues against a sale - no informational edge",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,SPHR,-20.1,5.5,short,skip,2026-10-06T11:46:59+00:00,giving back part of a 109pct year-to-date run; no readable name-specific catalyst behind the drop,skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,CCOI,+19.5,1.1,long,skip,2026-10-06T11:46:59+00:00,"distressed, highly levered telco bouncing off a low base; no identifiable change in the business",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,SYNA,+19.3,2.4,long,skip,2026-10-06T11:46:59+00:00,"onsemi merger amended to 123 a share all-cash with the board behind it; merger arb spread, not a read",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,IART,-18.3,2.1,short,skip,2026-10-06T11:46:59+00:00,serial medtech disappointment in a downtrend with no identifiable positive change; falling knife into 10/29 earnings,skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,MTSI,+17.9,0.9,long,skip,2026-10-06T11:47:00+00:00,"semi basket, 0.9x volume",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,MXL,+17.2,1.0,long,skip,2026-10-06T11:47:00+00:00,"semi basket, 1.0x volume",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,ROG,+16.4,1.3,long,skip,2026-10-06T11:47:00+00:00,"semi-materials basket, 1.3x volume",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,VSH,+15.1,1.3,long,skip,2026-10-06T11:47:00+00:00,"semi basket, 1.3x volume",skip,,,,tail
+2026-10-06T11:39:24+00:00,2026-10-05,DAVE,+15.0,0.8,long,skip,2026-10-06T11:47:00+00:00,fintech momentum at highs on 0.8x volume; no name-specific catalyst,skip,,,,tail
