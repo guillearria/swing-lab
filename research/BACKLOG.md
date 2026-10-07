@@ -1487,6 +1487,17 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   63d ~late-Sep) and may not reach it if read cadence is slow [FINDINGS ARC 5 #9]. Don't expect it soon.
 
 ## Backlog (open build work)
+- **[OPS, 2026-10-07] THE DEPS GUARD FIRES THE WRONG INTERPRETER — found by the read run,
+  code NOT touched (propose-first lane).** `READ_LOOP.md` step 0 and `daily.sh` both read
+  `python3 -c "import ..." || pip install -r requirements.txt`. In this cloud image `python3` is
+  3.11 while bare `pip` is 3.13's, so the guard correctly DETECTS the missing import, installs it
+  for an interpreter the loop never runs, and reports itself fixed. Observed today: the import
+  check failed, `pip install` "succeeded", and `movers scan` still died on
+  `ModuleNotFoundError: requests`. Worked around by hand with `python3 -m pip install -r
+  requirements.txt`. This is the third member of the class the 2026-09-13 [OPS] entry named ("the
+  dependency guard did not guard"): the previous two were a MISSING guard, this one is a guard
+  pointed at the wrong Python. Proposed fix (one line, both call sites): use `python3 -m pip`
+  rather than `pip`, so the installer and the runtime are the same interpreter by construction.
 - **[AUTOMATION, 2026-08-13] DEFERRED PROGRAM — automate execution (broker-side stop/exit
   enforcement first, eventually the full read→order→book loop).** Owner's ask, staged not built,
   raised after the stops clarification: today every stop/target is a LEDGER rule the digest
