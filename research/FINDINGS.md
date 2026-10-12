@@ -2995,3 +2995,36 @@ this is the first read run to carry it — the same sequence as [ARC 5 #17] at n
   computation is three lines over a committed CSV at a named commit and is reproducible by hand,
   and the judgement that the bar failed required no judgement. That is the whole point of having
   pre-registered it.
+
+**2026-10-12 · [ARC 5 #9] THE SKIP-CALIBRATION BAR WAS REACHED ON THE SAME 2026-10-02 SETTLE AND
+ITS "FILTER TOO TIGHT" BRANCH FIRED — UNLOGGED FOR TEN DAYS. Logged now; it changes no doctrine,
+because the pool it would have loosened is already decided [ARC 5 #18].**
+Found in an owner session reading `python3 -m research.movers show`. No code announces this
+crossing (the 🏁 milestones watch the bets pool only), so the settle run that crossed it said
+nothing and the next ten runs repeated the silence. Logged under "log it or it didn't happen".
+- **The look, at the first settle reaching skips-63d N≥30 — commit `678b660` (2026-10-02), the
+  same commit as the pooled one look.** The 63d skip count went 23 → 71 in that single commit
+  (the 09-13 calendar pre-check batches 63d maturations), so there is no earlier crossing to
+  argue about. Reproduce: `git show 678b660:research/movers_ledger.csv` →
+  `movers.outcome_stats(rows, "skip", "x63_pct")`.
+  **skips 63d n=71 · median +6.31% · beat 61%** vs the locked bar (N≥30 AND median >+1% AND
+  beat >55%) ⇒ **branch fired: the skip filter is TOO TIGHT by its own pre-registration.**
+  Contrast ruler at the same commit: takes 63d n=4 median −7.47% beat 25%; skips 21d n=1114
+  median −0.46% beat 49%; takes 21d n=68 median −3.42% beat 34%.
+- **Today (HEAD `141b151`), for the record, not as a second look:** skips 63d n=167 median
+  +6.29% beat 57%; takes 63d n=7 median −12.87% beat 29%; skips 21d n=1343 median −0.62% beat
+  48%; takes 21d n=77 median −3.42% beat 36%. Same branch, same sign.
+- **What it says.** The "anti-selective" sign flagged at n=2 in 2026-08-01(d) survived to
+  N≥30: at both horizons the candidates the read PASSED ON did better than the ones it TOOK.
+  Read beside [ARC 5 #18], this sharpens the FAIL — the reader did not merely miss the bar,
+  it subtracted value against its own denominator.
+- **What it does not say.** (1) A skip is scored as if traded in the direction of its move
+  (momentum-continuation assumption, the standing caveat). (2) Jul–Oct 2026 was a trending
+  tape (SPY trailing-12m about +15%), and the 21d skips show nothing (median −0.62%, beat
+  48%) — the 63d number is quarter-horizon continuation inside one regime, in-sample, costless,
+  bounded to the two scan cohorts. "Single-name momentum" already FAILED as a mechanical probe
+  on history (engine, Arc 1). This is a diagnostic of the read's selectivity, never an edge
+  claim for "take every mover" [ARC 5 #9 scope].
+- **Consequence.** None to the doctrine: the prescribed loosening would feed a pool whose
+  verdict is final. It joins the [ARC 5 #2b] decision point as evidence, nothing more.
+  **Honest prior UNCHANGED: LOW.** Live: `python3 -m research.movers show`.
