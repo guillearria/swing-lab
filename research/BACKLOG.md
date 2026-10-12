@@ -1719,6 +1719,9 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   fix is a DISPLAY change (render the FAIL and its look commit, keep the numbers in their silo),
   deliberately not made by the run that found the defect: it is code, so it is the propose-first
   lane, and it must NOT be bundled with any change to the bar. Owner's call.
+  **Third surface, observed 2026-10-12:** `digest.py` also banners **"AT BAR — verdict time"**
+  on the pooled line, so the defect is not CLI-only — it reached the owner's phone in that day's
+  📖 READ push. Same fix, same lane; noted here rather than patched by the run that saw it.
 - If a clean "real-vehicle-vs-meme" pair recurs, add the case (don't force it).
 - Resist building ahead of a validated need (CLAUDE.md anti-over-engineering).
 
