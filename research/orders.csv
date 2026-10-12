@@ -33,3 +33,4 @@ logged_at,ticker,direction,shares,ref,ref_date,scan_from,limit_px,stop_px,horizo
 2026-10-02T11:47:53+00:00,SNPS,long,,490.54,2026-10-01,2026-10-01,495.45,440.00,21,IGV,filled,2026-10-02,495.45,,,,
 2026-10-05T11:45:17+00:00,WDC,long,,415.29,2026-10-02,2026-10-02,419.44,390.00,21,SMH,filled,2026-10-06,419.44,,,,
 2026-10-09T11:49:55+00:00,LW,long,,49.46,2026-10-08,2026-10-08,49.95,44.00,63,XLP,filled,2026-10-09,48.92,,,,
+2026-10-12T11:45:59+00:00,HUM,long,,431.87,2026-10-09,2026-10-09,436.19,395.00,21,XLV,pending,,,,,,"stop below a full gap-fill: the 10-08 pre-news high was 399.19, so a trade back under 395 says the star-ratings re-rate was unwound"
