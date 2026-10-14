@@ -3028,3 +3028,30 @@ nothing and the next ten runs repeated the silence. Logged under "log it or it d
 - **Consequence.** None to the doctrine: the prescribed loosening would feed a pool whose
   verdict is final. It joins the [ARC 5 #2b] decision point as evidence, nothing more.
   **Honest prior UNCHANGED: LOW.** Live: `python3 -m research.movers show`.
+
+**2026-10-14 · [ORDERS #1] ITS N≥20 TRIGGER WAS REACHED ON THE 2026-10-10 SETTLE WITH THE
+COMPARISON ARM EMPTY — the bar fired uncomputable, exactly as #16/#17/#18 forecast. Logged on the
+crossing; nothing is re-scoped and the owner DRAFT stands.**
+Found in this read run's step-1 `orders show`. No code announces this crossing (the 🏁 milestones
+watch the bets pool only), so the settle run that crossed it said nothing — the [ARC 5 #9] silence
+class, caught in four days instead of ten.
+- **The crossing:** commit `c7d0cac` (the 2026-10-10 settle) took resolved orders 19 → 20.
+  Reproduce: `git show c7d0cac:research/orders.csv` → count rows with a non-empty `x21_pct`. At
+  that commit and still at HEAD: **filled resolved n=20 · median −1.14% · beat 40%; expired
+  resolved n=0.**
+- **The locked threshold** is "at N≥20 resolved, EXPIRED median beats FILLED median by >+3pp ⇒
+  band too tight". N≥20 is met; the expired arm has **zero** scored rows, so the comparison has no
+  left-hand side. The only expired order in the ledger's history (GLW, expired 2026-09-23) does
+  not score until 2026-10-22, and n=1 would not rescue a median-vs-median test anyway.
+- **No verdict declared, no bar moved.** #16 (2026-09-14), #17 (2026-09-28) and #18 (2026-10-12)
+  each called this arithmetic before it landed; their DRAFT is unchanged and still the owner's: at
+  the 2026-12-31 audit, declare the +3pp expired-vs-filled comparison UNREACHABLE-AS-WRITTEN and
+  either re-scope it to a fill-rate / entry-advantage statement one arm CAN answer, or retire it.
+  Declare, don't decorate.
+- **What the one arm does say, as a diagnostic and nothing more:** 20 filled orders, median
+  −1.14% 21d excess, beat 40% — the fill model is not finding entries that beat their own
+  benchmarks. Consistent with the [ARC 5 #18] pooled FAIL, and model-vs-model until real money
+  returns [ARC 5 #12a].
+- **Residual risk:** a 34/35-fill-rate sample inside one trending regime, costless, with the
+  prediction on the #1 record ("I expect no significant difference") left untestable rather than
+  confirmed. Live: `python3 -m research.orders show`.
