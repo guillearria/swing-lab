@@ -10,8 +10,8 @@ it by command/link. This doc is the map; it holds NO live numbers.
 |---|---|---|
 | Mechanical (CLOSED) | `engine.py` + Arc-1/2 probe `*.py` | backtest fixed rules on history → scoreboard |
 | Reasoning | `cases/*.md` | document WHY/HOW a live move happened → a reusable pattern |
-| Track record | `bets.py` (+ `bets_catalogue.csv`) | scored % predictions vs a benchmark; `pattern_tag` = scenario type [Arc 5 #8] |
-| Candidate denominator | `movers.py` (+ `movers_ledger.csv`) | daily mover scan, 2 cohorts (S&P 500 + 400/600 tail [ARC 5 #11]) → SEEN take/skip; the general track's denominator [Arc 5 #8] |
+| Track record | `bets.py` (+ `bets_catalogue.csv`) | scored % predictions vs a benchmark; `pattern_tag` = scenario type [Arc 5 #8]. **DECIDED FAIL at `678b660` [ARC 5 #18] (`bets.VERDICT`); generation retired [ARC 5 #19] — open rows settle to completion as record** |
+| Candidate denominator | `movers.py` (+ `movers_ledger.csv`) | **scan RETIRED with the read routine [ARC 5 #19]** — daily mover scan, 2 cohorts (S&P 500 + 400/600 tail [ARC 5 #11]) → SEEN take/skip; the general track's denominator [Arc 5 #8] |
 | Path diagnostic | `paths.py` | read-only walk of each SETTLED bet's daily excess path — peak/MFE/give-back + a driftless-noise reference; DESCRIPTIVE [PATHS #1], never a verdict, never in daily.sh |
 | Money (CLOSED 2026-08-18) | `book.py` (+ `book.csv`, tracked in git) | the FORMER real-money portfolio — TERMINAL, frozen evidence [ARC 5 #12; closure #13/#13a]; every command prints one BOOK CLOSED line |
 | Public surface | `site.py` (+ `docs/index.html`) · `pulse.py` | the Pages dashboard (predictions + performance only [P7a]) · the X autopost path (inert until keys [P7b]) |
@@ -19,7 +19,7 @@ it by command/link. This doc is the map; it holds NO live numbers.
 
 Docs: `FINDINGS.md` = research/science audit log (closed-arc entries archived verbatim in
 `FINDINGS_ARCHIVE.md`) · `SKILL.md` = method + patterns · `BACKLOG.md` = engineering changelog +
-backlog + stale map · `LOOP.md`/`READ_LOOP.md` = generation contracts · `README.md` = command
+backlog + stale map · `LOOP.md` = the research loop · `READ_LOOP.md` = Arc 5's generation contract (RETIRED [ARC 5 #19]) · `README.md` = command
 index · `ARCHITECTURE.md` = this map.
 
 ## The data flow
@@ -78,23 +78,24 @@ by the whole-pool stop (`book.POOL_STOP`).
   performance only per the audience contract; deterministic render, re-committed by settle
   only when its data changed. `pulse.py` [P7b] — the X autopost path, INERT until API keys
   land (dry-run: `python3 -m research.pulse`).
-- Cloud routines (`/schedule`), THREE: **read** (pre-market weekdays — generate bets via
-  `READ_LOOP.md`), **settle** (daily — score matured bets via `scripts/daily.sh`), and
-  **watchdog** (daily, own hour, fresh session — 🚨 if no ledger commit in 36h; deliberately
-  outside `daily.sh`, since a check that runs inside the thing it watches cannot report that
-  thing dying). They never overlap.
+- Automation: ONE cloud routine (`/schedule`) — **settle** (daily — score matured bets via
+  `scripts/daily.sh`) — plus the **watchdog** GitHub Action (twice daily since 2026-09-13 — 🚨 if
+  no ledger commit in 36h or a due settle push was never delivered; deliberately outside
+  `daily.sh`, since a check inside the thing it watches cannot report that thing dying; the
+  12:30 run also sends 📬 for third-party issues/PRs with no owner reply). The **read** routine
+  (pre-market generation via `READ_LOOP.md`) is DISABLED since 2026-10-16 [ARC 5 #19].
 - Telegram contract (2026-07-03; v1.1 2026-07-10; reshaped 2026-08-05/06; v2 2026-08-14;
   **v4 2026-08-25 [MSG] — PULSE + ALARM, never a broker terminal, never daily repetition**):
-  EVERY scheduled run pushes exactly ONE message — silence = broken; a clean weekday =
-  settle's 📋 + read's 📖, period. Each NARRATES its run: a quiet settle is one sentence, a
+  EVERY scheduled run pushes exactly ONE message — silence = broken; a clean day =
+  settle's 📋, period (read's 📖 retired 2026-10-16 [ARC 5 #19]). Each NARRATES its run: a quiet settle is one sentence, a
   scoring settle folds each settlement in as a 📊 SCORED <blockquote> card + ONE pool-tally
   sentence (`bets.mark_notified()` stamps `notified` only after PUSH DELIVERED — a lost push
   re-renders the cards next digest), the read opens with 1–2 sentences of its own morning
-  above its 🟢 card(s). 🏁 milestones at n=10/20/30 + the at-bar/ahead-of-bar flags fire only
-  on a crossing. Then ⚠️ DO-NOW only when nonempty (empty prints NOTHING) and the 📈
+  above its 🟢 card(s). The 🏁 milestones and at-bar/ahead-of-bar flags were deleted
+  2026-10-16 — the one look fired [ARC 5 #18]; the tally now states the decided result. Then ⚠️ DO-NOW only when nonempty (empty prints NOTHING) and the 📈
   next-scoring line. 🚨 = failure only. Stats vocabulary (Σ/p/α), shorts, orders/band, movers
   denominators, mix mirror: CLI-side only. `--slim` = the read leg's push-log stamp
-  (composition no longer branches on it). Milestone crossings diff the catalogue against
+  (composition no longer branches on it). The X pulse's newly-scored gate diffs the catalogue against
   **git HEAD** — no state file, no `settled_at` column [2026-08-04]. Pending counterfactual
   orders resolve silently in `orders check`; their state lives in `orders show`, not the push
   [v3]. The 🚨 heartbeat (`heartbeat.py`) is the FALLBACK — fires only when a step or the

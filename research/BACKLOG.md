@@ -4,12 +4,101 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
+## ▶ PICK UP HERE (2026-10-16 — Arc 5 closed · the reader retired · the next tests come from the literature)
+
+**Shipped 2026-10-16, owner-approved plan (2026-10-15), 262 → 258 tests green — the feed, read-leg and milestone tests went with
+their code; new verdict, alarm and watch tests came in.** Commits:
+`7116aed` FINDINGS [ARC 5 #19] decision + [ARC 5 #20] review + the [ARC 5 #9] correction, SKILL's two
+earned rules · `eda182c` `bets.VERDICT` rendered on every surface (the repeated look deleted from
+show/engine/pulse; digest "AT BAR"/🏁/ahead-of-bar deleted; site Result sentence + `data_through`
+follows settlements) · `d49376a` the read leg and the scan feeds out of every alarm · `3710281` the
+📬 outside-activity watch in the watchdog Action · plus this docs pass. Cloud: the read trigger is
+`enabled:false` (prompt kept — it holds the standing exclusion list; NEVER delete it); the settle
+prompt was re-sent whole (Arc 5 closed, new tally wording, retired shapes listed as correct).
+
+**Verify live (owner or next session):** the first settle after 2026-10-16 sends ONE 📋 with no
+read-brief or feed DO-NOW and stamps DELIVERED; the next weekday 11:30 UTC brings NO `read:` commit;
+both watchdog runs stay green (`gh run list --workflow=watchdog.yml`); HQ's board shows the read row
+under `_off`. The manual watchdog run on 2026-10-16 was green and printed "📬 issue watch: nothing
+waiting".
+
+**Why the plan changed before execution [ARC 5 #20].** The three mover-ledger tests proposed 10-14
+(small-cap fade, small-cap drift, large-cap continuation) were withdrawn UNTESTED: scored against
+SPY while small caps lagged it by 10–13pp, re-logged rows (2,211 rows / 488 names), and the best
+cells of ≥8 screened. One benchmark-free within-day reversal spread survives as a LEAD only.
+
+### Phase 2 — the published-edges pipeline (NEXT; the owner's literature-study request, moved up)
+- **Deliverable:** `research/LITERATURE.md`. **Official sources only** — journal pages, author-hosted
+  PDFs, SSRN or NBER versions; never summaries or blogs. One short block per source: the claim, the
+  sample, the effect size, whether it survived replication AND trading costs, what it means for a
+  small account, and whether free data can test it.
+- **Official free data used as GATES:** the Kenneth R. French Data Library (Dartmouth Tuck) —
+  short-term reversal, momentum and size × reversal portfolios back to 1926, survivorship-free; and
+  Chen & Zimmermann's Open Source Asset Pricing (200+ replicated predictors).
+- **First gate — reversal.** Does the small-stock short-term reversal spread still pay after 2015,
+  gross AND after realistic turnover costs? The gate's bar is committed to FINDINGS BEFORE the
+  post-2015 numbers are opened. A FAIL closes the [ARC 5 #20] lead with nothing built.
+- **Reading list (original papers).** Reversal and costs: Jegadeesh 1990; Lehmann 1990; Avramov,
+  Chordia & Goyal 2006; Nagel 2012; Novy-Marx & Velikov 2016. News vs no-news: Chan 2003. Spikes and
+  bad news: Bali, Cakici & Whitelaw 2011; Hong, Lim & Stein 2000. Drift and momentum: Ball & Brown
+  1968; Bernard & Thomas 1989; Jegadeesh & Titman 1993; Martineau 2022. Decay and replication: McLean
+  & Pontiff 2016; Hou, Xue & Zhang 2020; Harvey, Liu & Zhu 2016. Short side: Stambaugh, Yu & Yuan
+  2012. Method: Fama 1998; Mitchell & Stafford 2000 (calendar-time portfolios). Multi-market:
+  Moskowitz, Ooi & Pedersen 2012; Asness, Moskowitz & Pedersen 2013.
+- **The next-market question (the north-star hook fires on this verdict, pass OR fail).** Check the
+  unverified landscape numbers (`raw_input/trading_landscape_summary.md`, local only) against
+  official sources — regulator disclosures on retail outcomes and academic studies of retail
+  traders — into a verified ranking of where a small operator has room.
+- **Short-list rule:** at most 3 candidates; each survived independent replication, is plausible net
+  of costs at small size, preferably long-only, testable on free data, and is not a re-run of a
+  probe this repo already killed unless it meets the RE-ARM protocol.
+- **Honest expectation:** the robust published effects are mostly risk premia this engine already
+  measured as better risk shape, not alpha. Confirming that is itself a clean public result.
+- Takeaways feed the NEXT pre-registration; they never retrofit a bar already written.
+
+### Phase 3 — Arc 6, only for a candidate that passes its gate. Every pre-registration must meet:
+a matched benchmark or a benchmark-free spread · one position per EPISODE (the first signal day; no
+add-ons) · point-in-time index membership · entry at the close after the signal bar, frozen for
+history and forward alike · a cost grid with a stress case (shorts: the re-arm protocol + a borrow
+assumption) · α 0.05 split across candidates, both halves of history agreeing in sign · history as a
+KILL test, forward data only after the registration commit, ONE look on a fixed date with an
+UNDERPOWERED outcome named in advance · a live zero-LLM logger that scores each episode as it
+matures, before delistings erase it.
+
+### January wind-down (~2027-01-13, when ACN — the last open bet — settles)
+Turn settle off; freeze the ledgers; sweep the generation code in ONE commit (`bets add`, movers
+`scan`/`decide`, `orders place`, `feedstatus`, `--slim`/`_cards`) — and remove
+`research/data/_feed_status.json` from `LEDGERS` in `scripts/daily.sh` in the SAME commit, or
+`push_ledgers.sh` fails on `add` and every night fires a 🚨. Retire the watchdog deliberately (GitHub
+disables a public repo's scheduled workflows after 60 idle days anyway). Update the HQ board. If an
+Arc 6 logger is live by then, it runs as a GitHub Action — probe first whether Yahoo answers GitHub
+runners.
+
+### Public README cleanup + site UI overhaul (owner: "pretty ugly"; independent of Phases 2–3)
+- **README:** rewrite for a stranger — what this is, what it found, how to read the record, how to
+  reproduce a number. Operator lore (Telegram contract, routine history) moves to an operations doc.
+- **Site process:** the owner names 2–3 sites whose look he likes → ONE static mock for his itemized
+  feedback → then the build in `research/site.py`, `render()` kept pure and tested.
+- **Constraints:** predictions + performance only (audience contract); clean, no idle glyphs, no
+  layout jitter; the HQ design floor; the 2026-09-15 Cases-tab idea (item B below); the FAIL stated
+  plainly.
+
+### Outside-activity watch for every public repo (a brief for HQ)
+The 📬 watch covers swing-lab only. The other public repos need the same; HQ's daily gather is the
+natural home. Write it as a brief for an HQ session — this repo never edits HQ's observers.
+
+### AI weekly review routine (DEFERRED)
+On 10-14 the plan said the AI moves from daily picking to weekly thinking; review says not as a
+routine yet (nothing new to read until a gate reports; VF's lesson: output nobody consumes).
+**Trigger:** an Arc 6 test is live. Until then the AI's work — the study, pre-registrations,
+red-teams — happens in owner sessions.
+
 ## [SITE 2026-09-15] README line 71, and a "Cases" tab for the live page (owner idea, considered)
 
 Two items from the portfolio level, written here so a session in this repo picks them up cold.
 Independent of the OPS item below.
 
-**A. README — one line, a claim that is no longer true.** Line 71 under "The docs": *"case
+**A. ~~README — one line, a claim that is no longer true.~~ DONE 2026-10-16 (the head item's C4).** Line 71 under "The docs": *"case
 studies … (each births a scored bet; listed in the status panel). First pair: ILLR + SPCX."*
 Today there are 18 case files, the SPCX study births no bet and never will (the standing
 exclusion in `CLAUDE.md`), and the status panel no longer lists it. Suggested: *"case studies:
@@ -68,7 +157,7 @@ template's fixed headings (no new dependency). "Not investment advice." stays.
 *Cost:* one evening for the tab; the routine does not change. *Value:* the page stops being a table and becomes the thing the README
 already claims the project is — a method that names patterns and then measures them in public.
 
-## ▶ PICK UP HERE (2026-09-13 — silent strand #2 closed at the import · holidays in the calendar · design floor green)
+## Earlier — 2026-09-13 (silent strand #2 closed at the import · holidays in the calendar · design floor green)
 
 **[OPS 2026-09-13]** — owner session, four commits, 254 tests green, live floor checker 0 must-fails.
 - **The 09-11 settle went SILENT (no 📋, no 🚨) — the 08-07 class again.** Cold container
@@ -1712,7 +1801,9 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
 - ~~Forward-bet verdict accrues toward N≥30 / 2027-06-30~~ — **DECIDED 2026-10-05: the ONE
   LOOK fired on the 2026-10-02 settle and the pool FAILED (FINDINGS [ARC 5 #18]; FINAL under
   [ARC 5 #14]).**
-- **P-NEW (propose-first, NOT built): the verdict surfaces still say "accruing".** `engine.py`
+- ~~**P-NEW (propose-first, NOT built): the verdict surfaces still say "accruing".**~~ **DONE
+  2026-10-16 (`eda182c`, owner-approved plan): `bets.VERDICT` is the one encoding; show, engine,
+  digest, site and pulse render it and never recompute — see the head item.** `engine.py`
   prints the forward reading track as `accruing` and `bets show` serves the pooled line as an
   open question; after [ARC 5 #18] both are stating a decided verdict as undecided — the exact
   "a prose rule the code contradicts is not a rule" shape [ARC 5 #14a] fixed once already. The

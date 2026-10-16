@@ -13,25 +13,24 @@ LIVE commands:
   python3 -m research                   this status panel
   python3 -m research.engine            falsification scoreboard (all probes + verdicts)
   python3 -m research.bets show         forward-bet catalogue
-  python3 -m research.bets add ...      log a pre-registered forward bet
+  python3 -m research.bets add ...      RETIRED [ARC 5 #19] — Arc 5 generation is closed
   python3 -m research.bets settle       score matured bets vs benchmark
   python3 -m research.dualmom current   dual-momentum core: what to hold now
-  python3 -m research.movers            daily mover scan, 2 cohorts: S&P 500 + 400/600 tail [ARC 5 #11] = general candidate DENOMINATOR (show/scan/decide/settle)
+  python3 -m research.movers            mover ledger [ARC 5 #11]: show/settle (scan/decide RETIRED [ARC 5 #19])
   python3 -m research.paths             settled-bet path diagnostic (peak vs final + noise ref) — DESCRIPTIVE [PATHS #1], read-only
   python3 -m research.book              TERMINAL evidence ledger [ARC 5 #12] — prints the one BOOK CLOSED line
-  python3 -m research.orders            COUNTERFACTUAL orders [ARC 5 #12a]: a LIMIT + an expiry, band diagnostic (place/check/cancel/show)
+  python3 -m research.orders            COUNTERFACTUAL orders [ARC 5 #12a]: check/show (place RETIRED; [ORDERS #1] closed)
   python3 -m research.digest            THE Telegram push (v4): what the run DID + 📊/🟢 cards + ⚠️ (when nonempty) + 📈
   python3 -m research.site              regenerate docs/index.html — the public dashboard page [P7a]
   python3 -m research.pulse             X pulse dry-run print (--post = the routine's autopost path [P7b])
-  python3 -m research.watchdog          external dead-man's switch (own cloud routine; --notify)
+  python3 -m research.watchdog          external dead-man's switch (GitHub Action; --notify; --issues = 📬 watch)
   python3 -m research.heartbeat         🚨 fallback (failure only); bare = DRY RUN, ✅ needs --notify
   python3 -m research.notify "text"     Telegram transport (no args = config status only)
-  /loop run one iteration of research/READ_LOOP.md   GENERATE a batch of forward bets (frontier)
   /loop run one iteration of research/LOOP.md    run the autonomous research loop
 
 `scan`/`settle`/`decide` WRITE ledgers; bare invocation is always the read-only `show`.
-Cloud routines (/schedule): read (generate, pre-market weekdays) · settle (score, daily) · watchdog (daily)
-Docs: README.md (index) · ARCHITECTURE.md (layer map) · FINDINGS.md (audit) · SKILL.md (method) · LOOP/READ_LOOP.md
+Automation: settle (cloud routine, daily) · watchdog (GitHub Action, twice daily) · read DISABLED [ARC 5 #19]
+Docs: README.md (index) · ARCHITECTURE.md (layer map) · FINDINGS.md (audit) · SKILL.md (method) · LOOP.md
 (The snapshot/settle/paper/backtest v1 pipeline is dormant — see README.)"""
 
 

@@ -1,5 +1,11 @@
 # READ_LOOP — the reading-agent generation loop
 
+> **RETIRED 2026-10-16 — DO NOT RUN.** The pooled forward test this loop fed FAILED its one
+> pre-registered look on 2026-10-02 (FINDINGS [ARC 5 #18]); the owner closed Arc 5 and
+> retired generation (FINDINGS [ARC 5 #19]). The cloud read routine is disabled
+> (`enabled:false`, kept — it holds the standing exclusion list). Open bets settle to
+> completion via `scripts/daily.sh`. This file is kept as the record of how the bets were made.
+
 **PAPER REGIME since [ARC 5 #12]/[#12a] (2026-08-14; step 5 rewritten 2026-08-18, P6):** there
 is NO broker leg. New bets are LONG-ONLY above the $5M liquidity floor (code-enforced — a
 REFUSED `bets add` is the rule working, not an error to route around).

@@ -2,7 +2,8 @@
 # Daily SETTLE for swing_lab. The cloud /schedule "settle" routine is the PRIMARY path
 # (laptop is often off); this same script runs there and locally. It scores matured forward
 # bets + movers, then commits the updated ledgers so unattended runs land in the audit
-# trail. Generation (new bets) is the separate "read" routine — see research/READ_LOOP.md.
+# trail. Generation (the separate "read" routine) is RETIRED [ARC 5 #19, 2026-10-16]: this
+# script now only scores the open record to completion (~2027-01-13), then the January wind-down.
 set -uo pipefail
 # Repo root resolved from THIS script's location — the cloud checkout path is not the laptop's
 # (a hardcoded /home/... path exited 1 on every cloud run, so the PRIMARY settle path was silently
@@ -65,8 +66,8 @@ python3 -m research.digest --notify       >> cron.log 2>&1 || FAILS="$FAILS dige
 python3 -m research.site                  >> cron.log 2>&1 || FAILS="$FAILS site"
 # The X pulse [P7b] — DETERMINISTIC AUTOPOST BY POLICY (BACKLOG P7b, 2026-08-15): fires only
 # when this run scored a verdict row vs git HEAD, so it MUST run BEFORE push_ledgers commits
-# (same ordering contract as the digest's 🏁 milestone check — reorder and the gate goes
-# silent). Quiet no-op until the X_* env keys exist; ≤1 POSTED/UTC-day cap inside.
+# (the HEAD-diff ordering contract the digest's 🏁 milestones also used until 2026-10-16 —
+# reorder and the gate goes silent). Quiet no-op until the X_* env keys exist; ≤1 POSTED/UTC-day cap inside.
 python3 -m research.pulse --post          >> cron.log 2>&1 || FAILS="$FAILS pulse"
 
 # Persist any newly-scored rows (no-op commit is skipped). Forward verdicts are the audit trail.

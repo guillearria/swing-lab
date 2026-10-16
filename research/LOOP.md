@@ -22,9 +22,10 @@ trust it. The stop conditions are numbers, never "the agent says it's done."
      `research/engine.py`; Arc 4 #4–6). This line listed them as "still untested" for weeks
      while rule 1 above said NEVER re-test a dead end. Check `PROBES` before proposing, always.
    - **FORWARD** (Claude's judgment/reading): CANNOT be backtested — Claude already knows
-     how the past turned out, so the only clean test is the FUTURE. Log it as a bet in the
-     catalogue: `python3 -m research.bets add TICKER long HORIZON_d BENCH "thesis" --tag=<scenario> --conviction=<high|medium>`
-     (LONG only + liquidity floor, code-enforced [ARC 5 #12a] — shorts need the re-arm protocol).
+     how the past turned out, so the only clean test is the FUTURE. **CLOSED 2026-10-16:** the
+     Arc 5 forward catalogue FAILED its one look [ARC 5 #18] and generation is retired
+     [ARC 5 #19] — do NOT `bets add`. A new forward test needs its own fresh pre-registration
+     with its own ledger (BACKLOG: the literature pipeline; Arc 6 standards).
 3. **PRE-REGISTER** — write hypothesis + bar to `FINDINGS.md`, knobs fixed. Commit (the
    timestamp is the anchor: no moving goalposts).
 4. **TEST** — write the smallest probe (`research/<name>.py`), run it, get the number.

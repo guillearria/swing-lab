@@ -77,8 +77,8 @@ SAMPLE. Simple stays the baseline; complexity pays rent.
   reviews qualify: blind micro-independent runs + one cross-model control (the amended
   independence rule, 2026-08-07; see SKILL).
 - Local-first, free data first. Keep LLM calls out of the DETERMINISTIC path (triggers,
-  settles, scoring, money math) — the READ layer is an LLM by design; it is the hypothesis
-  under test, scored deterministically.
+  settles, scoring, money math) — the READ layer was an LLM by design, the hypothesis under
+  test, scored deterministically; it FAILED its one look [ARC 5 #18] and retired [ARC 5 #19].
 
 ## Communication
 Least words possible. Lead with the answer. Short sentences. No preamble, recap,
@@ -94,10 +94,14 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   probe + verdict + multiple-testing reality check). The project's honest state at a glance.
 - `research/SKILL.md` — the reusable METHOD (the asset): the loop + rules earned from losses.
 - `research/LOOP.md` — the autonomous research loop (run via `/loop`). `research/READ_LOOP.md`
-  — the FORWARD generation loop: reads live situations, pre-registers a BATCH of bets (the
-  active frontier now that the mechanical mine is closed).
+  — RETIRED 2026-10-16 [ARC 5 #19]: Arc 5's forward generation loop, kept as history (the
+  disabled read trigger still points at it). Next hypotheses: the literature pipeline (BACKLOG).
 - `research/bets.py` (+ `bets_catalogue.csv`) — forward-bet catalogue (Claude's pre-registered
-  future calls, scored vs benchmark). ONE pooled general verdict (FINDINGS Arc 5 #7, supersedes
+  future calls, scored vs benchmark). **DECIDED: FAIL, final — the ONE LOOK fired at `678b660`
+  (2026-10-02 settle) [ARC 5 #18]; `bets.VERDICT` is its single encoding and every surface (show,
+  engine, digest, site, pulse) renders it, never a recomputation. Generation RETIRED 2026-10-16
+  [ARC 5 #19]: no new bets; open bets settle to completion (~2027-01-13) as RECORD, no verdict
+  attached.** ONE pooled general verdict (FINDINGS Arc 5 #7, supersedes
   #1/#5). **WHEN we look is pre-registered too [ARC 5 #14, 2026-08-19]: ONE look, on the first
   settle run that reaches N≥30 — a FAIL is FINAL, a PASS is PROVISIONAL until the post-verdict
   confirmation cohort replicates (n≥20, median >0, beat >50%), and four composition caveats
@@ -105,15 +109,17 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   hole #14 closed while the pool was uninformative.** horizon (`horizon_d ≤ 30` = the **fast 21d sleeve**, else the 63/126d **core**) AND
   `pattern_tag` (the SCENARIO TYPE) are DIAGNOSTIC decompositions of that one verdict, NEVER
   separate per-tag/per-horizon bars [Arc 5 #8]. `research/movers.py` (+ `movers_ledger.csv`) — the
-  daily mover scan, TWO cohorts since [ARC 5 #11]: S&P 500 (unchanged) + an S&P 400/600 TAIL cohort
+  daily mover scan (**RETIRED with the read routine [ARC 5 #19]: no new rows; decided rows keep
+  scoring until they mature, then the ledger freezes**), TWO cohorts since [ARC 5 #11]: S&P 500 (unchanged) + an S&P 400/600 TAIL cohort
   (committed caches; `universe` column = a DIAGNOSTIC lens, never a per-universe bar) = the general
   catalogue's candidate DENOMINATOR (`scan`/`decide`/`settle`/`show`):
   logs every big mover take/skip so a pass can't be selection-cherry-picked (the [Arc 5 #7] fix —
   bounds selection, doesn't eliminate it). `settle` scores take AND skip forward vs SPY at 21/63d
   [ARC 5 #9] — a DIAGNOSTIC calibration of the skip filter ("is the read too conservative?"), NOT an
-  EDGE verdict silo; prior UNCHANGED, pre-registered threshold locked. Early read logged in
-  FINDINGS 2026-08-01(d) (adverse sign at tiny n); bar is skips-63d at N≥30 — watch, do NOT act;
-  live state → `python3 -m research.movers show`.
+  EDGE verdict silo. Its skips-63d bar was reached 2026-10-02 and fired "too tight" as written,
+  but the reading is WITHDRAWN [ARC 5 #9 correction · #20, 2026-10-16]: repeated rows, a SPY ruler
+  while small caps lagged it by 10–13pp, and mis-signed takes; live state →
+  `python3 -m research.movers show`.
   `research/dualmom.py` — the one banked result (risk SHAPE, not alpha — it tied its own
   Sharpe bar; status in SKILL, re-validate before sizing up).
 - **Arc 3 (the insider silo) is CLOSED — the project runs on ONE verdict silo, and that is now
@@ -141,13 +147,14 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   recorded there, not here. **Standing conflict-of-interest exclusion list: kept in the private
   realm and in the cloud read prompt, NEVER restated in this public repo [2026-09-13] — a name
   on it is never a scored, held, or recommended leg here** (owner rule 2026-08-02). The cloud
-  read prompt carries the list; that prompt is the guard, this line is its pointer. The owner's
+  read prompt carries the list; that prompt is the guard, this line is its pointer. **The read
+  trigger is DISABLED since 2026-10-16 but must NEVER be deleted: it is the list's home.** The owner's
   one personal row in the catalogue was withdrawn 2026-09-13 (FINDINGS [SCOPE] 2026-09-13).
 - `research/orders.py` (+ `orders.csv`, tracked) — **COUNTERFACTUAL since [ARC 5 #12a] (code
   P3, 2026-08-14): `place/check/cancel/show`, blank shares — no cash, no sizing, nothing to
   execute; ONE order per take-carrying read run; `placed`/`pulled` deleted with the broker leg;
-  the [ORDERS #1] band diagnostic accrues on the SAME fill model but is model-vs-model until
-  real money returns. The live-era contract below is HISTORY, kept because the fill mechanics
+  no new orders since the read routine retired, and the [ORDERS #1] band diagnostic CLOSED
+  UNREACHABLE-AS-WRITTEN [ARC 5 #19] (its expired arm is frozen at n=1). The live-era contract below is HISTORY, kept because the fill mechanics
   it validated are unchanged:** the WORKING-ORDER bridge from a read to real
   money: `place/placed/check/cancel/pulled/show`. A real-money entry is a **LIMIT with an expiry**, computed by
   code from the last COMPLETE bar, sized by a per-trade RISK UNIT capped by free cash [ORDERS #2]
@@ -198,27 +205,30 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   stale map (cold-session refresh, distinct from the FINDINGS science log).
 - `scripts/daily.sh` — SETTLE script (scores matured bets + movers, commits the ledgers).
   Run by the cloud `/schedule` **settle** routine (PRIMARY — laptop often off, runs DAILY) and
-  locally. Generation runs in the separate cloud **read** routine (`READ_LOOP.md`, PRE-MARKET
-  weekdays — alerts must land before the open, never after the close).
-  **Telegram contract: every scheduled run pushes ONE message — SILENCE = BROKEN; a clean weekday =
-  exactly ONE 📋 SETTLE + ONE 📖 READ, period [digest v4, 2026-08-25 — FINDINGS [MSG]: Telegram
+  locally. The separate cloud **read** routine (generation, `READ_LOOP.md`) is DISABLED since
+  2026-10-16 [ARC 5 #19] — trigger kept, `enabled:false`.
+  **Telegram contract: every scheduled run pushes ONE message — SILENCE = BROKEN; a clean day =
+  exactly ONE 📋 SETTLE, period (the 📖 READ leg retired 2026-10-16 [ARC 5 #19]), plus one 📬
+  message from the watchdog only when a third-party issue/PR awaits a reply [digest v4, 2026-08-25 — FINDINGS [MSG]: Telegram
   is a PULSE + ALARM channel, never a broker terminal; the always-on scoreboard rows repeated
-  themselves daily and are OFF Telegram — CLI keeps them].** Both legs come from
+  themselves daily and are OFF Telegram — CLI keeps them].** The 📋 (and, until 2026-10-16, the 📖) comes from
   `research/digest.py` (HTML, fail-soft per silo) and NARRATE what the run did: a noteless,
-  scoreless settle is ONE sentence ("Nothing matured today — N bets running", verdict-pool
+  scoreless settle is ONE sentence ("Nothing matured today — N bets left to settle", verdict-pool
   count); a read's note body opens with 1–2 plain sentences of what its run did (READ_LOOP
   step 7 — natural speech, NO acronym/shorthand packing, ONE paragraph at most [owner rule
   2026-08-25]; the digest merges the lines into one paragraph by construction) above its
   🟢 NEW BET card(s) (step 5a, 4 lines, one field per line, `<blockquote>`;
   bet # from `bets add`); a scoring settle folds each settlement in as a 📊 SCORED
   `<blockquote>` card (Result in gap-words + a Read line with tag · conviction) followed by
-  ONE pool-tally sentence — the pool numbers appear exactly when they CHANGED, never as daily
+  ONE tally sentence that states the decided result first ("Test result: FAIL on 2026-10-02,
+  final. Record now …") — the numbers appear exactly when they CHANGED, never as daily
   repetition, and the separate 📊 message is RETIRED (its `notified` delivery guarantee
   transferred: `bets.mark_notified()` stamps only after the digest's PUSH DELIVERED verdict,
   so a lost push re-renders the cards in the next delivered digest, whichever leg). Then
   ⚠️ DO-NOW **only when nonempty** (an empty list prints NOTHING — the absence of ⚠️ is the
-  all-clear) and the 📈 line (when evidence next lands). 🏁 milestones at n=10/20/30
-  (stateless vs git HEAD) + the at-bar/ahead-of-bar flags fire only when actually crossed.
+  all-clear) and the 📈 line (when evidence next lands). The 🏁 milestones and the
+  at-bar/ahead-of-bar flags were DELETED 2026-10-16: the one look fired, nothing can cross again,
+  and "AT BAR" had become a nightly repetition.
   Stats vocabulary (Σ pp, Wilcoxon p, α), the shorts diagnostic, orders/band state, movers
   denominators and the mix mirror are CLI-side ONLY (`python3 -m research` · `bets show` ·
   `orders show` · `movers show`) — never on Telegram. `--slim` = the read leg's push-log stamp;
@@ -237,19 +247,20 @@ hedging, or niceties. Be direct. Caveman = brevity, not stupid.
   (`PUSH SKIPPED`, exit 0, nothing sent) while `daily.sh` refuses to run concurrently (a lock),
   because the prompt-only rule double-posted 4 of 6 nights once the settle routine was moved
   to a weaker model that re-ran the backgrounded script (FINDINGS [OPS] 2026-09-01); and the next delivered message
-  raises a DO-NOW when EITHER leg's last due push was never confirmed — settle daily, read on
-  weekdays, each held against its own calendar [both legs since 2026-08-11; settle-only until
-  then, which is why the 08-10 read died UNCONFIRMED — bet committed, alert never seen — behind
-  a message that said "DO NOW: nothing"]. This is the transport failure the commit-watching
+  raises a DO-NOW when the settle leg's last due push was never confirmed (both legs from
+  2026-08-11, after the 08-10 read died UNCONFIRMED behind a message that said "DO NOW: nothing";
+  settle-only again since the read leg retired 2026-10-16 [ARC 5 #19]). This is the transport failure the commit-watching
   watchdog cannot see, observed 08-05, 08-06 AND 08-10. A read whose push fails also fires the
   🚨 heartbeat, the parity with `daily.sh` the read leg lacked.**
   **Delivery is no longer ASSUMED [2026-07-27]:** a settlement's 🚨 is stamped in a `notified` column
   only after Telegram confirms, so a lost message is RE-SENT next run instead of vanishing with the
-  row's open status; settle exits nonzero on a lost push. The digest fails LOUD — a dead silo, a
-  stale feed (`research/feedstatus.py`), uncommitted/unpushed ledgers, or a stuck settlement each
-  become a DO-NOW rather than prose. `research/watchdog.py` is the EXTERNAL dead-man's switch — a
+  row's open status; settle exits nonzero on a lost push. The digest fails LOUD — a dead silo,
+  uncommitted/unpushed ledgers, or a stuck settlement each become a DO-NOW rather than prose (the
+  stale-feed check retired with the scan [ARC 5 #19]). `research/watchdog.py` is the EXTERNAL dead-man's switch — a
   **GitHub Action since 2026-09-13** (`.github/workflows/watchdog.yml`, 12:30 + 23:30 UTC, stdlib,
-  ~20 s): 36h commit staleness on the ledgers PLUS the push-log delivery check on both legs (a run
+  ~20 s): 36h commit staleness on the ledgers PLUS the push-log delivery check (settle only since 2026-10-16) and, on
+  the 12:30 run, the 📬 outside-activity watch (third-party issues/PRs with no owner reply, once a
+  day until answered — added 2026-10-16 after one sat unseen for six weeks) (a run
   that commits but never delivers — the 09-11 shape — is an alarm within hours, not the next
   evening). Every other alarm is emitted BY the daily run and so cannot fire when the daily run is
   what died; this one runs on a DIFFERENT platform, so a dead routine platform no longer kills the
