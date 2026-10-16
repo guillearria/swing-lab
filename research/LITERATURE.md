@@ -48,9 +48,10 @@ pre-registration; they never retrofit a bar already written.
   since 2006 per Martineau) and "overreaction" dips that the news-versus-no-news evidence says keep
   falling when the drop came with news. The Arc 5 bar also treated overlapping bets as independent;
   correcting that can only widen the error bars, so it cannot turn the FAIL into a pass.
-- **The one surviving lead [ARC 5 #20] is short-term reversal**, the effect most consistently
-  reported as eaten by costs. It gets exactly one official-data gate, [GATE R1] in FINDINGS, with
-  Novy-Marx & Velikov's small-stock cost as its bar.
+- **The one surviving lead [ARC 5 #20] was short-term reversal**, the effect most consistently
+  reported as eaten by costs. It got exactly one official-data gate, [GATE R1] in FINDINGS, and
+  FAILED on every condition: in NYSE size quintiles 2–4 the spread averaged +1.05%/mo (t=7.50) over
+  1926–2014 and +0.04%/mo (t=0.14) over 2015-01..2026-05 — gone before costs. The lead is closed.
 - **Where a small account plausibly has room** (inference, not a source claim): low-turnover,
   multi-week holding periods in liquid instruments, diversified across markets, with costs and
   behaviour controlled — not speed, not short-dated leverage, and not edges that live only in tiny
@@ -60,9 +61,36 @@ pre-registration; they never retrofit a bar already written.
   effective spread on entry and exit; skip day one after a move; separate news from no-news moves
   where possible.
 
-## Short-list
+## Short-list (written after [GATE R1], 2026-10-16)
 
-Written after [GATE R1] reports — see the end of this file.
+The rule: survived independent replication · plausible net of costs at small size · preferably
+long-only · testable on free data · not a rerun of a probe this repo already killed unless the
+re-arm protocol is met.
+
+1. **Lottery-stock avoidance — the one untested, eligible candidate.** Stocks with an extreme
+   one-day gain last month underperform the next month: value-weighted high-minus-low MAX decile
+   −1.03%/mo, four-factor alpha −1.18% (Bali, Cakici & Whitelaw 2011, 1962–2005). The long-only use
+   is a negative screen — do not buy right after an extreme spike — the same family as the
+   small-cap spike fade that started Arc 6. Free official data: Chen & Zimmermann's Open Source
+   Asset Pricing carries the predictor; everything after publication is out of sample. Expect decay
+   (McLean & Pontiff) and possibly disappearance (as [GATE R1] found). **Next step: its own
+   pre-registration and blind review before anything runs** (BACKLOG).
+2. **Price momentum — the literature's strongest survivor, blocked here by our own rule.**
+   Value-weighted 6/6 and 11/1 momentum clear t>3 over 1967–2016 (Hou, Xue & Zhang). This repo
+   already failed single-name momentum and graded the momentum ETF "NEAR" over 2013–2026, so the
+   re-arm protocol allows only data after those verdicts — a forward-only test, years from power.
+3. **Diversified trend across asset classes — the north-star answer, already banked as risk
+   shape.** Time-series momentum across futures and value-plus-momentum across markets are the most
+   robust premia found, with Sharpe ratios at or above 1, gross of costs, and only when diversified.
+   This repo's dual-momentum result is the small-account version: SPY-like return, half the
+   drawdown, no alpha. It stays the default-allocation lane, not a new test.
+
+**The next-market question.** Official retail data shows no market type where small traders succeed
+broadly. The measured share earning a meaningful income is about 1% or less wherever it was
+measured (SEBI, Taiwan, Brazil), and losses grow with turnover, leverage and short horizons. The
+landscape doc's 5–15% "success" rates are unsupported and should not be used to choose a market.
+The evidence-backed room for a small operator is low-turnover, liquid, diversified exposure with
+costs controlled — which this engine already measures as a better risk shape, not alpha.
 
 ---
 

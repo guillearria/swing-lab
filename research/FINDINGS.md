@@ -3191,3 +3191,32 @@ the proof).**
   construction; the small half carried micro-caps and missed the S&P 400; June 2026 overlapped the
   ledger; a short-leg-carried PASS could not open a long-only test; one month could carry the mean.
   Every one is fixed above. Engine row added as PENDING.
+
+**2026-10-16 · [GATE R1] RESULT — FAIL on all five conditions. The short-term reversal premium in
+mid and small caps, about +1% a month for 89 years, is GONE since 2015 — before costs. The
+[ARC 5 #20] reversal lead closes; nothing is built and nothing is spent.**
+Run once at 2026-10-16T01:40:14Z, five seconds after the pre-registration commit `81bc00c` reached
+origin. Reproduce: `python3 -m research.gate_reversal` (file created from the 202608 CRSP database).
+- **The window, 2015-01..2026-05, n=137, no missing months:** spread mean **+0.042%/mo** (Newey-West
+  t=0.14, one-sided p=0.44), median −0.123%, positive in 47% of months. Halves: **+0.486%**
+  (2015-01..2020-08) and **−0.397%** (2020-09..2026-05). Best month removed (2020-04, +24.05%):
+  **−0.135%**. Long leg (losers − middle): **−0.170%**. Net of C=0.54: −0.498%/mo. Every one of the
+  five conditions fails; the forecast was P(PASS) ≈ 10%.
+- **Before the window (descriptive):** 1926-02..2014-12, n=1,067: **+1.047%/mo, NW t=7.50**, positive
+  in 62% of months, long leg +0.36%.
+- **Independent checks.** (1) A blind re-derivation from the raw file by a separate agent, which never
+  read this module, matched every figure (n=137; mean 0.0415; t 0.145; halves 0.486/−0.397; best
+  month 2020-04; long leg −0.170; pre-2015 1.047, t 7.50), and found the equal-weighted block tells
+  the same story (+0.041%/mo, t 0.15). (2) The library's official all-size ST_Rev factor:
+  1926–2014 +0.714%/mo (t=6.53) vs 2015–2026-05 **−0.091%/mo (t=−0.37)**.
+- **What it means.** The textbook effect behind the lead did not shrink after costs; it vanished gross,
+  in the official survivorship-free series, in exactly the cap range the lead came from. This fits
+  the literature's decay story (McLean & Pontiff) and the reading of reversal as pay for providing
+  liquidity (Nagel 2012), a job now done by market makers. The [ARC 5 #20] within-day spread was the
+  2026 tape, not a durable premium.
+- **Residual risks.** Monthly formation on prior-month returns is not our 5-day event with a 21-day
+  hold — accepted in advance as part of the gate. FAIL means "not shown at a detectable size"
+  (80%-power effect ≈0.75–1.1%/mo), but the point estimate is ≈0, the second half is negative and
+  the only support is one crash-rebound month, so there is no sign of a hidden large effect.
+- **Consequence.** The engine row is FAIL. The next official-data gate on the short-list
+  (research/LITERATURE.md) needs its own fresh pre-registration and blind review before it runs.

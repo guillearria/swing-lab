@@ -27,7 +27,17 @@ waiting".
 SPY while small caps lagged it by 10–13pp, re-logged rows (2,211 rows / 488 names), and the best
 cells of ≥8 screened. One benchmark-free within-day reversal spread survives as a LEAD only.
 
-### Phase 2 — the published-edges pipeline (NEXT; the owner's literature-study request, moved up)
+### Phase 2 status (2026-10-16): DONE except the next gate
+`research/LITERATURE.md` is written (20 sources from official copies; the landscape numbers checked
+against regulators). **[GATE R1] FAILED** — reversal in mid/small caps averaged +1.05%/mo over
+1926–2014 and +0.04%/mo (t=0.14) since 2015, gone before costs; the [ARC 5 #20] lead is closed
+(FINDINGS). The short-list (end of LITERATURE.md's top section) leaves ONE untested eligible
+candidate: **lottery-stock avoidance (MAX)**, via Chen & Zimmermann's Open Source Asset Pricing data.
+**Next unit of work:** its pre-registration — window after publication, value-weighted, a sourced
+cost, the long-only screen's own test, blind review BEFORE any data is opened — then one run.
+Momentum is blocked by the re-arm protocol; diversified trend is already the banked risk-shape lane.
+
+### Phase 2 — the published-edges pipeline (the owner's literature-study request, moved up)
 - **Deliverable:** `research/LITERATURE.md`. **Official sources only** — journal pages, author-hosted
   PDFs, SSRN or NBER versions; never summaries or blogs. One short block per source: the claim, the
   sample, the effect size, whether it survived replication AND trading costs, what it means for a
