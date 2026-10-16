@@ -1,17 +1,21 @@
 name: watchdog
 # The EXTERNAL dead-man's switch, OFF the platform it watches [BACKLOG OPS 2026-08-05 (2); built
 # 2026-09-13]. Goes RED (GitHub emails the owner) and pushes 🚨 to Telegram (repo secrets) when:
-#   - no commit has touched the ledgers in 36h (the routines stopped running), or
-#   - a due settle/read push has no DELIVERED stamp in research/data/push_log.csv (the run
+#   - no commit has touched the ledgers in 36h (the settle routine stopped running), or
+#   - a due settle push has no DELIVERED stamp in research/data/push_log.csv (the run
 #     committed but its message died — the 09-11 shape, invisible to a commit watcher).
 # Silent when healthy. Stdlib only: no pip, ~20 s. Replaces the Haiku cloud routine.
+# The read leg retired 2026-10-16 [ARC 5 #19]; the 12:30 run now also carries the 📬
+# outside-activity watch (--issues): third-party issues/PRs with no owner reply, once a day.
 on:
   schedule:
-    - cron: '30 12 * * *'   # after the weekday read (11:30 UTC) has pushed and stamped
+    - cron: '30 12 * * *'   # 08:30 ET: staleness + 📬 outside-activity watch
     - cron: '30 23 * * *'   # after the settle (22:35 UTC, ~2 min) has pushed and stamped
   workflow_dispatch:
 permissions:
   contents: read
+  issues: read
+  pull-requests: read
 jobs:
   watchdog:
     runs-on: ubuntu-latest
@@ -24,4 +28,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python3 -m research.watchdog --notify
+          GITHUB_TOKEN: ${{ github.token }}
+        # github.event.schedule is the cron string that fired, reliable even when Actions starts
+        # hours late (an hour-of-day check is not). Manual runs include the watch.
+        run: python3 -m research.watchdog --notify ${{ (github.event.schedule == '30 12 * * *' || github.event_name == 'workflow_dispatch') && '--issues' || '' }}

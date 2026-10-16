@@ -17,13 +17,24 @@ committed on time and pushed nothing, and nothing alarmed for 24 h. A red run em
 owner by itself; the 🚨 Telegram push rides on the repo's TELEGRAM_* secrets. Silent when
 healthy, by contract (🚨 means failure only).
 
-  python3 -m research.watchdog             # print the verdict
-  python3 -m research.watchdog --notify    # print + 🚨 Telegram push when anything is wrong
+OUTSIDE-ACTIVITY WATCH since 2026-10-16 (`--issues`, the 12:30 UTC run only): a third-party
+issue opened 2026-09-03 sat unseen for six weeks, because nothing in this system read GitHub.
+Any OPEN issue or PR authored by someone other than the owner, with no comment from the owner,
+becomes one 📬 line, sent as its own message once a day until it is answered or closed. It is
+not a failure, so it never uses 🚨 and never changes the exit code; the 🚨 check runs and sends
+FIRST, so a slow or dead GitHub API can never mask or delay the alarm of record.
+
+  python3 -m research.watchdog                      # print the verdict
+  python3 -m research.watchdog --notify             # print + 🚨 Telegram push when anything is wrong
+  python3 -m research.watchdog --notify --issues    # ... + 📬 for third-party items awaiting a reply
 """
+import json
 import logging
+import os
 import subprocess
 import sys
 import time
+import urllib.request
 
 log = logging.getLogger(__name__)
 # push_log.csv, NOT book_equity.csv [2026-08-21]: the equity curve was the only watched file
@@ -36,6 +47,8 @@ log = logging.getLogger(__name__)
 WATCHED = ("research/bets_catalogue.csv", "research/movers_ledger.csv",
            "research/data/push_log.csv")
 STALE_H = 36    # settle runs daily; 36h tolerates one missed run + a weekend edge, not two
+OWNER = "guillearria"
+API = "https://api.github.com"
 
 
 def last_commit_epoch(paths=WATCHED) -> int | None:
@@ -74,6 +87,49 @@ def pushlog_actions() -> list[str]:
         return [f"push-log check could not run ({type(e).__name__}: {e})"]
 
 
+def _gh(path: str):
+    """GET one GitHub API path → parsed JSON. Uses the Action's GITHUB_TOKEN when present (the
+    repo is public, so it also works unauthenticated at a lower rate limit). Raises on failure;
+    issue_lines() is the one caller and turns any failure into a single line."""
+    req = urllib.request.Request(f"{API}/{path}", headers={
+        "Accept": "application/vnd.github+json", "User-Agent": "swing-lab-watchdog"})
+    token = os.getenv("GITHUB_TOKEN", "").strip()
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    with urllib.request.urlopen(req, timeout=10) as r:
+        return json.load(r)
+
+
+def waiting(items: list[dict], comments_of) -> list[str]:
+    """📬 lines for OPEN items by someone else that the owner has not answered. PURE (testable):
+    `comments_of(item)` is injected and only called when the item has comments at all."""
+    out = []
+    for it in items:
+        who = (it.get("user") or {}).get("login", "")
+        if who == OWNER or it.get("state", "open") != "open":
+            continue
+        if it.get("comments") and any((c.get("user") or {}).get("login") == OWNER
+                                      for c in comments_of(it)):
+            continue
+        kind = "PR" if it.get("pull_request") else "issue"
+        out.append(f"📬 {kind} #{it.get('number')} by @{who} (opened "
+                   f"{str(it.get('created_at', ''))[:10]}), no reply from you: "
+                   f"{str(it.get('title', ''))[:80]} {it.get('html_url', '')}")
+    return out
+
+
+def issue_lines() -> list[str]:
+    """The outside-activity watch. Never raises: an API failure is ONE 📬 line naming it."""
+    repo = os.getenv("GITHUB_REPOSITORY", f"{OWNER}/swing-lab")
+    try:
+        items = _gh(f"repos/{repo}/issues?state=open&per_page=50")
+        return waiting(items, lambda it: _gh(f"repos/{repo}/issues/{it['number']}/comments"
+                                             f"?per_page=100"))
+    except Exception as e:
+        return [f"📬 issue watch could not run ({type(e).__name__}) — check watchdog.yml "
+                f"permissions and the GitHub API"]
+
+
 def compose(stale: bool, msg: str, actions: list[str]) -> tuple[bool, str]:
     """(alarm, text). PURE. Commit staleness and undelivered pushes are ONE verdict: any
     failure is a 🚨; a healthy day is the single ✅ line."""
@@ -90,6 +146,17 @@ def run(argv: list[str]) -> int:
     if alarm and "--notify" in argv:
         from research import notify
         notify.send(text)                       # fail-soft; the red exit is the alarm of record
+    # The 📬 watch runs only AFTER the 🚨 above has been decided and sent, and never touches
+    # the exit code: outside activity is news for the owner, not a failure of the pipeline.
+    if "--issues" in argv:
+        lines = issue_lines()
+        if lines:
+            print("\n".join(lines))
+            if "--notify" in argv:
+                from research import notify
+                notify.send("\n".join(lines))
+        else:
+            print("📬 issue watch: nothing waiting")
     return 1 if alarm else 0
 
 

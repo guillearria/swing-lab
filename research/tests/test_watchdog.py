@@ -78,3 +78,85 @@ def test_watchdog_imports_on_a_bare_runner(monkeypatch):
         monkeypatch.delitem(sys.modules, m, raising=False)
     W = importlib.import_module("research.watchdog")
     assert isinstance(W.pushlog_actions(), list)         # runs end-to-end on the real push log
+
+
+# ------------------------------------------------- 📬 outside-activity watch (2026-10-16)
+
+def _item(n, who, comments=0, pr=False, state="open"):
+    it = {"number": n, "user": {"login": who}, "comments": comments, "state": state,
+          "title": f"title {n}", "html_url": f"https://github.com/x/y/issues/{n}",
+          "created_at": "2026-09-03T15:33:47Z"}
+    if pr:
+        it["pull_request"] = {"url": "u"}
+    return it
+
+
+def test_waiting_flags_only_unanswered_third_party_items():
+    """The 09-03 issue sat unseen for six weeks. Flag: open + not the owner's + no owner
+    comment. Skip: the owner's own items, anything the owner already answered, closed items."""
+    from research import watchdog as W
+    owner_said = [{"user": {"login": W.OWNER}}]
+    others_said = [{"user": {"login": "someone"}}]
+    by_n = {3: owner_said, 4: others_said}
+    items = [_item(1, W.OWNER), _item(2, "stranger"), _item(3, "stranger", comments=1),
+             _item(4, "bot", comments=1, pr=True), _item(5, "stranger", state="closed")]
+    lines = W.waiting(items, lambda it: by_n[it["number"]])
+    assert len(lines) == 2
+    assert lines[0].startswith("📬 issue #2 by @stranger (opened 2026-09-03), no reply from you")
+    assert lines[1].startswith("📬 PR #4 by @bot")
+    assert all("🚨" not in l for l in lines)
+
+
+def test_waiting_never_fetches_comments_for_an_uncommented_item():
+    from research import watchdog as W
+    def boom(it):
+        raise AssertionError("no comments to fetch")
+    assert len(W.waiting([_item(9, "stranger")], boom)) == 1
+
+
+def test_issue_api_failure_is_one_line_not_an_exception(monkeypatch):
+    from research import watchdog as W
+    def down(path):
+        raise OSError("HTTP Error 403: Forbidden")
+    monkeypatch.setattr(W, "_gh", down)
+    lines = W.issue_lines()
+    assert lines == ["📬 issue watch could not run (OSError) — check watchdog.yml permissions "
+                     "and the GitHub API"]
+
+
+def test_issue_watch_never_masks_or_reddens_the_alarm(monkeypatch):
+    """The 🚨 decides and sends FIRST; the 📬 rides after it and never changes the exit code."""
+    from research import watchdog as W
+    import research.notify as N
+    sent = []
+    monkeypatch.setattr(N, "send", lambda text, **k: sent.append(text) or True)
+    monkeypatch.setattr(W, "pushlog_actions", lambda: [])
+    monkeypatch.setattr(W, "issue_lines", lambda: ["📬 issue #2 by @stranger"])
+    monkeypatch.setattr(W, "last_commit_epoch", lambda paths=W.WATCHED: W.time.time() - 72 * 3600)
+    assert W.run(["--notify", "--issues"]) == 1                      # stale → still red
+    assert sent[0].startswith("🚨") and sent[1] == "📬 issue #2 by @stranger"
+    sent.clear()
+    monkeypatch.setattr(W, "last_commit_epoch", lambda paths=W.WATCHED: W.time.time() - 3600)
+    assert W.run(["--notify", "--issues"]) == 0                      # healthy → green
+    assert sent == ["📬 issue #2 by @stranger"]                      # and the 📬 still lands
+
+
+def test_issues_fetched_only_with_the_flag(monkeypatch):
+    from research import watchdog as W
+    def boom():
+        raise AssertionError("issue watch must not run without --issues")
+    monkeypatch.setattr(W, "issue_lines", boom)
+    monkeypatch.setattr(W, "pushlog_actions", lambda: [])
+    monkeypatch.setattr(W, "last_commit_epoch", lambda paths=W.WATCHED: W.time.time() - 3600)
+    assert W.run([]) == 0
+
+
+def test_workflow_grants_issue_read_and_runs_the_watch_at_1230_only():
+    import os
+    yml = open(os.path.join(os.path.dirname(__file__), "..", "..", ".github", "workflows",
+                            "watchdog.yml")).read()
+    assert "issues: read" in yml and "pull-requests: read" in yml and "contents: read" in yml
+    assert "GITHUB_TOKEN: ${{ github.token }}" in yml
+    run = next(l for l in yml.splitlines() if l.strip().startswith("run:"))
+    assert "github.event.schedule == '30 12 * * *'" in run and "'--issues'" in run
+    assert "write" not in yml.split("permissions:")[1].split("jobs:")[0]
