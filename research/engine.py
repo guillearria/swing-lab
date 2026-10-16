@@ -29,6 +29,9 @@ PROBES = [
     ("reversion",  "oversold / index dip-fade (200d gate)", "REAL*",   False),
     ("reversion",  "crypto dip-fade",                       "FAIL",    False),
     ("reversion",  "VIX>30 gate on the fade",               "FAIL",    False),
+    # [GATE R1] 2026-10-16: the [ARC 5 #20] lead's official-data screen (French 5x5, size Q2–4,
+    # post-2015, net of Novy-Marx & Velikov's mitigated cost). PENDING until its one run.
+    ("reversion",  "ST reversal post-2015, size Q2–4, net",  "PENDING", None),
     ("trend",      "crypto trend-following",                "REAL*",   False),
     ("trend",      "asset-class DUAL MOMENTUM",             "NEAR",    False),
     ("sizing",     "vol-targeting SPY (risk-mgmt, ≤2x)",     "REAL*",   False),

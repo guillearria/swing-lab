@@ -3147,3 +3147,47 @@ interpretation is WITHDRAWN.**
 - **Unaffected:** the reader's verdict, [ARC 5 #18], scored per bet against its own benchmark.
 - **Lessons → SKILL.md:** score against the candidate's own universe index; count independent periods
   and names, not rows.
+
+**2026-10-16 · [GATE R1] PRE-REGISTRATION — is short-term reversal alive after 2015 in mid and
+small caps, net of a sourced cost, and carried by the long leg? Committed BEFORE any return data
+in the window was opened (no French return file was downloaded before this commit — `git log` is
+the proof).**
+- **Why.** The one lead surviving [ARC 5 #20] — within the same scan day, S&P 400/600 up-movers
+  trailed down-movers, ≈2 independent periods, discovery sample — has the shape of short-term
+  reversal. The literature (research/LITERATURE.md) says the gross effect is real, front-loaded and
+  mostly eaten by costs for a liquidity taker. Before anything is built for the lead, the canonical
+  official series must show it is alive recently and clears a sourced cost.
+- **Data.** Kenneth R. French Data Library, "25 Portfolios Formed on Size and Short-Term Reversal
+  (5 x 5)", monthly, value-weighted (NYSE size quintiles × NYSE prior (1-1) month return quintiles,
+  NYSE/AMEX/NASDAQ, survivorship-free). Command: `python3 -m research.gate_reversal`.
+- **Series.** spread = mean over size quintiles 2–4 of (PRIOR1 − PRIOR5) — last month's losers minus
+  winners in the S&P 400/600 cap range (quintile 1 is micro-cap dominated, 5 is mega-cap). long leg =
+  mean over quintiles 2–4 of (PRIOR1 − PRIOR3) — the half a long-only account could hold.
+- **Window.** 2015-01 through 2026-05, 137 contiguous months; ends the month before the ledger that
+  produced the lead began (2026-06-26). The run refuses to print a verdict if any month is missing.
+- **PASS needs all five:** (1) spread mean > 0 at one-sided Newey-West (3 lags) p ≤ 0.05; (2) both
+  halves by month count positive; (3) spread mean with the single best month removed > 0; (4) long-leg
+  mean > 0; (5) spread mean > **C = 0.54%/month** — Novy-Marx & Velikov (2016), NBER WP 20721 Table 10:
+  value-weighted decile short-run reversal using all three cost-mitigation techniques, 1963–2012,
+  gross 0.38 / cost 0.54 / net −0.17 (verified in the PDF 2026-10-16).
+- **Non-gating, harsher only:** net at 1.25%/mo (their Table 13 small-size bin, 10%/50% band) and
+  1.65%/mo (Table 3 plain decile); the same statistics before 2015 (decay). No softer cost is ever
+  reported, so a FAIL on cost cannot be rescued by a friendlier line.
+- **α = 0.05, a SCREEN.** A PASS licenses only a fresh pre-registration for the event version
+  (S&P 400/600 mover reversal, long-only unless the re-arm protocol is met, under the Arc 6 standards
+  in BACKLOG), and that test's bar carries a Bonferroni correction over every literature gate opened.
+  The two blind reviewers disagreed here — one asked for 0.05/3 now, the cross-model control for
+  sensitivity because a PASS only licenses more testing — and the correction is placed at the claim
+  stage, not dropped.
+- **What a FAIL means, written in advance.** "Not shown at a detectable size", not "absent": at n=137
+  the 80%-power detectable effect is roughly 0.75–1.1%/month (control's simulation). A FAIL closes
+  the build and any spend for this lead. Monthly quintiles dilute 5-day extremes and the horizons
+  differ (prior month vs 5 days, 21-day hold); that mismatch is accepted now as part of the gate, so
+  a FAIL cannot be argued away on it afterwards.
+- **Forecast, recorded before the run:** P(PASS) ≈ 10% — the published gross (0.38–0.41%/mo,
+  1963–2012) sits below C, and post-2000 evidence (Nagel 2012) points to a smaller gross.
+- **Review trail.** Draft v1 (a 2×3 small-half series, cost 1.25%/mo, window to 2026-06) was blocked
+  by both blind reviewers: the cost was an older, harsher estimate that made a FAIL near-certain by
+  construction; the small half carried micro-caps and missed the S&P 400; June 2026 overlapped the
+  ledger; a short-leg-carried PASS could not open a long-only test; one month could carry the mean.
+  Every one is fixed above. Engine row added as PENDING.
