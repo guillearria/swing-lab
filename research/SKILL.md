@@ -130,6 +130,17 @@ runs on this; the audit trail is `research/FINDINGS.md`.
   ~2026-07-08 — four weeks before anyone noticed, while we were busy rebuilding its data feed.
   A kill-criterion of the form "N or DATE" must be checked at WRITE time: is N still reachable
   before DATE? If not, the bar is decorative.
+- **Score a candidate against its OWN universe's index, never a convenient one.** [ARC 5 #20,
+  2026-10-16] The mover ledger scored S&P 400/600 names against SPY while SPY rose 7% and the
+  small-cap index fell 6%; every small cap then looked like it "faded" AND "kept falling" at once,
+  and three hypotheses were drafted on that. Against its own index one pattern shrank to beta and
+  the other flipped sign. If two opposite-looking claims pass together, suspect the ruler first. A
+  benchmark-free within-day spread (up-movers minus down-movers) is the cheap cross-check.
+- **Count independent periods and names, not rows.** [ARC 5 #20] A daily scan that dedups only on
+  (ticker, date) re-logs one move every session it stays ranked: 2,211 rows were 488 names and ~2
+  independent 21-day periods. A name logged 31 times is one observation, and a 63-day result from 7
+  consecutive scan dates is one quarter of one regime. Before quoting n, state how many
+  non-overlapping horizon-length periods and distinct names sit under it.
 - **RE-ARM PROTOCOL — how a dead hypothesis comes back [ARC 5 #12a].** Retesting any closed
   probe (the insider silo, shorts, a killed mechanical rule) requires all three: (1) a FRESH
   pre-registration entry in FINDINGS, (2) only data accrued SINCE the original verdict —
@@ -161,8 +172,9 @@ runs on this; the audit trail is `research/FINDINGS.md`.
   Keep it OUT of the book: payroll deductions are not trading decisions and counting them corrupts
   the benchmark comparison the book exists to make.
 - **LLM out of the DETERMINISTIC path — not out of the loop.** The READ layer (READ_LOOP,
-  cases, bets) is an LLM by design: it IS the hypothesis under test, scored by deterministic
-  settles. What stays model-free is the mechanical path — triggers, settling, scoring, guards,
+  cases, bets) was an LLM by design: it WAS the hypothesis under test, scored by deterministic
+  settles — and it FAILED its one pre-registered look [ARC 5 #18]; generation retired 2026-10-16
+  [ARC 5 #19]. What stays model-free is the mechanical path — triggers, settling, scoring, guards,
   money math — and no model ever judges its own trade. [Meaning made explicit 2026-08-08 after
   audit #1 flagged the old wording as contradicting the live READ_LOOP.]
 
@@ -174,9 +186,12 @@ allocation; re-validate walk-forward before ever sizing it up.
 `python3 -m research.dualmom current` → what to hold this month.
 
 ## If we resume hunting
-The honest levers left cost MONEY (paid survivorship-clean data) or TIME (the forward
-agent-read ledger, accruing). Pre-register first, gate the spend on stated evidence,
-and let the engine track it. Don't dig the empty free mine again. Re-opening anything
-already closed goes through the RE-ARM PROTOCOL above; real money returns only per
-FINDINGS [ARC 5 #12a] (no gate machinery — the pooled pass is the necessary condition,
-everything else is decided then, in the private long-realm repo).
+The forward agent-read ledger is DECIDED (FAIL, [ARC 5 #18]) and retired [ARC 5 #19]. The next
+hypotheses come from the published literature, each gated first on official long-history data
+(Kenneth R. French Data Library, Open Source Asset Pricing) before anything is built [ARC 5 #20];
+paid survivorship-clean data remains the lever a passed gate can unlock. Pre-register first,
+gate the spend on stated evidence, and let the engine track it. Don't dig the empty free mine
+again. Re-opening anything already closed goes through the RE-ARM PROTOCOL above. Real money
+returns only after a pre-registered PASS in a future arc — the [ARC 5 #12a] principle; the Arc 5
+pooled pass it named can no longer happen. Everything else is decided then, in the private
+long-realm repo.

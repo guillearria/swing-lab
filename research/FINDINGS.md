@@ -3055,3 +3055,95 @@ class, caught in four days instead of ten.
 - **Residual risk:** a 34/35-fill-rate sample inside one trending regime, costless, with the
   prediction on the #1 record ("I expect no significant difference") left untestable rather than
   confirmed. Live: `python3 -m research.orders show`.
+
+**2026-10-16 · [ARC 5 #19] DECISION (owner, 2026-10-14 → plan approved 2026-10-15) — ARC 5 CLOSES.
+Generation is retired, the open record settles to completion with no verdict attached, and
+[ORDERS #1] closes UNREACHABLE-AS-WRITTEN.**
+- **The choice, against the menu [ARC 5 #2b] wrote before the number existed:** option **(c)** —
+  stop the forward track. The verdict it closes is the FAIL of [ARC 5 #18]; nothing here re-reads
+  it, and there is no second look [ARC 5 #14]. Option (a), the capped paid-data spend, was not
+  chosen, and the [ARC 5 #2] spend trigger never fired (it fires only on a PASS). The owner's
+  direction ALSO opens a path the menu did not name: the next hypotheses are sourced from the
+  published literature and gated on official long-history data (BACKLOG, Phase 2). Any arc that
+  comes out of it gets its own FRESH pre-registration; nothing in Arc 5 is evidence for it.
+- **What stops:** the read routine (`trig_01EsetvEZmVLb56fEmc7YvSi`) is disabled — `enabled:false`,
+  prompt kept, because it is the only home of the standing conflict-of-interest list. With it stop
+  bet generation, the mover scan (it ran only inside the read routine), case writing, and
+  counterfactual order placement.
+- **What continues, as RECORD, not evidence:** every open bet settles to its own horizon (last
+  maturity ≈ 2027-01-13, ACN 63d); decided mover rows keep scoring until they mature; filled orders
+  keep resolving descriptively. The public page keeps scoring them. No verdict, milestone or p-value
+  attaches to the growing record — `bets.VERDICT` is the one encoding of the look and every surface
+  reads it.
+- **[ORDERS #1] closes now, UNREACHABLE-AS-WRITTEN, retired rather than re-scoped.** N≥20 resolved
+  was met on the 2026-10-10 settle (`c7d0cac`) with an empty comparison arm (entry 2026-10-14). The
+  #16/#17/#18 DRAFT said: at the 12-31 audit, declare it unreachable and re-scope or retire. Its
+  premise is now certain rather than projected: with no reads there are no new orders, so the
+  expired arm is frozen at n=1 (GLW) forever and the +3pp expired-vs-filled comparison can never be
+  computed. A one-arm re-scope would be a new diagnostic with nothing left to feed it, so it is
+  retired. The 2026-12-31 audit has no remaining subject.
+- **The milestone and audit duties** the read run absorbed [ARC 5 #12a] end with it; nothing in a
+  closed arc needs them. What remains on a calendar is the January wind-down (BACKLOG).
+- **Honest prior UNCHANGED: LOW.** No test ran in this entry. Reproduce the look:
+  `git show 678b660:research/bets_catalogue.csv`.
+
+**2026-10-16 · [ARC 5 #20] REVIEW — the three mover-ledger leads proposed 2026-10-14 are WITHDRAWN
+UNTESTED. One within-day spread is logged as a LEAD, not a hypothesis; nothing is pre-registered
+here.**
+On 2026-10-14 (owner session) I proposed three tests drawn from `movers_ledger.csv`: H1 S&P 400/600
+up-movers underperform over 21d (fade), H2 S&P 400/600 down-movers keep underperforming over 21d
+(drift), H3 S&P 500 up-movers outperform over 63d. Before anything was pre-registered, three BLIND
+reviewers ran (two Fable lenses — evidence and design — plus one Sonnet cross-model control); I
+reproduced every number below myself.
+- **Benchmark confound.** The ledger scores every row against SPY (`movers.py` BENCH). From 06-26 to
+  10-13 SPY returned **+7.0%**, IJH **−3.6%**, IJR **−6.3%** (Yahoo adjclose). Re-scored per row
+  against its own index (S&P 400 member → IJH, S&P 600 member → IJR, per the committed caches;
+  matched = x21 + sgn·(SPY − index) over the row's own window), stated in each hypothesis's own
+  direction:
+  - H1: vs SPY median **+7.42%**, 73% positive (n=211) → vs own index median **+3.66%**, 65%; mean
+    +1.56%, about what a high-beta name loses to its index in a falling small-cap tape.
+  - H2: vs SPY median **+4.09%**, 61% (n=159) → vs own index median **−0.65%**, 47%; per scan-day
+    cohort only 20% positive. **The sign flips.**
+  - H3 (benchmark already SPY): counting each ticker once, **67 names, median −0.23%, 49%**; MRNA
+    alone is 41% of the row sum.
+- **Repetition.** The scan dedups only on (ticker, date), so a move is re-logged every session it
+  stays ranked: 2,211 rows, 488 tickers, 94% of rows on names logged twice or more. The tail samples
+  span ~2 independent 21-day periods; the H3 sample spans one 63-day period (7 scan dates).
+- **Selection (HARKing).** H1–H3 were the best cells of at least eight screened (cohort × direction ×
+  horizon). This ledger is their DISCOVERY sample and is excluded from any verdict on them.
+- **Rules already in force.** The RE-ARM protocol (SKILL.md) binds shorts (closed) and the
+  single-name-momentum family (FAIL, engine) — H3 could not have replayed the window that killed it.
+- **Verdict: withdrawn untested.** No verdict is spent on them; the screening itself is recorded here
+  so it counts toward the project's multiple-testing tally.
+- **The one LEAD.** Within the same scan day, up-movers minus down-movers (raw returns; the benchmark
+  cancels): S&P 400/600 **25 days, mean −5.82pp, 80% negative**; S&P 500 **42 days, mean −0.76pp, 45%
+  negative**. The shape is short-term reversal, concentrated in the smaller names — the oldest effect
+  in the literature, and the one most often reported as eaten by trading costs. Two independent
+  periods from the discovery sample: it earns ONE official-data gate (Kenneth R. French Data Library,
+  post-2015, gross and net of turnover cost), with the gate's bar committed before the numbers are
+  opened. Nothing more.
+- **Power, for whoever pre-registers next.** At 21-day horizons a forward-only test has ~8 independent
+  windows by mid-2027, detecting only ~3pp/month effects; history is the only powered stage, and
+  current-constituent lists bias it — in favour of continuation and fade claims, against drift claims.
+- **Residual risks:** every reviewer is Claude-family; the matched re-score uses index ETFs, not
+  per-name betas; Yahoo adjclose for three ETFs is the only outside input.
+
+**2026-10-16 · [ARC 5 #9] CORRECTION to the 2026-10-12 entry — the pre-registered branch fired as
+written, but its rows cannot carry the reading I gave them. The "anti-selective reader"
+interpretation is WITHDRAWN.**
+- **Kept:** the numbers as computed and the fact that the [W3] branch fired at `678b660`. A rule fires
+  as written; this entry does not move it.
+- **Withdrawn:** "the reader subtracted value against its own denominator." Three faults, each
+  sufficient:
+  1. **Repetition.** The 63d skip pool is S&P 500 rows from 7 scan dates (≈ one 63-day period);
+     counting each name once the long side is median −0.23%, 49% (n=67), and one name (MRNA) carries
+     41% of the row sum ([ARC 5 #20]).
+  2. **Benchmark.** Every row is scored vs SPY in a window where mid and small caps trailed it by
+     10–13pp, so the 21d tail figures measure size, not selection.
+  3. **Mis-signed takes.** The ledger scores every row in its `direction_hint` (momentum
+     continuation), but 28 of the 95 takes were LONG bets on DOWN-movers (the overreaction family), so
+     those takes are scored opposite to the bet actually placed. The take-vs-skip contrast is invalid
+     as written.
+- **Unaffected:** the reader's verdict, [ARC 5 #18], scored per bet against its own benchmark.
+- **Lessons → SKILL.md:** score against the candidate's own universe index; count independent periods
+  and names, not rows.
