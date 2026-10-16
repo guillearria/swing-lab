@@ -57,14 +57,15 @@ def verdict(last_epoch: int | None, now_epoch: float, stale_h: int = STALE_H) ->
     hours = (now_epoch - last_epoch) / 3600
     if hours > stale_h:
         return True, (f"🚨 WATCHDOG: no ledger commit for {hours:.0f}h "
-                      f"(threshold {stale_h}h) — the daily settle/read routines are NOT "
+                      f"(threshold {stale_h}h) — the daily settle routine is NOT "
                       f"running. Check the cloud schedule + cron.log.")
     return False, f"✅ watchdog: last ledger commit {hours:.0f}h ago (threshold {stale_h}h)"
 
 
 def pushlog_actions() -> list[str]:
-    """The digest's own delivery check, judged on the full calendar for BOTH legs (no
-    composing leg here). A broken check is itself an alarm, never a silent pass."""
+    """The digest's own delivery check, judged on the full calendar (no composing leg here) —
+    the settle leg only since the read leg retired [ARC 5 #19]. A broken check is itself an
+    alarm, never a silent pass."""
     try:
         from research import digest
         actions, _ = digest._pushlog_section("")

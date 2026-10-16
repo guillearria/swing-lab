@@ -6,7 +6,9 @@ read run reported "openinsider fetch down" as prose inside a run note; nothing e
 the insider ledger — meant to be the SECOND verdict silo — quietly delivered nothing for five
 weeks. Arc 3 has since CLOSED (2026-08-02) and the project runs on ONE silo by design, which
 makes this file MORE load-bearing, not less: with a single feed, a silent outage is total.
-Each scan records its outcome and `digest._feed_section` escalates a stale `last_ok` to a DO-NOW.
+Each scan records its outcome. `digest._feed_section`, which escalated a stale `last_ok` to a
+DO-NOW, was deleted 2026-10-16 with the scan's retirement [ARC 5 #19]; this module goes in the
+January wind-down sweep (and `_feed_status.json` leaves daily.sh's LEDGERS in the same commit).
 
 An alarm that can never be cleared is worse than none — it trains the reader to ignore the
 channel. When a feed is retired, delete its key here in the SAME diff that retires it.

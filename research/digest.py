@@ -68,31 +68,14 @@ def _busdays(start: date, end: date) -> int:
 
 log = logging.getLogger(__name__)
 LEDGERS = ("research/bets_catalogue.csv", "research/movers_ledger.csv", "research/orders.csv")
-FEED_STATUS = "research/data/_feed_status.json"   # written by each scan; read here
 PUSH_LOG = "research/data/push_log.csv"   # date_utc,kind,verdict — one row per --notify push,
                                           # committed with the ledgers (daily.sh / READ_LOOP
                                           # step 7) so a stranded push is visible to the NEXT
                                           # delivered message [2026-08-06]
-FEED_STALE_D = 1   # weekdays without a successful fetch → DO-NOW. 1, not 3 [2026-08-09 control
-                   # review]: the bar-lag check below now measures against last_ok, so a DEAD
-                   # scan freezes both fields at healthy values and THIS is the only alarm for
-                   # a read that doesn't RUN — at 3 it rode 3 weekdays behind an all-clear
-                   # DO-NOW (the watchdog watches settle's commits, not this leg). A read that
-                   # RUNS but can't SPEAK is the other failure mode, and _pushlog_section owns
-                   # it since 2026-08-11 (the 08-10 brief died UNCONFIRMED behind this check's
-                   # all-clear: healthy feed, dead push). Complementary, not redundant.
-                   # Weekends stay silent: busdays(Fri→Sat
-                   # or Sun) = 1, and a healthy Monday scan resets to 0 before Monday's settle.
-FEED_BAR_STALE_D = 1   # weekdays the newest COMPLETED bar may trail the last SUCCESSFUL scan
-                       # (last_ok, NOT today — vs today every Sat/Sun read busdays(Thu→wknd)=2
-                       # and both cohorts false-alarmed all weekend 08-08/09, first weekend the
-                       # field was live). A healthy pre-market run reads yesterday's close = 1;
-                       # 2 is the 2026-08-04 failure shape ("ok" while bars sat at 07-31).
-                       # Known false positive: the first weekday after a market holiday (~9/yr)
-                       # — named in the alarm text, self-clears next day.
-FEED_COVERAGE_MIN = 0.90   # fraction of universe names that must return bars; below = partial
-                           # outage (or a rotten universe cache) — either way the denominator is
-                           # short and a quiet-looking scan is not to be trusted.
+# The feed-staleness alarm (FEED_STALE_D / FEED_BAR_STALE_D / FEED_COVERAGE_MIN + _feed_section)
+# was DELETED 2026-10-16 [ARC 5 #19]: its only inputs were the two mover-scan feeds, and the scan
+# retired with the read routine — kept, it would have alarmed every day forever. A future arc
+# with a live logger brings its own staleness check in its own pre-registration.
 OVERDUE_D = 3        # business-day slack before a matured-but-unscored bet is called STUCK
 # The note is agent-written, so the CLI-only half of the v3 contract is enforced HERE rather
 # than trusted [2026-08-19]: the very first live v3 read push carried a `mix:` mirror line and
@@ -317,60 +300,6 @@ def _stranded_section() -> tuple[list, list]:
     return actions, []
 
 
-def _feed_section() -> tuple[list, list]:
-    """DO-NOW when an upstream feed has gone quiet.
-
-    A dead source is not an exception — `scan` just returns nothing — so _safe cannot see it
-    and the ledger silently stops growing (2026-07-27: "openinsider fetch down", reported as
-    prose in a run note). Each scan records its outcome; a stale last_ok is escalated here.
-    """
-    import json
-    try:
-        with open(FEED_STATUS) as f:
-            status = json.load(f)
-    except Exception:
-        return [], []                            # never written yet — nothing to claim
-    out = []
-    for src, st in sorted(status.items()):
-        last_ok = st.get("last_ok")
-        # No last_ok means this source has NEVER reported a success — say that, don't invent a
-        # duration. Until 2026-08-01 the else-branch was the sentinel `99`, which rendered as
-        # "has not succeeded in 99 weekdays": a fabricated number inside an alarm, and wrong by
-        # ~70 (the real gap was 27). An alarm that makes up figures is one you learn to distrust.
-        if last_ok is None:
-            when = "has NEVER reported a successful fetch"
-        else:
-            stale = _busdays(date.fromisoformat(last_ok), date.today())
-            if stale <= FEED_STALE_D:
-                # The PIPE is fresh — now check the WATER [FINDINGS 2026-08-04 ops]: on 08-04
-                # the feed was "ok" while bars had not advanced past 07-31 (0 movers, silent),
-                # and a partial fetch outage looks exactly like a quiet day. Legacy keys
-                # without these fields skip both checks silently.
-                last_bar = st.get("last_bar")
-                if last_bar:
-                    # Lag vs last_ok, not today: the scan runs pre-market weekdays, so on a
-                    # weekend the newest possible bar is Thursday's and a today-based count
-                    # fires every Sat/Sun by construction (both cohorts, 08-08/09). A frozen
-                    # bar with a LIVE scan still grows this gap; a dead scan is FEED_STALE_D's
-                    # alarm above.
-                    lag = _busdays(date.fromisoformat(last_bar), date.fromisoformat(last_ok))
-                    if lag > FEED_BAR_STALE_D:
-                        out.append(f"{_e(src)}: bars last advanced {_e(last_bar)} "
-                                   f"({lag} weekdays behind the last scan) — stale feed (or a "
-                                   f"market holiday just passed); the scan denominator did "
-                                   f"not advance")
-                n_ok, n_total = st.get("n_ok"), st.get("n_total")
-                if n_total and n_ok is not None and n_ok / n_total < FEED_COVERAGE_MIN:
-                    out.append(f"{_e(src)}: bars for only {n_ok}/{n_total} names — partial "
-                               f"fetch outage (or a rotten universe cache — rebuild per "
-                               f"[ARC 5 #11]); today's denominator is short")
-                continue
-            when = f"has not succeeded in {stale} weekdays (last ok {last_ok})"
-        err = f" (last error: {st['last_error']})" if st.get("last_error") else ""
-        out.append(f"{_e(src)} feed {_e(when)}{_e(err)} — candidates are NOT being logged")
-    return out, []
-
-
 def _utcnow():
     from datetime import datetime, timezone
     return datetime.now(timezone.utc)
@@ -426,21 +355,21 @@ def _pushed_today(kind: str) -> str:
 
 
 # UTC hour after which TODAY's push for that leg is due. settle fires 22:30 UTC daily (moved
-# from ~05:08 on 2026-08-07 after three stranded nights in the 05:00 window); read fires
-# pre-market on weekdays (~11:45 UTC). Each leg is held against its OWN calendar.
-PUSH_DUE_H = {"settle": 23, "read": 13}
+# from ~05:08 on 2026-08-07 after three stranded nights in the 05:00 window). The READ leg
+# (weekdays, due 13 UTC) was RETIRED 2026-10-16 [ARC 5 #19]: its routine is disabled, so
+# holding it to a calendar would raise a false "never delivered" every weekday. Old `read`
+# rows stay in push_log.csv as history and are never judged.
+PUSH_DUE_H = {"settle": 23}
 
 
 def _last_due(kind: str, now) -> date:
-    """The last day a `kind` push was due, as of `now` (UTC). Read is weekdays only."""
-    d = now.date() if now.hour >= PUSH_DUE_H[kind] else now.date() - timedelta(days=1)
-    while kind == "read" and d.weekday() >= 5:   # Sat/Sun roll back to Friday
-        d -= timedelta(days=1)
-    return d
+    """The last day a `kind` push was due, as of `now` (UTC)."""
+    return now.date() if now.hour >= PUSH_DUE_H[kind] else now.date() - timedelta(days=1)
 
 
 def _pushlog_section(composing: str = "") -> tuple[list, list]:
-    """DO-NOW when a due push was never confirmed delivered [2026-08-06; both legs 2026-08-11].
+    """DO-NOW when a due push was never confirmed delivered [2026-08-06; both legs 2026-08-11;
+    settle only since 2026-10-16, when the read leg retired — ARC 5 #19].
 
     `composing` names the leg whose digest this text belongs to. That leg can never see its
     own stamp — it is written AFTER this text is composed — so past its own due-hour it judges
@@ -474,7 +403,7 @@ def _pushlog_section(composing: str = "") -> tuple[list, list]:
     with open(PUSH_LOG, newline="") as f:
         rows = list(csv.DictReader(f))
     now, out = _utcnow(), []
-    for kind, label in (("settle", "settle digest"), ("read", "read brief")):
+    for kind, label in (("settle", "settle digest"),):   # read leg retired [ARC 5 #19]
         mine = [r for r in rows if r.get("kind") == kind]
         if not mine:
             continue
@@ -564,7 +493,6 @@ def compose(note: str = "", leg: str = "settle") -> str:
     head, _, body = note.partition("\n")
     sections = [_safe(_bets_section, "bets"),
                 _safe(_git_section, "git"), _safe(_stranded_section, "stranded"),
-                _safe(_feed_section, "feed"),
                 _safe(lambda: _pushlog_section(composing=leg), "push-log")]
     # Event flags + scored cards are composed separately because they lead the message — but
     # both still go through _safe, so a broken silo is a loud DO-NOW, never a silent revert.

@@ -12,7 +12,7 @@ from research import tradingdays as T
 
 # Captured before the autouse fixture below can stub them out, so the sections that read the
 # real repo/filesystem can still be tested directly.
-_REAL_GIT, _REAL_FEED = D._git_section, D._feed_section
+_REAL_GIT = D._git_section
 _REAL_STRANDED = D._stranded_section
 _REAL_SCORED, _REAL_QUIET = D._scored_section, D._quiet_line
 _REAL_PUSHLOG, _REAL_BETS = D._pushlog_section, D._bets_section
@@ -24,7 +24,7 @@ def _neutralize_environment_sections(monkeypatch):
     make each compose test depend on this checkout's live state (and _stranded_section would
     hit the NETWORK). Stub them all by default; each has its own dedicated test."""
     for name in ("_bets_section", "_git_section", "_stranded_section",
-                 "_feed_section", "_pushlog_section",
+                 "_pushlog_section",
                  "_scored_section", "_quiet_line"):
         monkeypatch.setattr(D, name, lambda *a, **k: ([], []))
 
@@ -475,151 +475,6 @@ def test_stranded_section_silent_without_network(monkeypatch):
     assert _REAL_STRANDED() == ([], [])
 
 
-def test_feed_section_escalates_a_stale_source(tmp_path, monkeypatch):
-    """A dead feed returns nothing rather than raising, so only a recorded last_ok can
-    distinguish 'quiet day' from 'openinsider has been down for a week'."""
-    import json
-    from datetime import date, timedelta
-    p = tmp_path / "feed.json"
-    old = (date.today() - timedelta(days=21)).isoformat()
-    p.write_text(json.dumps({"openinsider": {"last_ok": old, "last_error": "HTTP 503"}}))
-    monkeypatch.setattr(D, "FEED_STATUS", str(p))
-    actions, _ = _REAL_FEED()
-    assert actions and "openinsider" in actions[0] and "HTTP 503" in actions[0]
-
-
-def test_feed_section_never_invents_a_duration(tmp_path, monkeypatch):
-    """A source with no last_ok has never succeeded — say THAT. The untested else-branch used
-    a `99` sentinel, so the live alarm read "has not succeeded in 99 weekdays" when the real
-    gap was 27. A fabricated number inside an alarm is how a DO-NOW list loses its authority."""
-    import json
-    p = tmp_path / "feed.json"
-    p.write_text(json.dumps({"openinsider": {"last_error": "URLError: [Errno 111] refused"}}))
-    monkeypatch.setattr(D, "FEED_STATUS", str(p))
-    actions, _ = _REAL_FEED()
-    assert actions and "NEVER reported a successful fetch" in actions[0]
-    assert "99" not in actions[0]
-    assert "Errno 111" in actions[0]        # the REAL cause, not "fetch returned no clusters"
-
-
-def test_feed_section_quiet_when_fresh(tmp_path, monkeypatch):
-    import json
-    from datetime import date
-    p = tmp_path / "feed.json"
-    p.write_text(json.dumps({"openinsider": {"last_ok": date.today().isoformat()}}))
-    monkeypatch.setattr(D, "FEED_STATUS", str(p))
-    assert _REAL_FEED() == ([], [])
-    monkeypatch.setattr(D, "FEED_STATUS", str(tmp_path / "missing.json"))
-    assert _REAL_FEED() == ([], [])        # never written yet → claim nothing
-
-
-def _feed_json(tmp_path, monkeypatch, st):
-    import json
-    p = tmp_path / "feed.json"
-    p.write_text(json.dumps({"sp500-movers": st}))
-    monkeypatch.setattr(D, "FEED_STATUS", str(p))
-
-
-def test_feed_section_escalates_stale_bars_even_when_last_ok_is_fresh(tmp_path, monkeypatch):
-    """The 2026-08-04 shape: the fetch succeeded TODAY but bars sat at 07-31 — the old check
-    read only last_ok, so the run logged 0 movers with no alarm [FINDINGS 2026-08-04 ops]."""
-    from datetime import date, timedelta
-    d = date.today()
-    old_bar = d - timedelta(days=7)                       # far past any FEED_BAR_STALE_D
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": d.isoformat(), "last_bar": old_bar.isoformat(),
-                "n_ok": 500, "n_total": 503})
-    actions, _ = _REAL_FEED()
-    assert actions and "bars last advanced" in actions[0]
-    assert "denominator did not advance" in actions[0]
-
-
-def test_feed_section_escalates_thin_coverage(tmp_path, monkeypatch):
-    from datetime import date
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": date.today().isoformat(), "n_ok": 250, "n_total": 503})
-    actions, _ = _REAL_FEED()
-    assert actions and "250/503" in actions[0] and "denominator is short" in actions[0]
-
-
-def test_feed_section_fresh_bar_and_full_coverage_silent(tmp_path, monkeypatch):
-    """A healthy pre-market shape — yesterday's completed bar, near-full coverage — is quiet.
-    Uses a 1-weekday lag computed backwards so the test passes on any weekday."""
-    from datetime import date, timedelta
-    d = date.today()
-    prev = d - timedelta(days=1)
-    while not T.is_trading_day(prev):
-        prev -= timedelta(days=1)
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": d.isoformat(), "last_bar": prev.isoformat(),
-                "n_ok": 498, "n_total": 503})
-    assert _REAL_FEED() == ([], [])
-
-
-def test_feed_section_legacy_key_without_new_fields_silent(tmp_path, monkeypatch):
-    from datetime import date
-    _feed_json(tmp_path, monkeypatch, {"last_ok": date.today().isoformat()})
-    assert _REAL_FEED() == ([], [])
-
-
-def test_feed_section_weekend_gap_is_not_stale(tmp_path, monkeypatch):
-    """Sat/Sun after a Friday scan: the newest possible bar is Thursday's, so a today-based
-    lag reads 2 and false-alarmed BOTH cohorts all weekend 2026-08-08/09 (the first weekend
-    the last_bar field was live). Lag is measured against the last SUCCESSFUL scan instead,
-    which makes the healthy weekend shape = 1."""
-    from datetime import date
-
-    class _Sunday(date):
-        @classmethod
-        def today(cls):
-            return cls(2026, 8, 9)                # the live false-positive Sunday
-
-    monkeypatch.setattr(D, "date", _Sunday)
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": "2026-08-07", "last_bar": "2026-08-06",
-                "n_ok": 503, "n_total": 503})
-    assert _REAL_FEED() == ([], [])
-
-
-def test_feed_section_frozen_bars_with_live_scan_fires_at_the_threshold(tmp_path, monkeypatch):
-    """The 2026-08-04 failure shape must survive the weekend fix at its minimal size: the
-    fetch succeeds today while bars sit 2 weekdays behind the scan — still an alarm."""
-    from datetime import date, timedelta
-    d = date.today()
-    prev = d - timedelta(days=1)
-    while not T.is_trading_day(prev):
-        prev -= timedelta(days=1)
-    prev2 = prev - timedelta(days=1)
-    while not T.is_trading_day(prev2):
-        prev2 -= timedelta(days=1)                # 2 weekdays behind last_ok on ANY run day
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": d.isoformat(), "last_bar": prev2.isoformat(),
-                "n_ok": 503, "n_total": 503})
-    actions, _ = _REAL_FEED()
-    assert actions and "behind the last scan" in actions[0]
-
-
-def test_feed_section_dead_scan_flags_on_the_second_missed_weekday(tmp_path, monkeypatch):
-    """The 08-09 lag fix measures bars against the LAST scan, so a dead read routine freezes
-    last_ok and last_bar together and the bar alarm can never fire — last_ok staleness is the
-    only detector left, and nothing else watches the read leg (push_log alarms were
-    settle-only then, the watchdog watches settle's commits). Escalation pinned at the second
-    missed weekday [2026-08-09 control review]."""
-    from datetime import date, timedelta
-    d = date.today()
-    prev = d - timedelta(days=1)
-    while not T.is_trading_day(prev):
-        prev -= timedelta(days=1)
-    prev2 = prev - timedelta(days=1)
-    while not T.is_trading_day(prev2):
-        prev2 -= timedelta(days=1)          # last scan 2 weekdays back = 2nd missed run
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": prev2.isoformat(), "last_bar": prev2.isoformat(),
-                "n_ok": 503, "n_total": 503})
-    actions, _ = _REAL_FEED()
-    assert actions and "has not succeeded" in actions[0]
-
-
 # ------------------------------------------------------------------------- plain + fail-soft
 
 def test_plain_strips_markup():
@@ -781,7 +636,9 @@ def test_the_composing_leg_never_accuses_itself(monkeypatch, tmp_path):
     p.write_text("date_utc,kind,verdict\n2026-09-01,settle,DELIVERED\n2026-09-02,read,DELIVERED\n")
     at(2026, 9, 2, 23, 24)
     assert _REAL_PUSHLOG(composing="settle") == ([], [])          # the 09-02 false alarm
-    assert "2026-09-02" in _REAL_PUSHLOG(composing="read")[0][0]   # the other leg still holds it
+    # a stray read-leg compose holds SETTLE to its full calendar (the read leg itself is
+    # retired and never judged [ARC 5 #19])
+    assert "settle digest for 2026-09-02" in _REAL_PUSHLOG(composing="read")[0][0]
     p.write_text("date_utc,kind,verdict\n2026-08-31,settle,DELIVERED\n2026-09-02,read,DELIVERED\n")
     at(2026, 9, 2, 22, 55)
     assert "2026-09-01" in _REAL_PUSHLOG(composing="settle")[0][0]   # yesterday's death still flagged
@@ -829,17 +686,6 @@ _LOG_0810 = ("2026-08-07,read,DELIVERED\n"
              "2026-08-10,settle,REJECTED\n")
 
 
-def test_a_stranded_read_brief_becomes_a_do_now(monkeypatch, tmp_path):
-    """2026-08-10: the read ran, committed a bet (TTD) and died in transport (UNCONFIRMED).
-    NOTHING alarmed — this check filtered to kind == 'settle' and the read leg has no watcher
-    of its own — so the next morning's brief still opened with an all-clear. The read leg is
-    the one that carries the TRADE ALERTS. FEED_STALE_D=1 cannot cover it: the run was alive
-    and the feed was healthy, only the push died."""
-    actions = _pushlog(monkeypatch, tmp_path, _LOG_0810, (2026, 8, 10, 22, 48))
-    assert len(actions) == 1
-    assert "read brief for 2026-08-10" in actions[0] and "UNCONFIRMED" in actions[0]
-
-
 def test_a_retry_does_not_alarm_about_its_own_superseded_attempt(monkeypatch, tmp_path):
     """The delivered 08-10 message accused 2026-08-09 of never arriving while the log showed
     08-09 DELIVERED: the old test held the LAST row (today's REJECTED first attempt) and then
@@ -849,42 +695,21 @@ def test_a_retry_does_not_alarm_about_its_own_superseded_attempt(monkeypatch, tm
     assert not any("settle digest" in a for a in actions)
 
 
-def test_a_delivered_read_clears_the_alarm(monkeypatch, tmp_path):
-    """Self-clearing, so a one-off transport failure cannot become a permanent nag."""
-    actions = _pushlog(monkeypatch, tmp_path,
-                       _LOG_0810 + "2026-08-10,settle,DELIVERED\n2026-08-11,read,DELIVERED\n",
-                       (2026, 8, 11, 12, 0))
-    assert actions == []
-
-
-def test_no_read_is_due_on_a_weekend(monkeypatch, tmp_path):
-    """Saturday's settle must not nag for a brief nobody schedules — the read due date rolls
-    back to Friday. The weekend false alarm is the mistake FEED_BAR_STALE_D already made once."""
-    actions = _pushlog(monkeypatch, tmp_path,
-                       "2026-08-07,read,DELIVERED\n2026-08-08,settle,DELIVERED\n",
-                       (2026, 8, 8, 22, 30))          # Saturday
-    assert actions == []
+def test_old_read_rows_never_alarm(monkeypatch, tmp_path):
+    """[ARC 5 #19] The read routine is disabled. Its leg is no longer held to a calendar, or
+    every weekday would raise a false "read brief never delivered" (and the watchdog, which
+    reuses this check, would go red twice a day). Old `read` rows are history: the 08-10
+    UNCONFIRMED brief that once alarmed now judges nothing, and a log of read rows alone is
+    silent on any day of the week."""
+    assert _pushlog(monkeypatch, tmp_path, _LOG_0810, (2026, 8, 10, 22, 48)) == []
+    for day in (12, 13, 14):                                   # Mon–Wed, past the old 13 UTC
+        assert _pushlog(monkeypatch, tmp_path, "2026-10-09,read,DELIVERED\n"
+                        "2026-10-11,settle,DELIVERED\n" f"2026-10-{day - 1},settle,DELIVERED\n",
+                        (2026, 10, day, 14, 0)) == []
+    assert "read" not in D.PUSH_DUE_H
 
 
 # ------------------------------------------------------------- holidays (2026-09-13)
-
-def test_feed_section_labor_day_gap_is_not_stale(tmp_path, monkeypatch):
-    """The live false alarm of Tue 2026-09-08: scan ok on 09-08, newest bar Fri 09-04, Mon
-    09-07 = Labor Day. A weekday count read 2 and fired a DO-NOW on BOTH legs; trading-day
-    arithmetic reads 1 — the healthy day-after-a-holiday shape is quiet."""
-    from datetime import date
-
-    class _Tue(date):
-        @classmethod
-        def today(cls):
-            return cls(2026, 9, 8)
-
-    monkeypatch.setattr(D, "date", _Tue)
-    _feed_json(tmp_path, monkeypatch,
-               {"last_ok": "2026-09-08", "last_bar": "2026-09-04",
-                "n_ok": 503, "n_total": 503})
-    assert _REAL_FEED() == ([], [])
-
 
 def test_bets_line_walks_over_a_holiday(monkeypatch):
     """TWLO, logged Thu 2026-08-13 for 21 trading days: the weekday walk said Fri 09-11 (and
@@ -907,3 +732,9 @@ def test_bets_line_walks_over_a_holiday(monkeypatch):
     actions, lines = _REAL_BETS()
     assert actions == []
     assert lines == ["📈 next scores Mon 09-14 (TWLO)"]
+
+
+def test_no_feed_section_survives():
+    """[ARC 5 #19] The feed-staleness alarm watched only the two mover-scan feeds; the scan
+    retired with the read routine, so kept it would alarm daily forever."""
+    assert not hasattr(D, "_feed_section") and not hasattr(D, "FEED_STATUS")

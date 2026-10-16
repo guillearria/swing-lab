@@ -64,8 +64,8 @@ def test_run_exits_red_on_an_undelivered_push_and_never_sends_when_healthy(monke
     monkeypatch.setattr(W, "last_commit_epoch", lambda paths=W.WATCHED: W.time.time() - 3600)
     monkeypatch.setattr(W, "pushlog_actions", lambda: [])
     assert W.run(["--notify"]) == 0 and sent == []          # healthy: silent, green
-    monkeypatch.setattr(W, "pushlog_actions", lambda: ["the read brief for 2026-09-14 was never confirmed delivered"])
-    assert W.run(["--notify"]) == 1 and len(sent) == 1 and "read brief" in sent[0]
+    monkeypatch.setattr(W, "pushlog_actions", lambda: ["the settle digest for 2026-09-14 was never confirmed delivered"])
+    assert W.run(["--notify"]) == 1 and len(sent) == 1 and "settle digest" in sent[0]
 
 
 def test_watchdog_imports_on_a_bare_runner(monkeypatch):
