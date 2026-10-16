@@ -54,6 +54,21 @@ BAR_N = 30            # settled long bets required
 BAR_MEDIAN = 1.0      # median excess must exceed this (pp) — an effect-size floor
 BAR_BEAT = 55.0       # % of bets beating their benchmark must exceed this
 WILCOXON_ALPHA = 0.017  # one-sided signed-rank significance, computed by wilcoxon_p below
+# THE ONE LOOK, DECIDED [ARC 5 #14 · #18]: the first settle reaching N≥BAR_N fired at this commit
+# and FAILED. FINAL — never recomputed at a larger n (that is the optional-stopping hole #14
+# closed; until 2026-10-16 `show`, the engine and the pulse all recomputed it daily). Every
+# surface renders the verdict from THIS and only this; test_bets re-derives it from the commit.
+# Generation retired 2026-10-16 [ARC 5 #19]: open bets settle to completion as RECORD, no verdict.
+VERDICT = {"result": "FAIL", "date": "2026-10-02", "commit": "678b660", "n": 30,
+           "median": -1.71, "beat": 43, "p": 0.715}
+
+
+def verdict_line() -> str:
+    """The CLI rendering of VERDICT — one line, shared by `show` and the engine."""
+    v = VERDICT
+    return (f"VERDICT {v['result']} — final [ARC 5 #18]: one look at {v['commit']} "
+            f"({v['date']} settle) n={v['n']} median {v['median']:+.2f}% beat {v['beat']}% "
+            f"p={v['p']:.3f}")
 
 
 CASES_DIR = "research/cases"
@@ -424,23 +439,16 @@ def show(rows: list[dict]) -> None:
     # ONE pooled verdict [Arc 5 #7], population LONG-ONLY [ARC 5 #12a]; splits stay diagnostic.
     bar = (f"bar N≥{BAR_N} & median>+{BAR_MEDIAN:.0f}% & beat>{BAR_BEAT:.0f}% "
            f"& Wilcoxon α≈{WILCOXON_ALPHA} [Arc 5 #7 · #12a · #14 ONE LOOK]")
+    # The verdict is ONE look [ARC 5 #14], and it has fired [#18]: print the encoded look, then
+    # the still-settling RECORD with no p — a p recomputed at a larger n IS the repeated look
+    # the rule forbids (this surface served one daily from 2026-10-02 to 10-16). A prose rule the
+    # code contradicts is not a rule [SKILL.md].
+    print(f"  {verdict_line()} → {bar}")
     s = stats(rows)
     if s:
         n, m, md, beat = s
-        # The Wilcoxon is the VERDICT statistic and the verdict is ONE look [ARC 5 #14]. Printed
-        # at every n it IS the repeated look the rule forbids — served daily, on the very surface
-        # #14 names for reproduction (live on 2026-08-19: p=0.906 at n=5, caught by an
-        # independent review of #14 the day it was written). engine.py already withheld it; this
-        # brings show() into line. A prose rule the code contradicts is not a rule — the same
-        # lesson as the SIZED-SUGGESTION marker no code ever read [SKILL.md].
-        pstr = ""
-        if n >= BAR_N:
-            p = wilcoxon_p(excess_values(verdict_rows(rows)))
-            pstr = f"  p={p:.3f}" if p is not None else ""
-        print(f"  pooled LONG-ONLY [ARC 5 #12a]: mean {m:+.2f}%  median {md:+.2f}%  "
-              f"beat {beat:.0f}%  n={n}{pstr}  → {bar}")
-    else:
-        print(f"  pooled LONG-ONLY [ARC 5 #12a]: 0 settled (+{len(open_)} open) | {bar}")
+        print(f"  record, settling to completion (no p, never a second look): mean {m:+.2f}%  "
+              f"median {md:+.2f}%  beat {beat:.0f}%  n={n} (+{len(open_)} open)")
     # Diagnostic decompositions of the ONE pooled verdict, never separate bars [Arc 5 #8] — via
     # _agg (RAW) so shorts stay visible here. Direction: the [ARC 5 #10] n≥12 short bar is
     # UNREACHABLE-BY-DESIGN under long-only admission (declared, [ARC 5 #12a]) — the short line

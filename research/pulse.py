@@ -72,22 +72,21 @@ def _x_len(text: str) -> int:
 # ---------- compose (pure — the only content that can ever reach the public) ----------
 
 def _tally(rows: list[dict]) -> str:
-    """The pool line, verdict-grade numbers only — same sources as the digest scoreboard."""
+    """The record line + the DECIDED verdict, rendered from bets.VERDICT only. Until 2026-10-16
+    this recomputed PASS/FAIL at the current n — the repeated look [ARC 5 #14] forbids, and a
+    public one: a drift above the bar would have posted PASS. The verdict never moves now."""
     from research import bets
+    v = bets.VERDICT
+    verdict = f"Verdict {v['result']} at n={v['n']} ({v['date']}), final."
     s = bets.stats(rows)
     if not s:
-        return f"Pool: 0/{bets.BAR_N} settled longs."
+        return f"Record: 0 settled longs. {verdict}"
     n, _, md, beat = s
     sig = bets.cum_excess(rows)
-    line = f"Pool: {n}/{bets.BAR_N} settled longs, median {md:+.2f}%, beat {beat:.0f}%"
+    line = f"Record: {n} settled longs, median {md:+.2f}%, beat {beat:.0f}%"
     if sig is not None:
         line += f", cum {sig:+.1f}pp"
-    if n >= bets.BAR_N:
-        p = bets.wilcoxon_p(bets.excess_values(bets.verdict_rows(rows)))
-        ok = (md > bets.BAR_MEDIAN and beat > bets.BAR_BEAT
-              and p is not None and p < bets.WILCOXON_ALPHA)
-        line += f". AT BAR: {'PASS' if ok else 'FAIL'} per the pre-registered thresholds"
-    return line + "."
+    return f"{line}. {verdict}"
 
 
 def compose(rows: list[dict], head_rows: list[dict]) -> str | None:
@@ -120,7 +119,7 @@ def compose(rows: list[dict], head_rows: list[dict]) -> str | None:
         names = ", ".join(f"{r['ticker']} {float(r['excess_pct']):+.2f}%" for r in scored)
         head = f"Paper ledger settle: {len(scored)} bets scored ({names})."
     bar = (f"Bar, fixed in advance: n>={bets.BAR_N}, median>+{bets.BAR_MEDIAN:.0f}%, "
-           f"beat>{bets.BAR_BEAT:.0f}% — publishes pass OR fail.")
+           f"beat>{bets.BAR_BEAT:.0f}% — published pass OR fail; it failed.")
     tail = "Not investment advice."
     url = os.getenv("PULSE_URL", "").strip()
     def build(h: str) -> str:

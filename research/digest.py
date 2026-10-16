@@ -10,8 +10,9 @@ what I need" (owner). v4 keeps the three jobs and makes the pulse EVENT-DRIVEN:
      RETIRED; bets.mark_notified() stamps `notified` only after the PUSH DELIVERED verdict,
      so a lost push re-renders the cards in the next delivered digest, whichever leg); the
      read's note opens with 1–2 sentences of its own morning above its 🟢 cards. Pool numbers
-     appear exactly when they CHANGE — 🏁 milestones and the at-bar/ahead-of-bar flags fire
-     only on a crossing; 📈 says when evidence next lands;
+     appear exactly when they CHANGE; 📈 says when evidence next lands. The 🏁 milestones and
+     the at-bar/ahead-of-bar flags were DELETED 2026-10-16: the one look fired and FAILED
+     [ARC 5 #18], so nothing can cross again and "AT BAR" had become a nightly repetition;
   2. an ALARM channel — ⚠️ DO-NOW appears ONLY when something broke or needs the human
      (an empty list prints NOTHING; 🚨 is reserved for failures: heartbeat + watchdog);
   3. later, the X mirror — at P7b activation every post mirrors here as 📣 (locked req).
@@ -22,7 +23,7 @@ denominators, the mix mirror AND the static scoreboard rows are CLI-side ONLY:
 Shape, in order, ONE IDEA PER BLOCK with a blank line between blocks: headline (read passes
 its own "📖 READ …" first line; settle gets the "📋 SETTLE <dow> <date>" banner) → the quiet
 sentence (noteless, scoreless runs only — a note owns its narrative, and 📊 cards ARE the
-news) → 🏁/at-bar flags (when crossed) → ⚠️ DO-NOW (only when nonempty, paste-ready
+news) → ⚠️ DO-NOW (only when nonempty, paste-ready
 commands) → the note's sentences + 🟢 card(s), one <blockquote> each → 📊 SCORED card(s) +
 the tally sentence → 📈 next-scoring line. Composed
 from the silos FAIL-SOFT per section — a broken silo degrades to a loud DO-NOW + an
@@ -151,43 +152,6 @@ def _by_id(rows: list[dict]) -> dict:
     return {_row_id(r): r for r in rows}
 
 
-def _pool_events() -> tuple[list, list]:
-    """EVENT flags only [MSG v4, 2026-08-25 — owner: the always-on Scored/So-far/To-pass rows
-    "repeat themselves almost daily and that's not really what I need"]. The static pool rows
-    are gone from Telegram (CLI keeps them: `python3 -m research` / `bets show`); what remains
-    here fires only when something CROSSED — which is exactly when it stops being repetition.
-
-    🏁 milestone: a STATELESS crossing check vs the HEAD copy of the catalogue. Works because
-    daily.sh runs the digest BEFORE push_ledgers commits (REORDER daily.sh AND MILESTONES
-    SILENTLY STOP FIRING — this comment is the guard); the read leg commits first
-    (READ_LOOP step 6), so its diff is empty and it can never false-banner. No internal
-    try/except: dead git kills the WHOLE section loudly via _safe instead of half-degrading
-    into a message that looks normal.
-
-    Display only — this section never asks for anything.
-    """
-    from research import bets
-    rows = bets._load()
-    pool = bets.verdict_rows(rows)           # ONE population, same as every other pool number
-    now_n = len(bets.excess_values(pool))
-    prev_n = len(bets.excess_values(bets.verdict_rows(_committed(bets.CATALOGUE))))
-    lines = []
-    for mst in (10, 20, 30):
-        if prev_n < mst <= now_n:
-            lines.append(f"🏁 <b>{mst} scored</b> — the review rides the next read run")
-    s = bets.stats(rows)                     # the one verdict surface [bets.stats docstring]
-    if s:
-        n, _, md, beat = s
-        if n >= bets.BAR_N:
-            lines.append("<b>AT BAR — verdict time</b>")
-        # Below-bar shape flag from n≥10 [ARC 5 #12a]: labeled so it can never be quoted as a
-        # pass — nothing passes before N≥BAR_N, and the Wilcoxon only counts AT the bar.
-        elif n >= 10 and md > bets.BAR_MEDIAN and beat > bets.BAR_BEAT:
-            lines.append(f"<b>Ahead of the bar</b> — but nothing passes before "
-                         f"{bets.BAR_N} have scored")
-    return [], lines
-
-
 def _scored_section() -> tuple[list, list]:
     """Settled-but-unannounced bets as 📊 blockquote cards + ONE tally sentence [MSG v4].
 
@@ -223,14 +187,16 @@ def _scored_section() -> tuple[list, list]:
         if lines:
             lines.append("")                  # each card is its own block
         lines += block
+    # The test is DECIDED [ARC 5 #18]: the tally states the encoded verdict, then the settling
+    # record as plain counts — never "N of 30", which read as a test still in progress.
+    v = bets.VERDICT
+    lines += ["", f"Test result: {v['result']} on {v['date']}, final."]
     s = bets.stats(rows)
     if s:
         n, _, md, beat = s
         c = round(n * beat / 100)          # beat% round-trips exactly back to its count
-        lines += ["", f"Now {n} of {bets.BAR_N} scored · {c} of {n} beat · "
-                      f"median {bets.gap_words(md)}."]
-    else:
-        lines += ["", f"0 of {bets.BAR_N} scored."]
+        lines[-1] += (f" Record now {n} scored · {c} of {n} beat · "
+                      f"median {bets.gap_words(md)}.")
     return [], lines
 
 
@@ -284,7 +250,7 @@ def _quiet_line() -> tuple[list, list]:
     population as the tally and the flags, so the numbers always reconcile)."""
     from research import bets
     running = len([r for r in bets.verdict_rows(bets._load()) if r["status"] == "open"])
-    return [], [f"Nothing matured today — {running} bets running."]
+    return [], [f"Nothing matured today — {running} bets left to settle."]
 
 
 def _safe(fn, name: str) -> tuple[list, list]:
@@ -583,7 +549,8 @@ def compose(note: str = "", leg: str = "settle") -> str:
 
     No block glyph on the scoreboard [2026-08-19, owner call]: 🧪 labelled a block whose three
     rows already say what they are, and a glyph that decorates rather than distinguishes is
-    noise on a phone. 📖/📋/🟢/📈/⚠️/📊/🚨/🏁 stay — each marks a DIFFERENT kind of message.
+    noise on a phone. 📖/📋/🟢/📈/⚠️/📊/🚨 stay — each marks a DIFFERENT kind of message (🏁 retired
+    2026-10-16 with the milestones).
 
     ONE IDEA PER BLOCK, blank line between blocks [2026-08-19 owner review]. v3 shipped
     "contiguous by design" — an over-correction on the v2 shape that once ended in five blank
@@ -601,10 +568,9 @@ def compose(note: str = "", leg: str = "settle") -> str:
                 _safe(lambda: _pushlog_section(composing=leg), "push-log")]
     # Event flags + scored cards are composed separately because they lead the message — but
     # both still go through _safe, so a broken silo is a loud DO-NOW, never a silent revert.
-    events = _safe(_pool_events, "pool-events")
     scored = _safe(_scored_section, "scored")
     quiet = _safe(_quiet_line, "quiet")
-    actions = events[0] + scored[0] + quiet[0] + [a for s in sections for a in s[0]]
+    actions = scored[0] + quiet[0] + [a for s in sections for a in s[0]]
     if head.strip():
         out = [f"<b>{_e(HEAD_DENOM.sub('', head.strip()))}</b>"]
     else:
@@ -615,8 +581,6 @@ def compose(note: str = "", leg: str = "settle") -> str:
     # noteless, scoreless run needs a synthesized line so the message is never just a banner.
     if not head.strip() and not scored[1] and quiet[1]:
         out += ["", quiet[1][0]]
-    if events[1]:
-        out += [""] + events[1]
     if actions:
         out += ["", f"⚠️ <b>DO NOW ({len(actions)})</b>"]
         for i, a in enumerate(actions):

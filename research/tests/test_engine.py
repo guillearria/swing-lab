@@ -118,3 +118,21 @@ def test_conviction_split_is_diagnostic_and_groups_unstated(monkeypatch, capsys)
     assert "high 1cl med +2.0% 1op" in out         # both counts, both labels
     assert "unstated 0cl 1op" in out
     assert "medium" not in out                     # absent tier renders nothing
+
+
+def test_forward_track_states_the_decided_verdict(monkeypatch, capsys):
+    """[ARC 5 #18 · #19] The engine renders bets.VERDICT and never recomputes the bar: before
+    2026-10-16 a settling record drifting above the bar would have printed PASS here."""
+    rows = [_bet("closed", ticker=f"T{i}", excess="+5.00") for i in range(31)]
+    rows.append(_bet("open", ticker="OPN"))
+    _wire(monkeypatch, rows)
+    E.forward_track()
+    out = capsys.readouterr().out
+    assert "DECIDED: FAIL" in out and "VERDICT FAIL" in out
+    assert "PASS" not in out and "accruing" not in out
+    assert "general catalogue (pooled long-only): 31 settled (+1 open, record completes ~" in out
+    assert "Generation RETIRED" in out
+
+
+def test_arc5_forward_reads_are_a_probe_row():
+    assert ("reading", "LLM forward reads, pooled (Arc 5)", "FAIL", False) in E.PROBES

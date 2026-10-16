@@ -153,3 +153,20 @@ def test_og_card_is_the_masthead_in_light_tokens():
     assert "prefers-color-scheme" not in card            # deterministic: light tokens only
     assert "--page: #f9f9f7" in card and 'url("file:///x/newsreader.woff2")' in card
     assert "width: 1200px; height: 630px" in card
+
+
+def test_performance_states_the_result_in_plain_words():
+    """[ARC 5 #18 · #19] The decided result is on the page, rendered from bets.VERDICT (never
+    from the still-settling record), in reader language — the no-jargon test still holds."""
+    page = site.render(BETS)
+    perf = page.split('<section id="performance">')[1].split("</section>")[0]
+    assert "<b>Result:</b> the first 30 scored predictions did not beat their benchmarks" in perf
+    assert "1.7% behind" in perf and "43% finished ahead" in perf
+    assert "No new predictions are being made" in perf
+
+
+def test_data_through_advances_with_settlements():
+    """With generation retired no new logged_at dates arrive; a settling row's EXIT bar must
+    move the stamp, or the page freezes at the last read while bets settle into January."""
+    row = _long("AAA", "+5.00", entry="2026-10-14", logged="2026-10-13", h="63")
+    assert site.data_through([row]) == "2027-01-13"     # entry + 62 trading days, holidays out

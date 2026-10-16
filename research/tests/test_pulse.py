@@ -27,8 +27,9 @@ def test_scored_long_posts_verdict_grade_numbers_only():
     now = [_long("AAA", "+5.00"), _long("MU", "-7.99")]
     text = pulse.compose(now, head)
     assert "MU -7.99% vs SPY (21d)" in text
-    assert "Pool: 2/30 settled longs" in text and "median" in text
-    assert "publishes pass OR fail" in text and "Not investment advice." in text
+    assert "Record: 2 settled longs" in text and "median" in text
+    assert "Verdict FAIL at n=30 (2026-10-02), final." in text
+    assert "published pass OR fail; it failed" in text and "Not investment advice." in text
     assert pulse._x_len(text) <= 280
 
 
@@ -121,3 +122,12 @@ def test_run_dry_never_posts(monkeypatch, tmp_path, capsys):
                         lambda text: (_ for _ in ()).throw(AssertionError("posted on dry run")))
     assert pulse.run([]) == 0
     assert "dry run" in capsys.readouterr().out
+
+
+def test_tally_never_recounts_the_verdict():
+    """Until 2026-10-16 _tally recomputed PASS/FAIL at the current n — a PUBLIC repeated look:
+    a record drifting above the old bar would have posted PASS. It renders bets.VERDICT only."""
+    rows = [_long(f"T{i:02d}", "+9.00") for i in range(40)]
+    line = pulse._tally(rows)
+    assert "PASS" not in line and "AT BAR" not in line
+    assert line.endswith("Verdict FAIL at n=30 (2026-10-02), final.")

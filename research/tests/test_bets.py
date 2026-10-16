@@ -378,15 +378,36 @@ def test_catalogue_survives_a_save_crash_and_malformed_rows_are_named(tmp_path, 
     assert p.read_text() == original
 
 
-def test_wilcoxon_p_is_withheld_below_the_bar(capsys, monkeypatch):
-    """ONE look [ARC 5 #14]: the verdict statistic is not served daily. `show` printed p=0.906
-    at n=5 on 2026-08-19 — an independent review caught it on the same surface the entry cites
-    for reproduction. Below N it must not appear; at N it must."""
-    B.show([_closed("T%d" % i, "long", "+2.00") for i in range(5)])
-    assert "p=" not in capsys.readouterr().out
+def test_show_serves_the_one_look_never_a_recomputed_p(capsys):
+    """ONE look [ARC 5 #14], and it fired [#18]. `show` printed p=0.906 at n=5 on 2026-08-19
+    and, after the look, a fresh p at every n (0.717 at n=38 on 10-12) — the repeated look the
+    rule forbids. Now the only p on the surface is the encoded one, at any n, and the record
+    line carries none — even when the settling record drifts far above the old bar."""
+    for n in (5, B.BAR_N, 40):
+        B.show([_closed("T%d" % i, "long", "+9.00") for i in range(n)])
+        out = capsys.readouterr().out
+        assert out.count("p=") == 1 and f"p={B.VERDICT['p']:.3f}" in out
+        assert "VERDICT FAIL" in out and "PASS" not in out
+        record = next(l for l in out.splitlines() if "record, settling" in l)
+        assert "p=" not in record and f"n={n}" in record
 
-    B.show([_closed("T%d" % i, "long", "+2.00") for i in range(B.BAR_N)])
-    assert "p=" in capsys.readouterr().out
+
+def test_verdict_constant_reproduces_at_the_look_commit():
+    """bets.VERDICT is the ONE encoding of [ARC 5 #18]; it must be exactly what the pooled rule
+    computes over the catalogue AS COMMITTED at the look. Skips on a shallow clone."""
+    import csv, io, statistics, subprocess
+    v = B.VERDICT
+    try:
+        raw = subprocess.check_output(["git", "show", f"{v['commit']}:{B.CATALOGUE}"], text=True,
+                                      stderr=subprocess.DEVNULL)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pytest.skip("look commit not reachable (shallow clone)")
+    ex = B.excess_values(B.verdict_rows(list(csv.DictReader(io.StringIO(raw)))))
+    assert len(ex) == v["n"]
+    assert round(statistics.median(ex), 2) == v["median"]
+    assert round(100 * sum(e > 0 for e in ex) / len(ex)) == v["beat"]
+    assert round(B.wilcoxon_p(ex), 3) == v["p"]
+    assert v["result"] == "FAIL" and v["median"] <= B.BAR_MEDIAN       # failed as recorded
 
 
 def test_next_maturity_skips_nyse_holidays(frozen):

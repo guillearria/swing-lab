@@ -51,6 +51,9 @@ PROBES = [
     # by ~2026-07-08; only 2 were ever logged. The N=20 branch became unreachable on the calendar,
     # so the deadline branch decided it: log NULL, stop expanding. FINDINGS 2026-08-02.
     ("reading",    "insider-cluster + agent read (forward)","NULL",    False),
+    # The forward LLM-read catalogue, pooled long-only [Arc 5 #7 · #12a]: ONE look at 678b660,
+    # FAIL, final [ARC 5 #18]. The verdict is rendered from bets.VERDICT so it cannot fork.
+    ("reading",    "LLM forward reads, pooled (Arc 5)",      "FAIL",    False),
 ]
 
 
@@ -68,9 +71,11 @@ def _add_trading_days(d: date, n: int) -> date:
     return tradingdays.add(d, n)
 
 
-def _first_maturity(rows, horizon_of) -> date | None:
-    """Earliest an OPEN bet could settle = min(logged_at + horizon trading days). Computed,
-    not hardcoded (single source of truth) so '0 settled' reads as in-flight, not stuck."""
+def _last_maturity(rows, horizon_of) -> date | None:
+    """When the open RECORD completes = max(logged_at + horizon trading days) over OPEN bets.
+    Computed, not hardcoded (single source of truth). Was _first_maturity (min) while the pool
+    accrued toward its look; the look is decided [ARC 5 #18], so the date that matters now is
+    when the last bet settles."""
     out = []
     for r in rows:
         if r["status"] != "open" or not r.get("logged_at"):
@@ -79,38 +84,30 @@ def _first_maturity(rows, horizon_of) -> date | None:
             out.append(_add_trading_days(date.fromisoformat(r["logged_at"][:10]), horizon_of(r)))
         except ValueError:
             continue
-    return min(out) if out else None
+    return max(out) if out else None
 
 
 def forward_track():
-    """Live forward-READING track vs its pre-registered bars (FINDINGS Arc 5 / Arc 3).
-
-    The active frontier (mechanical mine is closed). CSV-only — no network."""
+    """The forward-READING track: its decided verdict + the still-settling record (FINDINGS
+    Arc 5 / Arc 3). Decided FAIL [ARC 5 #18], generation retired [ARC 5 #19]. CSV-only."""
     from research import bets, movers
-    print("\n  FORWARD READING TRACK (live, accruing — the active frontier):")
-
-    # ONE pooled general verdict [Arc 5 #7] — fast (≤30d) merged into core; horizon is now a
-    # DIAGNOSTIC label, not a separate goalpost (halves time-to-verdict, no scientific loss).
+    print("\n  FORWARD READING TRACK — DECIDED: FAIL, final [ARC 5 #18]; generation retired "
+          "[ARC 5 #19]:")
+    # The verdict is rendered from bets.VERDICT only. The old branch here recomputed the bar at
+    # the current n and would have printed PASS had the settling record drifted above it — the
+    # repeated look [ARC 5 #14] forbids, live from 2026-10-02 to 10-16.
     b = bets._load()
     bopen = sum(1 for r in b if r["status"] == "open")
-    mat = _first_maturity(b, lambda r: int(r["horizon_d"]))
-    matstr = f", first settles ~{mat}" if mat else ""
-    bar = (f"N≥{bets.BAR_N} & median>+{bets.BAR_MEDIAN:.0f}% & beat>{bets.BAR_BEAT:.0f}% "
-           f"& Wilcoxon p≤{bets.WILCOXON_ALPHA} [Arc 5 #7 · long-only #12a · #14 ONE LOOK]")
+    mat = _last_maturity(b, lambda r: int(r["horizon_d"]))
+    matstr = f", record completes ~{mat}" if mat else ", record complete"
+    print(f"    {bets.verdict_line()}")
     s = bets.stats(b)
     if s:
         n, _, med, beat = s
-        # The FULL bar, all four gates — the Wilcoxon is computed, not decorative [ARC 5 #12a].
-        if n >= bets.BAR_N and med > bets.BAR_MEDIAN and beat > bets.BAR_BEAT:
-            p = bets.wilcoxon_p(bets.excess_values(bets.verdict_rows(b)))
-            verdict = (f"PASS (p={p:.4f} ≤ α)" if p is not None and p <= bets.WILCOXON_ALPHA
-                       else f"shape passes but p={'n/a' if p is None else f'{p:.3f}'} > α — NOT significant")
-        else:
-            verdict = "accruing"
         print(f"    general catalogue (pooled long-only): {n} settled (+{bopen} open{matstr}) | "
-              f"median {med:+.2f}% beat {beat:.0f}% → bar {bar}: {verdict}")
+              f"median {med:+.2f}% beat {beat:.0f}% — record only, never a second look")
     else:
-        print(f"    general catalogue (pooled long-only): 0 settled (+{bopen} open{matstr}) | bar {bar}")
+        print(f"    general catalogue (pooled long-only): 0 settled (+{bopen} open{matstr})")
     # Group renderer for every diagnostic split. BOTH counts, BOTH unit labels, every branch —
     # until 2026-08-04 a group with ≥1 closed row rendered only "Ncl med X%" and silently
     # dropped its open count: post-earnings-drift showed "1cl" while hiding ~20 open bets, so
@@ -183,8 +180,8 @@ def forward_track():
           "       2 takes ever logged). The candidate stream itself audited CLEAN ([ARC 3 #1d]:\n"
           "       0-2 entity-stack artifacts of 18 vs a ≥7 threshold) — it ran out of calendar,\n"
           "       not credibility. → ONE verdict silo, not two.")
-    print("    Generate more: one iteration of research/READ_LOOP.md (scheduled). "
-          "Log every take; never drop losers.")
+    print("    Generation RETIRED [ARC 5 #19]: no new bets; the record settles to completion. "
+          "Next hypotheses: the literature pipeline (research/BACKLOG.md).")
 
 
 def main():
@@ -217,7 +214,8 @@ def main():
     print(f"    Our {real} 'real' results are CORRELATED risk-reducers (same fear/timing/trend "
           "family),")
     print("    and ZERO beat SPY risk-adjusted — fully consistent with NO true free alpha.")
-    print("\n  CONCLUSION: the free mechanical edge is not there for us. Banked usable result:")
+    print("\n  CONCLUSION: the free mechanical edge is not there for us, and the forward LLM read")
+    print("    FAILED its one pre-registered look [ARC 5 #18]. Banked usable result:")
     print("    dual momentum = SPY return, HALF the drawdown (ret/|DD| 2.2×) — a better risk")
     print("    SHAPE, not alpha. Live signal: `python3 -m research.dualmom current`.")
     print("    Method/asset: research/SKILL.md. Audit trail: research/FINDINGS.md.")

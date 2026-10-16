@@ -314,10 +314,34 @@ def _svg_bars(pts: list[dict]) -> str:
 
 def data_through(bets_rows: list[dict]) -> str:
     """Newest date visible in the ledger — the page's ONLY timestamp (data-derived, so the
-    render is deterministic and an unchanged ledger produces an unchanged page)."""
+    render is deterministic and an unchanged ledger produces an unchanged page).
+
+    A closed row contributes its EXIT bar (entry + horizon−1 trading days), not just its entry:
+    with generation retired [ARC 5 #19] no new logged_at dates arrive, and without the exit
+    dates the stamp would freeze at the last read while bets keep settling into January."""
+    from datetime import date
+    from research import tradingdays
     dates = [r["logged_at"][:10] for r in bets_rows if r.get("logged_at")]
     dates += [r["entry_date"][:10] for r in bets_rows if r.get("entry_date")]
+    for r in bets_rows:
+        if r.get("status") == "closed" and r.get("entry_date") and r.get("horizon_d"):
+            try:
+                dates.append(tradingdays.add(date.fromisoformat(r["entry_date"][:10]),
+                                             int(r["horizon_d"]) - 1).isoformat())
+            except ValueError:
+                continue
     return max(dates) if dates else ""
+
+
+def _result() -> str:
+    """The decided result in reader language, rendered from bets.VERDICT only (never from the
+    still-settling record — the page must not drift with it)."""
+    from research import bets
+    v = bets.VERDICT
+    return (f'<p class="frame"><b>Result:</b> the first {v["n"]} scored predictions did not beat '
+            f'their benchmarks; the typical one finished {bets.gap_words(v["median"])} and '
+            f'{v["beat"]}% finished ahead. No new predictions are being made; open ones are '
+            f'scored to the end.</p>')
 
 
 def _tiles(bets_rows: list[dict]) -> str:
@@ -573,6 +597,7 @@ the outcome and scored mechanically against a benchmark. None are revised.</p>
 
 <section id="performance">
 <h2>Performance so far</h2>
+{_result()}
 <p class="frame">This is the complete record of these predictions, not a highlight reel: each
 one is logged before its outcome and scored mechanically against a benchmark, wins and losses
 alike, and none are revised after the fact. One disclosed exception: an entry logged in July
@@ -588,7 +613,7 @@ no signal here has been shown to make money.</p>
 <section id="about">
 <h2>About</h2>
 <h3>What this is</h3>
-<p>Swing Lab publishes stock market predictions before their outcomes are known. Each one
+<p>Swing Lab published stock market predictions before their outcomes were known. Each one
 names a company, a direction, a time window and the benchmark it has to beat, with the
 reasoning written down at the time. When the window closes, the result is scored
 automatically against that benchmark. Wins and losses both stay on the page, and nothing is
