@@ -16,11 +16,14 @@ follows settlements) · `d49376a` the read leg and the scan feeds out of every a
 `enabled:false` (prompt kept — it holds the standing exclusion list; NEVER delete it); the settle
 prompt was re-sent whole (Arc 5 closed, new tally wording, retired shapes listed as correct).
 
-**Verify live (owner or next session):** the first settle after 2026-10-16 sends ONE 📋 with no
-read-brief or feed DO-NOW and stamps DELIVERED; the next weekday 11:30 UTC brings NO `read:` commit;
-both watchdog runs stay green (`gh run list --workflow=watchdog.yml`); HQ's board shows the read row
-under `_off`. The manual watchdog run on 2026-10-16 was green and printed "📬 issue watch: nothing
-waiting".
+**Verified live 2026-10-18:** the 10-16 and 10-17 settles committed and stamped DELIVERED; no
+`read:` commit and no `read` push-log row since the disable; all six watchdog runs since 10-16 green;
+the 10-18 daytime run carried `--issues` and printed "📬 issue watch: nothing waiting"; a digest dry
+run shows no read-brief or feed DO-NOW. HQ's board has the read row under `_off` (`1e57edf`).
+
+**Next session, start here:** (1) the owner's go on the lottery-avoidance gate (Phase 2 status
+below) — pre-register, blind review, one run; (2) the README/site overhaul, which starts with the
+owner naming two or three sites he likes; (3) nothing else is owed until the January wind-down.
 
 **Why the plan changed before execution [ARC 5 #20].** The three mover-ledger tests proposed 10-14
 (small-cap fade, small-cap drift, large-cap continuation) were withdrawn UNTESTED: scored against
