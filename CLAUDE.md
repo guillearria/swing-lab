@@ -85,7 +85,8 @@ Least words possible. Lead with the answer. Short sentences. No preamble, recap,
 hedging, or niceties. Be direct. Caveman = brevity, not stupid.
 
 ## Where things are
-- `README.md` (top level) — the single control panel: every live command + what's where.
+- `COMMANDS.md` (top level) — the single control panel: every live command + what's where.
+  `README.md` is the stranger-facing page: one screen, plain words (owner, 2026-10-20).
 - `python3 -m research` — live status: scoreboard + forward bets + dual-momentum signal.
 - `research/FINDINGS.md` — READ FIRST. The digest: every test, its number, its verdict
   (closed-arc log entries live verbatim in `research/FINDINGS_ARCHIVE.md` — reach back only when

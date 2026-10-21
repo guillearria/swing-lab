@@ -1,0 +1,105 @@
+# swing-lab: commands and operations
+
+_The operator's control panel: every live command, the automation, and what's where. The stranger-facing page is [README.md](README.md)._
+
+A trade-signal **research** project, run in public. An LLM read live market situations and
+pre-registered falsifiable calls — ticker, direction, horizon, benchmark, pass/fail bar —
+BEFORE the outcome; a deterministic pipeline settles and scores every one against its
+benchmark, wins AND losses, takes AND skips, so the record cannot be cherry-picked. **That
+forward test FAILED its one pre-registered look on 2026-10-02** (`research/FINDINGS.md`
+[ARC 5 #18]): generation is retired and the open calls settle to completion. Having
+rigorously shown the free mechanical edges aren't there (see `research/FINDINGS.md`), the
+project runs a **falsification engine** that kills bad ideas cheaply and surfaces the rare
+lead. The ledger is the product. Live scoreboard: the GitHub Pages site of this repo.
+
+> **Not investment advice.** This is an educational research log, not a recommendation
+> service. Most results are paper/counterfactual; the experiment's premise is that no signal
+> here is proven until its pre-registered bar passes. Do not risk money you cannot afford to
+> lose. Past performance does not indicate future results. The author may at times hold
+> positions in securities mentioned. Use at your own risk; the author assumes no
+> responsibility for your trading results.
+
+**Edge graduation (standing rule).** If a probe ever passes its pre-registered bar, its live
+signal generation graduates to a private repo BEFORE real capital is sized on it; the
+framework, the method, and this ledger stay public. (The freqtrade seam: engine public,
+alpha private.) Until that day, everything is here.
+
+License: MIT. This is the one place to see every command.
+
+## See everything (start here)
+```bash
+python3 -m research            # live status: scoreboard + forward bets + signal
+python3 -m research help       # this command index
+```
+
+## Live commands
+| Command | What it does |
+|---|---|
+| `python3 -m research` | Live status panel (the dashboard) |
+| `python3 -m research.engine` | Falsification **scoreboard** — every probe + verdict + multiple-testing check |
+| `python3 -m research.bets show` | Forward-bet **catalogue** (Claude's pre-registered future calls) |
+| `python3 -m research.bets add TICKER long 63 SPY "thesis" --tag=scenario --conviction=high|medium` | **RETIRED with generation [ARC 5 #19].** Log a forward bet (tag = scenario type). **Admission is LONG-ONLY above a $5M median-dollar-volume floor, fail-closed, code-enforced [ARC 5 #12a]** — a REFUSED add is the rule working; shorts return only via the SKILL re-arm protocol |
+| `python3 -m research.bets settle` | Score matured bets vs their benchmark |
+| `python3 -m research.movers` | **`scan`/`decide` RETIRED with the read routine [ARC 5 #19]; `settle`/`show` still run.** Daily mover scan, TWO cohorts (S&P 500 + the 400/600 **tail** [ARC 5 #11]) = the general candidate **denominator** (`scan` / `decide` / `settle` / `show`); `settle` scores take+skip fwd vs SPY = the "too conservative?" diagnostic [ARC 5 #9] |
+| `python3 -m research.paths` | Settled-bet **path diagnostic** [PATHS #1]: where each bet's daily excess PEAKED vs where the horizon scored it, with a driftless-noise reference (maxima of noise are positive — the reference keeps a raw peak honest). **DESCRIPTIVE only, read-only, never in daily.sh/digest**; an exit-rule change needs its own fresh pre-registration |
+| `python3 -m research.dualmom current` | Dual-momentum core — what to hold this month |
+| `python3 -m research.book` | **The RETIRED real-money book [ARC 5 #12] — TERMINAL since 2026-08-18** (liquidated 08-17; closure FINDINGS [ARC 5 #13]/#13a — the account number is the owner's inherited book, not the system's verdict, which lives solely in the bets ledger): every command prints one BOOK CLOSED line; `book.csv`/`book_equity.csv` stay tracked as frozen evidence. Long-realm personal assets live in the private long-term repo, never here |
+| `python3 -m research.orders show` | **`place` RETIRED [ARC 5 #19]; [ORDERS #1] closed UNREACHABLE-AS-WRITTEN.** **COUNTERFACTUAL working orders [ARC 5 #12a]** — `place TICKER long\|short STOP H BENCH` computes the LIMIT off the last complete bar (no sizing — there is no cash; blank shares); `check` resolves pending orders against real bars (filled/expired) and scores both forward at 21d ([ORDERS #1] band diagnostic, N≥20 by 2026-12-31); `cancel TICKER "why"` kills a still-PENDING one. `placed`/`pulled` retired with the broker leg. A limit, not a quoted price — the point price it replaced decayed 1.07%/2.42% by the open/close [FINDINGS 2026-08-03]. **Every fill is a counterfactual by construction; the fill model is unverifiable against broker truth until real money returns** |
+| `python3 -m research.tools.slippage_audit` | Reproduce the numbers behind the band + expiry (slippage medians, fill rate per band, sessions-to-fill) |
+| `python3 -m research.notify "msg"` | **Manual Telegram test send — HUMANS ONLY, a routine never invokes this** (routines push via `digest --notify`; config status with no arg) — needs `TELEGRAM_BOT_TOKEN`+`TELEGRAM_CHAT_ID` in env, fail-soft when unset; HTML mode + newline-safe truncation + plain retry on rejected HTML |
+| `python3 -m research.digest` | **THE per-run Telegram message** (HTML), **digest v4 [MSG 2026-08-25]** — a PULSE + ALARM channel that NARRATES the run instead of repeating a static scoreboard: a quiet settle is one sentence ("Nothing matured today — N bets running"), a scoring settle folds each settlement in as a 📊 SCORED `<blockquote>` card + ONE pool-tally sentence (the separate 📊 message is RETIRED — `bets.mark_notified()` stamps `notified` only after PUSH DELIVERED, so a lost push re-renders the cards next digest), the read opens with 1–2 sentences of what its run did above its 🟢 NEW BET card(s). 🏁 milestones + at-bar/ahead-of-bar flags fire only on a crossing; then ⚠️ DO-NOW **only when nonempty** (paste-ready commands) and the 📈 next-scoring line. Stats vocabulary (Σ/p/α), shorts, orders/band, movers denominators: CLI-side only. `--slim` = the read leg's push-log stamp (composition no longer branches on it). `--notify` prints a delivery VERDICT (`PUSH DELIVERED` / `REJECTED` / `UNCONFIRMED` — re-send ONLY on REJECTED), exits 1 on a non-delivered send, and stamps `research/data/push_log.csv` so a stranded push is flagged by the next delivered message. **Same-day guard [2026-09-01]:** a second `--notify` of the same leg on a UTC day already stamped DELIVERED/UNCONFIRMED prints `PUSH SKIPPED`, sends nothing, exits 0 — the "exactly ONE message per leg" rule now lives in code, not only in the routine prompt |
+| `python3 -m research.site` | **The PUBLIC DASHBOARD page [P7a]** — regenerates `docs/index.html` from the catalogue (stdlib, deterministic, no clock). **Audience contract (owner, 2026-08-15): end users get predictions + a performance summary, zero method prose** — tiles, cumulative-excess curve, per-prediction bars, FULL sortable/filterable catalogue (filters are views, never removals; no-jargon-leak + no-book/no-dollars both test-enforced). Regenerated + committed by the settle run |
+| `scripts/og_image.sh` | **One-off**, not a daily step: re-renders `docs/og-image.png` (the 1200×630 social card) from `site.og_card()` — the masthead's own tokens, mark, wordmark and vendored Newsreader (`docs/fonts/`, OFL) — via headless Chrome. Run after a masthead/token change, commit the PNG. Design floor F6 (2026-09-13) |
+| `python3 -m research.pulse` | **The X social pulse [P7b] — DETERMINISTIC AUTOPOST by policy** (BACKLOG P7b, 2026-08-15): code renders a post from the committed ledgers (newly scored verdict rows + 🏁 milestones, pool tally vs bar — verdict-grade numbers ONLY, never raw scan output) and daily.sh `--post`s it unconditionally; a per-post human approve would be publication-layer selection bias. ≤1 POSTED/UTC-day cap, tri-state delivery verdict stamped in `research/data/pulse_log.csv` (never re-post on UNCONFIRMED), "Not investment advice." standing. INERT until the owner sets `X_API_KEY`/`X_API_SECRET`/`X_ACCESS_TOKEN`/`X_ACCESS_SECRET` (local .env + settle trigger cloud env); bare invocation = dry-run print. LLM-authored prose stays out by construction (redlist + human gate lane) |
+| `python3 -m research.heartbeat` | **Fallback 🚨 proof-of-life** — daily.sh fires it ONLY when a step or the digest push failed; on a clean day the digest IS the message. A 🚨 (any step named) ALWAYS sends; the ✅ is a DRY RUN unless you pass `--notify` [2026-08-21] — bare invocation used to push a ✅ success ping, the one message the contract forbids |
+| `python3 -m research.watchdog` | **External dead-man's switch** — 🚨 if no ledger commit in 36h OR a due settle push has no DELIVERED stamp in `push_log.csv`; on the 12:30 UTC run, one 📬 line per third-party issue/PR with no owner reply (`--issues`, added 2026-10-16). Runs as a **GitHub Action** (`.github/workflows/watchdog.yml`, 12:30 + 23:30 UTC, since 2026-09-13) — a different platform from the routines it watches; every other alarm is emitted BY the daily run, so none can fire when the daily run is what died. Red run = email; 🚨 needs the repo's `TELEGRAM_*` secrets |
+| `.github/workflows/prune.yml` | **Run-branch prune** (daily 04:00 UTC, no command to run): deletes the cloud routines' leftover `claude/*` run branches — one per run, pushed by the cloud stop hook after the commits are already on master. Merged-into-master only; never `master`, never `settle-backup/*`. Its own workflow so a red run can't read as a watchdog alarm [2026-09-15] |
+| `/loop run one iteration of research/LOOP.md` | Run the **autonomous loop** (Claude generates → tests → red-teams → logs) |
+
+## Automation (cloud routines — laptop-off-safe, the PRIMARY path)
+One scheduled cloud `/schedule` routine (settle) and one GitHub Action (the watchdog) run unattended; the read routine is DISABLED:
+- **settle** (DAILY): runs `scripts/daily.sh` (single-flight: a second concurrent copy prints "settle already running" and exits 0 [2026-09-01]) → scores matured bets + movers (take/skip fwd vs SPY), commits the ledgers (free, deterministic, idempotent); pushes the 📋 digest (+ 📊 per scored settlement — 🚨 has meant FAILURE ONLY since v3); the 🚨 heartbeat fires only if a step or the digest push failed (NEVER a ✅ success ping).
+- **read** — **DISABLED 2026-10-16 [ARC 5 #19]** (trigger kept, `enabled:false`; it holds the standing exclusion list). It ran `research/READ_LOOP.md` pre-market on weekdays: the mover scan, a batch of pre-registered LONG-ONLY bets, one counterfactual order per take-carrying run, and the 📖 brief. Its pooled test FAILED [ARC 5 #18].
+
+**Notification contract (2026-07-03; v2 2026-08-14; v3 2026-08-18; v4 2026-08-25 [MSG] — Telegram is a PULSE + ALARM channel): every scheduled run pushes ONE message — SILENCE = BROKEN; a clean day = exactly ONE 📋 SETTLE, period (the 📖 READ leg retired 2026-10-16 [ARC 5 #19]).** 📋/📖 = a few sentences of what the run DID, in natural speech — plain English, no acronym/shorthand packing, ONE paragraph at most (the digest merges narrative lines into one paragraph by construction; a quiet settle = one sentence; the read narrates its own morning) + ⚠️ DO-NOW (only when nonempty) + 🟢 NEW BET card(s) (read) + 📊 SCORED card(s) folded into the digest on days bets mature (`notified` stamps only after PUSH DELIVERED) + the 📈 line; 🚨 = FAILURE ONLY (a broken step or dead push → check `cron.log`); 📣 = the X mirror once P7b activates (locked requirement). ESCALATION beyond the daily two: only 🚨 failures · 📬 third-party issues/PRs awaiting a reply (watchdog, once a day) · verdict events · spend-gate proposals · anything genuinely needing a human.
+
+- **watchdog** (GitHub Action, twice daily — NOT a cloud routine since 2026-09-13): runs `python3 -m research.watchdog --notify` → 🚨 only if no ledger commit has landed in 36h or a due push was never confirmed delivered. It is deliberately NOT part of daily.sh and NOT on the routines' platform: a check that runs inside the thing it watches cannot report that thing dying. Residual, said plainly: GitHub's scheduler is now the platform that can die silently — two platforms watching each other is the best a free stack gets and nothing reports that.
+
+Manage the settle routine with `/schedule` (list / run / edit); the watchdog is `gh run list --workflow=watchdog.yml`. Generation is retired; scoring = `settle`; liveness = the watchdog Action.
+Bets pooled into ONE general verdict, **DECIDED FAIL at `678b660` [ARC 5 #18]** (`python3 -m research.engine`); horizon (a **fast 21d sleeve** vs the 63/126d **core**) is a diagnostic label for faster feedback, not a separate bar [Arc 5 #7].
+
+## The docs (what's where)
+- **`research/ARCHITECTURE.md`** — the layer map: how bets / cases / book / findings communicate.
+- **`research/cases/`** — case studies: why a notable move happened → a reusable pattern (each
+  births a scored bet; a few stay as pattern notes). First pair: ILLR + SPCX.
+- **`research/FINDINGS.md`** — the research audit trail: every test, its number, its verdict. Read first.
+  Closed-arc entries archived verbatim in `research/FINDINGS_ARCHIVE.md`.
+- **`research/BACKLOG.md`** — engineering changelog + backlog + stale map (cold-session refresh).
+- **`research/SKILL.md`** — the method + the rules earned from losses (the reusable asset).
+- **`research/LOOP.md`** — how the autonomous research loop runs.
+- **`CLAUDE.md`** — the operating contract (how the agent works on this repo).
+- **`FINANCES.md`** — private baseline + experimental read (gitignored).
+- **`research/book.csv`** — the CLOSED book's frozen positions/cash/P&L (tracked in git — the experiment's evidence ledger, public by owner decision [P8]; TERMINAL since 2026-08-18 [ARC 5 #12]).
+
+## The system in one breath
+**Mechanical track (closed):** fixed rules backtested on history *instantly* → the engine
+scoreboard (**zero confirmed** to beat buy-and-hold SPY risk-adjusted — proved where money
+*isn't*, cheaply; the free mine is exhausted; live probe count: `python3 -m research.engine`). **Forward track (DECIDED: FAIL [ARC 5 #18];
+generation retired [ARC 5 #19]):** Claude read live situations and logged pre-registered bets vs a
+benchmark — generated by the `read` routine (now disabled), scored by the `settle` routine, which
+keeps scoring the open bets to completion (~2027-01-13). The
+one safeguard kept while scaling: pre-register every bet, log every candidate, never drop a
+loser (that honesty is the only thing dividing this from a false-positive machine). The verdict
+fired on 2026-10-02 and FAILED; the paid-data trigger fires only on a pass, so it did not. Next
+hypotheses come from the published literature, each gated on official long-history data before
+anything is built (`research/BACKLOG.md`).
+
+## Evidence (dormant — kept for reproducibility, not run day-to-day)
+- **Arc-1/2 probes** (cited by `FINDINGS.md` `Reproduce:` lines): `dip_index`, `robust`,
+  `decorrelate`, `sleeves`, `crypto_trend`, `vix_gate`, `vix_fear`, `fng_crypto`, `regime`,
+  `portfolio`, `disaster`, `disaster_port`, `index_deletion`, `lockup`.
+- **v1 capture→settle→paper pipeline** — **DELETED 2026-08-02** (`capture`, `news`, `db`,
+  `backtest`, `paper`, `reference/`, `db/research.db`). Nothing imported them and no `Reproduce:`
+  line cited them; git history has them. `momentum` and `universe` were wrongly listed with them
+  until 2026-08-02 — both are **LIVE** (imported by `movers.py` on every scan), and `outcome` is
+  imported by the archive-cited `dip_index`. All three stay.

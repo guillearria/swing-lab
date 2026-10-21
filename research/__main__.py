@@ -3,7 +3,7 @@
   python3 -m research          live status: scoreboard + forward bets + signal
   python3 -m research help     the command index
 
-Full index in README.md · audit trail in FINDINGS.md · method in SKILL.md ·
+Full index in COMMANDS.md · audit trail in FINDINGS.md · method in SKILL.md ·
 autonomous loop in LOOP.md.
 """
 import sys
@@ -30,8 +30,8 @@ LIVE commands:
 
 `scan`/`settle`/`decide` WRITE ledgers; bare invocation is always the read-only `show`.
 Automation: settle (cloud routine, daily) · watchdog (GitHub Action, twice daily) · read DISABLED [ARC 5 #19]
-Docs: README.md (index) · ARCHITECTURE.md (layer map) · FINDINGS.md (audit) · SKILL.md (method) · LOOP.md
-(The snapshot/settle/paper/backtest v1 pipeline is dormant — see README.)"""
+Docs: COMMANDS.md (index) · ARCHITECTURE.md (layer map) · FINDINGS.md (audit) · SKILL.md (method) · LOOP.md
+(The snapshot/settle/paper/backtest v1 pipeline is dormant — see COMMANDS.md.)"""
 
 
 def _list_cases() -> None:
