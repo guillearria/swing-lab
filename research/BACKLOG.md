@@ -97,6 +97,9 @@ runners.
   plainly.
 
 ### Outside-activity watch for every public repo (a brief for HQ)
+**COVERED 2026-10-21 by Phoenix's daily listen job** (the public `phoenix` repo): outside issues, pull
+requests, comments, stars and forks on every public repo land in its STATE.md and ledger each
+day. The 📬 Telegram line stays this repo's own. Nothing left to brief.
 The 📬 watch covers swing-lab only. The other public repos need the same; HQ's daily gather is the
 natural home. Write it as a brief for an HQ session — this repo never edits HQ's observers.
 
