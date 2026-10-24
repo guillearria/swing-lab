@@ -71,10 +71,13 @@ re-arm protocol is met.
    one-day gain last month underperform the next month: value-weighted high-minus-low MAX decile
    −1.03%/mo, four-factor alpha −1.18% (Bali, Cakici & Whitelaw 2011, 1962–2005). The long-only use
    is a negative screen — do not buy right after an extreme spike — the same family as the
-   small-cap spike fade that started Arc 6. Free official data: Chen & Zimmermann's Open Source
-   Asset Pricing carries the predictor; everything after publication is out of sample. Expect decay
-   (McLean & Pontiff) and possibly disappearance (as [GATE R1] found). **Next step: its own
-   pre-registration and blind review before anything runs** (BACKLOG).
+   small-cap spike fade that started Arc 6. **Gated 2026-10-24 — [GATE M1] PASSED as a screen**
+   (FINDINGS): in Jensen-Kelly-Pedersen's US common-stock terciles, 2011-03..2025-12, the middle
+   minus the spikiest third earned a CAPM alpha of +0.39%/mo (t=2.28) against +0.47 in the paper's
+   sample — little decay — but in episodes (≈0 over 2016–20), not separable from low volatility,
+   and only +0.20%/mo raw (t=1.1). A lead for the next single-name pre-registration to test, not a
+   claim. Chen & Zimmermann's Open Source Asset Pricing was NOT usable: its MaxRet universe has no
+   share-code screen, so leveraged and volatility ETPs sit in the lottery decile.
 2. **Price momentum — the literature's strongest survivor, blocked here by our own rule.**
    Value-weighted 6/6 and 11/1 momentum clear t>3 over 1967–2016 (Hou, Xue & Zhang). This repo
    already failed single-name momentum and graded the momentum ETF "NEAR" over 2013–2026, so the

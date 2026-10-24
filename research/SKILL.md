@@ -136,6 +136,12 @@ runs on this; the audit trail is `research/FINDINGS.md`.
   and three hypotheses were drafted on that. Against its own index one pattern shrank to beta and
   the other flipped sign. If two opposite-looking claims pass together, suspect the ruler first. A
   benchmark-free within-day spread (up-movers minus down-movers) is the cheap cross-check.
+- **A replication library's universe is a claim — read the code before the bar.** [GATE M1,
+  2026-10-24] Open Source Asset Pricing's MaxRet deciles sort every CRSP security with no share-code
+  screen, so leveraged and volatility ETPs — big one-day maxima, built-in decay — sat in the
+  "lottery stock" decile and would have pushed the test toward PASS. Two blind reviewers caught it
+  in the code, not the documentation. And when the names a screen removes carry more beta, judge it
+  by alpha: in a rising window a raw comparison scores the market, not the screen.
 - **Count independent periods and names, not rows.** [ARC 5 #20] A daily scan that dedups only on
   (ticker, date) re-logs one move every session it stays ranked: 2,211 rows were 488 names and ~2
   independent 21-day periods. A name logged 31 times is one observation, and a 63-day result from 7

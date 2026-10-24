@@ -47,9 +47,10 @@ PROBES = [
     ("forced-flow","Russell 2000 reconstitution",           "BLOCKED", None),
     ("vol-premium","selling vol / short variance",          "FAIL",    False),
     ("factors",    "cross-sectional factor ETFs (MTUM…)",   "NEAR",    False),
-    # [GATE M1] 2026-10-24: the short-list's last candidate — lottery-stock (MAX) avoidance after
-    # publication, JKP USA common-stock terciles, judged by CAPM alpha. Pre-registered; not yet run.
-    ("factors",    "lottery avoidance (MAX), post-2011, α",  "PENDING", None),
+    # [GATE M1] 2026-10-24: lottery-stock (MAX) avoidance after publication, JKP USA common-stock
+    # terciles, judged by CAPM alpha. PASS as a SCREEN: +0.39%/mo (t=2.28) — a lead for the next
+    # single-name pre-registration to test, not a strategy against SPY (hence None).
+    ("factors",    "lottery avoidance (MAX), post-2011, α",  "PASS*",   None),
     ("seasonality","calendar (Halloween, turn-of-month)",   "FAIL",    False),
     ("carry",      "bond curve carry (TLT/SHY)",            "FAIL",    False),
     ("reading",    "insider-cluster bare trigger",          "FAIL",    False),
@@ -212,7 +213,8 @@ def main():
           f"PASS*-unconfirmed lead {leads} | pending/blocked {pend}")
     print(f"  >>> CONFIRMED beat buy-hold SPY risk-adjusted: {beat} / {settled}  <<<")
     if leads:
-        print(f"  >>> {leads} PASS* LEAD awaiting OOS confirmation (vol-targeting) — the loop's next job  <<<")
+        names = ", ".join(name for _, name, v, _ in PROBES if v == "PASS*")
+        print(f"  >>> {leads} PASS* LEAD awaiting its claim-stage test ({names})  <<<")
 
     exp_fp = settled * 0.05
     print("\n  MULTIPLE-TESTING HONESTY:")

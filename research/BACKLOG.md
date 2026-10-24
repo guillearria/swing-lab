@@ -4,7 +4,20 @@ The ENGINEERING/structure log, distinct from `FINDINGS.md` (the RESEARCH/science
 from `python3 -m research` (live numbers). Purpose: a cold session can refresh on what changed,
 what's queued, and what NOT to touch — in one screen. Newest first. Holds no live numbers.
 
-## ▶ PICK UP HERE (2026-10-16 — Arc 5 closed · the reader retired · the next tests come from the literature)
+## ▶ PICK UP HERE (2026-10-24 — [GATE M1] PASSED as a screen · the literature short-list is used up)
+
+**Shipped 2026-10-24 (owner's go, same day):** `77f5bd6` the [GATE M1] pre-registration +
+`research/gate_lottery.py` + 17 tests, run once 5 s after it reached origin → PASS on all five
+conditions (FINDINGS [GATE M1] RESULT; engine row PASS*). The source moved from Open Source Asset
+Pricing (ETPs inside its MaxRet universe; Drive quota) to Jensen-Kelly-Pedersen's common-stock
+terciles before any data was read; four blind reviews, one blind re-derivation, all figures matched.
+
+**Next session, start here:** (1) the owner's call on Arc 6 — M1's PASS is the gate Phase 3 below
+waits for, but a test needs a single-name strategy to carry the filter, and none is live; a
+proposal comes first (CLAUDE.md lanes); (2) the README/site overhaul, which starts with the owner
+naming two or three sites he likes; (3) nothing else is owed until the January wind-down.
+
+## (previous head, 2026-10-16 — Arc 5 closed · the reader retired · the next tests come from the literature)
 
 **Shipped 2026-10-16, owner-approved plan (2026-10-15), 262 → 258 tests green — the feed, read-leg and milestone tests went with
 their code; new verdict, alarm and watch tests came in.** Commits:
@@ -21,16 +34,14 @@ prompt was re-sent whole (Arc 5 closed, new tally wording, retired shapes listed
 the 10-18 daytime run carried `--issues` and printed "📬 issue watch: nothing waiting"; a digest dry
 run shows no read-brief or feed DO-NOW. HQ's board has the read row under `_off` (`1e57edf`).
 
-**Next session, start here:** (1) the owner's go on the lottery-avoidance gate (Phase 2 status
-below) — pre-register, blind review, one run; (2) the README/site overhaul, which starts with the
-owner naming two or three sites he likes; (3) nothing else is owed until the January wind-down.
+**Next session (superseded 2026-10-24):** the lottery gate ran — see the head above.
 
 **Why the plan changed before execution [ARC 5 #20].** The three mover-ledger tests proposed 10-14
 (small-cap fade, small-cap drift, large-cap continuation) were withdrawn UNTESTED: scored against
 SPY while small caps lagged it by 10–13pp, re-logged rows (2,211 rows / 488 names), and the best
 cells of ≥8 screened. One benchmark-free within-day reversal spread survives as a LEAD only.
 
-### Phase 2 status (2026-10-16): DONE except the next gate
+### Phase 2 status (2026-10-24): DONE — both gates run (R1 FAIL, M1 PASS as a screen)
 `research/LITERATURE.md` is written (20 sources from official copies; the landscape numbers checked
 against regulators). **[GATE R1] FAILED** — reversal in mid/small caps averaged +1.05%/mo over
 1926–2014 and +0.04%/mo (t=0.14) since 2015, gone before costs; the [ARC 5 #20] lead is closed

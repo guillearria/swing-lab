@@ -3323,3 +3323,52 @@ library's documentation and code, and HTTP headers were read — `git log` is th
   duplicate keys, return-month alignment, an unverifiable ordering — and corrected four sentences
   (the decile pattern, the rmax window, the delisting direction, the unlisted size and volatility
   confounds). Every item is applied above. Engine row added as PENDING.
+
+**2026-10-24 · [GATE M1] RESULT — PASS on all five conditions, as a SCREEN. Among US common stocks
+since the paper's publication, the spikiest third earned less than the middle third per unit of
+market risk: CAPM alpha of the avoid leg +0.39%/mo (t=2.28, one-sided p=0.011). This licenses one
+thing only: a top-third-MAX avoid filter becomes a required, separately tested component of the
+next single-name pre-registration. Nothing is built or spent.**
+Run once at 2026-10-24T05:56:56Z, five seconds after the pre-registration commit `77f5bd6` reached
+origin. Reproduce: `python3 -m research.gate_lottery` (both files matched their pinned MD5s).
+- **The window, return months 2011-03..2025-12, n=178, no missing months:** avoid CAPM alpha
+  **+0.391%/mo** (HAC t=2.28, p=0.011), beta −0.20, residual SD 2.1%. Market-adjusted halves
+  **+0.412%** (2011-03..2018-07) and **+0.369%** (2018-08..2025-12); best month removed (2021-12)
+  **+0.353%**. Spread (pf 1 − pf 3) alpha **+0.716%** (t=3.14). Premise, the paper's sample
+  1962-07..2005-12 (n=522): alpha **+0.466%** (t=3.47). Every condition passes; the forecast was
+  P(PASS) ≈ 20%.
+- **Descriptive:** raw avoid **+0.198%/mo (t=1.10)** — positive, so the screen did not cost money,
+  but the raw gap alone is not significant; the pass is a risk-adjusted one (alpha ≈ raw + 0.2 ×
+  the window's ~1%/mo market premium). Adjusted median +0.36%, positive in 58% of months; with the
+  best 9 months (5%) removed **+0.12%**. Working-paper era 2006-01..2011-02: alpha **+0.01%**
+  (t=0.07). Smallest pf 3 count 1,706 stocks. Approximate 80%-power detectable alpha 0.53%/mo at
+  the premise residual SD, 0.39 at the window's.
+- **Independent checks.** (1) A blind re-derivation from the raw files by a separate agent, which
+  never read this module, matched every figure (alpha 0.3906, t 2.280, p 0.0113; halves
+  0.412/0.369; best month 2021-12, 0.353; best-9 0.120; spread 0.716, t 3.14; raw 0.198, t 1.10;
+  premise 0.466, t 3.47; 2006–2011 0.012). It confirmed the file layouts (one row per month and
+  tercile, decimal returns dated by return month, no signal column — so the volatility check set
+  the ordering: pf 1/2/3 SD 4.0/5.0/7.1%, betas 0.84/1.10/1.44), the alignment (pf 2 beta −0.13 /
+  1.17 / −0.16 on the market one month before / same / after), and that the library's own
+  `rmax1_21d` factor (md5 e14fbe6a…7819) equals pf 1 − pf 3 to floating point. (2) Its robustness
+  pass, none of which changes the verdict: Newey-West lags 0/1/3/6/12 give t 2.42–2.08 (p ≤ 0.019);
+  start month 2010-03/2011-02/2011-04 gives t 2.27–2.32; dropping 2020-01..2022-12 entirely
+  leaves alpha +0.32 (t=2.57).
+- **What it means.** The lottery drag survived publication in tradeable common stocks at close to
+  its in-sample size (0.39 vs 0.47 alpha), unlike [GATE R1]'s reversal, which vanished. Read
+  plainly: a stock that just had a big one-day jump has been a worse buy than a typical stock once
+  its extra market risk is counted — about 0.4% a month (roughly 5% a year), risk-adjusted, on the spikiest third.
+- **Residual risks.** (a) **Not uniform:** five-year blocks give alpha 0.40 (t 2.76, 2011–15),
+  **0.01 (2016–20)**, 0.74 (t 1.90, 2021–25); 7 of the 9 best months sit in 2021-03..2022-11 (the
+  meme and SPAC unwind), and the 2006–2011 era was flat. The effect comes in episodes. (b) **Not
+  attributable:** pf 2 and pf 3 both carry negative alphas (−0.27, −0.66); a low-beta /
+  low-volatility reading fits as well as a lottery one, plus size and last month's return (all
+  accepted in advance — the rule needs no attribution). (c) **Power:** the observed alpha sits at
+  the window's own 80%-power threshold; a replication of the same length is close to a coin flip.
+  (d) It clears the screen's 0.05 and would clear the 0.025 Bonferroni over the two gates opened,
+  but not Harvey-Liu-Zhu's t>3 — which is why it is a lead, not a claim. (e) Terciles, monthly
+  formation, capped value weights: not the day-after-spike event a trader acts on.
+- **Consequence.** The engine row is PASS* (an unconfirmed lead; it is a screen, not a strategy
+  against SPY). The next single-name pre-registration must include the top-third-MAX avoid filter
+  as a separately tested component, under a bar corrected for every literature gate opened. The
+  literature short-list has no untested eligible candidate left (research/LITERATURE.md).
