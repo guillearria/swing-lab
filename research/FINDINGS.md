@@ -3220,3 +3220,106 @@ origin. Reproduce: `python3 -m research.gate_reversal` (file created from the 20
   the only support is one crash-rebound month, so there is no sign of a hidden large effect.
 - **Consequence.** The engine row is FAIL. The next official-data gate on the short-list
   (research/LITERATURE.md) needs its own fresh pre-registration and blind review before it runs.
+
+**2026-10-24 · [GATE M1] PRE-REGISTRATION — after publication, among US common stocks, is a stock
+that just had a lottery-like one-day spike a worse buy, per unit of market risk, than a typical
+stock next month? Committed BEFORE either data file was downloaded (only file listings, the
+library's documentation and code, and HTTP headers were read — `git log` is the proof).**
+- **Why.** The last untested eligible candidate on the literature short-list (research/LITERATURE.md):
+  Bali, Cakici & Whitelaw, "Maxing Out", NBER WP w14804 (March 2009; JFE 99(2), Feb 2011; sample
+  1962-07..2005-12): value-weighted high−low MAX decile −1.03%/mo (t=−2.83), four-factor alpha
+  −1.18% (t=−4.71). In their Table I the drag sits in the top deciles — deciles 8/9/10 earn
+  0.86/0.52/−0.02%/mo against 1.00–1.16 for deciles 1–7. The long-only use is a NEGATIVE SCREEN —
+  do not buy right after an extreme up-day — so the test is on the avoid leg, not the long-short.
+  No post-2005 MAX performance figure was consulted while writing this; LITERATURE.md's
+  Hou-Xue-Zhang block carries no MAX row.
+- **Data.** Jensen, Kelly & Pedersen, Global Factor Data (jkpfactors.com; JF 2023), USA, monthly,
+  the library's update "through December 2025". Two files, pinned by MD5 (= their S3 ETags,
+  Last-Modified 2026-08-04); the run refuses any other bytes:
+  `public/portfolios/[usa]_[rmax1_21d]_[monthly]_[vw_cap].zip` (md5 2cac794c…e1ce, 57,388 B) and
+  `public/[usa]_[mkt]_[monthly]_[vw].zip` (md5 4cfedead…1416, 19,492 B). Construction per the
+  documentation §2 and the code (the SAS original, GlobalFactors/portfolios.R and
+  project_macros.sas; the files now come from its Python port, bkelly-lab/jkp-data, which keeps
+  the same universe screen and return-month dating): common stocks only (`common=1` = CRSP share
+  code 10/11/12; `exch_main=1`, `primary_sec=1`, `obs_main=1`) — no ETFs, closed-end funds, REITs
+  or ADRs, though Compustat-only US common stocks are admitted; `rmax1_21d` = the largest daily
+  return over the formation month (the library's 21-day window, with a minimum-days rule);
+  terciles with breakpoints set on stocks above the NYSE 20th percentile (micro caps placed by
+  the same breakpoints); each tercile capped value-weighted (market cap winsorized at the NYSE
+  80th percentile); return month t+1, excess of the T-bill, delisting returns compounded into the
+  last month (−30% imputed for missing performance delistings); pf 1 = low, 3 = high. Market =
+  the library's USA `mkt`, value-weighted excess return. Command: `python3 -m research.gate_lottery`.
+- **The run refuses, printing no verdict, when:** a file's MD5 differs; a zip holds other than
+  one CSV; two rows share a key after filtering to USA / `rmax1_21d` / the pinned weighting /
+  monthly; any window month lacks a tercile or the market; pf 3 is not the high tercile (checked
+  on the file's median-signal column, or — if absent — pf 3 must be the more volatile tercile over
+  the paper's sample); or the files look misaligned (pf 2's beta on the same-month market must sit
+  in [0.5, 1.5] and exceed its beta on the market one month either side). A refusal is fixed by an
+  amendment committed before any number is read.
+- **Why not Open Source Asset Pricing (the source the short-list named).** Its MaxRet path builds
+  the signal from every CRSP security with no share-code screen (MaxRet.py reads the daily file
+  directly; the portfolio step screens only market cap), so leveraged, inverse and volatility
+  ETPs — large one-day maxima, built-in decay — sit in the lottery decile through the window, a
+  mechanism no stock screen can use. Two blind reviewers found this independently. Its Google
+  Drive host also refused downloads ("quota exceeded") on 2026-10-24.
+- **Series (% per month, by return month).** avoid_t = pf 2 − pf 3 (a typical stock minus a
+  spiked one) — **gated**. spread_t = pf 1 − pf 3 (the published long-short, terciles). low_t =
+  pf 1 − pf 2 (descriptive).
+- **Why risk-adjusted.** Lottery stocks carry more market beta (the paper's Table VI: median beta
+  1.13 in the top decile against 0.78–0.86 in deciles 5–6), so raw avoid ≈ alpha − 0.3 × the
+  window's market premium: in a rising market a raw test scores beta, not the stock-specific drag.
+  The gate is avoid's CAPM alpha against the VW market.
+- **Window.** Return months 2011-03 through 2025-12 (178): the first portfolio formed after the
+  journal issue month, to the library's last month (if the files run later, the run says so and
+  still stops at 2025-12).
+- **PASS needs all five:** (1) avoid's CAPM alpha > 0 at one-sided Newey-West p ≤ **0.05**
+  (Bartlett kernel, 3 lags, n-divisor, normal approximation); (2) the market-adjusted avoid
+  series (avoid_t − β̂·mkt_t, full-window β̂ — its mean is the alpha) has a positive mean in both
+  halves by month count; (3) … and with its single best month removed; (4) the spread's CAPM alpha
+  > 0 (sign only — a weak check, since it shares pf 3 with avoid); (5) **premise:** avoid's CAPM
+  alpha > 0 over the paper's own sample (return months 1962-07..2005-12, at least 400 present) —
+  if not, the result is logged FAIL — PREMISE ABSENT: the effect never existed in tradeable
+  common-stock terciles. A PASS with a negative raw avoid mean is still a PASS (the component it
+  licenses is risk-adjusted) and is written up as "the screen cost money in the window".
+- **α = 0.05 is a SCREEN, as in [GATE R1].** A PASS licenses only this: a top-third-MAX avoid
+  filter becomes a REQUIRED, separately tested component of the next single-name
+  pre-registration, whose bar carries the Bonferroni correction over every literature gate opened
+  (R1, M1). Not a SKILL rule by itself; nothing is built or spent. Harvey-Liu-Zhu's t>3
+  (LITERATURE) is a claim-stage hurdle for discoveries; this screens a published claim, so that
+  hurdle sits at the claim stage.
+- **Cost is not gating, written in advance.** The screen adds no trade of its own — it changes
+  which name is bought in a trade that happens anyway. Cost matters only for the long-short,
+  which is not our trade (no shorts). Context: net of costs and post-publication decay the average
+  long-short anomaly earns ~8 bps/mo (Chen & Velikov, FEDS 2020-039, May 2020). This replaces
+  BACKLOG's "a sourced cost" deliberately.
+- **Power, written in advance.** The paper's VW high−low SD ≈ 1.03/2.83 × √522 ≈ 8.3%/mo, its
+  four-factor residual SD ≈ 1.18/4.71 × √522 ≈ 5.7%/mo; a crude tercile analogue from Table I is
+  roughly half the decile gap. Terciles are more diversified (lower SD) but dilute the tail
+  (smaller effect); neither is known for this construction, so the run prints the premise-period
+  residual SD and an approximate 80%-power detectable alpha for n=178 (print order only — it
+  blinds nothing). A FAIL is "not shown at a detectable size in tradeable common-stock terciles";
+  it closes the short-list's last eligible candidate because no finer free common-stock source
+  exists — not evidence the effect is gone.
+- **Accepted now, so nothing is argued afterwards:** terciles, not deciles (no finer free
+  common-stock sort; dilution); calendar-month formation and no skip-day, against a rule that
+  would act days after a spike; capped value weights against a rule a picker applies name by
+  name; one factor — so a PASS cannot separate "don't buy the spike" from "don't buy last month's
+  winner" (the paper's REV-controlled spread −0.81, t=−2.70), from the size premium (MAX falls
+  with size), or from the low-volatility anomaly, and the rule needs no attribution; the
+  full-window beta in conditions (2)–(3) can move a half either way if beta shifted; the
+  library's drop of securities with no next-month return — direction unknown, accepted.
+- **Non-gating, descriptive only — none of these can rescue a FAIL:** raw avoid mean and t; the
+  adjusted median and % positive months; the adjusted mean with the best 5% of months removed;
+  the low leg; the smallest pf 3 stock count; the working-paper era 2006-01..2011-02 alpha; file
+  identity (md5, bytes, first and last month of each file).
+- **Forecast, recorded before the run:** P(PASS) ≈ 20% — post-publication decay (McLean & Pontiff:
+  −58% on average) and tercile dilution, against a gate made more powerful by removing beta.
+- **Review trail.** Draft v1 (OSAP deciles above the NYSE 20th percentile, raw avoid,
+  α=0.025) went to three blind reviewers — two Fable lenses (statistics; data and construction)
+  and one Opus control. Blocked: the universe held ETPs (found by two independently), and the raw
+  bar scored beta while sitting above the in-sample effect (≈36% power with no decay at all).
+  v2 (this source, the CAPM gate, α as a screen per R1, the premise check, the PASS licensing a
+  tested component) went to one fresh Fable reviewer, who required three refusals in the code —
+  duplicate keys, return-month alignment, an unverifiable ordering — and corrected four sentences
+  (the decile pattern, the rmax window, the delisting direction, the unlisted size and volatility
+  confounds). Every item is applied above. Engine row added as PENDING.

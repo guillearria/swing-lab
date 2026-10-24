@@ -47,6 +47,9 @@ PROBES = [
     ("forced-flow","Russell 2000 reconstitution",           "BLOCKED", None),
     ("vol-premium","selling vol / short variance",          "FAIL",    False),
     ("factors",    "cross-sectional factor ETFs (MTUM…)",   "NEAR",    False),
+    # [GATE M1] 2026-10-24: the short-list's last candidate — lottery-stock (MAX) avoidance after
+    # publication, JKP USA common-stock terciles, judged by CAPM alpha. Pre-registered; not yet run.
+    ("factors",    "lottery avoidance (MAX), post-2011, α",  "PENDING", None),
     ("seasonality","calendar (Halloween, turn-of-month)",   "FAIL",    False),
     ("carry",      "bond curve carry (TLT/SHY)",            "FAIL",    False),
     ("reading",    "insider-cluster bare trigger",          "FAIL",    False),
