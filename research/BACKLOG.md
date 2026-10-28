@@ -12,10 +12,14 @@ conditions (FINDINGS [GATE M1] RESULT; engine row PASS*). The source moved from 
 Pricing (ETPs inside its MaxRet universe; Drive quota) to Jensen-Kelly-Pedersen's common-stock
 terciles before any data was read; four blind reviews, one blind re-derivation, all figures matched.
 
-**Next session, start here:** (1) the owner's call on Arc 6 — M1's PASS is the gate Phase 3 below
-waits for, but a test needs a single-name strategy to carry the filter, and none is live; a
-proposal comes first (CLAUDE.md lanes); (2) the README/site overhaul, which starts with the owner
-naming two or three sites he likes; (3) nothing else is owed until the January wind-down.
+**Owner ruling 2026-10-28: PARKED, folded into the future system.** The M1 filter ("skip the
+spikiest third") is a component waiting for the stock-picking system the owner expects to build
+later, not a test to run now. Do NOT open Arc 6 or propose one unprompted. When that system's first
+single-name pre-registration is written, it must carry the filter as a separately tested component
+under a bar corrected for every literature gate opened (FINDINGS [GATE M1] RESULT, Consequence).
+
+**Next session, start here:** (1) the README/site overhaul, which starts with the owner naming two
+or three sites he likes; (2) nothing else is owed until the January wind-down.
 
 ## (previous head, 2026-10-16 — Arc 5 closed · the reader retired · the next tests come from the literature)
 
