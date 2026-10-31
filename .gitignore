@@ -33,3 +33,6 @@ research/data/edgar_cache/
 # pending [ARC 3 #1d] audit needs it. Kept TRACKED by decision, not by a stray `git add -A`.
 # NOTE: insider_sec.PARSER_V versions the path, so bumping it commits a whole new copy. If
 # that ever matters, ignore the directory rather than deleting days — they are evidence.
+
+# [CRASH #1] price cache (reproducible: python3 -m research.crash_buy)
+research/data/_crash_ohlcv.pkl

@@ -3372,3 +3372,58 @@ origin. Reproduce: `python3 -m research.gate_lottery` (both files matched their 
   against SPY). The next single-name pre-registration must include the top-third-MAX avoid filter
   as a separately tested component, under a bar corrected for every literature gate opened. The
   literature short-list has no untested eligible candidate left (research/LITERATURE.md).
+
+---
+
+**2026-10-31 · [CRASH #1] PRE-REGISTRATION — does buying an S&P 500 stock the morning after it
+crashes on heavy volume beat SPY over the next three months? Owner-requested ("test it") after
+INTC fell 28.6% on 2026-10-30 on a cash-burn warning. Committed BEFORE any return was computed —
+only the membership file and the price download exist (`git log` is the proof).**
+- **Why.** The owner's read: a hard drop to (or through) the moving averages is a buying chance.
+  The model's counter-read (cases/CNXC.md, untested): when the forward numbers break, the drift
+  continues and the dip is not buyable. One test scores both. Context, not consulted for the bar:
+  news-driven shocks tend to continue and no-news shocks to reverse (Chan 2003, JFE; Savor 2012,
+  JFE — from memory, not re-read); a ≥20% one-day fall in an S&P 500 name is almost always news.
+  **Forecast: P(PASS) ≈ 15%.** Not Arc 6 and not the future system's first single-name
+  pre-registration (BACKLOG, owner ruling 2026-10-28), so the [GATE M1] filter is not a required
+  component; the gate IS counted in the multiple-testing bar below.
+- **Universe.** S&P 500 members ON the trigger date, point-in-time, from fja05680/sp500's daily
+  membership lists (1996 → 2026-08-18; dates after use the last list) → derived to
+  `research/data/sp500_intervals.csv` (1,262 ticker intervals, 1,209 tickers). Triggers from
+  2000-01-03 onward. Prices: yfinance, auto-adjusted, period max.
+- **Trigger.** Close-to-close return ≤ **−20%** on volume ≥ **3×** the mean of the prior 20
+  sessions. One event per ticker per 63 sessions (a trigger inside the 63 sessions after a taken
+  event is skipped and does not restart the clock).
+- **Trade.** Buy the NEXT session's open (the trigger needs the full-day close and volume); sell
+  at the close of the 63rd session counting the entry day. **Excess = stock return − SPY return
+  over the same open→close dates − 0.40% round-trip cost.** 21 sessions = diagnostic only.
+  Deviation from the proposal, stated: the ruler is SPY, not the sector ETF — sectors are not
+  known point-in-time for removed names, and a ≥20% single-name day is overwhelmingly
+  stock-specific.
+- **Inference.** Events cluster (2008, 2020). Bootstrap over trigger MONTHS (resample months with
+  replacement, 10,000 draws, seed 7, event-weighted mean); one-sided p = share of draws on the
+  wrong side of 0. **α = 0.05 / 3 = 0.0167** (Bonferroni over the gates opened: R1, M1, CRASH #1).
+- **PASS (buying the crash is an edge) needs all six, on NET excess at 63 sessions:** (1) mean > 0
+  at one-sided p ≤ 0.0167; (2) median > 0; (3) more than 50% of events beat SPY; (4) mean > 0 in
+  both halves (triggers 2000–2012 and 2013 onward); (5) mean > 0 at a 1.0% round-trip cost;
+  (6) mean > 0 with triggers in 2008-09..2009-03 and 2020-02..2020-04 removed.
+- **CONTINUATION (the dip keeps underperforming) needs all four, on GROSS excess** (costs would
+  push it negative for free): mean < 0 at one-sided p ≤ 0.0167; median < 0; fewer than 50% beat
+  SPY; mean < 0 in both halves. Long-only guard [ARC 5 #12a]: this is a "do not buy" rule, never
+  a short signal.
+- **Otherwise NULL** — no reliable edge either way. Fewer than 100 events → NULL-UNDERPOWERED.
+  The run prints the SD and the approximate 80%-power detectable mean.
+- **Printed, not gating:** survivorship coverage (share of member-sessions with a Yahoo price);
+  a bad-print sensitivity (events whose next open is ≥15% above the trigger close, with the mean
+  excluding them); the 21-session numbers; the live trigger list (INTC 2026-10-30 included —
+  unscorable until ~2027-01).
+- **Known holes, accepted in advance.** (a) **Survivorship:** Yahoo keeps only current listings,
+  so most removed names (bankruptcies, takeovers) are missing; bankruptcies after a crash are the
+  worst outcomes for a buyer, so the hole most likely flatters a PASS. A PASS is therefore
+  PROVISIONAL until survivorship-clean data (the named paid trigger: Norgate/CRSP); a NULL or
+  CONTINUATION is the direction the hole cannot manufacture. (b) **Ticker reuse:** a symbol's
+  Yahoo history can belong to a later company that took it (e.g. SBC as T before 2005); such
+  events are still S&P-member moves, but mislabelled. (c) No earnings-date filter — the trigger
+  is price + volume only, so it mixes earnings, guidance, legal and macro shocks.
+- **No variants.** No other threshold (−15%, 2×, 21d primary, sector ruler) will be scored for
+  the verdict; any later variant is exploratory and needs fresh out-of-sample data.
