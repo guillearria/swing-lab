@@ -3427,3 +3427,50 @@ only the membership file and the price download exist (`git log` is the proof).*
   is price + volume only, so it mixes earnings, guidance, legal and macro shocks.
 - **No variants.** No other threshold (−15%, 2×, 21d primary, sector ruler) will be scored for
   the verdict; any later variant is exploratory and needs fresh out-of-sample data.
+
+**2026-10-31 · [CRASH #1] RESULT — PASS* (PROVISIONAL, marginal) on survivors; NOT an edge we can
+trade. As run, the PASS rode a data bug; fixed, it clears α by a hair, and the survivorship hole
+accepted in advance very likely reverses it. The model's CONTINUATION read is rejected.**
+- **As run** (`374b755`): 342 events, 63d net +7.44% mean / +2.44% median, beat 55%, p 0.0011 →
+  all six gates pass. **Invalidated:** 40 events were later companies on reused Yahoo symbols —
+  `EP` (median ~100 shares/day, not El Paso), `CPWR` (median volume 0, not Compuware), `PARA` (a
+  $2,242 close on 8 shares) — carrying ~40% of the summed excess; UA/UAA counted one company twice.
+  Pre-registered hole (b) assumed reuse would still be S&P-member moves; for these three it was not.
+- **Fixed (a bug fix, not a variant — outcome-blind: prior-20 median dollar volume < $1M = junk
+  symbol, a clean gap from $0.04M to $3.7M; share-class twins deduped):** **n=299, net mean +5.19%,
+  median +2.72%, beat 55%, p 0.011 vs α 0.0167.** Halves +6.87% / +3.51%; 1.0% cost +4.59%; crises
+  removed +2.65% (n=257, median +0.83%). All six gates pass → PASS (PROVISIONAL) by the letter.
+  21d diagnostic: mean −0.72%, median −1.26%, beat 47% — the typical crash stock is still behind
+  SPY a month later; any recovery shows only by 63d. Gross p(<0) 0.995 → **CONTINUATION rejected**:
+  on survivors, cases/CNXC.md's "keeps drifting down" did not hold over three months.
+- **Independent checks.** (1) A blind replication (separate model, never read `crash_buy.py`)
+  reproduced the as-run numbers to one event — its +9.75% mean vs +7.44% is a single CPWR
+  2011-05-23 row (a −90% "day" whose prior-20 volume averages 0, which ours skipped as `avg ≤ 0`)
+  — and found the EP/CPWR reuse. (2) The adversarial pass confirmed the mechanics (no lookahead,
+  0 SPY misalignments, open/close on one adjustment factor; entry at the next close or the open
+  after does not hurt) and the pre-registration's timestamps (FINDINGS 08:32:55 < cache 08:33:42 <
+  code 08:35:17).
+- **Residual risks — why "provisional" is the honest word and "edge" is not:**
+  (a) **Survivorship, measured:** member-session coverage 57% before 2013, 85% after; ~140 events
+  are missing at the observed rate (114 pre-2013). The missing set holds the wipeouts (Enron,
+  WorldCom, Lehman, WaMu, old GM, FRC …) AND fire-sale takeovers that paid (Bear, Wachovia). The
+  red-team's smallest named fix — 5 wipeouts it is sure of, 7 takeover offsets, outcomes from
+  recollection — gives p 0.025 (gate 1 fails → NULL); ~15 extra wipeouts take the mean to 0.
+  (b) **Concentration:** the top 10 events (3%) carry 65% of the summed excess (mean without them
+  +0.02%); six months (2001-04, 2002-10, 2009-01/02/07, 2020-03) carry 93%. Mean log excess −0.18%:
+  no compounding edge per trade, only an arithmetic one for a diversified sleeve.
+  (c) **Recency:** 2013+ alone p 0.15; without Feb–Apr 2020 the second half is −0.29% (p 0.57);
+  **2021–2026: n=88, mean −1.86%, median −0.71%, beat 49%.** (d) Clustering by 6+ months (63d
+  windows straddle months) fails α (half-year p 0.021). (e) Beta: pre-event beta 1.19, beta-adjusted
+  +5.74% (p 0.003) survives; a regression intercept on the SPY move (+3.3%, p 0.038) does not.
+- **What it means, plainly.** Buying a big S&P 500 crash the next morning has, historically and
+  among companies that survived, roughly broken even for a month and come out a few points ahead
+  after three — almost all of it from buying into the 2001–02, 2009 and 2020 panics. Nothing in
+  the last five years. With the bankruptcies counted it is most likely nothing.
+- **Consequence.** Engine row PASS* (unconfirmed, survivors only; not a strategy against SPY, hence
+  None). No real money: nothing here meets the bar the book closed on. The named paid trigger
+  (survivorship-clean prices, Norgate/CRSP) is NOT pulled: the best case it could confirm is a
+  crisis-only, pre-2021 effect, not worth buying data to chase. Live triggers the run prints (INTC,
+  NOW, FTNT, RDDT, FICO, FFIV, EIX, PCG — 2026-08..10) are a free out-of-sample look when they
+  mature (~2027-01); they are a record, not a second look at this verdict.
+  Reproduce: `python3 -m research.crash_buy` (first run downloads ~1,200 histories, ~10 min).

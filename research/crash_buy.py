@@ -4,6 +4,8 @@ Trigger: an S&P 500 member (point-in-time) closes >=20% down on >=3x its prior-2
 mean volume. Trade: buy the next open, sell at the close of the 63rd session (21 = diagnostic).
 Excess = stock - SPY over the same open->close dates - 0.40% round trip. One event per ticker
 per 63 sessions. Month-clustered bootstrap, alpha 0.05/3. Bars: FINDINGS [CRASH #1].
+Data fix after the red-team (bug, not variant): events on a reused symbol (prior-20 median
+dollar volume < $1M — EP, CPWR, PARA) and share-class twins (UA/UAA) are dropped.
 
 Membership: fja05680/sp500 daily lists -> research/data/sp500_intervals.csv.
 Prices: yfinance (current listings only — the survivorship hole; coverage is printed).
@@ -31,6 +33,9 @@ SPLIT = "2013-01-01"
 CRISES = (("2008-09-01", "2009-03-31"), ("2020-02-01", "2020-04-30"))
 BAD_GAP = 0.15
 MIN_N = 100
+# Data-integrity fixes after the red-team [CRASH #1 RESULT] — bug fixes, not variants:
+MIN_DOLLAR_VOL = 1e6     # prior-20 median $ volume; below = a later company on a reused symbol
+TWINS = {"UAA": "UA", "GOOGL": "GOOG", "FOXA": "FOX", "NWSA": "NWS", "DISCA": "DISCK"}
 BOOT, SEED = 10_000, 7
 
 
@@ -78,7 +83,7 @@ def member(ivs, d):
 def events(ivs_by_tk, px):
     spy_d, spy_o, spy_c, _ = px["SPY"]
     spy_ix = {d: i for i, d in enumerate(spy_d)}
-    ev, live, unaligned = [], [], 0
+    ev, live, unaligned, junk = [], [], 0, 0
     for tk, ivs in ivs_by_tk.items():
         if tk not in px or tk == "SPY":
             continue
@@ -93,6 +98,9 @@ def events(ivs_by_tk, px):
             if i - last < H:
                 continue
             last = i
+            if sorted(c[j] * v[j] for j in range(i - VOL_N, i))[VOL_N // 2] < MIN_DOLLAR_VOL:
+                junk += 1
+                continue
             if i + H >= len(d):
                 live.append((d[i], tk, c[i] / c[i - 1] - 1))
                 continue
@@ -111,7 +119,9 @@ def events(ivs_by_tk, px):
                 ev.append(row)
             else:
                 unaligned += 1
-    return ev, live, unaligned
+    keys = {(r["date"], r["tk"]) for r in ev}
+    ev = [r for r in ev if (r["date"], TWINS.get(r["tk"])) not in keys]   # one company, one event
+    return ev, live, unaligned, junk
 
 
 def coverage(ivs_by_tk, px):
@@ -169,9 +179,10 @@ def main():
     px = fetch(ivs)
     if "SPY" not in px:
         sys.exit("REFUSED: no SPY series")
-    ev, live, unaligned = events(ivs, px)
+    ev, live, unaligned, junk = events(ivs, px)
     priced = sum(1 for t in ivs if t in px)
-    print(f"[CRASH #1] {len(ev)} scored events (+{len(live)} live, {unaligned} unaligned) · "
+    print(f"[CRASH #1] {len(ev)} scored events (+{len(live)} live, {unaligned} unaligned, "
+          f"{junk} reused-symbol junk dropped) · "
           f"{priced}/{len(ivs)} member tickers priced · member-session coverage "
           f"{coverage(ivs, px):.0%}")
 

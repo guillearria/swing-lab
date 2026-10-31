@@ -50,5 +50,9 @@ Short, 63d/21d, vs the anchor's sector benchmark — grandfathered rows only. Sc
 
 ## Links
 - Bets: `python3 -m research.bets show` (tags `#guidance-cut-continuation`, `-short`)
+- Tested in bulk, not by guide size: FINDINGS `[CRASH #1]` (2026-10-31) — every ≥20%/3×-volume
+  S&P 500 crash since 2000, survivors only. Behind SPY at 21d (median), NOT at 63d: the
+  three-month continuation claim was rejected on that sample. The guide-cut discriminator itself
+  is untested (no earnings-date filter).
 - Related: `cases/MSCI.md` (the opposing read, and the discriminator) · `cases/IRM.md`
   (the squeeze trap mirrored) · FINDINGS `[ARC 5 #12a]` (long-only guard)

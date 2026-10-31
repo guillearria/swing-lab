@@ -51,6 +51,11 @@ PROBES = [
     # terciles, judged by CAPM alpha. PASS as a SCREEN: +0.39%/mo (t=2.28) — a lead for the next
     # single-name pre-registration to test, not a strategy against SPY (hence None).
     ("factors",    "lottery avoidance (MAX), post-2011, α",  "PASS*",   None),
+    # [CRASH #1] 2026-10-31 (owner): buy an S&P 500 member the open after a ≥20%/3×-volume day,
+    # 63d vs SPY net. As-run PASS rode 40 wrong-company events (reused symbols); fixed: +5.2%
+    # mean, p=0.011 vs α 0.0167 — a hair. PROVISIONAL: Yahoo misses most bankruptcies, and the
+    # red-team's smallest named survivorship fix takes p to 0.025. Nothing after 2020. Not a trade.
+    ("reversion",  "S&P 500 crash-day buy (63d, survivors)", "PASS*",   None),
     ("seasonality","calendar (Halloween, turn-of-month)",   "FAIL",    False),
     ("carry",      "bond curve carry (TLT/SHY)",            "FAIL",    False),
     ("reading",    "insider-cluster bare trigger",          "FAIL",    False),
