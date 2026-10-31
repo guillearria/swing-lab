@@ -3474,3 +3474,53 @@ accepted in advance very likely reverses it. The model's CONTINUATION read is re
   NOW, FTNT, RDDT, FICO, FFIV, EIX, PCG — 2026-08..10) are a free out-of-sample look when they
   mature (~2027-01); they are a record, not a second look at this verdict.
   Reproduce: `python3 -m research.crash_buy` (first run downloads ~1,200 histories, ~10 min).
+
+---
+
+**2026-10-31 · [OWNER RULING] iteration reopened.** The owner, after [CRASH #1]: "make paper bets
+and score them … tune, retest, iterate until we find an edge … our setup is too restrictive."
+Supersedes the 2026-10-28 ruling (BACKLOG: "no Arc 6, none proposed unprompted"). The model's
+standing objection, kept on record: iterating on the SAME data until something passes manufactures
+an edge (the as-run [CRASH #1] PASS was a data bug; ~1 in 20 of our tests passes at 5% by luck).
+Reconciled rule: **tune freely in-sample — every such number is EXPLORATORY — and a tuned variant
+gets its verdict only from data that arrived after it was written down (a forward ledger, or a
+holdout nobody has looked at).** Paper only; real money still needs a pre-registered PASS.
+
+**2026-10-31 · [CRASH #1] EXPLORATORY splits (in-sample, the 299 fixed events — a lead, not a
+result):** crashes while SPY was ≥10% below its 1-year high: **n=127, net +12.54% mean / +8.33%
+median, beat 62%** (2013+ n=30, +18.29% / +14.26%). Crashes with SPY within 10% of its high:
+**n=172, −0.23% / −0.16%, beat 50%** — nothing. SPY itself down ≥3% that day: n=39, +19.18% /
++13.14%. Drop ≤−30%: n=70, +18.54%; −20..−30%: n=229, +1.11%. Delayed entry (buy at session 21,
+hold to 63): +7.43% mean but median +0.37%, beat 51% — worse. Read: whatever edge exists is a
+PANIC effect; a stock-specific crash in a calm market (INTC 2026-10-30, SPY −3% off its high) has
+no history of paying. The split was chosen after seeing the data → scored forward only, below.
+Reproduce: the session's split script on `crash_buy.events()` (dd = SPY close / 252-session max − 1).
+
+**2026-10-31 · [CRASH #2] PRE-REGISTRATION — the forward PAPER ledger. Does the crash-day buy
+beat SPY on crashes that have not happened yet, and is the edge a PANIC effect? Committed before
+the first eligible trigger (2026-11-02).**
+- **Rule (unchanged from [CRASH #1] + its data fixes):** current S&P 500 members on the scan date;
+  close-to-close ≤ −20% on ≥ 3× the prior-20 mean volume; prior-20 median $ volume ≥ $1M; one per
+  ticker per 63 sessions; share-class twins once. Buy the next open, sell the close of session 63;
+  excess vs SPY over the same dates, net 0.40%. Logged daily by `scripts/daily.sh`
+  (`python3 -m research.crash_ledger log/settle`); 10-session lookback catches a missed day.
+- **Arm, fixed at log time:** PANIC if SPY closed ≥10% below its highest close of the prior 252
+  sessions on the trigger day, else CALM. Beta = daily-return beta over 250 sessions ending 21
+  before the trigger; beta-adjusted excess = stock − β·SPY − cost.
+- **Survivorship-free by construction:** each settle run stamps every open row's last price; a
+  name that stops trading settles at its last stamped close (status `delisted`, verified by hand).
+- **ONE look per arm, sample fixed by trigger ORDER, never by outcome** (the [ARC 5 #14]
+  optional-stopping lesson): PANIC = the first 20 PANIC triggers, ALL = the first 30 triggers;
+  each extended to the smallest count spanning ≥4 calendar months (one crash is closer to one
+  observation than to twenty). Scored once every row in the sample has settled.
+- **PASS per arm needs all four:** net mean > 0; net median > 0; more than 50% beat SPY;
+  beta-adjusted mean > 0. Otherwise FAIL — final for that arm. CALM is a diagnostic inside ALL;
+  the model's prediction for it: median within ±3%.
+- **Power, stated:** n=20 with a ~30% SD gives a ~7% standard error. Only an effect near the
+  in-sample panic size (+8% median) is likely to read PASS; a small true edge reads FAIL about half
+  the time. No p-value gate at this n — this is a sign test of a lead, and a PASS licenses a
+  real-money PROPOSAL to the owner, nothing automatic. Forecast P(PANIC PASS) ≈ 40%.
+- **Timing:** calm markets produced ~7 triggers a year in-sample (ALL's 30 ≈ 3–4 years); PANIC
+  fills only when a drawdown arrives — weeks, if the owner's crash call is right.
+- **Not in the sample:** the 12 triggers before 2026-11-02 (EIX … INTC, RDDT) — `crash_buy`
+  scores them as record.

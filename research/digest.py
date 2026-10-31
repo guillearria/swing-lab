@@ -67,7 +67,8 @@ def _busdays(start: date, end: date) -> int:
     return tradingdays.count(start, end)
 
 log = logging.getLogger(__name__)
-LEDGERS = ("research/bets_catalogue.csv", "research/movers_ledger.csv", "research/orders.csv")
+LEDGERS = ("research/bets_catalogue.csv", "research/movers_ledger.csv", "research/orders.csv",
+           "research/crash_ledger.csv")
 PUSH_LOG = "research/data/push_log.csv"   # date_utc,kind,verdict — one row per --notify push,
                                           # committed with the ledgers (daily.sh / READ_LOOP
                                           # step 7) so a stranded push is visible to the NEXT
@@ -225,6 +226,24 @@ def _bets_section() -> tuple[list, list]:
                 f"check the ticker + price feed (<code>python3 -m research.bets settle</code>)"]
                if stuck else [])
     return actions, lines
+
+
+def _crash_section() -> tuple[list, list]:
+    """📝 paper crash bets [CRASH #2]: one plain line per trigger THIS run logged or scored (vs
+    HEAD, the _committed trick) — nothing on a day with neither, so it never repeats daily."""
+    from research import crash_ledger as cl
+    before = {(r["trigger_date"], r["ticker"]): r for r in _committed("research/crash_ledger.csv")}
+    lines = []
+    for r in cl._load():
+        old = before.get((r["trigger_date"], r["ticker"]))
+        market = "in a falling market (panic)" if r["arm"] == "PANIC" else "in a calm market"
+        if old is None:
+            lines.append(f"📝 Paper bet: {_e(r['ticker'])} fell {-float(r['drop']):.0%} on "
+                         f"{r['trigger_date'][5:]} {market}. Scores in about 3 months.")
+        elif old["status"] == "open" and r["status"] in ("settled", "delisted"):
+            lines.append(f"📝 Paper bet scored: {_e(r['ticker'])} {cl._net(r):+.1%} vs SPY "
+                         f"over 3 months ({r['arm'].lower()} market).")
+    return [], lines
 
 
 def _quiet_line() -> tuple[list, list]:
@@ -491,7 +510,7 @@ def compose(note: str = "", leg: str = "settle") -> str:
     "✅ DO NOW: nothing" every day). DO-NOW actions are never dropped or summarized.
     """
     head, _, body = note.partition("\n")
-    sections = [_safe(_bets_section, "bets"),
+    sections = [_safe(_crash_section, "crash"), _safe(_bets_section, "bets"),
                 _safe(_git_section, "git"), _safe(_stranded_section, "stranded"),
                 _safe(lambda: _pushlog_section(composing=leg), "push-log")]
     # Event flags + scored cards are composed separately because they lead the message — but

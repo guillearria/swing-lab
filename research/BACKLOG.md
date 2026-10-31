@@ -1863,3 +1863,8 @@ The paper bet scores vs XLV either way — execution never touches the verdict.
   reason is void. Git history has it if a rebuilt insider arc ever wants a SEC daily-index reader.
 - ~~`reference/`~~ + the v1 capture→settle→paper pipeline — **DELETED 2026-08-02.** Nothing
   imported them and no `Reproduce:` line cited them. Git history has them.
+
+**Owner ruling 2026-10-31: iteration REOPENED** (supersedes the 2026-10-28 parking line above —
+FINDINGS [OWNER RULING] 2026-10-31). First live piece: the [CRASH #2] forward paper ledger
+(`research/crash_ledger.py`, run daily by `scripts/daily.sh`). Rule for every tuned variant:
+exploratory in-sample, verdict only on data it has not seen.

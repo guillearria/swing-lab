@@ -50,6 +50,9 @@ python3 -m research.bets settle           >> cron.log 2>&1 || FAILS="$FAILS bets
 python3 -m research.movers settle         >> cron.log 2>&1 || FAILS="$FAILS movers"  # score take+skip fwd vs SPY [W3]
 # Resolve working orders against real bars BEFORE the digest composes — otherwise a limit that
 # filled this morning is still advertised as "no fill yet" in the very push that reports it.
+# [CRASH #2] forward paper ledger: log new S&P 500 crash-day triggers, stamp + score open ones.
+python3 -m research.crash_ledger log      >> cron.log 2>&1 || FAILS="$FAILS crash-log"
+python3 -m research.crash_ledger settle   >> cron.log 2>&1 || FAILS="$FAILS crash-settle"
 python3 -m research.orders check          >> cron.log 2>&1 || FAILS="$FAILS orders"
 python3 -m research.book mark             >> cron.log 2>&1 || FAILS="$FAILS book"  # display only, writes nothing
 # One row per day on the equity curve — the book was judged point-in-time forever (no path,
@@ -82,7 +85,7 @@ python3 -m research.pulse --post          >> cron.log 2>&1 || FAILS="$FAILS puls
 # push_log.csv is the delivery stamp the digest writes on every --notify: committed, it lets
 # the NEXT delivered message flag a settle 📋 that died in transport (invisible to the
 # commit-watching watchdog — observed two consecutive nights, 08-05 + 08-06).
-LEDGERS="research/bets_catalogue.csv research/movers_ledger.csv research/book_equity.csv research/orders.csv research/data/_feed_status.json research/data/push_log.csv research/data/pulse_log.csv docs/index.html"
+LEDGERS="research/crash_ledger.csv research/data/sp500_current.csv research/bets_catalogue.csv research/movers_ledger.csv research/book_equity.csv research/orders.csv research/data/_feed_status.json research/data/push_log.csv research/data/pulse_log.csv docs/index.html"
 # The commit/rebase/push logic moved to its own script so it could be TESTED — inline here it
 # never was, and on 2026-07-31 a failed push silently destroyed a whole settle run with the
 # container. push_ledgers.sh verifies the commit actually reached origin/master and, when it
