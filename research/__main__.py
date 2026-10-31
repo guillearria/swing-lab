@@ -12,6 +12,8 @@ LIVE_COMMANDS = """\
 LIVE commands:
   python3 -m research                   this status panel
   python3 -m research.engine            falsification scoreboard (all probes + verdicts)
+  python3 -m research.crash_ledger      LIVE paper ledger [CRASH #2]: S&P 500 crash-day buys, PANIC/CALM (log/settle daily)
+  python3 -m research.crash_buy         [CRASH #1] backtest of the same rule (first run downloads ~10 min)
   python3 -m research.bets show         forward-bet catalogue
   python3 -m research.bets add ...      RETIRED [ARC 5 #19] — Arc 5 generation is closed
   python3 -m research.bets settle       score matured bets vs benchmark
