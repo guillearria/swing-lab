@@ -15,6 +15,11 @@ Tune freely in-sample; every such number is labelled **EXPLORATORY**. A tuned va
 **verdict only from data it has not seen**: a forward paper ledger or an untouched holdout.
 Iterating on the same data until something passes manufactures an edge (~1 in 20 tests passes
 at 5% by luck).
+- A registered bar never moves once data is seen. Reopening a closed test needs a fresh
+  pre-registration, only data since its verdict, and the original bar or stricter (SKILL re-arm).
+- Splits of a ledger (tag, horizon, universe, arm) are diagnostics; only verdict arms named in
+  the pre-registration get a bar. The Arc 5 bets and movers get no new verdict of any kind.
+- Paper ledgers are long-only: a "keeps falling" result is a do-not-buy screen, never a short.
 
 ## The loop
 1. Pre-register the question + pass/fail bar in `research/FINDINGS.md` and commit it BEFORE
@@ -43,7 +48,9 @@ parallel work (reviews qualify).
 ## Guardrails (do not break)
 - **Two realms.** This repo is the SHORT-SWING realm and is being prepared for public release.
   Long-term wealth, personal finances and holdings live in a separate private repo and are NEVER
-  restated here; markdown pointers only, no imports either way.
+  restated here; markdown pointers only, no imports either way. Don't research or act on
+  long-realm holdings, comp-plan or multi-year tax questions here: a position whose next
+  decision is years away isn't ours.
 - **Conflict-of-interest exclusion list:** kept in the private realm and in the cloud read
   prompt, never in this repo; a name on it is never scored, held or recommended here. The read
   trigger is disabled but must NEVER be deleted: it is the list's home.
@@ -53,6 +60,14 @@ parallel work (reviews qualify).
   `PUSH REJECTED (nothing sent)`, never on `PUSH UNCONFIRMED` (that double-posts). The digest
   refuses a second same-day push itself; `scripts/daily.sh` holds a lock. Never re-launch a
   backgrounded `daily.sh`.
+- **Ledgers are evidence:** log every trigger and candidate; never drop, edit or backfill a
+  ledger row by hand — only the ledger's own command writes it; corrections go in FINDINGS.
+- **Unattended runs:** recovery = re-run `scripts/daily.sh` once, after it exits, only on
+  `PUSH REJECTED` or a run that died before its digest step. A bare exit 1, `PUSH SKIPPED` or
+  "settle already running" means done. Never hand-run `research.digest` / `research.notify`
+  (the latter is human-only). In a scheduled run `push_ledgers.sh` is the only committer.
+  When `daily.sh`, a module name or a routine-facing doc changes, patch the settle routine's
+  prompt in the same session.
 - **Single source of truth:** live numbers live in one runnable command; docs point to the
   command, never restate the figure. FINDINGS entries are append-only and keep their numbers.
 - One look means one look: never recompute a decided verdict at a larger n.
@@ -67,7 +82,8 @@ parallel work (reviews qualify).
   `FINDINGS_ARCHIVE.md`). `research/SKILL.md` — the method. `research/BACKLOG.md` — changelog +
   backlog + owner rulings. `research/ARCHITECTURE.md` — the layer map.
 - **Live track:** `research/crash_ledger.py` — [CRASH #2] forward paper ledger: daily S&P 500
-  crash-day triggers, PANIC/CALM arms, scored at 63 sessions; one look per arm. Its backtest:
+  crash-day triggers tagged PANIC/CALM, scored at 63 sessions; one look each for PANIC (first
+  20) and ALL (first 30); CALM is a diagnostic, never its own verdict. Its backtest:
   `research/crash_buy.py` [CRASH #1].
 - `research/bets.py` — Arc 5's LLM forward bets: FAIL, final [ARC 5 #18]; generation retired;
   open bets settle to completion (~2027-01-13) as record. `research/movers.py` — retired scan;

@@ -37,7 +37,7 @@ python3 -m research help       # this command index
 |---|---|
 | `python3 -m research` | Live status panel (the dashboard) |
 | `python3 -m research.engine` | Falsification **scoreboard** — every probe + verdict + multiple-testing check |
-| `python3 -m research.crash_ledger` | **Live track** [CRASH #2]: forward paper ledger of S&P 500 crash-day buys, PANIC/CALM arms (`log`/`settle` run daily) |
+| `python3 -m research.crash_ledger` | **Live track** [CRASH #2]: forward paper ledger of S&P 500 crash-day buys; verdict arms PANIC + ALL, CALM a diagnostic (`log`/`settle` run daily) |
 | `python3 -m research.crash_buy` | [CRASH #1] backtest of the same rule, 2000–2026 (first run downloads ~10 min) |
 | `python3 -m research.bets show` | Forward-bet **catalogue** (Claude's pre-registered future calls) |
 | `python3 -m research.bets add TICKER long 63 SPY "thesis" --tag=scenario --conviction=high|medium` | **RETIRED with generation [ARC 5 #19].** Log a forward bet (tag = scenario type). **Admission is LONG-ONLY above a $5M median-dollar-volume floor, fail-closed, code-enforced [ARC 5 #12a]** — a REFUSED add is the rule working; shorts return only via the SKILL re-arm protocol |
